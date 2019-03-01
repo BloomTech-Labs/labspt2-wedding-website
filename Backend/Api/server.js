@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('morgan');
+const server = express();
+
 server.use(
     express.json(),
     logger('dev'),
