@@ -1,5 +1,5 @@
 {
-  "name": "JoinOurIDosBack-end",
+  "name": "JoinOurIDos-Back-end",
   "version": "1.0.0",
   "main": "index.js",
   "scripts":{
@@ -27,5 +27,8 @@
   "devDependencies": {
     "nodemon": "^1.18.10",
     "supertest": "^3.4.2"
+  },
+  "engines": {
+    "node": "11.x"
   }
 }
