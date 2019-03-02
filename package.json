@@ -1,8 +1,0 @@
-{
-  "name": "labspt2-wedding-website",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/Lambda-School-Labs/labspt2-wedding-website.git",
-  "author": "Chris Roth <c.roth.lambda@gmail.com>",
-  "license": "MIT"
-}
