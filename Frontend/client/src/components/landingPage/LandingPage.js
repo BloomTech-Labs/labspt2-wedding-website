@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Carousel from "./Carousel";
-import SignUp from "./SignUp/SignUp";
-import SignIn from "./SignIn/SignIn";
+import Carousel from "./carousel";
+import SignUp from "./SignUp/signUp";
+import SignIn from "./SignIn/signIn";
 
 export default class LandingPage extends Component {
   render(){
