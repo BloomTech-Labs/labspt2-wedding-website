@@ -1,11 +1,15 @@
 {
-  "name": "JoinOurIDosBack-end",
+  "name": "JoinOurIDos-Back-end",
   "version": "1.0.0",
   "main": "index.js",
   "scripts":{
     "start": "nodemon index.js",
     "server": "nodemon index.js",
     "test": "cross-env TESTING_DB=testing jest --watch --verbose"
+  },
+  "repository":{
+    "type": "git",
+    "url": "https://joinouridos.herokuapp.com/"
   },
   "license": "MIT",
   "dependencies": {
@@ -27,5 +31,8 @@
   "devDependencies": {
     "nodemon": "^1.18.10",
     "supertest": "^3.4.2"
+  },
+  "engines": {
+    "node": "11.x"
   }
 }
