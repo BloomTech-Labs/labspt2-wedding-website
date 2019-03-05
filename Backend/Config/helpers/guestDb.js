@@ -9,7 +9,6 @@ module.exports = {
     }
     return db('guestList')
   },
-
   addGuest: guest => {
     return db('guestList').insert(guest)
   },
