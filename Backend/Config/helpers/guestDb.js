@@ -1,6 +1,7 @@
 const db = require('../dbConfig')
 
 module.exports = {
+  
   getGuest: id => {
     if (id) {
       return db('guestList')
@@ -9,7 +10,6 @@ module.exports = {
     }
     return db('guestList')
   },
-
   addGuest: guest => {
     return db('guestList').insert(guest)
   },

@@ -3,6 +3,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('morgan');
 const server = express();
+const configGuestRoutes = require('../Config/routes/guestRoute');
+const configureUserRoutes = require('../Config/routes/userRoute');
 
 server.use(
     express.json(),
@@ -10,6 +12,7 @@ server.use(
     cors(),
     helmet()
 );
+configureUserRoutes(server);
 
 server.get('/', (req, res)=>{
     res.status(200).json({api: "WOW welcome to the JoinOurBigDay API!"})
