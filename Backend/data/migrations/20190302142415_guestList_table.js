@@ -7,12 +7,15 @@ exports.up = function(knex, Promise) {
       .string('email')
       .notNullable()
       .unique()
-    tbl.boolean('rsvp').defaultTo(null)
-    tbl.boolean('rsvpMaybe').defaultTo(false)
-    tbl.string('rsvpMailing')
-    tbl.string('rsvpStory')
     tbl.integer('userId').unsigned()
     tbl.foreign('userId').references('users.id')
+    //set on RSVP form + other table
+
+    // are you going
+    tbl.boolean('rsvp').defaultTo(null)
+    tbl.boolean('rsvpMaybe').defaultTo(false)
+    // How do you know the couple
+    tbl.string('rsvpComment')
   })
 }
 
