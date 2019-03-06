@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
       .string('username')
       .notNullable()
       .unique()
+    tbl.string('weddingParty').notNullable()
     tbl.string('password').notNullable()
     tbl.string('venueLocation')
     tbl.string('email').notNullable()

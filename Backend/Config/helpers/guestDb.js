@@ -1,6 +1,7 @@
 const db = require('../dbConfig')
 
 module.exports = {
+  
   getGuest: id => {
     if (id) {
       return db('guestList')

@@ -11,9 +11,7 @@ module.exports = {
   },
 
   addUser: user => {
-    if (user.username && user.password && user.email) {
-      return db(users).insert(user)
-    }
+    return db('users').insert(user)
   },
 
   updateUser: (id, user) => {
