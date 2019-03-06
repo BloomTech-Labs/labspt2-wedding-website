@@ -14,11 +14,15 @@ server.use(
 );
 configureUserRoutes(server);
 
-server.get('/', (req, res)=>{
-    res.status(200).json({api: "WOW welcome to the JoinOurBigDay API!"})
-    .catch(err=>{
-        res.status(500).send({error: err})
-    })
+server.get('/', (req, res) => {
+    res.status(200).json({
+            api: "WOW welcome to the JoinOurBigDay API!"
+        })
+        .catch(err => {
+            res.status(500).send({
+                error: err
+            })
+        })
 });
 
 module.exports = server;
