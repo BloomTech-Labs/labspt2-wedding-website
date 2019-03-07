@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PieChart from "react-minimal-pie-chart";
 
 import styled from "styled-components";
 
@@ -100,7 +101,7 @@ const GuestList = styled.div`
 margin-top: 5%;
 border-top: 2px solid #707C8B;
 padding 3%;
-`
+`;
 
 const H3 = styled.h3`
   font-size: 1.5em;
@@ -112,13 +113,18 @@ const RSVP = styled.div`
 margin-top: 5%;
 border-top: 2px solid #707C8B;
 padding 3%;
-`
+display: flex;
+justify-content: space-between;
+`;
 
 const Registry = styled.div`
-margin-top: 5%;
 border-top: 2px solid #707C8B;
 padding 3%;
-`
+`;
+
+const Pie = styled.div`
+width: 25%;
+`;
 
 class Dashboard extends Component {
   render() {
@@ -165,7 +171,18 @@ class Dashboard extends Component {
             <H3>RSVP</H3>
             {/* Some pie chart plug in I'll have to talk to Marguel about goes here*/}
             {/* Needs to rout to RSVP page */}
-            <Link to="RSVP">
+           
+              <Pie>
+                <PieChart
+                  data={[
+                    { title: "One", value: 10, color: "#E38627" },
+                    { title: "Two", value: 15, color: "#C13C37" },
+                    { title: "Three", value: 20, color: "#6A2135" }
+                  ]}
+                />
+                ;
+              </Pie>
+              <Link to="RSVP">
               <Button>Edit Questions</Button>
             </Link>
           </RSVP>
