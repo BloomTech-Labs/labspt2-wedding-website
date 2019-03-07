@@ -5,14 +5,12 @@ module.exports = server => {
         server.post('/register', register),
         server.get('/users/:id', userById),
         server.put('/users/:id', editUser)
-
 }
+
 allUsers = (req, res) => {
-    helper.getUsers().then(users => {
-        res.status(201).json({
-            message: 'success'
-        })
-    })
+  helper.getUsers().then(users => {
+    res.status(201).json(users)
+  })
 }
 
 register = (req, res) => {
