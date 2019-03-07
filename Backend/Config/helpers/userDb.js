@@ -7,7 +7,7 @@ module.exports = {
         .where('id', id)
         .first()
     }
-    return db('users').select('username')
+    return db('users').select('id', 'username')
   },
 
   addUser: user => {
