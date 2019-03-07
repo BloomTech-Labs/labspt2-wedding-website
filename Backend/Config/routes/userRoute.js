@@ -11,16 +11,16 @@ allUsers = (req, res) => {
 }
 
 register = (req, res) => {
-  const creds = req.body
-  //Need to add: first/last name and email required if statement
-  helper
-    .addUser(creds)
-    .then(newUser => {
-      res.status(201).json(newUser)
-    })
-    .catch(err => {
-      res.status(500).json({
-        message: 'Failed to add user',
-      })
-    })
+    const creds = req.body
+    //Need to add: first/last name and email required if statement
+    helper
+        .addUser(creds)
+        .then(newUser => {
+            res.status(201).json(newUser)
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Failed to add user'
+            })
+        })
 }
