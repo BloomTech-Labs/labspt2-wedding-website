@@ -2,7 +2,8 @@
   "name": "JoinOurIDos-Back-end",
   "version": "1.0.0",
   "engines":{
-    "node":"11.9.0"
+    "node":"11.9.0",
+    "yarn":"1.13.0"
   },
   "main": "index.js",
   "scripts": {
@@ -12,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://joinouridos.herokuapp.com/"
+    "url": "https://joinourbigday.herokuapp.com/"
   },
   "license": "MIT",
   "dependencies": {
