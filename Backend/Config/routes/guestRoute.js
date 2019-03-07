@@ -4,6 +4,8 @@ module.exports = server => {
   server.get('/guest', allGuest)
   server.get('/guest/:id', guestById)
   server.post('/guest', addGuest)
+  server.put('/guest/:id', editGuest)
+  server.delete('/guest/:id', deleteGuest)
 }
 allGuest = (req, res) => {
   helper
@@ -43,4 +45,29 @@ addGuest = (req, res) => {
     .catch(() => {
       res.status(500).json({ message: 'Failed to add guest' })
     })
+}
+
+editGuest = (req, res) => {
+  const { id } = req.params;
+  const guest = req.body;
+  helper.updateGuest(id, guest).then(number => {
+    res.json(number)
+  }) .catch(err => {
+    res.status(500).json({
+      message: 'Failed to edit guest'
+    })
+  })
+}
+
+deleteGuest = (req, res) => {
+  const { id } = req.params;
+  helper.deleteGuest(id, id).then(row => {
+    if (row)  {
+      res.json({message: "Guest successfully removed"})
+    } else {
+      res.status(404).json({message: 'No guest with this id exists'})
+    }
+  }).catch(err => {
+    res.status(500).json({ message: "Failed to delete guest"})
+  })
 }
