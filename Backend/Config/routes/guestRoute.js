@@ -34,7 +34,7 @@ guestById = (req, res) => {
 
 addGuest = (req, res) => {
   const body = req.body
-  //Need to add: first/last name and email required if statement
+  //Need to add: first/last name and email  and user id required if statement
   helper
     .addGuest(body)
     .then(newGuest => {
