@@ -7,8 +7,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "server": "nodemon index.js",
+    "start": "node index.js",
+    "server": "nodemon",
     "test": "cross-env TESTING_DB=testing jest --watch --verbose"
   },
   "repository": {
@@ -36,8 +36,5 @@
   "devDependencies": {
     "nodemon": "^1.18.10",
     "supertest": "^3.4.2"
-  },
-  "engines": {
-    "node": "11.x"
   }
 }
