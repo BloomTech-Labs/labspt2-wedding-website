@@ -2,12 +2,12 @@
   "name": "JoinOurIDos-Back-end",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts":{
+  "scripts": {
     "start": "nodemon index.js",
     "server": "nodemon index.js",
     "test": "cross-env TESTING_DB=testing jest --watch --verbose"
   },
-  "repository":{
+  "repository": {
     "type": "git",
     "url": "https://joinouridos.herokuapp.com/"
   },
@@ -19,6 +19,7 @@
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "helmet": "^3.15.1",
+    "heroku": "^7.22.4",
     "jest": "^24.1.0",
     "joi": "^14.3.1",
     "knex": "^0.16.3",
