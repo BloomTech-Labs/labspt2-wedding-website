@@ -1,15 +1,13 @@
 const helper = require('../helpers/userDb')
 
 module.exports = server => {
-    server.get('/users', allUsers),
-    server.post('/register', register)
+  server.get('/users', allUsers)
+  server.post('/register', register)
 }
 allUsers = (req, res) => {
-    helper.getUsers().then(users => {
-        res.status(201).json({
-            message: 'success'
-        })
-    })
+  helper.getUsers().then(users => {
+    res.status(201).json(users)
+  })
 }
 
 register = (req, res) => {
