@@ -1,1 +1,1 @@
-api: node index.js
+web: yarn start;
