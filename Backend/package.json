@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "engines":{
     "node":"11.9.0",
-    "yarn":"1.13.0"
+    "yarn":"1.13.0",
+    "npm":"6.5.0"
   },
   "main": "index.js",
   "scripts": {
