@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import LandingPage from "./components/landingPage/LandingPage";
+import Settings from "./components/clientSettings/Settings";
 
 import './App.css';
 

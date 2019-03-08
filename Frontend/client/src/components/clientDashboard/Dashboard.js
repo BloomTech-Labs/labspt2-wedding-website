@@ -123,7 +123,7 @@ padding 3%;
 `;
 
 const Pie = styled.div`
-width: 25%;
+  width: 25%;
 `;
 
 class Dashboard extends Component {
@@ -171,18 +171,18 @@ class Dashboard extends Component {
             <H3>RSVP</H3>
             {/* Some pie chart plug in I'll have to talk to Marguel about goes here*/}
             {/* Needs to rout to RSVP page */}
-           
-              <Pie>
-                <PieChart
-                  data={[
-                    { title: "One", value: 10, color: "#E38627" },
-                    { title: "Two", value: 15, color: "#C13C37" },
-                    { title: "Three", value: 20, color: "#6A2135" }
-                  ]}
-                />
-                ;
-              </Pie>
-              <Link to="RSVP">
+
+            <Pie>
+              <PieChart
+                data={[
+                  { title: "One", value: 10, color: "#E38627" },
+                  { title: "Two", value: 15, color: "#C13C37" },
+                  { title: "Three", value: 20, color: "#6A2135" }
+                ]}
+              />
+              ;
+            </Pie>
+            <Link to="RSVP">
               <Button>Edit Questions</Button>
             </Link>
           </RSVP>
