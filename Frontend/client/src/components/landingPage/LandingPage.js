@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Login from './login';
 import DemoCarousel from "./Carousel";
-// import SignUp from "./SignUp/SignUp";
-// import SignIn from "./SignIn/SignIn";
+import SideNav from '../sidenav';
+import Pricing from '../pages/pricing';
+import RSVP from '../pages/rsvp';
 
 export default class LandingPage extends Component {
   render(){
@@ -10,8 +11,27 @@ export default class LandingPage extends Component {
         <div>
             <DemoCarousel />
             <Login />
-            {/* <SignUp />
-            <SignIn /> */}
+            <br />
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              color: 'black'
+            }}>
+              <SideNav />
+              <Pricing />
+              <div><a href="#">Logout</a></div>
+            </div>
+            <br />
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              color: 'black'
+            }}>
+              <SideNav />
+              <RSVP />
+              <div><a href="#">Logout</a></div>
+            </div>
+            
         </div>
     )
   }
