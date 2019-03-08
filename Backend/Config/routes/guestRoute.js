@@ -5,7 +5,7 @@ module.exports = server => {
   server.get('/guest/:id', guestById)
   server.post('/guest', addGuest)
   server.put('/guest/:id', editGuest)
-  server.delete('/guest/:id', removeGuest)
+  // server.delete('/guest/:id', removeGuest)
 }
 allGuest = (req, res) => {
   helper
