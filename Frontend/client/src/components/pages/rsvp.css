@@ -3,7 +3,7 @@
     flex-direction: column;
     height: 800px;
     width: 400px;
-    padding-top: 100px;
+    padding-top: 50px;
     margin: 0 auto;
     
 }
@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     width: 400px;
-    height: 150px;
+    height: 200px;
     border: 1px solid black;
     margin-bottom: 25px;
     align-items: center;
@@ -45,3 +45,16 @@
     font-size: 10px;
     justify-content: end;
 }
+
+.button {
+    width: 200px;
+    border: 1px solid black;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
