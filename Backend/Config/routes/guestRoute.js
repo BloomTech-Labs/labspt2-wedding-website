@@ -62,18 +62,18 @@ editGuest = (req, res) => {
   })
 }
 
-removeGuest = (req, res) => {
-  const { id } = req.params;
-  console.log(id);
-  helper.deleteGuest(id).then(number => {
-    console.log(number);
-    if (number)  {
-      res.json({message: "Guest successfully removed"})
-    } else {
-      res.status(404).json({message: 'No guest with this id exists'})
-    }
-  }).catch(err => {
-    res.status(500).json({ message: "Failed to delete guest"})
-  })
-}
+// removeGuest = (req, res) => {
+//   const { id } = req.params;
+//   console.log(id);
+//   helper.deleteGuest(id).then(number => {
+//     console.log(number);
+//     if (number)  {
+//       res.json({message: "Guest successfully removed"})
+//     } else {
+//       res.status(404).json({message: 'No guest with this id exists'})
+//     }
+//   }).catch(err => {
+//     res.status(500).json({ message: "Failed to delete guest"})
+//   })
+// }
 
