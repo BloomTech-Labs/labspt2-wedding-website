@@ -14,8 +14,8 @@ module.exports = {
     return db('guestList').insert(guest)
   },
 
-  updateGuest: guest => {
-    return db(guestList)
+  updateGuest: (id, guest) => {
+    return db('guestList')
       .where('id', id)
       .update(guest)
   },
@@ -26,4 +26,3 @@ module.exports = {
       .del()
   },
 }
-//Hello Wold
