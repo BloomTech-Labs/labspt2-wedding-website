@@ -1,9 +1,9 @@
 {
-  "name": "JoinOurIDos-Back-end",
+  "name": "JoinOurBigDay-Backend",
   "version": "1.0.0",
-  "engines":{
-    "node":"11.9.0",
-    "yarn":"1.13.0"
+  "engines": {
+    "node": "11.9.0",
+    "yarn": "1.13.0"
   },
   "main": "index.js",
   "scripts": {
@@ -30,14 +30,11 @@
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
     "multer-s3": "^2.9.0",
-    "pg": "^7.8.1",
+    "pg": "^7.8.2",
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {
     "nodemon": "^1.18.10",
     "supertest": "^3.4.2"
-  },
-  "engines": {
-    "node": "11.x"
   }
 }
