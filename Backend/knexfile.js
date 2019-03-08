@@ -42,7 +42,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: dbConnection,
     pool: {
       min: 2,
       max: 10
@@ -55,7 +55,7 @@ module.exports = {
   testing: {
     client: 'sqlite3',
     connection: {
-      filename: './data/guidrTestDB.sqlite3'
+      filename: './data/gweddingLabsTestDB.sqlite3'
     },
     useNullAsDefault: true,
     migrations:{
