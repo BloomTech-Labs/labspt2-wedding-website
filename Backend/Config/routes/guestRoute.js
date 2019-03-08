@@ -5,7 +5,7 @@ module.exports = server => {
   server.get('/guest/:id', guestById)
   server.post('/guest', addGuest)
   server.put('/guest/:id', editGuest)
-  server.delete('/guest/:id', deleteGuest)
+  server.delete('/guest/:id', removeGuest)
 }
 allGuest = (req, res) => {
   helper
@@ -36,15 +36,18 @@ guestById = (req, res) => {
 
 addGuest = (req, res) => {
   const body = req.body
-  //Need to add: first/last name and email required if statement
+  if( !body.firstName || !body.lastName || !body.email) {
+    res.status(404).json({ err: "First name, last name and email are required"})
+  } else {
   helper
     .addGuest(body)
     .then(newGuest => {
       res.status(201).json(newGuest)
-    })
+    })    
     .catch(() => {
       res.status(500).json({ message: 'Failed to add guest' })
     })
+  }
 }
 
 editGuest = (req, res) => {
@@ -59,10 +62,12 @@ editGuest = (req, res) => {
   })
 }
 
-deleteGuest = (req, res) => {
+removeGuest = (req, res) => {
   const { id } = req.params;
-  helper.deleteGuest(id, id).then(row => {
-    if (row)  {
+  console.log(id);
+  helper.deleteGuest(id).then(number => {
+    console.log(number);
+    if (number)  {
       res.json({message: "Guest successfully removed"})
     } else {
       res.status(404).json({message: 'No guest with this id exists'})
@@ -71,3 +76,4 @@ deleteGuest = (req, res) => {
     res.status(500).json({ message: "Failed to delete guest"})
   })
 }
+
