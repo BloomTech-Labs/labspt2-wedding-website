@@ -1,24 +1,29 @@
 const passport = require('passport')
+const auth = require('../../Oauth/authConfig')
+
+auth(passport)
 
 module.exports = server => {
-  server.get('/auth/google', oauthGoogle)
-  server.get('/login', redirect)
-  server.get('/auth/google/callback', oauthCallback, () => (req, res))
   server.use(passport.initialize())
+  server.get('/auth', main)
+  server.get('/auth/google', oauthGoogle)
+  server.get('/auth/google/callback', oauthCallback, (req, res) => {
+    res.redirect('/')
+  })
 }
 
-redirect = (req, res) => {
+main = (req, res) => {
   res.json({ message: 'yep' })
 }
 
 oauthGoogle = () => {
   passport.authenticate('google', {
-    scope: ['profile'],
+    scope: ['profile', 'email'],
   })
 }
 
 oauthCallback = () => {
   passport.authenticate('google', {
-    failureRedirect: '/login',
+    failureRedirect: '/auth',
   })
 }

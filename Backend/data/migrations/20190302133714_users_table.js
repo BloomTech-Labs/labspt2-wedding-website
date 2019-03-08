@@ -1,14 +1,24 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', tbl => {
-    tbl.increments()
+    tbl
+      .string('id')
+      .primary()
+      .unique()
+      .notNull()
     tbl
       .string('username')
       .notNullable()
       .unique()
-    tbl.string('weddingParty').notNullable()
-    tbl.string('password').notNullable()
+    tbl.string('firstname')
+    tbl.string('lastname')
+    tbl.string('profileImg')
+    tbl.string('weddingParty')
+    //No password because Oauth
     tbl.string('venueLocation')
-    tbl.string('email').notNullable()
+    tbl
+      .string('email')
+      .notNullable()
+      .unique()
     tbl.boolean('isPremium').defaultTo(false)
     tbl.json('rsvpExtraQuestions')
   })
