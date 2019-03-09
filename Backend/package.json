@@ -18,6 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.412.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "dotenv": "^6.2.0",
@@ -26,6 +27,7 @@
     "heroku": "^7.22.4",
     "jest": "^24.1.0",
     "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.0",
     "knex": "^0.16.3",
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
