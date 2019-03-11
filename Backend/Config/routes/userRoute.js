@@ -1,4 +1,9 @@
-const helper = require('../helpers/userDb')
+const helper = require('../helpers/userDb');
+const bcrypt = require('bcryptjs');
+const {
+    authenticate, 
+    createToken
+} = require('../helpers/authentication');
 
 module.exports = server => {
     server.get('/users', allUsers),
@@ -8,10 +13,12 @@ module.exports = server => {
 }
 
 allUsers = (req, res) => {
-  helper.getUsers().then(users => {
-    res.status(201).json(users)
-  })
+    helper.getUsers().then(users => {
+        res.status(201).json(users)
+    })
 }
+
+
 
 register = (req, res) => {
     const creds = req.body

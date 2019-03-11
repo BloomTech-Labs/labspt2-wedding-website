@@ -2,23 +2,36 @@ const jwt = require('jsonwebtoken');
 
 const jwtKey = process.env.JWT_KEY || "add the jwt key to the env vars";
 
-module.exports={
+module.exports = {
     authentication
 }
- authenticate = (req, res, next) => {
-     //using this if statement to bypass security during testing.
-    if(process.env.TESTING_DB){
+authenticate = (req, res, next) => {
+    //using this if statement to bypass security during testing.
+    if (process.env.TESTING_DB) {
         next();
-    }else{
+    } else {
         const token = req.get('Authorization');
-        if(token){
-            jwt.verify(token, jwtKey, (err, decoded)=>{
-                if(err) return res.status(401).send(`error:${err}`);
+        if (token) {
+            jwt.verify(token, jwtKey, (err, decoded) => {
+                if (err) return res.status(401).send(`error:${err}`);
                 req.decoded = decoded;
                 next();
             })
-        }else{
-            return res.status(401).json({error: "No token provided, must be set on Authorization Header"})
+        } else {
+            return res.status(401).json({
+                error: "No token provided, must be set on Authorization Header"
+            })
         }
     }
+};
+
+createToken = (user) => {
+    const payload = {
+        username: user.username,
+        id: user.id
+    };
+    const option = {
+        expiresIn: '365d',
+    };
+    return jwt.sign(payload, jwtKey, options);
 }
