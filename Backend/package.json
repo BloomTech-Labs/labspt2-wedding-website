@@ -1,0 +1,38 @@
+{
+  "name": "JoinOurIDos-Back-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts":{
+    "start": "nodemon index.js",
+    "server": "nodemon index.js",
+    "test": "cross-env TESTING_DB=testing jest --watch --verbose"
+  },
+  "repository":{
+    "type": "git",
+    "url": "https://joinouridos.herokuapp.com/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.412.0",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "helmet": "^3.15.1",
+    "jest": "^24.1.0",
+    "joi": "^14.3.1",
+    "knex": "^0.16.3",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "multer-s3": "^2.9.0",
+    "pg": "^7.8.1",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "supertest": "^3.4.2"
+  },
+  "engines": {
+    "node": "11.x"
+  }
+}
