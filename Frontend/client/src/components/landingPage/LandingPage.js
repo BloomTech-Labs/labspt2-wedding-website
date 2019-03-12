@@ -7,14 +7,12 @@ export default class LandingPage extends Component {
     return (
         <div>
             <DemoCarousel />
-            <Login />
             <br />
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
               color: 'black'
             }}>
-              <div><a href="#">Logout</a></div>
             </div>
             <br />
             <div style={{
@@ -22,9 +20,7 @@ export default class LandingPage extends Component {
               justifyContent: 'space-between',
               color: 'black'
             }}>
-              <div><a href="#">Logout</a></div>
             </div>
-            
         </div>
     )
   }
