@@ -5,7 +5,7 @@ const logger = require('morgan')
 const server = express()
 //auth
 const passport = require('passport')
-const auth = require('../Oauth/authConfig')
+const auth = require('../Oauth/authConfigs/authConfig')
 
 //routes
 const configGuestRoutes = require('../Config/routes/guestRoute')
@@ -47,17 +47,18 @@ server.get(
     scope: ['profile', 'email'],
   }),
   (req, res) => {
-    console.log('from get', req.user)
+    console.log('google', 'success')
   }
 )
 
 server.get(
   '/auth/google/callback',
   passport.authenticate('google', {
-    failureRedirect: '/auth',
+    failureRedirect: '/',
   }),
   (req, res) => {
     res.redirect('/auth')
+    console.log(req.user)
   }
 )
 

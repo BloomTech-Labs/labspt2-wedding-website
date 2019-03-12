@@ -1,5 +1,5 @@
 const passport = require('passport')
-const auth = require('../../Oauth/authConfig')
+const auth = require('../../Oauth/authConfigs/authConfig')
 
 auth(passport)
 

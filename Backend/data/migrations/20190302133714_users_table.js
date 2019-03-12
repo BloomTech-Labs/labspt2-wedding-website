@@ -1,14 +1,12 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', tbl => {
-    tbl
-      .string('id')
-      .primary()
-      .unique()
-      .notNull()
+    tbl.increments()
+    tbl.string('oauthId').unique()
     tbl
       .string('username')
       .notNullable()
       .unique()
+    tbl.string('password')
     tbl.string('firstname')
     tbl.string('lastname')
     tbl.string('profileImg')
