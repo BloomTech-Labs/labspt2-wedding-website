@@ -6,10 +6,10 @@ import Login from "./Login";
 import styled from "styled-components";
 
 const LogInButton = styled.button`
-position: absolute;
-z-index: 1;
-margin: 3%;
-`
+  position: absolute;
+  z-index: 1;
+  margin: 3%;
+`;
 
 export default class LandingPage extends Component {
   render() {
@@ -19,7 +19,6 @@ export default class LandingPage extends Component {
           <LogInButton>
             <Link to="/login">Log In or Sign Up</Link>
           </LogInButton>
-          <Route exact path="/login" component={Login} />
         </div>
         <DemoCarousel />
         <br />
