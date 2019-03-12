@@ -15,5 +15,5 @@ exports.up = function(knex, Promise) {
 }
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('users').onDelete('CASCADE')
+  return knex.schema.raw("DROP TABLE if exists users cascade")
 }
