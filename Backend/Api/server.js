@@ -40,20 +40,8 @@ server.get(
   }
 )
 
-server.post('/register', (req, res) => {
-  const creds = req.body
-  if (!creds.email && !creds.password && !creds.username) {
-    return res.status(401).json({ message: 'no fields' })
-  }
-  const user = new User({
-    email: creds.email,
-    username: creds.username,
-    password: creds.password,
-  })
-
-  user.save().then(() => {
-    res.status(200).json({ message: 'user created' })
-  })
+server.post('/auth/register', (req, res) => {
+  console.log(req.body)
 })
 
 server.post('/getToken', (req, res) => {

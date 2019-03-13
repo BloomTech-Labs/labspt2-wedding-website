@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .unique()
     tbl.string('password').notNullable()
-    tbl.string('weddingParty').notNullable()
+    tbl.string('weddingParty')
     tbl.string('venueLocation')
     tbl.boolean('isPremium').defaultTo(false)
     tbl.json('rsvpExtraQuestions')
@@ -19,5 +19,5 @@ exports.up = function(knex, Promise) {
 }
 
 exports.down = function(knex, Promise) {
-  return knex.schema.raw('DROP TABLE if exists users cascade')
+  return knex.schema.dropTableIfExists('users')
 }

@@ -1,6 +1,6 @@
 require('dotenv').config()
-const User = require('./models/userModel')
 // passport strategies
+const passport = require('passport')
 // passport jwt
 const passportJWT = require('passport-jwt')
 const jwtStrategy = passportJWT.Strategy
@@ -12,16 +12,11 @@ const twitterStrategy = require('passport-twitter').Strategy
 //passport facebook
 const facebookStrategy = require('passport-facebook').Strategy
 
-// to be able to control the db
-const knex = require('knex')
-const db = require('../../Config/dbConfig')
-const bookshelf = require('bookshelf')(knex)
-const bsSecuredPass = require()
 // ------ google secret values
 
-const googleClientId = process.env.CLIENT_ID
-const googleClientSecret = process.env.CLIENT_SECRET
-const googleCallbackUrl = process.env.CLIENT_URL
+const googleClientId = process.env.GOOGLE_CLIENT_ID
+const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET
+const googleCallbackUrl = process.env.GOOGLE_CB_URL
 
 // ----- twitter secret values
 
@@ -34,15 +29,12 @@ module.exports = passport => {
     new jwtStrategy(
       {
         jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: process.env.JWT_SECRET,
+        secretOrKey: 'hflakjsdhfmeihu',
         passReqToCallback: true,
       },
       (req, payload, done) => {
-        User.forge({ id: payload.id })
-          .fetch()
-          .then(res => {
-            done(null, use)
-          })
+        console.log('payload', payload)
+        console.log('req', req)
       }
     )
   )
@@ -58,6 +50,7 @@ module.exports = passport => {
       },
       (token, refreshToken, profile, done) => {
         console.log('token', token)
+        console.log(profile)
         const { id, displayName, name, photos, emails } = profile
         const oauthId = id
         const username = displayName
@@ -65,54 +58,55 @@ module.exports = passport => {
         const lastname = name.familyName
         const profileImg = photos[0].value
         const email = emails[0].value
-        User.db('users')
-          .where('oauthid', id)
-          .first()
-          .then(user => {
-            if (user && user.id) {
-              return done(null, user)
-            } else {
-              const newGoogle = {
-                oauthId,
-                username,
-                firstname,
-                lastname,
-                profileImg,
-                email,
-              }
-              db('users')
-                .insert(newGoogle)
-                .then(id => done(null, newGoogle))
-                .catch(err => done(err, false))
-            }
-          })
+
+        // User.db('users')
+        //   .where('oauthid', id)
+        //   .first()
+        //   .then(user => {
+        //     if (user && user.id) {
+        //       return done(null, user)
+        //     } else {
+        //       const newGoogle = {
+        //         oauthId,
+        //         username,
+        //         firstname,
+        //         lastname,
+        //         profileImg,
+        //         email,
+        //       }
+        //       db('users')
+        //         .insert(newGoogle)
+        //         .then(id => done(null, newGoogle))
+        //         .catch(err => done(err, false))
+        //     }
+        // })
       }
     )
   )
 
-  // -------- Twitter Strategy ---------
+  // // -------- Twitter Strategy ---------
 
-  passport.use(
-    new twitterStrategy(
-      {
-        consumerKey: 'consumer key',
-        consumerSecret: 'consumer secret',
-        callbackURL: 'callback url',
-      },
-      (token, tokenSecret, profile, done) => {}
-    )
-  )
+  // passport.use(
+  //   new twitterStrategy(
+  //     {
+  //       consumerKey: 'consumer key',
+  //       consumerSecret: 'consumer secret',
+  //       callbackURL: 'callback url',
+  //     },
+  //     (token, tokenSecret, profile, done) => {}
+  //   )
+  // )
+
+  // // -------- Facebook Strategy ---------
+
+  // passport.use(
+  //   new facebookStrategy(
+  //     {
+  //       clientID: 'FACEBOOK_APP_ID',
+  //       clientSecret: 'FACEBOOK_APP_SECRET',
+  //       callbackURL: 'http://localhost:3000/auth/facebook/callback',
+  //     },
+  //     (accessToken, refreshToken, profile, cb) => {}
+  //   )
+  // )
 }
-
-// -------- Facebook Strategy ---------
-
-passport.use(
-  new facebookStrategy(
-    {
-      clientID: FACEBOOK_APP_ID,
-      clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL: 'http://localhost:3000/auth/facebook/callback',
-    },
-    (accessToken, refreshToken, profile, cb) => {}
-  )
-)
