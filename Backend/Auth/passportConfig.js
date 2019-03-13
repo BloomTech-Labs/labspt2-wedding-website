@@ -85,28 +85,6 @@ module.exports = passport => {
                 })
             }
           })
-
-        // User.db('users')
-        //   .where('oauthid', id)
-        //   .first()
-        //   .then(user => {
-        //     if (user && user.id) {
-        //       return done(null, user)
-        //     } else {
-        //       const newGoogle = {
-        //         oauthId,
-        //         username,
-        //         firstname,
-        //         lastname,
-        //         profileImg,
-        //         email,
-        //       }
-        //       db('users')
-        //         .insert(newGoogle)
-        //         .then(id => done(null, newGoogle))
-        //         .catch(err => done(err, false))
-        //     }
-        //   })
       }
     )
   )
