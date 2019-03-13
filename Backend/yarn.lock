@@ -5535,6 +5535,13 @@ passport-google-oauth@^2.0.0:
     passport-google-oauth1 "1.x.x"
     passport-google-oauth20 "2.x.x"
 
+passport-json@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/passport-json/-/passport-json-1.2.0.tgz#c974f35a486f5a400df8b95aa0007f8715f467d4"
+  integrity sha1-yXTzWkhvWkAN+LlaoAB/hxX0Z9Q=
+  dependencies:
+    passport-strategy "^1.0.0"
+
 passport-jwt@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/passport-jwt/-/passport-jwt-4.0.0.tgz#7f0be7ba942e28b9f5d22c2ebbb8ce96ef7cf065"

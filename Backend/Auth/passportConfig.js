@@ -1,7 +1,8 @@
 require('dotenv').config()
+const User = require('./models/userModel')
 // passport strategies
-const passport = require('passport')
 // passport jwt
+const jsonStrategy = require('passport-json')
 const passportJWT = require('passport-jwt')
 const jwtStrategy = passportJWT.Strategy
 const extractJwt = passportJWT.ExtractJwt
@@ -23,6 +24,17 @@ const googleCallbackUrl = process.env.GOOGLE_CB_URL
 // ----- facebook secret values
 
 module.exports = passport => {
+  // -------- json Strategy ---------
+
+  passport.use(
+    new jsonStrategy(
+      {
+        passReqToCallback: true,
+      },
+      (req, username, password, done) => {}
+    )
+  )
+
   // -------- JWT Strategy ---------
 
   passport.use(

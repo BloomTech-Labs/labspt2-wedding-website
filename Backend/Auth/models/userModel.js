@@ -1,6 +1,6 @@
+const Password = require('objection-password')()
 const Model = require('objection').Model
 const knex = require('knex')
-const Password = require('objection-password')
 
 const knexDb = knex({
   client: 'sqlite3',
