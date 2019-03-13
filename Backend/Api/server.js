@@ -38,48 +38,11 @@ server.get('/', (req, res) => {
 })
 
 // auth endpoints
-server.get(
-  '/getUser',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    return res.status(200).json(req.user)
-  }
-)
-
-server.post('/auth/register', (req, res) => {
-  console.log(req.body)
-})
-
-server.post('/getToken', (req, res) => {
-  const creds = req.body
-  if (!creds.email && !creds.password && !creds.username) {
-    return res.status(401).json({ message: 'no fields' })
-  }
-  User.forge({ email: creds.email })
-    .fetch()
-    .then(result => {
-      if (!result) {
-        return res.status(400).json({ message: 'user not found' })
-      }
-
-      result
-        .authenticate(creds.password)
-        .then(user => {
-          const payload = { id: user.id }
-          const token = jwt.sign(payload, process.env.SECRET_OR_KEY)
-          res.status(200).json({ token })
-        })
-        .catch(err => {
-          return res.status(401).json({ err })
-        })
-    })
-})
-
-server.get(
-  '/protected',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    res.json({ message: "i'm protected" })
+server.post(
+  '/auth/register-login',
+  passport.authenticate('json', { session: false }),
+  function(req, res) {
+    const user = req.user
   }
 )
 

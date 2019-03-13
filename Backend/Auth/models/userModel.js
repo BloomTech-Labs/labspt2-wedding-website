@@ -9,4 +9,8 @@ class User extends Password(Model) {
   }
 }
 
+const verifyPass = (email, password) => {
+  const user = User.query().findOne('email', email)
+}
+
 module.exports = User

@@ -3,9 +3,7 @@ const User = require('./models/userModel')
 // passport strategies
 // passport jwt
 const jsonStrategy = require('passport-json')
-const passportJWT = require('passport-jwt')
-const jwtStrategy = passportJWT.Strategy
-const extractJwt = passportJWT.ExtractJwt
+
 //passport google
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy
 //passport twitter
@@ -25,30 +23,47 @@ const googleCallbackUrl = process.env.GOOGLE_CB_URL
 
 module.exports = passport => {
   // -------- json Strategy ---------
-
   passport.use(
     new jsonStrategy(
       {
         passReqToCallback: true,
       },
       (req, username, password, done) => {
-        // do stuff here
-      }
-    )
-  )
-
-  // -------- JWT Strategy ---------
-
-  passport.use(
-    new jwtStrategy(
-      {
-        jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: 'hflakjsdhfmeihu',
-        passReqToCallback: true,
-      },
-      (req, payload, done) => {
-        console.log('payload', payload)
-        console.log('req', req)
+        console.log(username)
+        console.log(password)
+        console.log(req.body)
+        const creds = req.body
+        User.query()
+          .skipUndefined()
+          .where('email', creds.email)
+          .orWhere('username', creds.username)
+          .first()
+          .then(user => {
+            if (user && user.id) {
+              console.log('user exists')
+              const person = User.query().findOne('id', user.id)
+              const passwordValid = person.verifyPassword(creds.password)
+              if (passwordValid) {
+                console.log('user authenticated')
+                return done(null, user)
+              } else {
+                console.log('wrong password')
+              }
+            } else {
+              console.log('creating new user')
+              const newUser = User.query()
+                .insert({
+                  username: creds.username,
+                  email: creds.email,
+                  password: creds.password,
+                })
+                .then(user => {
+                  console.log('new user created')
+                  done(null, user)
+                })
+                .catch(err => done(err, false))
+            }
+          })
       }
     )
   )
@@ -63,7 +78,7 @@ module.exports = passport => {
         callbackURL: googleCallbackUrl,
       },
       (token, refreshToken, profile, done) => {
-        const { id, displayName, name, photos, emails } = profile
+        const { id, displayName, emails } = profile
         const username = displayName
         const email = emails[0].value
         User.query()
@@ -87,28 +102,6 @@ module.exports = passport => {
                 .catch(err => done(err, false))
             }
           })
-
-        // User.db('users')
-        //   .where('oauthid', id)
-        //   .first()
-        //   .then(user => {
-        //     if (user && user.id) {
-        //       return done(null, user)
-        //     } else {
-        //       const newGoogle = {
-        //         oauthId,
-        //         username,
-        //         firstname,
-        //         lastname,
-        //         profileImg,
-        //         email,
-        //       }
-        //       db('users')
-        //         .insert(newGoogle)
-        //         .then(id => done(null, newGoogle))
-        //         .catch(err => done(err, false))
-        //     }
-        //   })
       }
     )
   )
