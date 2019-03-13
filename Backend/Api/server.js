@@ -1,6 +1,6 @@
 const passport = require('passport')
 const auth = require('../Auth/passportConfig')
-const jwt = require('jsonwebtoken')
+const jwtHelper = require('../Auth/jwt/jwtHelper')
 const { Model } = require('objection')
 const knex = require('knex')
 
@@ -93,21 +93,22 @@ server.get('/auth', (req, res) => {
 server.get(
   '/auth/google',
   passport.authenticate('google', {
-    scope: ['profile', 'email'],
     session: false,
-  }),
-  (req, res) => {
-    console.log('from get', req.user)
-  }
+    scope: ['profile', 'email'],
+  })
 )
 
 server.get(
   '/auth/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/auth',
+    session: false,
   }),
   (req, res) => {
-    res.redirect('/auth')
+    const user = req.user
+    const token = jwtHelper.generateToken(user)
+    console.log('GOOGLE Token:', token)
+    res.status(201).json({ token })
   }
 )
 

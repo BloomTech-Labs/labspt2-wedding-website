@@ -63,28 +63,52 @@ module.exports = passport => {
         callbackURL: googleCallbackUrl,
       },
       (token, refreshToken, profile, done) => {
-        console.log('token', token)
         const { id, displayName, name, photos, emails } = profile
         const username = displayName
         const email = emails[0].value
         User.query()
-          .where('googleId', id)
           .findOne('googleId', id)
           .then(user => {
             if (user && user.id) {
+              // console.log(user)
               return done(null, user)
             } else {
-              User.query()
+              console.log('creating new user')
+              const newUser = User.query()
                 .insert({
                   username: username,
                   email: email,
                   googleId: id,
                 })
-                .then(id => {
-                  console.log(id)
+                .then(user => {
+                  console.log('newUser', user)
+                  done(null, user)
                 })
+                .catch(err => done(err, false))
             }
           })
+
+        // User.db('users')
+        //   .where('oauthid', id)
+        //   .first()
+        //   .then(user => {
+        //     if (user && user.id) {
+        //       return done(null, user)
+        //     } else {
+        //       const newGoogle = {
+        //         oauthId,
+        //         username,
+        //         firstname,
+        //         lastname,
+        //         profileImg,
+        //         email,
+        //       }
+        //       db('users')
+        //         .insert(newGoogle)
+        //         .then(id => done(null, newGoogle))
+        //         .catch(err => done(err, false))
+        //     }
+        //   })
       }
     )
   )
