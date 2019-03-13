@@ -38,9 +38,11 @@ module.exports = passport => {
         passReqToCallback: true,
       },
       (req, payload, done) => {
-        // find user using bookshelf ORM or create a new user
-        const user = null
-        done(null, use)
+        User.forge({ id: payload.id })
+          .fetch()
+          .then(res => {
+            done(null, use)
+          })
       }
     )
   )
