@@ -4,6 +4,7 @@ const {
     authenticate, 
     createToken
 } = require('../helpers/authentication');
+const Joi = require('../helpers/validation')
 
 module.exports = server => {
     server.get('/users', allUsers),
@@ -19,10 +20,14 @@ allUsers = (req, res) => {
 }
 
 
-
 register = (req, res) => {
     const creds = req.body
     //Need to add: first/last name and email required if statement
+    const validateUser = Joi.validate(user, validation.userInput)
+    if(validateUser.error){
+        //need more detailed message
+        res.status(406).json({error: "Please make sure the username, password, and email match criteria"})
+    }
     helper
         .addUser(creds)
         .then(newUser => {

@@ -1,4 +1,6 @@
-const helper = require('../helpers/guestDb')
+const helper = require('../helpers/guestDb');
+
+
 
 module.exports = server => {
   server.get('/guest', allGuest)
