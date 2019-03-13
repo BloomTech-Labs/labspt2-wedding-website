@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
       .string('username')
       .notNullable()
       .unique()
-    tbl.string('password').notNullable()
+    tbl.string('password')
     tbl.string('weddingParty')
     tbl.string('venueLocation')
     tbl.boolean('isPremium').defaultTo(false)

@@ -31,7 +31,9 @@ module.exports = passport => {
       {
         passReqToCallback: true,
       },
-      (req, username, password, done) => {}
+      (req, username, password, done) => {
+        // do stuff here
+      }
     )
   )
 
@@ -62,14 +64,27 @@ module.exports = passport => {
       },
       (token, refreshToken, profile, done) => {
         console.log('token', token)
-        console.log(profile)
         const { id, displayName, name, photos, emails } = profile
-        const oauthId = id
         const username = displayName
-        const firstname = name.givenName
-        const lastname = name.familyName
-        const profileImg = photos[0].value
         const email = emails[0].value
+        User.query()
+          .where('googleId', id)
+          .findOne('googleId', id)
+          .then(user => {
+            if (user && user.id) {
+              return done(null, user)
+            } else {
+              User.query()
+                .insert({
+                  username: username,
+                  email: email,
+                  googleId: id,
+                })
+                .then(id => {
+                  console.log(id)
+                })
+            }
+          })
 
         // User.db('users')
         //   .where('oauthid', id)
@@ -91,7 +106,7 @@ module.exports = passport => {
         //         .then(id => done(null, newGoogle))
         //         .catch(err => done(err, false))
         //     }
-        // })
+        //   })
       }
     )
   )

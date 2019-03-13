@@ -1,6 +1,12 @@
 const passport = require('passport')
 const auth = require('../Auth/passportConfig')
 const jwt = require('jsonwebtoken')
+const { Model } = require('objection')
+const knex = require('knex')
+
+const KnexConfig = require('../knexfile')
+
+Model.knex(knex(KnexConfig.development))
 
 const express = require('express')
 const cors = require('cors')

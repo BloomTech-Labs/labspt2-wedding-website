@@ -1,19 +1,12 @@
-const Password = require('objection-password')()
-const Model = require('objection').Model
-const knex = require('knex')
-
-const knexDb = knex({
-  client: 'sqlite3',
-  connection: {
-    filename: './data/labsDB.sqlite3',
-  },
-  useNullAsDefault: true,
+const Password = require('objection-password')({
+  allowEmptyPassword: true,
 })
-
-Model.knex(knexDb)
+const { Model } = require('objection')
 
 class User extends Password(Model) {
   static get tableName() {
     return 'users'
   }
 }
+
+module.exports = User
