@@ -3,7 +3,7 @@ const User = require('./models/userModel')
 // passport strategies
 // passport jwt
 const jsonStrategy = require('passport-json')
-
+const bcrypt = require('bcrypt')
 //passport google
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy
 //passport twitter
@@ -29,25 +29,22 @@ module.exports = passport => {
         passReqToCallback: true,
       },
       (req, username, password, done) => {
-        console.log(username)
-        console.log(password)
-        console.log(req.body)
         const creds = req.body
+        const hash = bcrypt.hashSync(creds.password, 12)
         User.query()
-          .skipUndefined()
-          .where('email', creds.email)
-          .orWhere('username', creds.username)
-          .first()
+          .findOne('username', creds.username)
           .then(user => {
             if (user && user.id) {
               console.log('user exists')
-              const person = User.query().findOne('id', user.id)
-              const passwordValid = person.verifyPassword(creds.password)
-              if (passwordValid) {
-                console.log('user authenticated')
+              if (
+                creds.password &&
+                bcrypt.compareSync(creds.password, user.password)
+              ) {
+                console.log('authenticted')
                 return done(null, user)
               } else {
-                console.log('wrong password')
+                const failedAuth = { fail: 'fail fail fail' }
+                done(null, { message: 'not authorized' })
               }
             } else {
               console.log('creating new user')
@@ -55,7 +52,7 @@ module.exports = passport => {
                 .insert({
                   username: creds.username,
                   email: creds.email,
-                  password: creds.password,
+                  password: hash,
                 })
                 .then(user => {
                   console.log('new user created')

@@ -43,6 +43,15 @@ server.post(
   passport.authenticate('json', { session: false }),
   function(req, res) {
     const user = req.user
+    if (user.id) {
+      console.log('sucess', user)
+      const token = jwtHelper.generateToken(user)
+      res.status(201).json({ token })
+    } else {
+      res.status(500).json({
+        message: 'Failed to authenticate user. check username/password',
+      })
+    }
   }
 )
 
