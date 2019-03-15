@@ -58,7 +58,7 @@ server.post(
 //google
 server.get('/auth', (req, res) => {
   res.json({
-    status: 'session cookie not set',
+    status: 'auth home',
   })
 })
 
@@ -73,7 +73,7 @@ server.get(
 server.get(
   '/auth/google/callback',
   passport.authenticate('google', {
-    failureRedirect: '/auth',
+    failureRedirect: '/auth/fail',
     session: false,
   }),
   (req, res) => {
@@ -81,6 +81,27 @@ server.get(
     const token = jwtHelper.generateToken(user)
     console.log('GOOGLE Token:', token)
     res.status(201).json({ token })
+  }
+)
+
+//facebook
+
+server.get(
+  '/auth/facebook',
+  passport.authenticate('facebook', {
+    session: false,
+    scope: ['email'],
+  })
+)
+
+server.get(
+  '/auth/facebook/callback',
+  passport.authenticate('facebook', {
+    failureRedirect: '/auth/fail',
+    session: false,
+  }),
+  (req, res) => {
+    console.log(req)
   }
 )
 
