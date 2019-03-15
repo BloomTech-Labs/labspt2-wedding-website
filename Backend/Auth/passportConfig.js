@@ -105,13 +105,18 @@ module.exports = passport => {
       (token, refreshToken, profile, done) => {
         const { id, displayName, emails } = profile
         const email = emails[0].value
+        // look for the google id store in databse to see if user exists
         User.query()
           .findOne('socialId', id)
           .then(user => {
+            //check if social id has a user and user id
             if (user && user.id) {
               console.log('User exist and authenticated')
+
               return done(null, user)
             } else {
+              //google id not found on the database
+
               console.log('creating new user')
               User.query()
                 .insert({
@@ -140,16 +145,22 @@ module.exports = passport => {
         callbackURL: fbCallbackUrl,
         profileFields: ['id', 'emails', 'displayName'],
       },
-      (req, accessToken, refreshToken, profile, done) => {
+      (accessToken, refreshToken, profile, done) => {
         const { id, displayName, emails } = profile
         const email = emails[0].value
+        //look for the google id store in databse to see if user exists
+
         User.query()
           .findOne('socialId', id)
           .then(user => {
+            //check if social id has a user and user id
             if (user && user.id) {
               console.log('User exist and authenticated')
+
               return done(null, user)
             } else {
+              //facebook id not found on the database
+
               console.log('creating new user')
               User.query()
                 .insert({
