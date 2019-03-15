@@ -82,7 +82,7 @@ module.exports = passport => {
         const username = displayName
         const email = emails[0].value
         User.query()
-          .findOne('googleId', id)
+          .findOne('socialId', id)
           .then(user => {
             if (user && user.id) {
               console.log('User exist and authenticated')
@@ -93,7 +93,7 @@ module.exports = passport => {
                 .insert({
                   username: username,
                   email: email,
-                  googleId: id,
+                  socialId: id,
                 })
                 .then(user => {
                   console.log('newUser', user)
@@ -127,9 +127,33 @@ module.exports = passport => {
         clientID: fbAppId,
         clientSecret: fbAppSecret,
         callbackURL: fbCallbackUrl,
+        profileFields: ['id', 'emails', 'displayName'],
       },
-      (accessToken, refreshToken, profile, cb) => {
-        console.log(profile)
+      (req, accessToken, refreshToken, profile, done) => {
+        const { id, displayName, emails } = profile
+        const username = displayName
+        const email = emails[0].value
+        User.query()
+          .findOne('socialId', id)
+          .then(user => {
+            if (user && user.id) {
+              console.log('User exist and authenticated')
+              return done(null, user)
+            } else {
+              console.log('creating new user')
+              User.query()
+                .insert({
+                  username: username,
+                  email: email,
+                  socialId: id,
+                })
+                .then(user => {
+                  console.log('newUser', user)
+                  done(null, user)
+                })
+                .catch(err => done(err, false))
+            }
+          })
       }
     )
   )

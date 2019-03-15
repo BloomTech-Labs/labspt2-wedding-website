@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', tbl => {
     tbl.increments()
-    tbl.string('googleId').unique
+    tbl.string('socialId').unique
     tbl
       .string('email')
       .notNullable()

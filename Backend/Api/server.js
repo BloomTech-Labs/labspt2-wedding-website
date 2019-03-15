@@ -101,7 +101,10 @@ server.get(
     session: false,
   }),
   (req, res) => {
-    console.log(req)
+    const user = req.user
+    const token = jwtHelper.generateToken(user)
+    console.log('GOOGLE Token:', token)
+    res.status(201).json({ token })
   }
 )
 
