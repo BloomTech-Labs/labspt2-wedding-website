@@ -138,7 +138,7 @@ margin: 1%;
 text-shadow: 0px 0px 0px #000000;
 `
 
-export default class WeddingPage1 extends Component {
+export default class WeddingPage2 extends Component {
   render() {
     return (
       <WP1Body>
