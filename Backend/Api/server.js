@@ -1,3 +1,5 @@
+require('dotenv').config()
+const request = require('request')
 const passport = require('passport')
 const auth = require('../Auth/passportConfig')
 const jwtHelper = require('../Auth/jwt/jwtHelper')
@@ -38,29 +40,40 @@ server.get('/', (req, res) => {
 })
 
 // auth endpoints
+
+server.get('/auth', (req, res) => {
+  res.json({
+    status: 'auth home',
+  })
+})
+
+server.get('/auth/fail', (req, res) => {
+  res.status(200).json({
+    message: 'something went wrong',
+  })
+})
+
 server.post(
   '/auth/register-login',
   passport.authenticate('json', { session: false }),
-  function(req, res) {
+  (req, res) => {
     const user = req.user
+    const tokenUser = {
+      userID: user.id,
+      email: user.email,
+    }
     if (user.id) {
-      console.log('sucess', user)
-      const token = jwtHelper.generateToken(user)
+      const token = jwtHelper.generateToken(tokenUser)
       res.status(201).json({ token })
     } else {
       res.status(500).json({
-        message: 'Failed to authenticate user. check username/password',
+        message: `${req.user}`,
       })
     }
   }
 )
 
 //google
-server.get('/auth', (req, res) => {
-  res.json({
-    status: 'auth home',
-  })
-})
 
 server.get(
   '/auth/google',
@@ -78,7 +91,11 @@ server.get(
   }),
   (req, res) => {
     const user = req.user
-    const token = jwtHelper.generateToken(user)
+    const tokenUser = {
+      userID: user.id,
+      email: user.email,
+    }
+    const token = jwtHelper.generateToken(tokenUser)
     console.log('GOOGLE Token:', token)
     res.status(201).json({ token })
   }
@@ -102,10 +119,50 @@ server.get(
   }),
   (req, res) => {
     const user = req.user
-    const token = jwtHelper.generateToken(user)
+    const tokenUser = {
+      userID: user.id,
+      email: user.email,
+    }
+    const token = jwtHelper.generateToken(tokenUser)
     console.log('GOOGLE Token:', token)
     res.status(201).json({ token })
   }
 )
+
+// ----- twitter uses oauth1.0a and requires an instance of expres-session but we are working with jwt
+
+// ----- twitter oauth is now a stretch
+
+// // twitter
+// server.post(
+//   '/auth/twitter',
+//   passport.authenticate('twitter-token'),
+//   (req, res) => {
+//     // do something with req.user
+//     res.json(req.user)
+//   }
+// )
+
+// server.post('/auth/twitter/reverse', (req, res) => {
+//   request.post(
+//     {
+//       url: 'https://api.twitter.com/oauth/request_token',
+//       oauth: {
+//         oauth_callback: process.env.TW_CB_URL,
+//         consumer_key: process.env.TW_KEY,
+//         consumer_secret: process.env.TW_KEY_SECRET,
+//       },
+//     },
+//     (err, r, body) => {
+//       if (err) {
+//         return res.status(500).json({ message: err.message })
+//       }
+
+//       var jsonStr =
+//         '{ "' + body.replace(/&/g, '", "').replace(/=/g, '": "') + '"}'
+//       res.send(JSON.parse(jsonStr))
+//     }
+//   )
+// })
 
 module.exports = server

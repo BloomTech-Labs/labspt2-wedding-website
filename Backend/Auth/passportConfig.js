@@ -1,13 +1,15 @@
 require('dotenv').config()
 const User = require('./models/userModel')
+const bcrypt = require('bcrypt')
+
 // ----- passport strategies
+
 // passport json
 const jsonStrategy = require('passport-json')
-const bcrypt = require('bcrypt')
 //passport google
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy
 //passport twitter
-const twitterStrategy = require('passport-twitter').Strategy
+const twitterTokenStrategy = require('passport-twitter-token')
 //passport facebook
 const facebookStrategy = require('passport-facebook').Strategy
 
@@ -17,13 +19,11 @@ const googleClientId = process.env.GOOGLE_CLIENT_ID
 const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET
 const googleCallbackUrl = process.env.GOOGLE_CB_URL
 
-// ----- twitter secret values
+// ----- facebook secret values
 
 const fbAppId = process.env.FB_APP_ID
 const fbAppSecret = process.env.FB_APP_SECRET
 const fbCallbackUrl = process.env.FB_CB_URL
-
-// ----- facebook secret values
 
 module.exports = passport => {
   // -------- json Strategy ---------
@@ -31,38 +31,63 @@ module.exports = passport => {
     new jsonStrategy(
       {
         passReqToCallback: true,
+        allowEmptyPasswords: true,
       },
       (req, username, password, done) => {
-        const creds = req.body
-        const hash = bcrypt.hashSync(creds.password, 12)
+        const email = req.body.email
+        const hash = bcrypt.hashSync(password, 12)
+        // look if user exist in the database
         User.query()
-          .findOne('username', creds.username)
+          .findOne('username', username)
           .then(user => {
             if (user && user.id) {
+              //yep it does
               console.log('user exists')
-              if (
-                creds.password &&
-                bcrypt.compareSync(creds.password, user.password)
-              ) {
+
+              if (password && bcrypt.compareSync(password, user.password)) {
+                // yep password is correct
                 console.log('authenticted')
+
                 return done(null, user)
               } else {
-                done(null, { message: 'not authorized' })
+                const message =
+                  'Register - User already exist, Login - wrong Password'
+                done(null, message)
               }
             } else {
+              //nope that username is not in the database
               console.log('creating new user')
-              User.query()
-                .insert({
-                  username: creds.username,
-                  email: creds.email,
-                  password: hash,
-                })
-                .then(user => {
-                  console.log('new user created')
-                  done(null, user)
-                })
-                .catch(err => done(err, false))
+
+              //check for email field
+              if (email) {
+                User.query()
+                  .insert({
+                    username: username,
+                    email: email,
+                    password: hash,
+                  })
+                  .then(user => {
+                    //success
+                    console.log('new user created')
+                    done(null, user)
+                  })
+                  .catch(err => {
+                    //something went wrong
+                    const message = 'Failed to register User'
+                    done(err, message)
+                  })
+              } else {
+                const message =
+                  'Register - email not provided, Login - Username does not exist'
+                done(null, message)
+              }
             }
+          })
+          .catch(err => {
+            //when one of the fields is not provided
+
+            const message = 'user/password not provided'
+            done(err, message)
           })
       }
     )
@@ -79,7 +104,6 @@ module.exports = passport => {
       },
       (token, refreshToken, profile, done) => {
         const { id, displayName, emails } = profile
-        const username = displayName
         const email = emails[0].value
         User.query()
           .findOne('socialId', id)
@@ -91,7 +115,7 @@ module.exports = passport => {
               console.log('creating new user')
               User.query()
                 .insert({
-                  username: username,
+                  socialName: displayName,
                   email: email,
                   socialId: id,
                 })
@@ -103,19 +127,6 @@ module.exports = passport => {
             }
           })
       }
-    )
-  )
-
-  // -------- Twitter Strategy ---------
-
-  passport.use(
-    new twitterStrategy(
-      {
-        consumerKey: 'consumer key',
-        consumerSecret: 'consumer secret',
-        callbackURL: 'callback url',
-      },
-      (token, tokenSecret, profile, done) => {}
     )
   )
 
@@ -131,7 +142,6 @@ module.exports = passport => {
       },
       (req, accessToken, refreshToken, profile, done) => {
         const { id, displayName, emails } = profile
-        const username = displayName
         const email = emails[0].value
         User.query()
           .findOne('socialId', id)
@@ -143,7 +153,7 @@ module.exports = passport => {
               console.log('creating new user')
               User.query()
                 .insert({
-                  username: username,
+                  socialName: displayName,
                   email: email,
                   socialId: id,
                 })
