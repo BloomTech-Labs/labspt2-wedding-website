@@ -90,7 +90,7 @@ const Menu = styled.ul`
 const Camper = styled.img`
   width: 10%;
   height: 13vh;
-  margin: 4% 0% 0% 47%;
+  margin: 4% 0% 0% 37%;
   position: absolute;
   -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
   -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
