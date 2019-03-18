@@ -6,6 +6,7 @@ const logger = require('morgan')
 const configGuestRoutes = require('../Config/routes/guestRoute')
 const configUserRoutes = require('../Config/routes/userRoute')
 const configRsvpRoutes = require('../Config/routes/rsvpRoute')
+const configLivePhotoRoute = require('../Config/routes/photoUploadRoute')
 
 const server = express()
 
@@ -13,10 +14,11 @@ server.use(express.json(), logger('dev'), cors(), helmet())
 configUserRoutes(server)
 configGuestRoutes(server)
 configRsvpRoutes(server)
+configLivePhotoRoute(server)
 
 server.get('/', (req, res) => {
   res.status(200).json({
-    api: 'WOW welcome to the JoinOurBigDay API!',
+    api: 'WOW welcome to the JoinOurBigDay API!'
   })
 })
 

@@ -1,7 +1,7 @@
 const helper = require('../helpers/userDb')
 
 module.exports = server => {
-    server.get('/users', allUsers),
+        server.get('/users', allUsers),
         server.post('/register', register),
         server.get('/users/:id', userById),
         server.put('/users/:id', editUser)
@@ -10,20 +10,23 @@ module.exports = server => {
 allUsers = (req, res) => {
   helper.getUsers().then(users => {
     res.status(201).json(users)
+  }).catch(err=>{
+      res.status(500).send({error:err.message})
   })
 }
 
 register = (req, res) => {
-    const creds = req.body
-    //Need to add: first/last name and email required if statement
+    const user = req.body
+  
     helper
-        .addUser(creds)
-        .then(newUser => {
-            res.status(201).json(newUser)
+        .addUser(user)
+        .then(id => {
+            res.status(201).json(id)
         })
         .catch(err => {
             res.status(500).json({
-                message: 'Failed to add user'
+                message: 'Failed to add user',
+                error: err
             })
         })
 }

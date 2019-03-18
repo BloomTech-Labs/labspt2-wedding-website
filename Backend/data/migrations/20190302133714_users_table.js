@@ -10,7 +10,6 @@ exports.up = function(knex, Promise) {
     tbl.string('venueLocation')
     tbl.string('email').notNullable()
     tbl.boolean('isPremium').defaultTo(false)
-    tbl.json('rsvpExtraQuestions')
   })
 }
 
