@@ -91,6 +91,7 @@ server.get(
   }),
   (req, res) => {
     const user = req.user
+    console.log('google user:', user)
     const tokenUser = {
       userID: user.id,
       email: user.email,
