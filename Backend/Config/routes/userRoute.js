@@ -2,7 +2,6 @@ const helper = require('../helpers/userDb')
 
 module.exports = server => {
   server.get('/users', allUsers),
-    server.post('/register', register),
     server.get('/users/:id', userById),
     server.put('/users/:id', editUser)
 }
@@ -19,10 +18,10 @@ userById = (req, res) => {
     .getUsers(id)
     .then(row => {
       !row[0]
-        ? res.status(404).json({
+        ? res.json(row)
+        : res.status(404).json({
             error: 'User with that ID not found',
           })
-        : res.json(row)
     })
     .catch(err => {
       res
