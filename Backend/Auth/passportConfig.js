@@ -1,6 +1,8 @@
 require('dotenv').config()
 const User = require('./models/userModel')
 const bcrypt = require('bcrypt')
+const Joi = require('joi')
+const validation = require('../Config/helpers/validation')
 
 // ----- passport strategies
 
@@ -35,60 +37,68 @@ module.exports = passport => {
       },
       (req, username, password, done) => {
         const email = req.body.email
-        const hash = bcrypt.hashSync(password, 12)
-        // look if user exist in the database
-        User.query()
-          .findOne('username', username)
-          .then(user => {
-            if (user && user.id) {
-              //yep it does
-              console.log('user exists')
+        const user = req.body
+        const validateUserObject = Joi.validate(user, validation.userInput)
+        if (validateUserObject.error) {
+          const message =
+            'Username(5-20 characters required), Password(must be min 6 charaters, contain 1 number and 1 letter and required), Email(has to have proper email format ie email@domain.com)'
+          done(null, message)
+        } else {
+          const hash = bcrypt.hashSync(password, 12)
+          // look if user exist in the database
+          User.query()
+            .findOne('username', username)
+            .then(user => {
+              if (user && user.id) {
+                //yep it does
+                console.log('user exists')
 
-              if (password && bcrypt.compareSync(password, user.password)) {
-                // yep password is correct
-                console.log('authenticted')
+                if (password && bcrypt.compareSync(password, user.password)) {
+                  // yep password is correct
+                  console.log('authenticted')
 
-                return done(null, user)
+                  return done(null, user)
+                } else {
+                  const message =
+                    'Register - User already exist, Login - wrong Password'
+                  done(null, message)
+                }
               } else {
-                const message =
-                  'Register - User already exist, Login - wrong Password'
-                done(null, message)
-              }
-            } else {
-              //nope that username is not in the database
-              console.log('creating new user')
+                //nope that username is not in the database
+                console.log('creating new user')
 
-              //check for email field
-              if (email) {
-                User.query()
-                  .insert({
-                    username: username,
-                    email: email,
-                    password: hash,
-                  })
-                  .then(user => {
-                    //success
-                    console.log('new user created')
-                    done(null, user)
-                  })
-                  .catch(err => {
-                    //something went wrong
-                    const message = 'Failed to register User'
-                    done(err, message)
-                  })
-              } else {
-                const message =
-                  'Register - email not provided, Login - Username does not exist'
-                done(null, message)
+                //check for email field
+                if (email) {
+                  User.query()
+                    .insert({
+                      username: username,
+                      email: email,
+                      password: hash,
+                    })
+                    .then(user => {
+                      //success
+                      console.log('new user created')
+                      done(null, user)
+                    })
+                    .catch(err => {
+                      //something went wrong
+                      const message = 'Failed to register User'
+                      done(err, message)
+                    })
+                } else {
+                  const message =
+                    'Register - email not provided, Login - Username does not exist'
+                  done(null, message)
+                }
               }
-            }
-          })
-          .catch(err => {
-            //when one of the fields is not provided
+            })
+            .catch(err => {
+              //when one of the fields is not provided
 
-            const message = 'user/password not provided'
-            done(err, message)
-          })
+              const message = 'user/password not provided'
+              done(err, message)
+            })
+        }
       }
     )
   )
