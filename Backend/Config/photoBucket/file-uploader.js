@@ -28,12 +28,12 @@ const upload = multer({
             } = req.params
             //using id to be able to grab all images for a specific user page by custom field-name.
             cb(null, {
-               fieldName: `user${id}`
+               fieldname: `user${id}`
             });
         },
         key: (req, file, cb) => {
-           console.log(file)
-            cb(null, (file.originalname + Date.now()).toString())
+            const user_id = req.params.id
+            cb(null, (user_id + '_' + Date.now()).toString())
         }
 
     })

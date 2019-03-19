@@ -26,7 +26,7 @@ addImage = (req, res) => {
             user_id: userId
         }
         console.log(newImage)
-        db('livePhoto').insert(newImage).then(id => {
+        db('livePhotos').insert(newImage).then(id => {
             res.status(201).send(newImage)
         }).catch(err => {
             res.status(500).send({
@@ -40,7 +40,8 @@ GetLivePhotos = (req, res) => {
     const {
         id
     } = req.params
-    db('livePhoto').select('user_id', id).then(tbl =>
+    console.log(id)
+    db('livePhotos').where('user_id', id).then(tbl =>
         res.json(tbl)).catch(err => {
         res.status(500).send(err)
     })
