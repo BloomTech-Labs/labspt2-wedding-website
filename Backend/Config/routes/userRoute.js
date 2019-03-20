@@ -8,20 +8,26 @@ module.exports = server => {
 
 allUsers = (req, res) => {
   helper.getUsers().then(users => {
-    res.status(201).json(users)
+    res.status(200).json(users)
+  }).catch(err => {
+    res.status(500).send({
+      error: err
+    })
   })
 }
 
 userById = (req, res) => {
-  const { id } = req.params
+  const {
+    id
+  } = req.params
   helper
     .getUsers(id)
     .then(row => {
-      !row[0]
-        ? res.json(row)
-        : res.status(404).json({
-            error: 'User with that ID not found',
-          })
+      !row[0] ?
+        res.json(row) :
+        res.status(404).json({
+          error: 'User with that ID not found',
+        })
     })
     .catch(err => {
       res
@@ -33,7 +39,9 @@ userById = (req, res) => {
 }
 
 editUser = (req, res) => {
-  const { id } = req.params
+  const {
+    id
+  } = req.params
   const user = req.body
 
   helper
@@ -46,4 +54,21 @@ editUser = (req, res) => {
         error: 'Internal server issue with the edit of the user.',
       })
     })
+}
+
+removeUser = (req, res) => {
+  const {
+    id
+  } = req.params
+  helper.deleteUser(id).then(number => {
+    !number ? res.status(404).json({
+      message: 'user Not Found'
+    }) : res.json({
+      message: "Its gone!"
+    })
+  }).catch(err => {
+    res.status(500).send({
+      error: err
+    })
+  })
 }
