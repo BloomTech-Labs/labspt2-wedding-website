@@ -1,7 +1,10 @@
 const helper = require('../helpers/questionsDB')
 
 module.exports = server =>{
-
+server.get('/users/:id/questions', questionsById)
+server.get('/questions', getAllQuestions)
+server.post('/users/:user/addquestion', addNewQuestion)
+server.put('/users/:id/:questionID/question',)
 }
 
 getAllQuestions = (req, res)=>{
@@ -11,9 +14,10 @@ getAllQuestions = (req, res)=>{
         res.status(500).send({error:err})
     })
 }
-
+//NEED TO FIGURE OUT THE PARAM SETTINGS FOR THE USER AND QUESTION ID
 questionsById = (req, res) =>{
-    const { id } = req.params;
+    const questionID = req.params.id;
+    const id  = req.params.users_id
     helper.questionsById(id).then(questions =>{
         res.json(questions)
     }).catch(err=>{
@@ -23,6 +27,7 @@ questionsById = (req, res) =>{
 
 addNewQuestion = (req, res)=>{
     const newQ = req.body
+    const user = req.params
     helper.addQuestion(newQ).then(id =>{
         res.status(201).json({message: "Question Added"})
     }).catch(err=>{
