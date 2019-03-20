@@ -12,6 +12,7 @@
 - `username`: string, unique
 - `password`: string
 - `weddingParty`: string
+- `venueLocation`: string
 - `isPremium`: bool, default(false)
 
 | Method | URL                  | Description                                                                                            |
