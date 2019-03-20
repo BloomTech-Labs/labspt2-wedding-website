@@ -1,10 +1,10 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('table_name')
+  return knex('guestList')
     .del()
     .then(function() {
       // Inserts seed entries
-      return knex('table_name').insert([
+      return knex('guestList').insert([
         {
           id: 1,
           firstName: 'name',
