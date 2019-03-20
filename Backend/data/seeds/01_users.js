@@ -7,17 +7,17 @@ exports.seed = function(knex, Promise) {
       return knex('table_name').insert([
         // basic User
         {
-          id: 2,
-          email: 'yup@gmail.com',
+          id: 1,
+          email: 'bla@gmail.com',
           username: 'Boi1',
-          password: 'alkjse',
+          password: 'dkshfbv',
           boolean: false,
         },
         {
-          id: 1,
-          email: 'bla@gmail.com',
+          id: 2,
+          email: 'yup@gmail.com',
           username: 'Boi2',
-          password: 'dkshfbv',
+          password: 'alkjse',
           boolean: false,
         },
         {
