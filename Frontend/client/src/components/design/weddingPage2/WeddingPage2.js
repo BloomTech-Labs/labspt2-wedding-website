@@ -11,7 +11,6 @@ import { API_URL } from "../config";
 import arrow from "../media/arrow.png";
 import BackgroundDesign2 from "../media/BackgroundDesign2.jpg";
 import camper from "../media/camper.jpg";
-import couple2 from "../media/couple2.jpg";
 import girl from "../media/girlwithglasses.jpg";
 import heartArrow from "../media/heartArrow.png";
 import love from "../media/love.jpg";
@@ -48,7 +47,7 @@ const WhoWrapper = styled.div`
   font-size: 5rem;
 `;
 
-//Styled components don't work with the pluin
+//Styled components don't work with the plugin react-textarea-autosize
 const headerStyle = {
   backgroundColor: "rgb(158, 143, 110)",
   border: "none",
@@ -194,7 +193,7 @@ const Love = styled.img`
   box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
 `;
 
-//Styled components don't work with the pluin
+//Styled components don't work with the plugin react-textarea-autosize
 const userInput = {
   backgroundColor: "rgb(158, 143, 110)",
   border: "none",
@@ -226,7 +225,8 @@ export default class WeddingPage2 extends Component {
     this.setState({ value: event.target.value });
     event.preventDefault();
   }
-
+  //handleChange is for textarea input
+  //onChange is for photo upload
   onChange = e => {
     const files = Array.from(e.target.files);
     this.setState({ uploading: true });
@@ -328,7 +328,6 @@ export default class WeddingPage2 extends Component {
             <Camper src={camper} alt="Happy Camper" />
             <PrettyWCWrapper>
             {content()}
-              {/* <PrettyWC src={couple2} alt="Pretty White Couple" /> */}
             </PrettyWCWrapper>
           </NavAndCoupleWrapper>
           <StoryWrapper>
