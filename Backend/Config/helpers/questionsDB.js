@@ -14,8 +14,8 @@ module.exports = {
         return db('rsvpQuestions')
       },
       
-      addQuestion: Question => {
-        return db('rsvpQuestions').insert(Question)
+      addQuestion: (Question) => {
+        return db('rsvpQuestions').leftJoin('users','users_id', 'users.id' )
       },
        
        updateQuestion: (id, answer) => {

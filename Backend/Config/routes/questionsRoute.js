@@ -4,7 +4,7 @@ module.exports = server =>{
 server.get('/users/:id/questions', questionsById)
 server.get('/questions', getAllQuestions)
 server.post('/users/:user/addquestion', addNewQuestion)
-server.put('/users/:id/:questionID/question',)
+server.put('/users/:questionID',)
 }
 
 getAllQuestions = (req, res)=>{
@@ -27,7 +27,7 @@ questionsById = (req, res) =>{
 
 addNewQuestion = (req, res)=>{
     const newQ = req.body
-    const user = req.params
+    const {user} = req.params
     helper.addQuestion(newQ).then(id =>{
         res.status(201).json({message: "Question Added"})
     }).catch(err=>{
@@ -37,9 +37,9 @@ addNewQuestion = (req, res)=>{
 
 editQuestion = (res, req) =>{
     const question = req.body
-    const { id } = req.params
+    const { questionID  } = req.params
     // need to check for ID and return 404 if false
-    helper.updateQuestion(id, question).then(number=>{
+    helper.updateQuestion(id, questionID).then(number=>{
         res.status(202).json({message: "Question Updated"})
     }).catch(err=>{
         res.status(500).send({error:err})
