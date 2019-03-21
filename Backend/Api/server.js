@@ -19,6 +19,7 @@ const server = express()
 const configGuestRoutes = require('../Config/routes/guestRoute')
 const configUserRoutes = require('../Config/routes/userRoute')
 const configRsvpRoutes = require('../Config/routes/rsvpRoute')
+const configQuestionRoutes = require('/Config/routes/questionsRoutes')
 
 auth(passport)
 
@@ -32,6 +33,7 @@ server.use(
 configUserRoutes(server)
 configGuestRoutes(server)
 configRsvpRoutes(server)
+configQuestionRoutes(server)
 
 server.get('/', (req, res) => {
   res.status(200).json({
