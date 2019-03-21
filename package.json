@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "bcrypt": "^3.0.4"
+    "bcrypt": "^3.0.4",
+    "npm": "^6.9.0"
   }
 }

@@ -20,6 +20,8 @@ const configGuestRoutes = require('../Config/routes/guestRoute')
 const configUserRoutes = require('../Config/routes/userRoute')
 const configRsvpRoutes = require('../Config/routes/rsvpRoute')
 
+const paymentApi = require('../Config/routes/paymentRoute')
+
 auth(passport)
 
 server.use(
