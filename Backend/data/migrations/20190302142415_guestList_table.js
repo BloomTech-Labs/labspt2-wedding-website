@@ -1,14 +1,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('guestList', tbl => {
     tbl.increments()
-    tbl
-      .string('firstName')
-      .notNullable()
-      .required()
-    tbl
-      .string('lastName')
-      .notNullable()
-      .required()
+    tbl.string('firstName').notNullable()
+    tbl.string('lastName').notNullable()
     tbl
       .string('email')
       .notNullable()
