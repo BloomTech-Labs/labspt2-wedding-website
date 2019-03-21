@@ -12,6 +12,8 @@ exports.seed = function(knex, Promise) {
           username: 'Boi1',
           password: 'dkshfbv',
           isPremium: false,
+          weddingParty: 'Party Test',
+          venueLocation: '123 street address',
         },
         {
           id: 2,
@@ -19,6 +21,8 @@ exports.seed = function(knex, Promise) {
           username: 'Boi2',
           password: 'alkjse',
           isPremium: false,
+          weddingParty: 'Party Test',
+          venueLocation: '123 street address',
         },
         {
           id: 3,
@@ -26,6 +30,9 @@ exports.seed = function(knex, Promise) {
           username: 'Boi3',
           password: 'slejnr',
           isPremium: true,
+
+          weddingParty: 'Party Test',
+          venueLocation: '123 street address',
         },
         {
           id: 4,
@@ -33,6 +40,8 @@ exports.seed = function(knex, Promise) {
           username: 'Boi4',
           password: 'sdjfo',
           isPremium: false,
+          weddingParty: 'Party Test',
+          venueLocation: '123 street address',
         },
         {
           id: 5,
@@ -40,6 +49,8 @@ exports.seed = function(knex, Promise) {
           username: 'Boi5',
           password: 'msnzdl',
           isPremium: true,
+          weddingParty: 'Party Test',
+          venueLocation: '123 street address',
         },
       ])
     })
