@@ -42,3 +42,35 @@
   password: "password1" //string, req, min 6 characters, has to contain atleast 1 number
 }
 ```
+
+---
+
+**Guestlist**
+
+- `id`: int, autoincrement (database provides it)
+- `firstName`: string, notNull
+- `lastName`: string, notNull
+- `email`: string, notNull, unique
+- `userId`: int, references users.id
+- `rsvp`: bool, default(null)
+- `rsvpMaybe`: bool, default(false)
+- `rsvpComment`: string
+
+| Method | URL        | Description                                                                                             |
+| ------ | ---------- | ------------------------------------------------------------------------------------------------------- |
+| GET    | /guest     | returns array of all guest in the db                                                                    |
+| POST   | /guest     | adds a guest from req.body with firstName/lastName/email and returns new guest                          |
+| GET    | /guest/:id | returns guest object with specified id                                                                  |
+| PUT    | /guest/:id | Updates the guest with the specified id using data from the request body. Returns the modified document |
+
+### Guest Post schema
+
+**Add new guest**
+
+```js
+{
+  firstName: "fName", //string, required
+  lastName: "lName", //string, required,
+  email: "email@test.com" //string, required
+}
+```
