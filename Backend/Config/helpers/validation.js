@@ -1,11 +1,17 @@
-const Joi = require('joi');
+const Joi = require('joi')
 
 module.exports = {
-    userInput: {
-        username: Joi.string().required(),
-        password: Joi.string().min(6).required(),
-        email: Joi.string().email({
-            minDomainAtoms: 2
-        })
-    }
+  userInput: {
+    username: Joi.string()
+      .min(5)
+      .max(20)
+      .required(),
+    password: Joi.string()
+      .min(6)
+      .required()
+      .regex(/(?=.*?[0-9])(?=.*?[A-Za-z]).+/),
+    email: Joi.string().email({
+      minDomainAtoms: 2,
+    }),
+  },
 }
