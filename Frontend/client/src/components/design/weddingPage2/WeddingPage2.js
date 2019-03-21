@@ -3,6 +3,11 @@ import Textarea from "react-textarea-autosize";
 
 import styled from "styled-components";
 
+import Spinner from "../Spinner";
+import Images from "../Images";
+import Buttons from "../Buttons";
+import { API_URL } from "../config";
+
 import arrow from "../media/arrow.png";
 import BackgroundDesign2 from "../media/BackgroundDesign2.jpg";
 import camper from "../media/camper.jpg";
@@ -202,14 +207,16 @@ const userInput = {
   fontFamily: "Averia Serif Libre, cursive",
   marginTop: "2%",
   textShadow: "0px 0px 0px #000000"
-}
+};
 
 export default class WeddingPage2 extends Component {
   constructor() {
     super();
 
     this.state = {
-      value: ""
+      value: "",
+      uploading: false,
+      images: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -220,7 +227,49 @@ export default class WeddingPage2 extends Component {
     event.preventDefault();
   }
 
+  onChange = e => {
+    const files = Array.from(e.target.files);
+    this.setState({ uploading: true });
+
+    const formData = new FormData();
+
+    files.forEach((file, i) => {
+      formData.append(i, file);
+    });
+
+    fetch(`${API_URL}/image-upload`, {
+      method: "POST",
+      body: formData
+    })
+      .then(res => res.json())
+      .then(images => {
+        this.setState({
+          uploading: false,
+          images
+        });
+      });
+  };
+
+  removeImage = id => {
+    this.setState({
+      images: this.state.images.filter(image => image.public_id !== id)
+    });
+  };
+
   render() {
+    //Not very DRY. Could be it's own component.
+    const { uploading, images } = this.state;
+
+    const content = () => {
+      switch (true) {
+        case uploading:
+          return <Spinner />;
+        case images.length > 0:
+          return <Images images={images} removeImage={this.removeImage} />;
+        default:
+          return <Buttons onChange={this.onChange} />;
+      }
+    };
     return (
       <WP1Body>
         <div>
@@ -278,7 +327,8 @@ export default class WeddingPage2 extends Component {
             <Girl src={girl} alt="A Woman With Glasses" />
             <Camper src={camper} alt="Happy Camper" />
             <PrettyWCWrapper>
-              <PrettyWC src={couple2} alt="Pretty White Couple" />
+            {content()}
+              {/* <PrettyWC src={couple2} alt="Pretty White Couple" /> */}
             </PrettyWCWrapper>
           </NavAndCoupleWrapper>
           <StoryWrapper>
