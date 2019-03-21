@@ -228,12 +228,24 @@ export default class WeddingPage2 extends Component {
   //handleChange is for textarea input
   //onChange is for photo upload
   onChange = e => {
+    const errs = [] 
     const files = Array.from(e.target.files);
+
     this.setState({ uploading: true });
 
     const formData = new FormData();
+    const types = ['image/png', 'image/jpeg', 'image/gif']
 
     files.forEach((file, i) => {
+
+      if (types.every(type => file.type !== type)) {
+        errs.push(`'${file.type}' is not a supported format`)
+      }
+
+      if (file.size > 150000) {
+        errs.push(`'${file.name}' is too large, please pick a smaller file`)
+      }
+
       formData.append(i, file);
     });
 
