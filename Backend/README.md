@@ -56,12 +56,13 @@
 - `rsvpMaybe`: bool, default(false)
 - `rsvpComment`: string
 
-| Method | URL        | Description                                                                                             |
-| ------ | ---------- | ------------------------------------------------------------------------------------------------------- |
-| GET    | /guest     | returns array of all guest in the db                                                                    |
-| POST   | /guest     | adds a guest from req.body with firstName/lastName/email and returns new guest                          |
-| GET    | /guest/:id | returns guest object with specified id                                                                  |
-| PUT    | /guest/:id | Updates the guest with the specified id using data from the request body. Returns the modified document |
+| Method  | URL        | Description                                                                                             |
+| ------- | ---------- | ------------------------------------------------------------------------------------------------------- |
+| GET     | /guest     | returns array of all guest in the db                                                                    |
+| GET     | /guest/:id | returns guest object with specified id                                                                  |
+| POST    | /guest     | adds a guest from req.body with firstName/lastName/email and returns new guest                          |
+| PUT     | /guest/:id | Updates the guest with the specified id using data from the request body. Returns the modified document |
+| DEELETE | /guest/:id | Deletes the guest with the specified id returns success message when deleted                            |
 
 ### Guest Post schema
 
