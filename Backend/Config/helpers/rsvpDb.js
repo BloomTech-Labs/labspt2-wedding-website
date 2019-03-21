@@ -16,4 +16,3 @@ module.exports = {
     return db('guestAddress').insert(address)
   },
 }
-
