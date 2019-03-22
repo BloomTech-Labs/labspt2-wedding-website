@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DemoCarousel from "./Carousel";
-import { Route, Link } from "react-router-dom";
-import Login from "./login/Login";
+import { Link } from "react-router-dom";
+
 
 import styled from "styled-components";
 
