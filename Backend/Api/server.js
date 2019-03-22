@@ -19,8 +19,8 @@ const server = express()
 const configGuestRoutes = require('../Config/routes/guestRoute')
 const configUserRoutes = require('../Config/routes/userRoute')
 const configRsvpRoutes = require('../Config/routes/rsvpRoute')
-const configQuestionRoutes = require('/Config/routes/questionsRoutes')
-const configRsvpAnswersRoutes = require('/Config/routes/rsvpAnswersRoute')
+const configQuestionRoutes = require('../Config/routes/questionsRoute')
+const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
 
 
 auth(passport)

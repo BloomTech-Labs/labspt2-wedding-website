@@ -7,14 +7,14 @@ exports.seed = function(knex, Promise) {
       return knex('rsvpAnswers').insert([
         {
           id: 1,
-          answer_body: 'question answer',
+          answer_body: 'question answer 1',
           rsvpQuestions_id: 1,
           users_id: 1,
           guestList_id: 1,
         },
         {
           id: 2,
-          answer_body: 'question answer',
+          answer_body: 'question answer 2',
           rsvpQuestions_id: 2,
           users_id: 2,
           guestList_id: 2,
@@ -39,6 +39,13 @@ exports.seed = function(knex, Promise) {
           rsvpQuestions_id: 5,
           users_id: 5,
           guestList_id: 5,
+        },
+        {
+          id: 6,
+          answer_body: 'another answer',
+          rsvpQuestions_id: 1,
+          users_id: 1,
+          guestList_id: 2,
         },
       ])
     })

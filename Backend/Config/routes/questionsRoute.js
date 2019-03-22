@@ -2,14 +2,15 @@ const helper = require('../helpers/questionsDB')
 
 module.exports = server => {
   server.get('/users/:id/questions', questionsById)
-  server.get('/questions', getAllQuestions)
+  server.get('/:id/questions', getAllUserQuestions)
   server.post('/users/:user/addquestion', addNewQuestion)
   server.put('/users/:questionID')
 }
 
-getAllQuestions = (req, res) => {
+getAllUserQuestions = (req, res) => {
+  const { id } = req.params
   helper
-    .allQuestions()
+    .allQuestionsById(id)
     .then(questions => {
       res.json(questions)
     })
@@ -19,14 +20,35 @@ getAllQuestions = (req, res) => {
 }
 //NEED TO FIGURE OUT THE PARAM SETTINGS FOR THE USER AND QUESTION ID
 questionsById = (req, res) => {
-  const questionID = req.params.id
-  const id = req.params.users_id
+  const {id} = req.params
+  console.log('test teste stes')
   helper
-    .questionsById(id)
-    .then(questions => {
-      res.json(questions)
+    .questionsWAnswersByUserId(id)
+    .then(qs => {
+      console.log(qs)
+      qs.forEach(column => {
+        console.log(column)
+        console.log('questionId:',column.rsvpQuestions_id )
+        console.log('answerBody:',column.answerBody)
+        let removeRepeat = [...new Set(column.rsvpQuestions_id)]
+        console.log('filtered question ids:', removeRepeat)
+        let answerObject = {
+          answerBody: 'blabla',
+          guestId: 'id'
+        }
+        
+        const returnObj = {
+          userId: qs.users_id,
+          questionId: qs.rsvpQuestions_id,
+          questionBody: qs.Question_body,
+          answers: {
+            answersArr
+          }
+        }
+      })
     })
     .catch(err => {
+      console.log(err)
       res.status(500).send({ error: err })
     })
 }
