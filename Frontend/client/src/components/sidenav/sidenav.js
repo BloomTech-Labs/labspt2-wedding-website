@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../components/sidenav.css';
+import './sidenav.css';
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
 export default class Navigation extends Component {

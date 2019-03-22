@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 
 import Sidenav from "../sidenav/sidenav";
+import Design1 from "./weddingPage1/WeddingPage1";
+import Design2 from "./weddingPage2/WeddingPage2";
+import Design3 from "./weddingPage3/WeddingPage3";
 
 export default class Design extends Component {
   render() {
     return (
       <div>
         <div>
-          <Sidevav />
+          <Sidenav />
         </div>
         <div>
           <Link to="/design1">Design 1</Link>
