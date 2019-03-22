@@ -5,11 +5,16 @@
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.8.3",
+    "react-button-component": "^1.0.0",
+    "react-datepicker": "^2.2.0",
+    "react-datetime": "^2.16.3",
+    "react-day-picker": "^7.3.0",
     "react-dom": "^16.8.3",
+    "react-icons": "^3.5.0",
     "react-redux": "^6.0.1",
     "react-responsive-carousel": "^3.1.47",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.5",
+    "react-scripts": "^2.1.8",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.1.3"

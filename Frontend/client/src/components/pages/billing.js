@@ -21,6 +21,8 @@ const billing = {
     display: 'flex',
     flexDirection: 'column',
     margin: '0 auto',
+    width: '100%',
+    minWidth: '500px',
 }
 
 const billBox = {
@@ -29,7 +31,8 @@ const billBox = {
     alignItems: 'center',
     width: '300px',
     height: 'auto',
-    border: '1px solid #000000'
+    border: '1px solid #000000',
+    margin: '0 auto'
 }
 
 const billInput = {
@@ -41,11 +44,15 @@ const billInput = {
     marginBottom: '5px',
 }
 
+const billHeader = {
+    textAlign: 'center'
+}
+
 export default class Billing extends Component {
     render() {
         return (
              <div style={billing}>
-                <h2>Billing</h2>
+                <h2 style={billHeader}>Billing</h2>
                 <div style={billBox}>
                     <label for="card-holder">Cardholder Name</label>
                     <input style={billInput} type="text" id="card-holder" placeholder="Cardholder Name" />

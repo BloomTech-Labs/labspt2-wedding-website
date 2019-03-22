@@ -5,6 +5,9 @@ import {
   Route, Link
 } from 'react-router-dom'
 
+import DashBoard from '../pages/Dashboard'
+import Home from '../pages/Home'
+
 import Login from './login';
 import DemoCarousel from "./Carousel";
 
@@ -34,11 +37,12 @@ export default class LandingPage extends Component {
     return (
         <Router>
           <div style={lpStyle}>
-            <Route exact path="/" component={DemoCarousel}></Route>
+            <Route exact path="/" component={Home}></Route>
+            {/* <Route exact path="/" component={DemoCarousel}></Route>
             <div style={buttonDiv}>
               <Link to="/login" component={Login}>Get Started</Link>
             </div>
-            <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/login" component={Login}></Route> */}
           </div>
         </Router>
     )

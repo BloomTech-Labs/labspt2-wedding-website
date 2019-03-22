@@ -1,95 +1,116 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Pricing from '../pricing/pricing'
+
+import {
+    BrowserRouter as Router, Link, Route, Switch
+} from 'react-router-dom'
+import Pricing from '../pricing/Pricing'
 import RSVP from '../rsvp/rsvp'
 import Billing from '../pages/billing'
 import Settings from '../pages/settings'
-// import DemoCarousel from '../components/Carousel'
+import DashBoard from '../pages/Dashboard'
+import Exit from '../pages/exit'
 
-
-const sideNav = {
+const sidenav = {
     display: 'flex',
     flexDirection: 'row',
-    height: '100%',
     justifyContent: 'left',
-    width: '20%'
+    width: '20%',
+    minWidth: '150px'
+}
+
+const side = {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '0 100% 0 10px',
+    width: '100%'
 }
 
 const menuLogo = {
     display: 'flex',
-    width: '92px',
-    backgroundSize: 'cover 100%',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    margin: '0',
-    textDecoration: 'none',
-    textTransform: 'uppercase'
+    justifyContent: 'center'
 }
 
+
+
 const menu = {
-    backgroundColor: '#FFFFFF',
-    boxShadow: '0px 2px 24px 0px rgba(0, 0, 0, 0.15)',
-    borderRadius: '8px',
     display: 'flex',
-    padding: '0 40px',
-    position: 'relative'
+    width: '100%',
+    border: '1px solid black',
+    boxShadow: '0px 2px 24px 0px #010101',
+    borderRadius: '8px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: '0 10px',
+
+}
+
+const menuList = {
+    display: 'flex',
+    flexDirection: 'column',
+    listStyleType: 'none',
+    padding: '10px 0',
+    height: '500px',
+    margin: '0',
+    marginRight: '40px'
 }
 
 const menuListItem = {
-    listStyleType: 'none',
-    margin: '10px -30px'
+    margin: '10px 10px',
 }
 
-
-const menuList = {
-    listStyleType: 'none',
-    padding: '0',
-    height: '100%',
-    margin: '0',
-    marginRight: '40px',
-}
-
-const menuLink = {
-    color: '#3A3E47',
-    display: 'inline-block',
-    height: '100%',
-    fontSize: '16px',
-    textDecoration: 'none',
-    textTransform: 'uppercase',
+const routes = {
+    display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
-    padding: '0 3px'
 }
 
+const navPage = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '0 15px'
+}
+
+const leftLogo = {
+    display: 'flex',
+    justifyContent: 'right'
+  }
 
 
-export default class Navigation extends Component {
+export default class SideNav extends Component {
     render() {
-        return (
-             <Router>
-                 <div>
-                     <h3><Link style={menuLogo} to="/">Home</Link></h3>
-                    <div style={sideNav}>
-                        <nav style={menu}>
-                            <div>
-                                <ul style={menuList}>
-                                    <li style={menuListItem}><Link to="/" style={menuLink}>Home</Link></li>
-                                    <li style={menuListItem}><Link to="/settings" style={menuLink}>Settings</Link></li>
-                                    <li style={menuListItem}><Link to="/pricing" style={menuLink}>Pricing</Link></li>
-                                    <li style={menuListItem}><Link to="/billing" style={menuLink}>Billing</Link></li>
-                                    <li style={menuListItem}><Link to="/rsvp" style={menuLink}>RSVP</Link></li>
-                                </ul>
-                            </div>
-                        </nav>
-                        <Route exact path="/"></Route>
-                        <Route exact path="/settings" component={Settings}></Route>
-                        <Route exact path="/pricing" component={Pricing}></Route>
-                        <Route exact path="/billing" component={Billing}></Route>
-                        <Route exact path="/rsvp" component={RSVP}></Route>
-                        
-                    </div>
-                    <div></div>
-                 </div>
-             </Router>
-        );
-    }
+      return (
+        <Router>
+        <div style={navPage}>
+            <div style={sidenav}>
+                <div style={side}>
+                    <h3 style={menuLogo}><Link to="/">Home</Link> > </h3>
+                    <nav style={menu}>
+                        <ul style={menuList}>
+                            <li style={menuListItem}><Link to="/dashboard">Home</Link></li>
+                            <li style={menuListItem}><Link to="/">Designs</Link></li>
+                            <li style={menuListItem}><Link to="/pricing">Pricing</Link></li>
+                            <li style={menuListItem}><Link to="/rsvp">RSVP</Link></li>
+                            <li style={menuListItem}><Link to="/billing">Billing</Link></li>
+                            <li style={menuListItem}><Link to="/settings">Settings</Link></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <div style={routes}>
+                <Switch>
+                    
+                    <Route exact path="/pricing" component={Pricing}></Route>
+                    <Route exact path="/rsvp" component={RSVP}></Route>
+                    <Route exact path="/billing" component={Billing}></Route>
+                    <Route exact path="/settings" component={Settings}></Route>
+                    <Route exact path="/dashboard" component={DashBoard} />
+                </Switch>
+                </div>     
+            </div>
+            <h3 style={leftLogo}><Link to="/exit">Logout</Link></h3>
+            <Route path='/exit' component={Exit}/>
+          </div>
+        </Router>
+      )
+    };
 }
