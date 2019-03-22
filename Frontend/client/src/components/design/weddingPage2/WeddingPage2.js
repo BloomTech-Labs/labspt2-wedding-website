@@ -139,15 +139,6 @@ const PrettyWCWrapper = styled.div`
   margin: 20% 0% 5% 0%;
 `;
 
-const PrettyWC = styled.img`
-  width: 100%;
-  height: 50vh;
-  border: 1px solid black;
-  -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-`;
-
 const Arrow = styled.img`
   width: 33%;
   height: 13vh;
