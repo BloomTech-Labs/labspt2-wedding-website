@@ -8,7 +8,6 @@ import Images from "../Images";
 import Buttons from "../Buttons";
 import { API_URL } from "../config";
 
-import couple3 from "../media/couple3.jpg";
 import background3 from "../media/rainbowbackground.jpg";
 import heartWP3 from "../media/heartWP3.jpg";
 
