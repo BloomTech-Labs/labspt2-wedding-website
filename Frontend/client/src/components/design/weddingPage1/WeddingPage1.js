@@ -79,11 +79,6 @@ const WhenWrapper = styled.div`
   font-size: 5rem;
 `;
 
-const When = styled.h1`
-  color: black;
-  font-family: "Lobster", cursive;
-`;
-
 const NavWrapper = styled.div`
   width: 100%;
   margin-top: 5%;
@@ -107,12 +102,6 @@ const PrettyWCWrapper = styled.div`
   width: 100%;
   justify-content: center;
   margin-top: 5%;
-`;
-
-const PrettyWC = styled.img`
-  width: 99%;
-  height: 70vh;
-  border: 1px solid black;
 `;
 
 const FloralWrapper = styled.div`
