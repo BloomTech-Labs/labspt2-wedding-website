@@ -1,18 +1,17 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-import DemoCarousel from "./carousel";
-import SignUp from "./SignUp/signUp";
-import SignIn from "./SignIn/signIn";
+import DemoCarousel from './Carousel'
+import SignUp from './SignUp/signUp'
+import SignIn from './SignIn/signIn'
 
 export default class LandingPage extends Component {
-  render(){
+  render() {
     return (
-        <div>
-            <DemoCarousel />
-            <SignUp />
-            <SignIn />
-        </div>
+      <div>
+        <DemoCarousel />
+        <SignUp />
+        <SignIn />
+      </div>
     )
   }
-};  
-
+}
