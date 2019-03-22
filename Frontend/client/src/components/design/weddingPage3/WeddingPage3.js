@@ -66,11 +66,6 @@ const WhenWrapper = styled.div`
   font-size: 5rem;
 `;
 
-const When = styled.h1`
-  color: black;
-  font-family: "Cabin", sans-serif;
-`;
-
 const NavWrapper = styled.div`
   width: 100%;
   padding: 3%;
@@ -116,11 +111,6 @@ const CoupleWrapper = styled.div`
 
 const HeartWP3 = styled.img`
   width: 20%;
-  height: 70vh;
-`;
-
-const Couple3 = styled.img`
-  width: 60%;
   height: 70vh;
 `;
 
