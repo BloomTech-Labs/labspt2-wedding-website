@@ -6,8 +6,17 @@ module.exports = {
       return db('users')
         .where('id', id)
         .first()
+        .select(
+          'id',
+          'username',
+          'socialName',
+          'email',
+          'weddingParty',
+          'venueLocation',
+          'isPremium'
+        )
     }
-    return db('users').select('id', 'username')
+    return db('users').select('id', 'username', 'email')
   },
 
   addUser: user => {
