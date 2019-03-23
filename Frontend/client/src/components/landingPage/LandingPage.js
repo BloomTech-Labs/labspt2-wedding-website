@@ -1,43 +1,50 @@
+// importing dependencies
 import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Route, Link
+} from 'react-router-dom'
+
+import DashBoard from '../pages/Dashboard'
+import Home from '../pages/Home'
+
+import Login from './login/Login';
 import DemoCarousel from "./Carousel";
-import { Link } from "react-router-dom";
 
+const lpStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  maxWidth: '1300px',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+}
 
-import styled from "styled-components";
-
-const LogInButton = styled.button`
-  position: absolute;
-  z-index: 1;
-  margin: 3%;
-`;
+const buttonDiv = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  marginBottom: '25px',
+  height: '100px',
+  boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
+  width: '26%'
+}
 
 export default class LandingPage extends Component {
-  render() {
+  render(){
     return (
-      <div>
-        <div>
-          <LogInButton>
-            <Link to="/login">Log In or Sign Up</Link>
-          </LogInButton>
-        </div>
-        <DemoCarousel />
-        <br />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            color: "black"
-          }}
-        />
-        <br />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            color: "black"
-          }}
-        />
-      </div>
-    );
+        <Router>
+          <div style={lpStyle}>
+            {/* <Route exact path="/" component={Home}></Route> */}
+            <Route exact path="/" component={DemoCarousel}></Route>
+            <div style={buttonDiv}>
+              <Link to="/login" component={Login}>Get Started</Link>
+            </div>
+            <Route exact path="/login" component={Login}></Route>
+          </div>
+        </Router>
+    )
   }
-}
+};
