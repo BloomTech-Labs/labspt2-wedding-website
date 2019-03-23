@@ -4,13 +4,13 @@ module.exports = server => {
     server.get('/rsvp/answers', allAnswers)
     server.get('/rsvp/answer/:id', answerById)
     server.post('/rsvp/answers', addAnswer)
-
+}
 allAnswers = (req, res) => {
     helper.rsvpAnswers().then(answers => {
         res.status(201).json(answers)
     })
     .catch(err => {
-        res.status(500).send('Internal server errror.')
+        res.status(500).send('Internal server error.')
     })
 },
 answerById = (req, res) => {
@@ -56,4 +56,3 @@ editAnswer = (req, res) => {
     })
 }
 
-}
