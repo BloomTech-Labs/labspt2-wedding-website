@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 // import Pricing from "../pricing/Pricing";
@@ -70,10 +71,10 @@ const leftLogo = {
   justifyContent: "right"
 };
 
-export default class SideNav extends Component {
+class SideNav extends Component {
   render() {
     return (
-      <Router>
+      <Switch>
         <div style={navPage}>
           <div style={sidenav}>
             <div style={side}>
@@ -103,24 +104,15 @@ export default class SideNav extends Component {
                 </ul>
               </nav>
             </div>
-
-            <div style={routes}>
-              <Switch>
-                {/* <Route exact path="/pricing" component={Pricing} />
-                <Route exact path="/rsvp" component={RSVP} />
-                <Route exact path="/billing" component={Billing} />
-                <Route exact path="/settings" component={Settings} />
-                <Route exact path="/dashboard" component={DashBoard} /> */}
-                
-              </Switch>
-            </div>
           </div>
           <h3 style={leftLogo}>
             <Link to="/exit">Logout</Link>
           </h3>
           <Route path="/exit" component={Exit} />
         </div>
-      </Router>
+      </Switch>
     );
   }
 }
+
+export default SideNav;
