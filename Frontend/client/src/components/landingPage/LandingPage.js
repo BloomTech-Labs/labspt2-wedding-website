@@ -2,8 +2,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import DashBoard from "../pages/Dashboard";
-import Home from "../pages/Home";
+//These don't seem to be needed
+// import DashBoard from "../clientDashboard/Dashboard";
+// import Home from "../pages/Home";
 
 import Login from "./login/Login";
 import DemoCarousel from "./Carousel";

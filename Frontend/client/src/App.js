@@ -11,7 +11,7 @@ import Pricing from "./components/pricing/Pricing";
 import RSVP from "./components/rsvp/rsvp";
 import Billing from "./components/pages/billing";
 import Settings from "./components/pages/settings";
-import DashBoard from "./components/pages/Dashboard";
+import DashBoard from "./components/clientDashboard/Dashboard";
 
 class App extends Component {
   render() {
