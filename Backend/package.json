@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "aws": "^0.0.3-2",
     "aws-sdk": "^2.412.0",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",

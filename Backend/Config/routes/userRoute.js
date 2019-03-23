@@ -1,13 +1,44 @@
 const helper = require('../helpers/userDb')
 
 module.exports = server => {
+<<<<<<< HEAD
+        server.get('/users', allUsers),
+        server.post('/register', register),
+        server.get('/users/:id', userById),
+        server.put('/users/:id', editUser)
+=======
   server.get('/users', allUsers),
     server.get('/users/:id', userById),
     server.put('/users/:id', editUser)
+>>>>>>> 98a2898e0d66cb6dee013aa6b6ab0d9f307e6faa
 }
 
 allUsers = (req, res) => {
   helper.getUsers().then(users => {
+<<<<<<< HEAD
+    res.status(201).json(users)
+  }).catch(err=>{
+      res.status(500).send({error:err.message})
+  })
+}
+
+register = (req, res) => {
+    const user = req.body
+  
+    helper
+        .addUser(user)
+        .then(id => {
+            res.status(201).json(id)
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Failed to add user',
+                error: err
+            })
+        })
+}
+
+=======
     res.status(200).json(users)
   }).catch(err => {
     res.status(500).send({
@@ -16,6 +47,7 @@ allUsers = (req, res) => {
   })
 }
 
+>>>>>>> 98a2898e0d66cb6dee013aa6b6ab0d9f307e6faa
 userById = (req, res) => {
   const {
     id
