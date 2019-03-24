@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 
 import Sidenav from "../sidenav/sidenav";
-import Design1 from "./weddingPage1/WeddingPage1";
-import Design2 from "./weddingPage2/WeddingPage2";
-import Design3 from "./weddingPage3/WeddingPage3";
 
 export default class Design extends Component {
   render() {
@@ -22,9 +19,6 @@ export default class Design extends Component {
         <div>
           <Link to="/design3">Design 3</Link>
         </div>
-        <Route exact path="/design1" component={Design1} />
-        <Route exact path="/design2" component={Design2} />
-        <Route exact path="/design3" component={Design3} />
       </div>
     );
   }

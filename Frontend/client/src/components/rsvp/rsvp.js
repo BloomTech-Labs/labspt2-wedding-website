@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-button-component";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import GuestList from "../rsvp/GuestList";
+import GuestList from "./GuestList";
 import SideNav from "../sidenav/sidenav";
 
 const rsvpPage = {

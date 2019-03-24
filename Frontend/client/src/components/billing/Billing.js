@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-button-component";
-import SideNav from "../../components/sidenav/sidenav";
+import SideNav from "../sidenav/sidenav";
 
 const button = {
   display: "flex",

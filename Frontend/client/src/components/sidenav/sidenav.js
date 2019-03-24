@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-// import Pricing from "../pricing/Pricing";
-// import RSVP from "../rsvp/rsvp";
-// import Billing from "../pages/billing";
-// import Settings from "../pages/settings";
-// import DashBoard from "../pages/Dashboard";
+
 import Exit from "../pages/exit";
 
 const sidenav = {
@@ -93,13 +88,14 @@ class SideNav extends Component {
                     <Link to="/pricing">Pricing</Link>
                   </li>
                   <li style={menuListItem}>
-                    <Link to="/rsvp">RSVP</Link>
+                  {/*For some reason rsvp and settings are breaking the routes */}
+                    {/* <Link to="/rsvp">RSVP</Link> */}
                   </li>
                   <li style={menuListItem}>
                     <Link to="/billing">Billing</Link>
                   </li>
                   <li style={menuListItem}>
-                    <Link to="/settings">Settings</Link>
+                    {/* <Link to="/settings">Settings</Link> */}
                   </li>
                 </ul>
               </nav>

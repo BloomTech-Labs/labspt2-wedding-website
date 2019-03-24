@@ -135,7 +135,6 @@ class Dashboard extends Component {
         <HeadContainer>
           <Head>
             <NameDate>
-              {/* Will need to route back to the design selection page MVP */}
               <Link to="/Design">
                 <Button>Change Design</Button>
               </Link>
@@ -156,7 +155,7 @@ class Dashboard extends Component {
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
             <Button>Import CSV</Button>
             {/* Needs to route to guest list */}
-            <Link to="/GuestList">
+            <Link to="/rsvp">
               <GLButton>Guest List</GLButton>
             </Link>
           </GuestList>
