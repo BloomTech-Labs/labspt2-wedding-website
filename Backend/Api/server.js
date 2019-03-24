@@ -5,7 +5,7 @@ const auth = require('../Auth/passportConfig')
 const jwtHelper = require('../Auth/jwt/jwtHelper')
 const { Model } = require('objection')
 const knex = require('knex')
-
+// Reprehenderit aliquip consequat ullamco velit sit sint. Mollit proident laborum velit deserunt esse eu minim labore qui aliqua enim Lorem culpa. Magna do incididunt velit nostrud velit in anim cillum voluptate. Sint magna incididunt dolor incididunt laboris quis velit nisi.
 const KnexConfig = require('../knexfile')
 
 Model.knex(knex(KnexConfig.development))
@@ -21,7 +21,6 @@ const configRsvpRoutes = require('../Config/routes/rsvpRoute')
 const configLivePhotoRoute = require('../Config/routes/photoUploadRoute')
 const configQuestionRoutes = require('../Config/routes/questionsRoute')
 const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
-
 
 const server = express()
 
@@ -41,17 +40,13 @@ configLivePhotoRoute(server)
 configQuestionRoutes(server)
 configRsvpAnswersRoutes(server)
 
-
 server.get('/', (req, res) => {
   res.status(200).json({
-    api: 'WOW welcome to the JoinOurBigDay API!'
+    api: 'WOW welcome to the JoinOurBigDay API!',
   })
 })
 
 module.exports = server
-
-
-
 
 // auth endpoints
 
