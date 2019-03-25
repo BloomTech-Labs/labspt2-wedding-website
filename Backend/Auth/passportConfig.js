@@ -134,7 +134,6 @@ module.exports = passport => {
                 console.log('creating new user')
                 User.query()
                   .insert({
-                    socialName: displayName,
                     email: email,
                     socialId: id,
                   })

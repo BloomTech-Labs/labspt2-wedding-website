@@ -10,6 +10,7 @@ module.exports = {
       id: user.userId,
       username: user.username,
       email: user.email,
+      isPremium: user.isPremium,
     }
     const secret = process.env.JWT_SECRET
     const options = {

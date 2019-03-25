@@ -68,10 +68,6 @@ server.post(
   (req, res) => {
     const user = req.user
     console.log(user)
-    const tokenUser = {
-      userId: user.id,
-      email: user.email,
-    }
     const userInfo = {
       userId: user.id,
       username: user.username,
@@ -79,7 +75,7 @@ server.post(
       isPremium: user.isPremium,
     }
     if (user.id) {
-      const token = jwtHelper.generateToken(tokenUser)
+      const token = jwtHelper.generateToken(userInfo)
       res.status(201).json({ token, userInfo })
     } else {
       res.status(500).json({
@@ -109,11 +105,12 @@ server.get(
     const user = req.user
     console.log('google user:', user)
     const tokenUser = {
-      userID: user.id,
+      userId: user.id,
+      username: user.username,
       email: user.email,
+      isPremium: user.isPremium,
     }
     const token = jwtHelper.generateToken(tokenUser)
-    console.log('GOOGLE Token:', token)
     // redirects to account set up
     res.redirect('http://localhost:3000?token=' + token)
   }
@@ -138,7 +135,7 @@ server.get(
   (req, res) => {
     const user = req.user
     const tokenUser = {
-      userID: user.id,
+      userId: user.id,
       email: user.email,
     }
     const token = jwtHelper.generateToken(tokenUser)

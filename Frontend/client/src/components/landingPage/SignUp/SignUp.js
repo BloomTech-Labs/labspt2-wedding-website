@@ -30,14 +30,16 @@ class SignUp extends Component {
     if (this.state.hasAgreed) {
       //if user agreed to terms of service
       this.props.loginRegister(this.state)
-      this.setState({
-        username: '',
-        password: '',
-        email: '',
-        hasAgreed: 0,
-      })
+      this.setState(
+        {
+          username: '',
+          password: '',
+          email: '',
+          hasAgreed: 0,
+        },
+        this.props.history.push('/')
+      )
       // need to implement nested routes so it can push to /dashboard, /profile, /account set up or something of that matter
-      this.props.history.push('/acc-setup')
     } else {
       // if user didn't agree to terms of service
       console.log('need to agree')

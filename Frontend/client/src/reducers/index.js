@@ -3,6 +3,9 @@ import {
   L_R_SUCCESS,
   L_R_ERROR,
   FETCHING,
+  SET_USER,
+  SOCIAL_USER,
+  OAUTH_USER,
   GET_USERS,
   GET_USER,
   GET_GUESTS,
@@ -11,6 +14,7 @@ import {
   DELETE,
   DELETE_SUCCESS,
   ERROR,
+  LOGOUT,
 } from '../actions/index'
 
 const initialState = {
@@ -40,6 +44,18 @@ export default (state = initialState, action) => {
       return { ...state, authProcess: false, userInfo: action.payload }
     case L_R_ERROR:
       return { ...state, authProcess: false, err: action.payload }
+    case SOCIAL_USER:
+      return { ...state, authProcess: true }
+    case OAUTH_USER:
+      return { ...state, authProcess: false, userInfo: action.payload }
+    case SET_USER:
+      return {
+        ...state,
+        authProcess: false,
+        userInfo: action.payload,
+      }
+    case LOGOUT:
+      return { ...state, userInfo: null }
     default:
       return state
   }

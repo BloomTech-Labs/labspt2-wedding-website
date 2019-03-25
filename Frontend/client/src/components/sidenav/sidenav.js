@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import { connect } from 'react-redux'
+import { logout } from '../../actions'
+
 const sideNav = {
   display: 'flex',
   flexDirection: 'row',
@@ -53,7 +56,11 @@ const menuLink = {
   padding: '0 3px',
 }
 
-export default class Navigation extends Component {
+class Navigation extends Component {
+  handleClick = () => {
+    this.props.logout()
+  }
+
   render() {
     return (
       <div>
@@ -86,6 +93,11 @@ export default class Navigation extends Component {
                       RSVP
                     </Link>
                   </li> */}
+                <li style={menuListItem}>
+                  <button onClick={this.handleClick} style={menuLink}>
+                    Logout
+                  </button>
+                </li>
               </ul>
             </div>
           </nav>
@@ -95,3 +107,10 @@ export default class Navigation extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {}
+
+export default connect(
+  mapStateToProps,
+  { logout }
+)(Navigation)
