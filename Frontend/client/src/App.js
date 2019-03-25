@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import queryString from 'query-string'
+import jwt_decode from 'jwt-decode'
 
 import LandingPage from './components/landingPage/LandingPage'
 import Login from './components/landingPage/login'
@@ -27,8 +28,11 @@ class App extends Component {
   componentDidMount() {
     const query = queryString.parse(window.location.search)
     const token = query.token
-    console.log(query.token)
+    console.log('token', query.token)
+
     if (token) {
+      let decoded = jwt_decode(token.toString())
+      console.log('decoded token', decoded)
       localStorage.setItem('jwt', query.token)
       this.props.history.push('/')
     }

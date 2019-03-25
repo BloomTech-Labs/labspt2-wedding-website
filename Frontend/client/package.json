@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "jwt-decode": "^2.2.0",
     "query-string": "^6.4.0",
     "react": "^16.8.3",
     "react-button-component": "^1.0.0",
