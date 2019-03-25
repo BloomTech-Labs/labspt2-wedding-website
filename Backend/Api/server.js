@@ -5,7 +5,7 @@ const auth = require('../Auth/passportConfig')
 const jwtHelper = require('../Auth/jwt/jwtHelper')
 const { Model } = require('objection')
 const knex = require('knex')
-// Reprehenderit aliquip consequat ullamco velit sit sint. Mollit proident laborum velit deserunt esse eu minim labore qui aliqua enim Lorem culpa. Magna do incididunt velit nostrud velit in anim cillum voluptate. Sint magna incididunt dolor incididunt laboris quis velit nisi.
+
 const KnexConfig = require('../knexfile')
 
 Model.knex(knex(KnexConfig.development))
@@ -67,13 +67,20 @@ server.post(
   passport.authenticate('json', { session: false }),
   (req, res) => {
     const user = req.user
+    console.log(user)
     const tokenUser = {
-      userID: user.id,
+      userId: user.id,
       email: user.email,
+    }
+    const userInfo = {
+      userId: user.id,
+      username: user.username,
+      email: user.email,
+      isPremium: user.isPremium,
     }
     if (user.id) {
       const token = jwtHelper.generateToken(tokenUser)
-      res.status(201).json({ token })
+      res.status(201).json({ token, userInfo })
     } else {
       res.status(500).json({
         message: `${req.user}`,
@@ -107,7 +114,8 @@ server.get(
     }
     const token = jwtHelper.generateToken(tokenUser)
     console.log('GOOGLE Token:', token)
-    res.status(201).json({ token })
+    // redirects to account set up
+    res.redirect('http://localhost:3000?token=' + token)
   }
 )
 

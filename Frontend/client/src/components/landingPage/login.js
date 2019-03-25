@@ -1,35 +1,43 @@
-import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link, NavLink } from "react-router-dom";
-import SignUp from './SignUp/SignUp';
-import SignIn from './SignIn/SignIn';
+import React from 'react'
+import { Route, Link, NavLink } from 'react-router-dom'
+import SignUp from './SignUp/SignUp'
+import SignIn from './SignIn/SignIn'
 
-import './login.css';
+import './login.css'
 
-class Login extends Component {
-    render() {
-        return (
-             <Router>
-                <div className="App">
-                    <div className="App__Aside"></div>
-                    <div className="App__Form">
-                    <div className="PageSwitcher">
-                        <NavLink to="/sign-in" className="PageSwitcher__Item">Sign In</NavLink>
-                        <NavLink to="/" className="PageSwitcher__Item PageSwitcher__Item--Active">Sign Up</NavLink>
-                    </div>
+function Login({ match }) {
+  console.log('path', match.path)
+  console.log('url', match.url)
+  return (
+    <div className='App'>
+      <div className='App__Aside' />
+      <div className='App__Form'>
+        <div className='PageSwitcher'>
+          <NavLink to={`${match.url}`} className='PageSwitcher__Item'>
+            Sign In
+          </NavLink>
+          <Link
+            to={`${match.url}/signup`}
+            className='PageSwitcher__Item PageSwitcher__Item--Active'>
+            Sign Up
+          </Link>
+        </div>
 
-                    <div className="FormTitle">
-                        <Link to="/sign-in" className="FormTitle__Link">Sign In</Link> or <Link to="/" className="FormTitle__Link FormTitle__Link--Active">Sign Up</Link>
-                    </div>
+        <div className='FormTitle'>
+          <Link to={`${match.url}`} className='FormTitle__Link'>
+            Sign In
+          </Link>{' '}
+          or{' '}
+          <Link to={`${match.url}/signup`} className='FormTitle__Link'>
+            Sign Up
+          </Link>
+        </div>
 
-                    <Route exact path="/" component={SignUp}>
-                    </Route>
-                    <Route exact path="/sign-in" component={SignIn}>
-                    </Route>
-                    </div>
-                </div>
-             </Router>
-        );
-    }
+        <Route path={`${match.path}/signup`} component={SignUp} />
+        <Route exact path={`${match.path}`} component={SignIn} />
+      </div>
+    </div>
+  )
 }
 
-export default Login;
+export default Login

@@ -1,25 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import App from "./App";
-import { createStore, applyMiddleware } from "redux";
-import { BrowserRouter as Router } from "react-router-dom";
-import thunk from "redux-thunk"
-//import logger from 'redux-logger'
-//import reducer from "./reducer"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import { BrowserRouter as Router } from 'react-router-dom'
+//redux
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import reducer from './reducers'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 
-
-//Middleware for error logging and dispatching
-const middleware = applyMiddleware(thunk);
-const store = createStore( middleware);
-
+const store = createStore(reducer, applyMiddleware(thunk, logger))
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
+  <Router>
+    <Provider store={store}>
       <App />
-    </Router>
-  </Provider>,
-  document.getElementById("root")
-);
-
+    </Provider>
+  </Router>,
+  document.getElementById('root')
+)

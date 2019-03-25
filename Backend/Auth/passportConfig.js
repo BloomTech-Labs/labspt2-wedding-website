@@ -37,9 +37,12 @@ module.exports = passport => {
       },
       (req, username, password, done) => {
         const email = req.body.email
-        const user = req.body
-        const validateUserObject = Joi.validate(user, validation.userInput)
+        const validateUserObject = Joi.validate(
+          username,
+          validation.userInput.username
+        )
         if (validateUserObject.error) {
+          console.log(validateUserObject.error)
           const message =
             'Username(5-20 characters required), Password(must be min 6 charaters, contain 1 number and 1 letter and required), Email(has to have proper email format ie email@domain.com)'
           done(null, message)
@@ -113,34 +116,36 @@ module.exports = passport => {
         callbackURL: googleCallbackUrl,
       },
       (token, refreshToken, profile, done) => {
-        const { id, displayName, emails } = profile
-        const email = emails[0].value
-        // look for the google id store in databse to see if user exists
-        User.query()
-          .findOne('socialId', id)
-          .then(user => {
-            //check if social id has a user and user id
-            if (user && user.id) {
-              console.log('User exist and authenticated')
+        process.nextTick(() => {
+          const { id, displayName, emails } = profile
+          const email = emails[0].value
+          // look for the google id store in databse to see if user exists
+          User.query()
+            .findOne('socialId', id)
+            .then(user => {
+              //check if social id has a user and user id
+              if (user && user.id) {
+                console.log('User exist and authenticated')
 
-              return done(null, user)
-            } else {
-              //google id not found on the database
+                return done(null, user)
+              } else {
+                //google id not found on the database
 
-              console.log('creating new user')
-              User.query()
-                .insert({
-                  socialName: displayName,
-                  email: email,
-                  socialId: id,
-                })
-                .then(user => {
-                  console.log('newUser', user)
-                  done(null, user)
-                })
-                .catch(err => done(err, false))
-            }
-          })
+                console.log('creating new user')
+                User.query()
+                  .insert({
+                    socialName: displayName,
+                    email: email,
+                    socialId: id,
+                  })
+                  .then(user => {
+                    console.log('newUser', user)
+                    done(null, user)
+                  })
+                  .catch(err => done(err, false))
+              }
+            })
+        })
       }
     )
   )

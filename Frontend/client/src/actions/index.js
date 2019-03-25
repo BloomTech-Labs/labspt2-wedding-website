@@ -1,8 +1,8 @@
 import axios from 'axios'
-
-export const LOGIN_REGISTER = 'LOGIN_REGISTER'
-export const LOGIN_REGISTER_SUCCESS = 'LOGIN_REGISTER_SUCCESS'
-export const LOGIN_REGISTER_ERROR = 'LOGIN_REGISTER_ERROR'
+// L_G = LOGIN_REGISTER
+export const L_R = 'L_R'
+export const L_R_SUCCESS = 'L_R_SUCCESS'
+export const L_R_ERROR = 'L_R_ERROR'
 export const FETCHING = 'FETCHING'
 export const GET_USERS = 'GET_USERS'
 export const GET_USER = 'GET_USER'
@@ -14,22 +14,24 @@ export const DELETE_SUCCESS = 'DELETE_SUCCESS'
 export const ERROR = 'ERROR'
 
 // needs to be stored on secret .env file for production
-const api = 'https://joinourbigday.herokuapp.com'
+const api = 'http://localhost:3700' || 'https://joinourbigday.herokuapp.com'
 
 //Login in / Registering
 export const loginRegister = creds => dispatch => {
-  dispatch({ type: LOGIN_REGISTER })
+  dispatch({ type: L_R })
   axios
-    .post(`${api}/auth/login`, creds)
+    .post(`${api}/auth/register-login`, creds)
     .then(res => {
+      console.log(res.data)
+      localStorage.setItem('jwt', res.data.token)
       dispatch({
-        type: LOGIN_REGISTER_SUCCESS,
-        payload: res.data,
+        type: L_R_SUCCESS,
+        payload: res.data.userInfo,
       })
     })
     .catch(err => {
       dispatch({
-        type: LOGIN_REGISTER_ERROR,
+        type: L_R_ERROR,
         payload: err,
       })
     })
@@ -66,7 +68,8 @@ export const fetchUser = id => dispatch => {
     })
     .catch(err => {
       dispatch({
-        type: FETCHING_ERROR,
+        type: ERROR,
+        payload: err,
       })
     })
 }
@@ -84,7 +87,7 @@ export const editUser = (id, user) => dispatch => {
     })
 }
 
-export const fetchGuests = () => {
+export const fetchGuests = () => dispatch => {
   dispatch({ type: FETCHING })
   axios
     .get(`${api}/guest`)
@@ -101,7 +104,7 @@ export const fetchGuests = () => {
       })
     })
 }
-export const fetchGuest = id => {
+export const fetchGuest = id => dispatch => {
   dispatch({ type: FETCHING })
   axios
     .get(`${api}/guest/${id}`)
@@ -133,7 +136,7 @@ export const editGuest = (id, guest) => dispatch => {
 }
 
 export const deleteGuest = id => dispatch => {
-  dispatch({ type: DELETING })
+  dispatch({ type: DELETE })
   axios
     .delete(`${api}/guest/${id}`)
     .then(() => fetchGuests()(dispatch))

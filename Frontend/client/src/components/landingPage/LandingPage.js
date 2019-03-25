@@ -1,12 +1,9 @@
 // importing dependencies
-import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route, Link
-} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Route, Link } from 'react-router-dom'
 
-import Login from './login';
-import DemoCarousel from "./Carousel";
+import Login from './login'
+import DemoCarousel from './Carousel'
 
 const lpStyle = {
   display: 'flex',
@@ -26,21 +23,20 @@ const buttonDiv = {
   marginBottom: '25px',
   height: '100px',
   boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-  width: '26%'
+  width: '26%',
 }
 
 export default class LandingPage extends Component {
-  render(){
+  render() {
     return (
-        <Router>
-          <div style={lpStyle}>
-            <Route exact path="/" component={DemoCarousel}></Route>
-            <div style={buttonDiv}>
-              <Link to="/login" component={Login}>Get Started</Link>
-            </div>
-            <Route exact path="/login" component={Login}></Route>
-          </div>
-        </Router>
+      <div style={lpStyle}>
+        <Route exact path='/' component={DemoCarousel} />
+        <div style={buttonDiv}>
+          <Link to='/login' component={Login}>
+            Get Started
+          </Link>
+        </div>
+      </div>
     )
   }
-};
+}

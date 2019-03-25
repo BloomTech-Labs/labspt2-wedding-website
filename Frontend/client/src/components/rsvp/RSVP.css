@@ -1,60 +1,56 @@
 .rsvpPage {
-    display: flex;
-    flex-direction: column;
-    height: 800px;
-    width: 400px;
-    padding-top: 50px;
-    margin: 0 auto;
-    
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  width: 400px;
+  padding-top: 50px;
+  margin: 0 auto;
 }
 
 .rsvpForm {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    height: 200px;
-    border: 1px solid black;
-    margin-bottom: 25px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 200px;
+  border: 1px solid black;
+  margin-bottom: 25px;
+  align-items: center;
+  justify-content: center;
 }
 
 .rsvpArea {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    font-size: 12px;
-    width: 150px;
-    justify-content: left;
-    padding: 10px 0;
-
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 12px;
+  width: 150px;
+  justify-content: left;
+  padding: 10px 0;
 }
 
 .radio {
-    width: 50px;
+  width: 50px;
 }
 
 .textBox {
-    width: 250px;
-    margin: 5px 25px;
-    height: 25px;
-    
+  width: 250px;
+  margin: 5px 25px;
+  height: 25px;
 }
 
 .fine-print {
-    font-size: 10px;
-    justify-content: end;
+  font-size: 10px;
+  justify-content: end;
 }
 
 .button {
-    width: 200px;
-    border: 1px solid black;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 200px;
+  border: 1px solid black;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
