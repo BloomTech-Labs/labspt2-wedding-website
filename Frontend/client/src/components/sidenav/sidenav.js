@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -115,119 +114,118 @@ export default connect(
   mapStateToProps,
   { logout }
 )(Navigation)
-=======
-import React, { Component } from "react";
+// Incoming Navbar -- Check
 
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+// import React, { Component } from "react";
 
-import Exit from "../pages/exit";
+// import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
-const sidenav = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "left",
-  width: "20%",
-  minWidth: "150px"
-};
+// import Exit from "../pages/exit";
 
-const side = {
-  display: "flex",
-  flexDirection: "column",
-  padding: "0 100% 0 10px",
-  width: "100%"
-};
+// const sidenav = {
+//   display: "flex",
+//   flexDirection: "row",
+//   justifyContent: "left",
+//   width: "20%",
+//   minWidth: "150px"
+// };
 
-const menuLogo = {
-  display: "flex",
-  justifyContent: "center"
-};
+// const side = {
+//   display: "flex",
+//   flexDirection: "column",
+//   padding: "0 100% 0 10px",
+//   width: "100%"
+// };
 
-const menu = {
-  display: "flex",
-  width: "100%",
-  border: "1px solid black",
-  boxShadow: "0px 2px 24px 0px #010101",
-  borderRadius: "8px",
-  marginLeft: "auto",
-  marginRight: "auto",
-  padding: "0 10px"
-};
+// const menuLogo = {
+//   display: "flex",
+//   justifyContent: "center"
+// };
 
-const menuList = {
-  display: "flex",
-  flexDirection: "column",
-  listStyleType: "none",
-  padding: "10px 0",
-  height: "500px",
-  margin: "0",
-  marginRight: "40px"
-};
+// const menu = {
+//   display: "flex",
+//   width: "100%",
+//   border: "1px solid black",
+//   boxShadow: "0px 2px 24px 0px #010101",
+//   borderRadius: "8px",
+//   marginLeft: "auto",
+//   marginRight: "auto",
+//   padding: "0 10px"
+// };
 
-const menuListItem = {
-  margin: "10px 10px"
-};
+// const menuList = {
+//   display: "flex",
+//   flexDirection: "column",
+//   listStyleType: "none",
+//   padding: "10px 0",
+//   height: "500px",
+//   margin: "0",
+//   marginRight: "40px"
+// };
 
-const routes = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center"
-};
+// const menuListItem = {
+//   margin: "10px 10px"
+// };
 
-const navPage = {
-  display: "flex",
-  justifyContent: "space-between",
-  padding: "0 15px"
-};
+// const routes = {
+//   display: "flex",
+//   justifyContent: "center",
+//   alignItems: "center"
+// };
 
-const leftLogo = {
-  display: "flex",
-  justifyContent: "right"
-};
+// const navPage = {
+//   display: "flex",
+//   justifyContent: "space-between",
+//   padding: "0 15px"
+// };
 
-class SideNav extends Component {
-  render() {
-    return (
-      <Switch>
-        <div style={navPage}>
-          <div style={sidenav}>
-            <div style={side}>
-              <h3 style={menuLogo}>
-                <Link to="/">Home</Link> >{" "}
-              </h3>
-              <nav style={menu}>
-                <ul style={menuList}>
-                  <li style={menuListItem}>
-                    <Link to="/dashboard">Home</Link>
-                  </li>
-                  <li style={menuListItem}>
-                    <Link to="/design">Design</Link>
-                  </li>
-                  <li style={menuListItem}>
-                    <Link to="/pricing">Pricing</Link>
-                  </li>
-                  <li style={menuListItem}>
-                  {/*For some reason rsvp and settings are breaking the routes */}
-                    {/* <Link to="/rsvp">RSVP</Link> */}
-                  </li>
-                  <li style={menuListItem}>
-                    <Link to="/billing">Billing</Link>
-                  </li>
-                  <li style={menuListItem}>
-                    {/* <Link to="/settings">Settings</Link> */}
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <h3 style={leftLogo}>
-            <Link to="/exit">Logout</Link>
-          </h3>
-          <Route path="/exit" component={Exit} />
-        </div>
-      </Switch>
-    );
-  }
-}
+// const leftLogo = {
+//   display: "flex",
+//   justifyContent: "right"
+// };
 
-export default SideNav;
->>>>>>> origin/Frontend
+// class SideNav extends Component {
+//   render() {
+//     return (
+//       <Switch>
+//         <div style={navPage}>
+//           <div style={sidenav}>
+//             <div style={side}>
+//               <h3 style={menuLogo}>
+//                 <Link to="/">Home</Link> >{" "}
+//               </h3>
+//               <nav style={menu}>
+//                 <ul style={menuList}>
+//                   <li style={menuListItem}>
+//                     <Link to="/dashboard">Home</Link>
+//                   </li>
+//                   <li style={menuListItem}>
+//                     <Link to="/design">Design</Link>
+//                   </li>
+//                   <li style={menuListItem}>
+//                     <Link to="/pricing">Pricing</Link>
+//                   </li>
+//                   <li style={menuListItem}>
+//                   {/*For some reason rsvp and settings are breaking the routes */}
+//                     {/* <Link to="/rsvp">RSVP</Link> */}
+//                   </li>
+//                   <li style={menuListItem}>
+//                     <Link to="/billing">Billing</Link>
+//                   </li>
+//                   <li style={menuListItem}>
+//                     {/* <Link to="/settings">Settings</Link> */}
+//                   </li>
+//                 </ul>
+//               </nav>
+//             </div>
+//           </div>
+//           <h3 style={leftLogo}>
+//             <Link to="/exit">Logout</Link>
+//           </h3>
+//           <Route path="/exit" component={Exit} />
+//         </div>
+//       </Switch>
+//     );
+//   }
+// }
+
