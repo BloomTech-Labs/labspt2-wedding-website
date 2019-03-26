@@ -63,7 +63,7 @@ class App extends Component {
   render() {
     if (this.props.userInfo) {
       console.log('userInfo', this.props.userInfo)
-      if (!this.state.decodedToken.username) {
+      if (!this.props.userInfo.username) {
         // send user to account setup page
         return (
           <div>
