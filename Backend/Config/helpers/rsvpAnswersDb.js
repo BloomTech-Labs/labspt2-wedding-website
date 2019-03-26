@@ -2,7 +2,7 @@ const db = require('../dbConfig')
 
 module.exports = {
     rsvpAnswers: () => {
-        return db(rsvpAnswers)
+        return db('rsvpAnswers').leftJoin('rsvpQuestions', rsvpQuestions_id, rsvpQuestions.id)
       },
       
       rsvpAnswersById: id => {
