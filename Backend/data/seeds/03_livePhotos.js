@@ -1,7 +1,7 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('livePhotos')
-    .del()
+  .truncate()
     .then(function() {
       // Inserts seed entries
       return knex('livePhotos').insert([

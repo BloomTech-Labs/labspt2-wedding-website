@@ -2,7 +2,7 @@
   "name": "JoinOurBigDay-Backend",
   "version": "1.0.0",
   "engines": {
-    "node": "^11.11.0",
+    "node": "^11.9.0",
     "yarn": "^1.13.0"
   },
   "main": "index.js",
@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "aws": "^0.0.3-2",
     "aws-sdk": "^2.412.0",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",

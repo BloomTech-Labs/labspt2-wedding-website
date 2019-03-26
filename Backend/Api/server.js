@@ -14,13 +14,16 @@ const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
 const logger = require('morgan')
-const server = express()
 
 const configGuestRoutes = require('../Config/routes/guestRoute')
 const configUserRoutes = require('../Config/routes/userRoute')
 const configRsvpRoutes = require('../Config/routes/rsvpRoute')
-const configQuestionRoutes = require('/Config/routes/questionsRoutes')
-const configRsvpAnswersRoutes = require('/Config/routes/rsvpAnswersRoute')
+const configLivePhotoRoute = require('../Config/routes/photoUploadRoute')
+const configQuestionRoutes = require('../Config/routes/questionsRoute')
+const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
+
+
+const server = express()
 
 auth(passport)
 
@@ -34,14 +37,21 @@ server.use(
 configUserRoutes(server)
 configGuestRoutes(server)
 configRsvpRoutes(server)
+configLivePhotoRoute(server)
 configQuestionRoutes(server)
 configRsvpAnswersRoutes(server)
 
+
 server.get('/', (req, res) => {
   res.status(200).json({
-    api: 'WOW welcome to the JoinOurBigDay API!',
+    api: 'WOW welcome to the JoinOurBigDay API!'
   })
 })
+
+module.exports = server
+
+
+
 
 // auth endpoints
 
@@ -169,5 +179,3 @@ server.get(
 //     }
 //   )
 // })
-
-module.exports = server

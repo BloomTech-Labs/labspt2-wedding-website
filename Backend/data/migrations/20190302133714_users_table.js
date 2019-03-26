@@ -21,11 +21,19 @@ exports.up = function(knex, Promise) {
     //feel that venue location should be an object to separate sections of the address
     tbl.string('venueLocation')
     tbl.boolean('isPremium').defaultTo(false)
+<<<<<<< HEAD
+=======
     // this won't be needed with the new rsvp questions and answers tables
     // tbl.json('rsvpExtraQuestions')
+>>>>>>> 98a2898e0d66cb6dee013aa6b6ab0d9f307e6faa
   })
 }
 
 exports.down = function(knex, Promise) {
+<<<<<<< HEAD
+  return knex.schema.raw("DROP TABLE if exists users cascade")
+}
+=======
   return knex.schema.dropTableIfExists('users')
 }
+>>>>>>> 98a2898e0d66cb6dee013aa6b6ab0d9f307e6faa
