@@ -7,7 +7,7 @@ import { logout } from '../../actions'
 const sideNav = {
   display: 'flex',
   flexDirection: 'row',
-  height: '100%',
+  height: '100vh',
   justifyContent: 'left',
   width: '20%',
 }
@@ -228,4 +228,3 @@ export default connect(
 //     );
 //   }
 // }
-

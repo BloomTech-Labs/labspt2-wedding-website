@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PieChart from "react-minimal-pie-chart";
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import PieChart from 'react-minimal-pie-chart'
 
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import SideNav from "../sidenav/sidenav";
+import SideNav from '../sidenav/sidenav'
 
 const DashContainer = styled.div`
   max-width: 1080px;
@@ -12,7 +12,7 @@ const DashContainer = styled.div`
   margin: 0 auto;
   display: flex;
   background-color: #4c5d72;
-`;
+`
 const Button = styled.button`
   border-radius: 5%;
   color: white;
@@ -23,7 +23,7 @@ const Button = styled.button`
   font-size: 0.8em;
   font-weight: 500;
   background: #52c4b9;
-`;
+`
 
 const ShareButton = styled.button`
   border-radius: 5%;
@@ -37,7 +37,7 @@ const ShareButton = styled.button`
   background: #52c4b9;
   float: right;
   margin-right: 5%;
-`;
+`
 
 const GLButton = styled.button`
   border-radius: 5%;
@@ -50,59 +50,59 @@ const GLButton = styled.button`
   font-weight: 500;
   background: #52c4b9;
   margin-left: 5%;
-`;
+`
 
 const SignOut = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-end;
-`;
+`
 
 const HeadContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10% 3% 0% 3%;
   width: 100%;
-`;
+`
 
 const Head = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-`;
+`
 
 const NameDate = styled.div`
 display: flex;
 flex-direction column;
-`;
+`
 
-const Location = styled.div``;
+const Location = styled.div``
 
 const H1 = styled.h1`
   font-size: 2.5em;
   text-align: center;
   color: white;
   margin-top: 5%;
-`;
+`
 
 const H2 = styled.h2`
   font-size: 2.5em;
   text-align: center;
   color: white;
   margin-top: 12%;
-`;
+`
 
 const GuestList = styled.div`
 margin-top: 5%;
 border-top: 2px solid #707C8B;
 padding 3%;
-`;
+`
 
 const H3 = styled.h3`
   font-size: 1.5em;
   color: white;
   margin-bottom: 5%;
-`;
+`
 
 const RSVP = styled.div`
 margin-top: 5%;
@@ -110,16 +110,16 @@ border-top: 2px solid #707C8B;
 padding 3%;
 display: flex;
 justify-content: space-between;
-`;
+`
 
 const Registry = styled.div`
 border-top: 2px solid #707C8B;
 padding 3%;
-`;
+`
 
 const Pie = styled.div`
   width: 25%;
-`;
+`
 
 class Dashboard extends Component {
   render() {
@@ -135,7 +135,7 @@ class Dashboard extends Component {
         <HeadContainer>
           <Head>
             <NameDate>
-              <Link to="/Design">
+              <Link to='/Design'>
                 <Button>Change Design</Button>
               </Link>
               {/* Will need to write code that auto populates name and date for wedding. */}
@@ -155,7 +155,7 @@ class Dashboard extends Component {
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
             <Button>Import CSV</Button>
             {/* Needs to route to guest list */}
-            <Link to="/rsvp">
+            <Link to='/rsvp'>
               <GLButton>Guest List</GLButton>
             </Link>
           </GuestList>
@@ -167,14 +167,14 @@ class Dashboard extends Component {
             <Pie>
               <PieChart
                 data={[
-                  { title: "One", value: 10, color: "#E38627" },
-                  { title: "Two", value: 15, color: "#C13C37" },
-                  { title: "Three", value: 20, color: "#6A2135" }
+                  { title: 'One', value: 10, color: '#E38627' },
+                  { title: 'Two', value: 15, color: '#C13C37' },
+                  { title: 'Three', value: 20, color: '#6A2135' },
                 ]}
               />
               ;
             </Pie>
-            <Link to="RSVP">
+            <Link to='RSVP'>
               <Button>Edit Questions</Button>
             </Link>
           </RSVP>
@@ -185,8 +185,8 @@ class Dashboard extends Component {
           </Registry>
         </HeadContainer>
       </DashContainer>
-    );
+    )
   }
 }
 
-export default Dashboard;
+export default Dashboard
