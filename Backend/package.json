@@ -2,7 +2,7 @@
   "name": "JoinOurBigDay-Backend",
   "version": "1.0.0",
   "engines": {
-    "node": "^11.9.0",
+    "node": "^10.15.3",
     "yarn": "^1.13.0"
   },
   "main": "index.js",
@@ -19,10 +19,12 @@
   "dependencies": {
     "aws": "^0.0.3-2",
     "aws-sdk": "^2.412.0",
+    "cloudinary": "^1.14.0",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "express-form-data": "^2.0.8",
     "helmet": "^3.15.1",
     "heroku": "^7.22.4",
     "jest": "^24.1.0",

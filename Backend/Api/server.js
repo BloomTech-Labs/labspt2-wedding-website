@@ -5,6 +5,9 @@ const auth = require('../Auth/passportConfig')
 const jwtHelper = require('../Auth/jwt/jwtHelper')
 const { Model } = require('objection')
 const knex = require('knex')
+const cloudinary = require('cloudinary')
+const formData = require('express-form-data')
+const { CLIENT_ORIGIN } = require('../Config/config')
 
 const KnexConfig = require('../knexfile')
 
@@ -22,7 +25,6 @@ const configLivePhotoRoute = require('../Config/routes/photoUploadRoute')
 const configQuestionRoutes = require('../Config/routes/questionsRoute')
 const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
 
-
 const server = express()
 
 auth(passport)
@@ -30,9 +32,11 @@ auth(passport)
 server.use(
   express.json(),
   logger('dev'),
+  // { origin: CLIENT_ORIGIN }
   cors(),
   helmet(),
-  passport.initialize()
+  passport.initialize(),
+  formData.parse()
 )
 configUserRoutes(server)
 configGuestRoutes(server)
@@ -40,18 +44,41 @@ configRsvpRoutes(server)
 configLivePhotoRoute(server)
 configQuestionRoutes(server)
 configRsvpAnswersRoutes(server)
+//cloudinary config
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+})
 
+server.post('/image-upload', (req, res) => {
+  console.log(req.files)
+  const values = Object.values(req.files)
+  console.log("values:", values)
+  const promises = values.map(image => {
+    cloudinary.v2.uploader.upload(image[0].path,(err, result) => {
+      console.log('cloudinary result', result)
+      const secure_url = result.secure_url
+      res.json(secure_url)
+    })
+  })
+// console.log('promises', promises)
+//   Promise 
+//     .all(promises)
+//     .then(results => {
+//     console.log("results",results)
+//     res.json(results)
+//   })
+})
+//end coudinary
 
 server.get('/', (req, res) => {
   res.status(200).json({
-    api: 'WOW welcome to the JoinOurBigDay API!'
+    api: 'WOW welcome to the JoinOurBigDay API!',
   })
 })
 
 module.exports = server
-
-
-
 
 // auth endpoints
 

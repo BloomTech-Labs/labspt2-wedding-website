@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Spinner from "../Spinner";
 import Images from "../Images";
 import Buttons from "../Buttons";
-import { API_URL } from "../config";
+import { API_URL } from "../config.js";
 
 import background3 from "../media/rainbowbackground.jpg";
 import heartWP3 from "../media/heartWP3.jpg";

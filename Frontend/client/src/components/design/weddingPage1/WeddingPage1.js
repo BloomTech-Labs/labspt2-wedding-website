@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Spinner from "../Spinner";
 import Images from "../Images";
 import Buttons from "../Buttons";
-import { API_URL } from "../config";
+import { API_URL } from "../config.js";
 
 import background from "../media/ScrapBookBackground.jpg";
 import bells from "../media/bells.png";
