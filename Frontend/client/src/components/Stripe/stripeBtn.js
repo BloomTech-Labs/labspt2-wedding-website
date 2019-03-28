@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 import axios from 'axios'
-const stripeBtn = () => {
+
+const StripeBtn = () => {
   const publishableKey = 'pk_test_hZ2cDD8WczHuPKhNyDhiIYsI'
 
   const onToken = token => {
@@ -10,7 +11,7 @@ const stripeBtn = () => {
       token: token,
     }
     axios
-      .post('http://localhost:3000/payment', body)
+      .post('http://localhost:3000', body)
       .then(response => {
         console.log(response)
         alert('Payment Success')
@@ -34,4 +35,4 @@ const stripeBtn = () => {
     />
   )
 }
-export default stripeBtn
+export default StripeBtn
