@@ -9,6 +9,15 @@ module.exports = {
     }
     return db('guestList')
   },
+
+  guestsByUserId: id => {
+    console.log(id)
+    return db('guestList')
+      .select('*')
+      .from('guestList')
+      .where('userId', id)
+  },
+
   addGuest: guest => {
     return db('guestList').insert(guest)
   },
@@ -20,7 +29,8 @@ module.exports = {
   },
 
   deleteGuest: id => {
-    db('guestList')
+    console.log('id on delete helper', id)
+    return db('guestList')
       .where('id', id)
       .del()
   },

@@ -26,7 +26,7 @@ const initialState = {
   userInfo: null,
   updatingUser: false,
   //guest
-  guests: [],
+  guests: null,
   guest: null,
   addingGuest: false,
   updatingGuest: false,
@@ -56,6 +56,11 @@ export default (state = initialState, action) => {
       }
     case LOGOUT:
       return { ...state, userInfo: null }
+    case GET_GUESTS:
+      console.log('guests action:', action.payload)
+      return { ...state, guests: action.payload, fetching: false }
+    case ERROR:
+      return { ...state, fetching: false, err: action.payload }
     default:
       return state
   }

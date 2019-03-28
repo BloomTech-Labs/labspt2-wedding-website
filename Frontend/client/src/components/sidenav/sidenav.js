@@ -1,8 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
 
 import { connect } from 'react-redux'
 import { logout } from '../../actions'
+
+import styled from 'styled-components'
+
+const Button = styled.button`
+  border-radius: 5%;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 70px;
+  font-size: 0.8em;
+  font-weight: 500;
+  background: #52c4b9;
+`
 
 const sideNav = {
   display: 'flex',
@@ -59,6 +74,7 @@ const menuLink = {
 class Navigation extends Component {
   handleClick = () => {
     this.props.logout()
+    this.props.history.push('/')
   }
 
   render() {
@@ -94,9 +110,7 @@ class Navigation extends Component {
                     </Link>
                   </li> */}
                 <li style={menuListItem}>
-                  <button onClick={this.handleClick} style={menuLink}>
-                    Logout
-                  </button>
+                  <Button onClick={this.handleClick}>Sign Out</Button>
                 </li>
               </ul>
             </div>
@@ -110,10 +124,12 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {}
 
-export default connect(
-  mapStateToProps,
-  { logout }
-)(Navigation)
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { logout }
+  )(Navigation)
+)
 // Incoming Navbar -- Check
 
 // import React, { Component } from "react";

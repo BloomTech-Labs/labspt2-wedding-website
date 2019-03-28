@@ -4,17 +4,20 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 import { connect } from 'react-redux'
-import { setUser } from './actions'
+import { setUser, fetchGuests } from './actions'
 
 import queryString from 'query-string'
 import jwt_decode from 'jwt-decode'
 
 import LandingPage from './components/landingPage/LandingPage'
 import Login from './components/landingPage/login'
+import DashBoard from './components/clientDashboard/Dashboard'
 import Navigation from './components/sidenav/sidenav'
 import Pricing from './components/pricing/Pricing'
 import RSVP from './components/rsvp/rsvp'
 import Billing from './components/pages/billing'
+import Settings from './components/settings/Settings'
+import GuestList from './components/guest/guestList'
 
 const row = {
   display: 'flex',
@@ -69,6 +72,11 @@ class App extends Component {
     }
   }
 
+  // componentDidMount() {
+  //   const userId = this.props.userInfo.userId
+  //   this.props.fetchGuests(userId)
+  // }
+
   render() {
     if (this.props.userInfo) {
       console.log('userInfo', this.props.userInfo)
@@ -86,11 +94,11 @@ class App extends Component {
               <Navigation />
 
               <Switch>
-                <Route exact path='/' />
-                {/* <Route exact path='/settings' component={Settings} /> */}
+                <Route exact path='/' component={DashBoard} />
+                <Route path='/settings' component={Settings} />
                 <Route path='/pricing' component={Pricing} />
                 <Route path='/billing' component={Billing} />
-                <Route path='/rsvp' component={RSVP} />
+                <Route path='/guests' component={GuestList} />
               </Switch>
             </div>
           </Router>
@@ -117,12 +125,13 @@ class App extends Component {
 // used it to be able to do a history.push to remove the token from the url
 const mapStateToProps = state => ({
   userInfo: state.userInfo,
+  guests: state.guests,
 })
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { setUser }
+    { setUser, fetchGuests }
   )(App)
 )
 
@@ -139,8 +148,8 @@ export default withRouter(
 //           <Route path="/pricing" component={Pricing} />
 //           <Route path="/rsvp" component={RSVP} />
 //           <Route path="/billing" component={Billing} />
-//           <Route path="/settings" component={Settings} />
-//           <Route path="/dashboard" component={DashBoard} />
+//
+//
 //         </Switch>
 //       </Router>
 //     );

@@ -115,14 +115,15 @@ export const editUser = (id, user) => dispatch => {
     })
 }
 
-export const fetchGuests = () => dispatch => {
+export const fetchGuests = id => dispatch => {
   dispatch({ type: FETCHING })
   axios
-    .get(`${api}/guest`)
+    .get(`${api}/user/guests/${id}`)
+
     .then(res => {
       dispatch({
         type: GET_GUESTS,
-        paylaod: res.data,
+        payload: res.data,
       })
     })
     .catch(err => {
@@ -150,11 +151,10 @@ export const fetchGuest = id => dispatch => {
     })
 }
 
-export const editGuest = (id, guest) => dispatch => {
-  dispatch({ type: UPDATING })
+export const addGuest = (userId, guest) => dispatch => {
   axios
-    .put(`${api}/guest/${id}`, guest)
-    .then(() => fetchGuest(id)(dispatch))
+    .post(`${api}/guest`, guest)
+    .then(() => fetchGuests(userId)(dispatch))
     .catch(err => {
       dispatch({
         type: ERROR,
@@ -163,11 +163,24 @@ export const editGuest = (id, guest) => dispatch => {
     })
 }
 
-export const deleteGuest = id => dispatch => {
+export const editGuest = (userId, id, guest) => dispatch => {
+  dispatch({ type: UPDATING })
+  axios
+    .put(`${api}/guest/${id}`, guest)
+    .then(() => fetchGuests(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const deleteGuest = (userId, id) => dispatch => {
   dispatch({ type: DELETE })
   axios
     .delete(`${api}/guest/${id}`)
-    .then(() => fetchGuests()(dispatch))
+    .then(() => fetchGuests(userId)(dispatch))
     .catch(err => {
       dispatch({
         type: ERROR,
