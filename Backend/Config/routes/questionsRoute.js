@@ -1,10 +1,10 @@
 const helper = require('../helpers/questionsDB')
 
 module.exports = server => {
-  server.get('/users/:id/questions', questionsById)
+  // server.get('/users/:id/questions', questionsById)
   server.get('/:id/questions', getAllUserQuestions)
-  server.post('/users/:user/addquestion', addNewQuestion)
-  server.put('/users/:questionID')
+  server.post('/:user/addquestion', addNewQuestion)
+  server.put('/update-question/:user/:questionId', editQuestion)
 }
 
 getAllUserQuestions = (req, res) => {
@@ -18,44 +18,13 @@ getAllUserQuestions = (req, res) => {
       res.status(500).send({ error: err })
     })
 }
-//NEED TO FIGURE OUT THE PARAM SETTINGS FOR THE USER AND QUESTION ID
-questionsById = (req, res) => {
-  const {id} = req.params
-  console.log('test teste stes')
-  helper
-    .questionsWAnswersByUserId(id)
-    .then(qs => {
-      console.log(qs)
-      qs.forEach(column => {
-        console.log(column)
-        console.log('questionId:',column.rsvpQuestions_id )
-        console.log('answerBody:',column.answerBody)
-        let removeRepeat = [...new Set(column.rsvpQuestions_id)]
-        console.log('filtered question ids:', removeRepeat)
-        let answerObject = {
-          answerBody: 'blabla',
-          guestId: 'id'
-        }
-        
-        const returnObj = {
-          userId: qs.users_id,
-          questionId: qs.rsvpQuestions_id,
-          questionBody: qs.Question_body,
-          answers: {
-            answersArr
-          }
-        }
-      })
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(500).send({ error: err })
-    })
-}
+
 
 addNewQuestion = (req, res) => {
   const newQ = req.body
   const { user } = req.params
+  newQ.users_id = user
+  console.log(newQ)
   helper
     .addQuestion(newQ)
     .then(id => {
@@ -64,14 +33,16 @@ addNewQuestion = (req, res) => {
     .catch(err => {
       res.status(500).send({ error: err })
     })
-}
+  }
 
 editQuestion = (res, req) => {
   const question = req.body
-  const { questionID } = req.params
+  const { user, questionId } = req.params
+  question.users_id = user
+  console.log(req.params)
   // need to check for ID and return 404 if false
   helper
-    .updateQuestion(id, questionID)
+    .updateQuestion(questionId, question)
     .then(number => {
       res.status(202).json({ message: 'Question Updated' })
     })
