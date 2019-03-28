@@ -1,10 +1,12 @@
 const helper = require('../helpers/questionsDB')
+const db = require('../dbConfig')
 
 module.exports = server => {
   // server.get('/users/:id/questions', questionsById)
   server.get('/:id/questions', getAllUserQuestions)
   server.post('/:user/addquestion', addNewQuestion)
   server.put('/update-question/:user/:questionId', editQuestion)
+  server.get('/users/:id/questions', questionsByUId)
 }
 
 getAllUserQuestions = (req, res) => {
@@ -69,4 +71,31 @@ removeQuestion = (req, body) => {
         error: err,
       })
     })
+  }
+
+questionsByUId = (req, res)=>{
+  const { id } = req.params
+  db('users').where('id', id).first().then(user=>{
+    // res.send('stuff')
+    db('rsvpQuestions').where('users_id', id)
+      .then(qsReturned=>{
+        let allQs=[]
+        qsReturned.forEach(obj=>{
+          let newObj ={
+            questionId:obj.id,
+            question: obj.Question_body
+          }
+          allQs.push(newObj)
+        })
+        let anotherObj={
+          username: user.username,
+          user_id: user.id,
+          questions: allQs
+        }
+        
+        res.json(anotherObj)
+      })
+  }).catch(err=>{
+    res.status(500).send({error: 'Internal server error'})
+  })
 }
