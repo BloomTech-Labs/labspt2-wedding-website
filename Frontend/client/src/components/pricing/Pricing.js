@@ -1,51 +1,55 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
-const pricing = {
-    display: 'flex',
-    flexDirection: 'column',
-    margin: '0 auto'
+const Price = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+`;
 
-}
+const Box = styled.div`
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #000000;
+    width: 300px;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+`;
 
-const box = {
-    display: 'flex',
-    flexDirection: 'row',
-    border: '2px solid #000000',
-    width: '100%',
-    height: '50%'
-}
+const BoxLI = styled.li`
+    list-style-type: none;
+    margin: 5px 0;
+`;
 
-const boxLi = {
-    listStyleType: 'none',
-    margin: '5px 0'
-}
+const PricingLogo = styled.h1`
+    text-align: center;
+`;
 
-const pricingLogo = {
-    textAlign: 'center'
-}
+const BoxList = styled.ul`
+    display: flex;
+    flex-direction: column;
+`;
 
-const boxList = {
-    display: 'flex',
-    flexDirection: 'column',
-}
 
 export default class Pricing extends Component {
     render() {
         return (
-             <div style={pricing}>
-                 <h1 style={pricingLogo}>Pricing</h1>
+             <Price>
+                 <PricingLogo>Pricing</PricingLogo>
                  <hr />
-                 <div style={box}>
-                    <ul style={boxList}>
-                        <li style={boxLi}>Planning Dashboard</li>
-                        <li style={boxLi}>Digital RSVPs</li>
-                        <li style={boxLi}>Free Website Hosting</li>
-                        <li style={boxLi}>Wedding Website</li>
-                    </ul>
-                 </div>
+                 <Box>
+                    <BoxList>
+                        <BoxLI>Planning Dashboard</BoxLI>
+                        <BoxLI>Digital RSVPs</BoxLI>
+                        <BoxLI>Free Website Hosting</BoxLI>
+                        <BoxLI>Wedding Website</BoxLI>
+                    </BoxList>
+                 </Box>
                  <hr />
                  <h2>$0</h2>
-             </div>
+             </Price>
         );
     }
 }

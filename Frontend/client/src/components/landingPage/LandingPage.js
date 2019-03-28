@@ -5,8 +5,25 @@ import {
   Route, Link
 } from 'react-router-dom'
 
+import styled from 'styled-components'
+
 import Login from './login';
 import DemoCarousel from "./Carousel";
+import SideNav from '../sidenav/sidenav'
+
+const LPStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (max-width: 1024) {
+    width: 1000px;
+    margin: 0;
+  }
+`;
 
 const lpStyle = {
   display: 'flex',
@@ -34,11 +51,12 @@ export default class LandingPage extends Component {
     return (
         <Router>
           <div style={lpStyle}>
-            <Route exact path="/" component={DemoCarousel}></Route>
+          <Route path='/' component={SideNav}/>
+            {/* <Route exact path="/" component={DemoCarousel}></Route>
             <div style={buttonDiv}>
               <Link to="/login" component={Login}>Get Started</Link>
             </div>
-            <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/login" component={Login}></Route> */}
           </div>
         </Router>
     )
