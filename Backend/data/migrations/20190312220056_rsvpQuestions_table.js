@@ -12,6 +12,7 @@ exports.up = function(knex, Promise) {
       .foreign('guestList_id')
       .references('id')
       .on('guestList')
+      
   })
 }
 

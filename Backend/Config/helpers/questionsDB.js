@@ -17,13 +17,14 @@ module.exports = {
   },
 
   addQuestion: Question => {
-    return db('rsvpQuestions').leftJoin('users', 'users_id', 'users.id')
+    return db('rsvpQuestions')
+    .insert(Question)
   },
 
-  updateQuestion: (id, answer) => {
+  updateQuestion: (id, updated) => {
     return db('rsvpQuestions')
       .where('id', id)
-      .update(answer)
+      .update(updated)
   },
 
   deleteQuestion: id => {

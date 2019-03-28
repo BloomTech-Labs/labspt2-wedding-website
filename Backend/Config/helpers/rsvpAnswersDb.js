@@ -1,17 +1,15 @@
 const db = require('../dbConfig')
 
 module.exports = {
-  rsvpAnswers: () => {
-    return db(rsvpAnswers)
-  },
+
+rsvpAnswers: () => {
+    return db("rsvpAnswers").leftJoin('rsvpQuestions', 'rsvpAnswers.rsvpQuestions.id', 'rsvpQuestions.id')
+
+},
 
   rsvpAnswersById: id => {
-    if (id) {
-      return db('rsvpAnswers')
-        .where('id', id)
-        .first()
-    }
-    return db('rsvpAnswers')
+    return db("rsvpQuestions")
+    .where("id", id).first()
   },
 
   addAnswer: answer => {
@@ -29,4 +27,5 @@ module.exports = {
       .where('id', id)
       .del()
   },
+
 }
