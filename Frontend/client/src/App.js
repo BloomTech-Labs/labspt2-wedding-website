@@ -12,6 +12,7 @@ import RSVP from "./components/rsvp/RSVP";
 import Billing from "./components/billing/Billing";
 import Settings from "./components/settings/Settings";
 import DashBoard from "./components/clientDashboard/Dashboard";
+import InstaClone from "./components/instaClone/InstaClone";
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
           <Route path="/billing" component={Billing} />
           <Route path="/settings" component={Settings} />
           <Route path="/dashboard" component={DashBoard} />
+          <Route path="/pic_feed" component={InstaClone} />
         </Switch>
       </Router>
     );
