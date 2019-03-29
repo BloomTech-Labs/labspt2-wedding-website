@@ -9,7 +9,7 @@ import styled from 'styled-components'
 
 import Login from './login';
 import DemoCarousel from "./Carousel";
-import SideNav from '../sidenav/sidenav'
+// import SideNav from '../sidenav/sidenav'
 
 const LPStyle = styled.div`
   display: flex;
@@ -25,39 +25,31 @@ const LPStyle = styled.div`
   }
 `;
 
-const lpStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  maxWidth: '1300px',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-}
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+  height: 100px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  width: 200px;
+`;
 
-const buttonDiv = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  marginBottom: '25px',
-  height: '100px',
-  boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-  width: '26%'
-}
 
 export default class LandingPage extends Component {
   render(){
     return (
         <Router>
-          <div style={lpStyle}>
-          <Route path='/' component={SideNav}/>
-            {/* <Route exact path="/" component={DemoCarousel}></Route>
-            <div style={buttonDiv}>
+          <LPStyle>
+          {/* <Route path='/' component={SideNav}/> */}
+            <Route exact path="/" component={DemoCarousel}></Route>
+            <ButtonDiv>
               <Link to="/login" component={Login}>Get Started</Link>
-            </div>
-            <Route exact path="/login" component={Login}></Route> */}
-          </div>
+            </ButtonDiv>
+            <Route exact path="/login" component={Login}></Route>
+          </LPStyle>
         </Router>
     )
   }
