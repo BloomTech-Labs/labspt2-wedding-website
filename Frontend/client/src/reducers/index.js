@@ -46,13 +46,21 @@ export default (state = initialState, action) => {
       return { ...state, authProcess: false, err: action.payload }
     case SOCIAL_USER:
       return { ...state, authProcess: true }
+    case GET_USER:
+      return { ...state, userInfo: action.payload, fetching: false }
     case OAUTH_USER:
-      return { ...state, authProcess: false, userInfo: action.payload }
+      return {
+        ...state,
+        authProcess: false,
+        userInfo: action.payload,
+        fetching: false,
+      }
     case SET_USER:
       return {
         ...state,
         authProcess: false,
         userInfo: action.payload,
+        fetching: false,
       }
     case LOGOUT:
       return { ...state, userInfo: null }

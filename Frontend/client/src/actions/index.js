@@ -46,16 +46,22 @@ export const setUser = tokenInfo => dispatch => {
   if (tokenInfo.username) {
     // if there is a username in the token it means that they have looged in before and gone through account setup to choose a username + other stuff
     console.log('recurrent user')
+    console.log(tokenInfo)
     dispatch({
       type: OAUTH_USER,
       payload: tokenInfo,
     })
   } else {
     // if there is no username in the token it means that it is the first time loggin in w oauth they still haven't chosen an username and they can be sent to the acount setup
+    const user = {
+      id: tokenInfo.id,
+      email: tokenInfo.email,
+      isPremium: tokenInfo.isPremium,
+    }
     console.log('new user')
     dispatch({
       type: SET_USER,
-      payload: tokenInfo,
+      payload: user,
     })
   }
 }
@@ -104,6 +110,8 @@ export const fetchUser = id => dispatch => {
 
 export const editUser = (id, user) => dispatch => {
   dispatch({ type: UPDATING })
+  console.log('from edit user', user)
+  console.log('from edit user id', id)
   axios
     .put(`${api}/users/${id}`, user)
     .then(() => fetchUser(id)(dispatch))

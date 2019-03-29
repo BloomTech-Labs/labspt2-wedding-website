@@ -18,6 +18,7 @@ import RSVP from './components/rsvp/rsvp'
 import Billing from './components/pages/billing'
 import Settings from './components/settings/Settings'
 import GuestList from './components/guest/guestList'
+import UserSetup from './components/landingPage/userSetup'
 
 const row = {
   display: 'flex',
@@ -72,11 +73,6 @@ class App extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   const userId = this.props.userInfo.userId
-  //   this.props.fetchGuests(userId)
-  // }
-
   render() {
     if (this.props.userInfo) {
       console.log('userInfo', this.props.userInfo)
@@ -84,7 +80,7 @@ class App extends Component {
         // send user to account setup page
         return (
           <div>
-            <h1>User Setup Page</h1>
+            <UserSetup />
           </div>
         )
       } else {
