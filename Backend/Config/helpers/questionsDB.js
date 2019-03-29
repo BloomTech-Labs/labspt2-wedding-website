@@ -28,13 +28,12 @@ module.exports = {
   },
 
   deleteQuestion: id => {
-    db('rsvpQuestions')
+    return  db('rsvpQuestions')
       .where('id', id)
       .del()
   },
 
   userById: id => {
-    db('users').where('id', id).first()
-    console.log('FIRED')
+    return db('users').where('id', id).first()
   }
 }
