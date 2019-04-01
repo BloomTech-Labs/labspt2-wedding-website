@@ -66,12 +66,19 @@ class Settings extends Component {
       weddingLocation: '',
       weddingDate: new Date(),
     }
-    this.handleChange = this.handleChange.bind(this)
+    this.hadleChangeDate = this.hadleChangeDate.bind(this)
+  }
+
+  inputHandler = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+    console.log('input handled')
   }
 
   hadleChangeDate = date => {
     this.setState({
-      [e.target.name]: e.target.value,
+      weddingDate: date,
     })
   }
 
@@ -79,6 +86,7 @@ class Settings extends Component {
     e.preventDefault()
     const userId = this.props.userInfo.id
     this.props.editUser(userId, this.state)
+    // needs to wait until loading = false to push to dashboard
   }
 
   render() {
