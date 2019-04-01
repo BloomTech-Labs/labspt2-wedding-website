@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { editUser } from '../../actions'
 import { withRouter } from 'react-router'
+import moment from 'moment'
+
+import DatePicker from 'react-datepicker'
 
 class UserSetup extends Component {
   constructor(props) {
@@ -10,6 +13,9 @@ class UserSetup extends Component {
       username: '',
       weddingParty: '',
       venueLocation: '',
+      partnerName1: '',
+      partnerName2: '',
+      weddingDate: new Date(),
     }
   }
   // user react-google-places-suggest for venue location
@@ -19,6 +25,12 @@ class UserSetup extends Component {
       [e.target.name]: e.target.value,
     })
     console.log('input handled')
+  }
+
+  handleChangeDate = date => {
+    this.setState({
+      weddingDate: date,
+    })
   }
 
   handleSubmit = e => {
@@ -42,6 +54,27 @@ class UserSetup extends Component {
             name='username'
             value={this.state.username}
             onChange={this.inputHandler}
+          />
+          <label htmlFor=''>Partner 1</label>
+          <input
+            type='text'
+            placeholder='partner'
+            name='partnerName1'
+            value={this.state.partnerName1}
+            onChange={this.inputHandler}
+          />
+          <label htmlFor=''>Partner 2</label>
+          <input
+            type='text'
+            placeholder='partner'
+            name='partnerName2'
+            value={this.state.partnerName2}
+            onChange={this.inputHandler}
+          />
+          <label for='calander'>Wedding Date</label>
+          <DatePicker
+            selected={this.state.weddingDate}
+            onChange={this.handleChangeDate} //only when value has changed
           />
           <label htmlFor=''>Wedding Party</label>
           <input

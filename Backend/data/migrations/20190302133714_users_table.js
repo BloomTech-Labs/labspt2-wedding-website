@@ -15,7 +15,9 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .unique()
     tbl.string('username').unique()
-    tbl.string('socialName')
+    tbl.string('partnerName1')
+    tbl.string('partnerName2')
+    tbl.date('weddingDate')
     tbl.string('password')
     tbl.string('weddingParty')
     //feel that venue location should be an object to separate sections of the address

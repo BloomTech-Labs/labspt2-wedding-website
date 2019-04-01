@@ -69,7 +69,7 @@ server.post(
     const user = req.user
     console.log(user)
     const userInfo = {
-      userId: user.id,
+      id: user.id,
       username: user.username,
       email: user.email,
       isPremium: user.isPremium,

@@ -28,7 +28,7 @@ class Guest extends React.Component {
 
   deleteHandler = e => {
     e.preventDefault()
-    this.props.deleteGuest(this.props.userInfo.userId, this.props.guestInfo.id)
+    this.props.deleteGuest(this.props.userInfo.id, this.props.guestInfo.id)
   }
 
   updateHandler = () => {
@@ -40,7 +40,7 @@ class Guest extends React.Component {
   submitUpdateHandler = e => {
     e.preventDefault()
     this.props.editGuest(
-      this.props.userInfo.userId,
+      this.props.userInfo.id,
       this.props.guestInfo.id,
       this.state.guest
     )

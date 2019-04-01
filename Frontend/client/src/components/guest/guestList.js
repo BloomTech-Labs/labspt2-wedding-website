@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Guest from './guest'
-import { fetchGuests, addGuest } from '../../actions/index'
+import { fetchGuests, addGuest } from '../../actions/'
 
 class GuestList extends Component {
   constructor(props) {
@@ -15,7 +15,8 @@ class GuestList extends Component {
   }
 
   componentDidMount() {
-    const userId = this.props.userInfo.userId
+    const userId = this.props.userInfo.id
+    console.log('fetch guests id', userId)
     this.props.fetchGuests(userId)
   }
 
@@ -28,7 +29,8 @@ class GuestList extends Component {
 
   addGuestHandler = e => {
     e.preventDefault()
-    const userId = this.props.userInfo.userId
+    const userId = this.props.userInfo.id
+    console.log('add guest id', userId)
     this.props.addGuest(userId, this.state)
     this.setState({
       firstName: '',

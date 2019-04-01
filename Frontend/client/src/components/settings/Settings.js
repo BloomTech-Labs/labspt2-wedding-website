@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from 'react-datepicker'
+
+import { connect } from 'react-redux'
+import { editUser } from '../../actions'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -52,19 +55,30 @@ const buttonDiv = {
   width: '26%',
 }
 
-export default class Settings extends Component {
+class Settings extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      startDate: new Date(),
+      email: '',
+      password: '',
+      partner1: '',
+      partner2: '',
+      weddingLocation: '',
+      weddingDate: new Date(),
     }
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(date) {
+  hadleChangeDate = date => {
     this.setState({
-      startDate: date,
+      [e.target.name]: e.target.value,
     })
+  }
+
+  handleSave = e => {
+    e.preventDefault()
+    const userId = this.props.userInfo.id
+    this.props.editUser(userId, this.state)
   }
 
   render() {
@@ -110,7 +124,7 @@ export default class Settings extends Component {
               <input type='password' name='new' placeholder='********' />
             </div>
             <div style={buttonDiv}>
-              <Link to='/'>Save</Link>
+              <button onClick={this.handleSave}>Save</button>
             </div>
           </div>
           <div style={settingsBox}>
@@ -142,9 +156,9 @@ export default class Settings extends Component {
               }}>
               <label for='calander'>Wedding Date</label>
               <DatePicker
-                selected={this.state.date}
+                selected={this.state.weddingDate}
                 onSelect={this.handleSelect} //when day is clicked
-                onChange={this.handleChange} //only when value has changed
+                onChange={this.hadleChangeDate} //only when value has changed
               />
             </div>
             <div style={rightBox}>
@@ -163,3 +177,13 @@ export default class Settings extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  loading: state.fetching,
+  userInfo: state.userInfo,
+})
+
+export default connect(
+  mapStateToProps,
+  { editUser }
+)(Settings)
