@@ -1,4 +1,5 @@
 const helper = require('../helpers/userDb')
+const bcrypt = require('bcrypt')
 
 module.exports = server => {
   server.get('/users', allUsers),
@@ -43,6 +44,12 @@ userById = (req, res) => {
 editUser = (req, res) => {
   const { id } = req.params
   const user = req.body
+  let password = user.password
+  console.log('no hash :', user)
+  if (password) {
+    user.password = bcrypt.hashSync(password, 12)
+    console.log('w/hash :', user)
+  }
 
   helper
     .updateUser(id, user)
