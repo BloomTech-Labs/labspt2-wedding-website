@@ -9,8 +9,8 @@ module.exports = server => {
 
 addImage = (req, res) => {
     const userId = req.params.id;
-    const content = req.body
     singleUpload(req, res, err => {
+        const {name, caption} = req.body
         if (err) {
             res.status(422).send({
                 errors: [{
@@ -22,14 +22,14 @@ addImage = (req, res) => {
         const image = req.file.location;
         const newImage = {
             imgUrl: image,
-            name: content.name,
+            name,
             user_id: userId,
-            caption: content.caption
+            caption
         }
-        console.log(newImage)
         db('livePhotos').insert(newImage).then(id => {
             res.status(201).send(newImage)
         }).catch(err => {
+            console.log(err)
             res.status(500).send({
                 error: err
             })
