@@ -3,12 +3,12 @@ require('dotenv').config()
 const passport = require('passport')
 const auth = require('../Auth/passportConfig')
 const jwtHelper = require('../Auth/jwt/jwtHelper')
-const { Model } = require('objection')
-const knex = require('knex')
+// const { Model } = require('objection')
+// const knex = require('knex')
 
-const KnexConfig = require('../knexfile')
+// const KnexConfig = require('../knexfile')
 
-Model.knex(knex(KnexConfig.development))
+// Model.knex(knex(KnexConfig.development))
 
 const express = require('express')
 const cors = require('cors')
@@ -127,23 +127,23 @@ module.exports = server
 //   })
 // )
 
-server.get(
-  '/auth/facebook/callback',
-  passport.authenticate('facebook', {
-    failureRedirect: '/auth/fail',
-    session: false,
-  }),
-  (req, res) => {
-    const user = req.user
-    const tokenUser = {
-      userID: user.id,
-      email: user.email,
-    }
-    const token = jwtHelper.generateToken(tokenUser)
-    console.log('GOOGLE Token:', token)
-    res.status(201).json({ token })
-  }
-)
+// server.get(
+//   '/auth/facebook/callback',
+//   passport.authenticate('facebook', {
+//     failureRedirect: '/auth/fail',
+//     session: false,
+//   }),
+//   (req, res) => {
+//     const user = req.user
+//     const tokenUser = {
+//       userID: user.id,
+//       email: user.email,
+//     }
+//     const token = jwtHelper.generateToken(tokenUser)
+//     console.log('GOOGLE Token:', token)
+//     res.status(201).json({ token })
+//   }
+// )
 
 // ----- twitter uses oauth1.0a and requires an instance of expres-session but we are working with jwt
 
