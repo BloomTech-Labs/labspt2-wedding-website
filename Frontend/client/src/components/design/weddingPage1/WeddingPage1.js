@@ -13,6 +13,7 @@ import bells from "../media/bells.png";
 import floral from "../media/floral.png";
 
 const WP1Body = styled.div`
+  // start of desktop styles 
   margin: 0 auto;
   background-image: url(${background});
   width: 100%;
@@ -22,6 +23,21 @@ const WP1Body = styled.div`
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+
+  @media screen and (max-width: 991px) {
+    /* start of large tablet styles */
+    max-width: 991px;
+    }
+
+  @media screen and (max-width: 767px) {
+    /* start of medium tablet styles */
+    max-width: 767px;
+    }  
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    max-width: 479px;  
+    }
 `;
 
 const BellWrapper = styled.div`
@@ -124,6 +140,18 @@ const StoryWrapper = styled.div`
   border-bottom: 1px solid black;
   background: rgb(157, 242, 188);
   opacity: 0.8;
+
+  @media screen and (max-width: 767px) {
+    /* start of medium tablet styles */
+    max-width: 767px;
+    flex-direction: column;
+    align-items: center;
+    }  
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    max-width: 479px;  
+    }
 `;
 
 const Story = styled.h3`
