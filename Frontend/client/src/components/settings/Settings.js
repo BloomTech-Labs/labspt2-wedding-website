@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from 'react-datepicker'
@@ -59,19 +59,26 @@ class Settings extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: '',
-      password: '',
-      partner1: '',
-      partner2: '',
-      weddingLocation: '',
-      weddingDate: new Date(),
+      userInfo: {
+        email: '',
+        password: '',
+        partnerName1: '',
+        partnerName2: '',
+        venueLocation: '',
+        weddingDate: new Date(),
+      },
+      currentPassword: '',
     }
     this.hadleChangeDate = this.hadleChangeDate.bind(this)
   }
 
   inputHandler = e => {
+    const { userInfo } = { ...this.state }
+    const currentState = userInfo
+    const { name, value } = e.target
+    currentState[name] = value
     this.setState({
-      [e.target.name]: e.target.value,
+      user: value,
     })
     console.log('input handled')
   }
@@ -85,7 +92,8 @@ class Settings extends Component {
   handleSave = e => {
     e.preventDefault()
     const userId = this.props.userInfo.id
-    this.props.editUser(userId, this.state)
+    this.props.editUser(userId, this.state.userInfo)
+    this.props.history.push('/')
     // needs to wait until loading = false to push to dashboard
   }
 
@@ -99,17 +107,9 @@ class Settings extends Component {
               <input
                 type='email'
                 name='email'
-                value='email'
+                value={this.state.userInfo.email}
                 placeholder='user@email.com'
-              />
-            </div>
-            <div style={box}>
-              <label htmlFor='phone'>Phone:</label>
-              <input
-                type='text'
-                name='Phone'
-                value='Phone'
-                placeholder='###-###-####'
+                onChange={this.inputHandler}
               />
             </div>
             <div
@@ -125,11 +125,23 @@ class Settings extends Component {
             </div>
             <div style={box}>
               <label htmlFor='old'>Old Password:</label>
-              <input type='password' name='old' placeholder='********' />
+              <input
+                type='password'
+                name='old'
+                placeholder='********'
+                value={this.state.currentPassword}
+                onChange={this.inputHandler}
+              />
             </div>
             <div style={box}>
               <label htmlFor='new'>New Password:</label>
-              <input type='password' name='new' placeholder='********' />
+              <input
+                type='password'
+                name='new'
+                value={this.state.userInfo.password}
+                placeholder='********'
+                onChange={this.inputHandler}
+              />
             </div>
             <div style={buttonDiv}>
               <button onClick={this.handleSave}>Save</button>
@@ -138,9 +150,11 @@ class Settings extends Component {
           <div style={settingsBox}>
             <div style={rightBox}>
               <input
-                type='partner'
-                name='partner'
+                type='text'
+                name='partnerName1'
                 placeholder='Partner Name'
+                value={this.state.userInfo.partnerName1}
+                onChange={this.inputHandler}
                 style={{ borderBottom: '1px solid black', width: '90%' }}
               />{' '}
               <FaEdit />
@@ -148,9 +162,11 @@ class Settings extends Component {
             </div>
             <div style={rightBox}>
               <input
-                type='partner'
-                name='partner'
+                type='text'
+                name='partnerName2'
+                value={this.state.userInfo.partnerName2}
                 placeholder='Partner Name'
+                onChange={this.inputHandler}
                 style={{ borderBottom: '1px solid black', width: '90%' }}
               />{' '}
               <FaEdit />
@@ -164,15 +180,16 @@ class Settings extends Component {
               }}>
               <label for='calander'>Wedding Date</label>
               <DatePicker
-                selected={this.state.weddingDate}
-                onSelect={this.handleSelect} //when day is clicked
-                onChange={this.hadleChangeDate} //only when value has changed
+                selected={this.state.userInfo.weddingDate}
+                onChange={this.handleChangeDate} //only when value has changed
               />
             </div>
             <div style={rightBox}>
               <input
-                type='wedding'
-                name='wedding'
+                type='text'
+                name='venueLocation'
+                value={this.state.userInfo.venueLocation}
+                onChange={this.inputHandler}
                 placeholder='Wedding Location'
                 style={{ borderBottom: '1px solid black', width: '90%' }}
               />
@@ -191,7 +208,9 @@ const mapStateToProps = state => ({
   userInfo: state.userInfo,
 })
 
-export default connect(
-  mapStateToProps,
-  { editUser }
-)(Settings)
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { editUser }
+  )(Settings)
+)
