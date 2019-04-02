@@ -2,7 +2,6 @@ const helper = require('../helpers/questionsDB')
 const db = require('../dbConfig')
 
 module.exports = server => {
-  // server.get('/users/:id/questions', questionsById)
   server.get('/:id/questions', getAllUserQuestions)
   server.post('/:user/addquestion', addNewQuestion)
   server.put('/update-question/:user/:questionId', editQuestion)
