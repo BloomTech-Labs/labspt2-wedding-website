@@ -10,7 +10,7 @@ class GuestList extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      userId: this.props.userInfo.userId,
+      userId: this.props.userInfo.id,
     }
   }
 

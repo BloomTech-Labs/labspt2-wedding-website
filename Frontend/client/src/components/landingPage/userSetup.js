@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { editUser } from '../../actions'
 import { withRouter } from 'react-router'
-import moment from 'moment'
 
 import DatePicker from 'react-datepicker'
 

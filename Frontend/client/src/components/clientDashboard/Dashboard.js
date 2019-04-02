@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import moment from 'moment'
+
 import PieChart from 'react-minimal-pie-chart'
 
 import styled from 'styled-components'
@@ -121,6 +124,22 @@ const Pie = styled.div`
 
 class Dashboard extends Component {
   render() {
+    let rsvpYes = 0
+    let rsvpNo = 0
+    let rsvpMaybe = 0
+    let rsvpNoA = 0
+    this.props.guests.map(guest => {
+      if (guest.rsvp || guest.rsvpMaybe) {
+        guest.rsvp === 1 ? rsvpYes++ : rsvpNo++
+        rsvpMaybe++
+      } else {
+        rsvpNoA++
+      }
+    })
+    console.log('rsvpYes :', rsvpYes)
+    console.log('rsvpNo :', rsvpNo)
+    console.log('rsvpMaybe :', rsvpMaybe)
+    console.log('rsvpNoA :', rsvpNoA)
     return (
       <DashContainer>
         <HeadContainer>
@@ -130,14 +149,17 @@ class Dashboard extends Component {
                 <Button>Change Design</Button>
               </Link>
               {/* Will need to write code that auto populates name and date for wedding. */}
-              <H1>Bri &amp; Ryan's Wedding</H1>
-              <H1>June 14, 2019</H1>
+              <H1>
+                {this.props.userInfo.partnerName1} &amp;{' '}
+                {this.props.userInfo.partnerName2}'s Wedding
+              </H1>
+              <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
             </NameDate>
             <Location>
               {/* This will need to share the link to the personal wedding web page */}
               <ShareButton>Share</ShareButton>
               {/* Will need to populate info from server */}
-              <H2>Wedding Reception Hall San Diego, Ca</H2>
+              <H2>{this.props.userInfo.venueLocation}</H2>
             </Location>
           </Head>
 
@@ -158,12 +180,21 @@ class Dashboard extends Component {
             <Pie>
               <PieChart
                 data={[
-                  { title: 'One', value: 10, color: '#E38627' },
-                  { title: 'Two', value: 15, color: '#C13C37' },
-                  { title: 'Three', value: 20, color: '#6A2135' },
+                  { title: 'yes', value: rsvpYes, color: '#E38627' },
+                  { title: 'no', value: rsvpNo, color: '#C13C37' },
+                  { title: 'maybe', value: rsvpMaybe, color: '#6A2135' },
+                  { title: 'maybe', value: rsvpNoA, color: '#668B8B' },
                 ]}
+                label
+                labelStyle={{
+                  fontSize: '12px',
+                  fontFamily: 'sans-serif',
+                }}
+                radius={42}
+                labelPosition={120}
+                animate
+                reveal
               />
-              ;
             </Pie>
             <Link to='RSVP'>
               <Button>Edit Questions</Button>
@@ -180,4 +211,12 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  guests: state.guests,
+})
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Dashboard)

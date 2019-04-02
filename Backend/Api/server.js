@@ -108,10 +108,16 @@ server.get(
       userId: user.id,
       username: user.username,
       email: user.email,
+      partnerName1: user.partnerName1,
+      partnerName2: user.partnerName1,
+      weddingDate: user.weddingDate,
+      weddingParty: user.weddingParty,
+      venueLocation: user.venueLocation,
       isPremium: user.isPremium,
     }
     const token = jwtHelper.generateToken(tokenUser)
     // redirects to account set up
+    console.log('token :', token)
     res.redirect('http://localhost:3000?token=' + token)
   }
 )

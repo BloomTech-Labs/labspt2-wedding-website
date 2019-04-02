@@ -11,7 +11,6 @@ module.exports = {
   },
 
   guestsByUserId: id => {
-    console.log(id)
     return db('guestList')
       .select('*')
       .from('guestList')
