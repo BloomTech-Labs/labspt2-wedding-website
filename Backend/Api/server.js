@@ -1,5 +1,5 @@
 require('dotenv').config()
-const request = require('request')
+// const request = require('request')
 const passport = require('passport')
 const auth = require('../Auth/passportConfig')
 const jwtHelper = require('../Auth/jwt/jwtHelper')
@@ -21,7 +21,7 @@ const configRsvpRoutes = require('../Config/routes/rsvpRoute')
 const configLivePhotoRoute = require('../Config/routes/photoUploadRoute')
 const configQuestionRoutes = require('../Config/routes/questionsRoute')
 const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
-
+const configAuthRoutes = require('../Config/routes/authRoute')
 
 const server = express()
 
@@ -40,6 +40,7 @@ configRsvpRoutes(server)
 configLivePhotoRoute(server)
 configQuestionRoutes(server)
 configRsvpAnswersRoutes(server)
+configAuthRoutes(server)
 
 
 server.get('/', (req, res) => {
@@ -55,76 +56,76 @@ module.exports = server
 
 // auth endpoints
 
-server.get('/auth', (req, res) => {
-  res.json({
-    status: 'auth home',
-  })
-})
+// server.get('/auth', (req, res) => {
+//   res.json({
+//     status: 'auth home',
+//   })
+// })
 
-server.get('/auth/fail', (req, res) => {
-  res.status(200).json({
-    message: 'something went wrong',
-  })
-})
+// server.get('/auth/fail', (req, res) => {
+//   res.status(200).json({
+//     message: 'something went wrong',
+//   })
+// })
 
-server.post(
-  '/auth/register-login',
-  passport.authenticate('json', { session: false }),
-  (req, res) => {
-    const user = req.user
-    const tokenUser = {
-      userID: user.id,
-      email: user.email,
-    }
-    if (user.id) {
-      const token = jwtHelper.generateToken(tokenUser)
-      res.status(201).json({ token })
-    } else {
-      res.status(500).json({
-        message: `${req.user}`,
-      })
-    }
-  }
-)
+// server.post(
+//   '/auth/register-login',
+//   passport.authenticate('json', { session: false }),
+//   (req, res) => {
+//     const user = req.user
+//     const tokenUser = {
+//       userID: user.id,
+//       email: user.email,
+//     }
+//     if (user.id) {
+//       const token = jwtHelper.generateToken(tokenUser)
+//       res.status(201).json({ token })
+//     } else {
+//       res.status(500).json({
+//         message: `${req.user}`,
+//       })
+//     }
+//   }
+// )
 
 //google
 
-server.get(
-  '/auth/google',
-  passport.authenticate('google', {
-    session: false,
-    scope: ['profile', 'email'],
-  })
-)
+// server.get(
+//   '/auth/google',
+//   passport.authenticate('google', {
+//     session: false,
+//     scope: ['profile', 'email'],
+//   })
+// )
 
-server.get(
-  '/auth/google/callback',
-  passport.authenticate('google', {
-    failureRedirect: '/auth/fail',
-    session: false,
-  }),
-  (req, res) => {
-    const user = req.user
-    console.log('google user:', user)
-    const tokenUser = {
-      userID: user.id,
-      email: user.email,
-    }
-    const token = jwtHelper.generateToken(tokenUser)
-    console.log('GOOGLE Token:', token)
-    res.status(201).json({ token })
-  }
-)
+// server.get(
+//   '/auth/google/callback',
+//   passport.authenticate('google', {
+//     failureRedirect: '/auth/fail',
+//     session: false,
+//   }),
+//   (req, res) => {
+//     const user = req.user
+//     console.log('google user:', user)
+//     const tokenUser = {
+//       userID: user.id,
+//       email: user.email,
+//     }
+//     const token = jwtHelper.generateToken(tokenUser)
+//     console.log('GOOGLE Token:', token)
+//     res.status(201).json({ token })
+//   }
+// )
 
 //facebook
 
-server.get(
-  '/auth/facebook',
-  passport.authenticate('facebook', {
-    session: false,
-    scope: ['email'],
-  })
-)
+// server.get(
+//   '/auth/facebook',
+//   passport.authenticate('facebook', {
+//     session: false,
+//     scope: ['email'],
+//   })
+// )
 
 server.get(
   '/auth/facebook/callback',
