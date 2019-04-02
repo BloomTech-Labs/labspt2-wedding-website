@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Textarea from 'react-textarea-autosize'
-
+import axios from 'axios'
 import styled from 'styled-components'
 
 import Spinner from '../Spinner'
@@ -21,7 +21,7 @@ const WP1Body = styled.div`
   width: 100%;
   max-width: 1080px;
   height: 232.5vh;
-  ackground-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -206,7 +206,7 @@ export default class WeddingPage2 extends Component {
     this.state = {
       value: '',
       uploading: false,
-      images: [],
+      images: '',
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -243,20 +243,31 @@ export default class WeddingPage2 extends Component {
       formData.append(i, file)
     })
 
-    fetch(`${API_URL}/image-upload`, {
-      method: 'POST',
-      body: formData,
-    })
-      .then(res => {res.json()})
+    axios
+      .post(`${API_URL}/image-upload`, formData)
       .then(images => {
-        console.log(images)
+        const image = images.data
+        console.log('image url', images.data)
         this.setState({
           uploading: false,
-          images,
+          images: image,
         })
-        console.log(images)
       })
-  }
+    }
+  
+  //   fetch(`${API_URL}/image-upload`, {
+  //     method: 'POST',
+  //     body: formData,
+  //   })
+  //     .then(res => {res.json()})
+  //     .then(images => {
+  //       console.log('images from response', images)
+  //       this.setState({
+  //         uploading: false,
+  //         images,
+  //       })
+  //     })
+  // }
 
   removeImage = id => {
     this.setState({
@@ -276,6 +287,7 @@ export default class WeddingPage2 extends Component {
           return <Spinner />
         case images.length > 0:
         console.log('imgs length',images.length)
+        console.log('img url from state', images.data)
           return <Images images={images} removeImage={this.removeImage} />
         default:
           return <Buttons onChange={this.onChange} />

@@ -33,7 +33,9 @@ server.use(
   express.json(),
   logger('dev'),
   // { origin: CLIENT_ORIGIN }
-  cors(),
+  cors({
+    CLIENT_ORIGIN
+  }),
   helmet(),
   passport.initialize(),
   formData.parse()
@@ -59,6 +61,7 @@ server.post('/image-upload', (req, res) => {
     cloudinary.v2.uploader.upload(image[0].path,(err, result) => {
       console.log('cloudinary result', result)
       const secure_url = result.secure_url
+      console.log('secure url:', secure_url)
       res.json(secure_url)
     })
   })
