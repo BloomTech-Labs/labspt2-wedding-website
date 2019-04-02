@@ -46,6 +46,15 @@ const FormTitle = styled.div`
     margin-bottom: 50px;
 `;
 
+const StyledLink = styled(Link)`
+    color: #707C8B;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.7em;
+    margin: 0 10px;
+    padding-bottom: 5px;
+`;
+
 class Login extends Component {
     render() {
         return (
@@ -59,7 +68,7 @@ class Login extends Component {
                     </PageSwitch>
 
                     <FormTitle>
-                        <Link to="/sign-in" className="FormTitle__Link">Sign In</Link> or <Link to="/" className="FormTitle__Link FormTitle__Link--Active">Sign Up</Link>
+                        <StyledLink to="/sign-in">Sign In</StyledLink> or <StyledLink to="/" className="FormTitle__Link--Active " >Sign Up</StyledLink>
                     </FormTitle>
 
                     <Route exact path="/" component={SignUp}>

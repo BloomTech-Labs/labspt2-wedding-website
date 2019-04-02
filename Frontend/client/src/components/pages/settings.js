@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
+import Button from 'react-button-component'
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from "react-datepicker";
@@ -14,60 +15,34 @@ import "react-datepicker/dist/react-datepicker.css";
 const SettingsPage = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  max-width: 1400px;
-  min-width: 1200px;
-  justify-content: space-between;
-  height: 100vh;
-  max-height: 500px;
-  margin-top: 100px;
-
-  @media screen and (max-width: 1024px) {
-    flex-direction: column;
-    width: 100%;
-  }
 `;
 
 const SettingsBox = styled.div`
+  width: 500px;
+  border: 1px solid black;
+  justify-content: left;
+
+`;
+
+const Box = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 350px;
 
-  @media screen and (max-width: 1024px) {
-    width: 100%;
-    justify-content: center;
-    max-width: 350px;
-    margin: 0;
+`;
 
-  }
- `;
+const RightBox = styled.div`
 
+`;
 
-const box = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  marginBottom: '5px',
-  marginTop: '20px',
-}
+const SpecialBox = styled.div`
 
-const rightBox = {
-  display: 'flex',
-  marginBottom: '5px',
-  marginTop: '20px',
-  width: '100%'
-}
+`;
+
+const InputBox = styled.input`
+
+`;
 
 const buttonDiv = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  marginBottom: '25px',
-  marginTop: '25px',
-  height: '50px',
-  boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-  width: '26%'
+
 }
 
 export default class Settings extends Component {
@@ -89,58 +64,56 @@ export default class Settings extends Component {
     render() {
       return (
         <Router>
-          <Page>
           <SettingsPage>
               <SettingsBox>
-                <div style={box}>
+                <Box>
                   <label htmlFor="email">Email:</label>
                   <input type="email" name="email" value="email" placeholder="user@email.com" />
-                </div>
-                <div style={box}>
+                </Box>
+                <Box>
                   <label htmlFor="phone">Phone:</label>
                   <input type="text" name="Phone" value="Phone" placeholder="###-###-####" />
-                </div>
-                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '10px'}}>
+                </Box>
+                <SpecialBox>
                   <input type="checkbox" name="emails?" value="false" />
                   <label for="checkbox">Emails?</label>
                   <input type="checkbox" name="texts?" value="false" />
                   <label for="checkbox">Texts?</label>
-                </div>
-                <div style={box}>
+                </SpecialBox>
+                <Box>
                   <label htmlFor="old">Old Password:</label>
                   <input type="password" name="old"  placeholder="********" />
-                </div>
-                <div style={box}>
+                </Box>
+                <Box>
                   <label htmlFor="new">New Password:</label>
                   <input type="password" name="new"  placeholder="********" />
-                </div>
+                </Box>
               </SettingsBox>
               <SettingsBox>
-                <div style={rightBox}>
-                  <input type="partner" name="partner" placeholder="Partner Name" style={{borderBottom: '1px solid black', width: '90%'}}/> <FaEdit /><FaTrash />
-                </div>
-                <div style={rightBox}>
-                  <input type="partner" name="partner" placeholder="Partner Name" style={{borderBottom: '1px solid black', width: '90%'}} /> <FaEdit /><FaTrash />
-                </div>
-                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '10px'}}>
+                <RightBox>
+                  <InputBox type="partner" name="partner" placeholder="Partner Name" /> <FaEdit /><FaTrash />
+                </RightBox>
+                <RightBox>
+                  <InputBox type="partner" name="partner" placeholder="Partner Name"/> <FaEdit /><FaTrash />
+                </RightBox>
+                <SpecialBox>
                   <label for="calander">Wedding Date</label>
                   <DatePicker
                     selected={this.state.date}
                     onSelect={this.handleSelect} //when day is clicked
                     onChange={this.handleChange} //only when value has changed
                   />
-                </div>
-                <div style={rightBox}>
+                </SpecialBox>
+                <RightBox>
                   <input type="wedding" name="wedding" placeholder="Wedding Location" style={{borderBottom: '1px solid black', width: '90%'}} /><FaEdit /><FaTrash />
-                </div>
+                </RightBox>
               </SettingsBox>
               <SettingsBox>
-                  <div style={buttonDiv}>
+                  <Button style={buttonDiv}>
                     <Link to="/">Save</Link>
-                  </div>
+                  </Button>
               </SettingsBox>
           </SettingsPage>
-          </Page>
         </Router>
       )
     };

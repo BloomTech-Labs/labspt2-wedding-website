@@ -36,7 +36,7 @@ const RSVPForm = styled.div`
 
 const TextBox = styled.input`
     width: 250px;
-    margin: 5px 25px;
+    margin: 10px 25px;
     height: 25px;
 `;
 
@@ -76,6 +76,26 @@ const Buttons = styled.div`
     flex-direction: column;
 `;
 
+const StyledLink = styled(Link)`
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #010101;
+    margin: 0 5px;
+    width: 200px;
+`;
+
+const buttonStyles = {
+    width: '200px', 
+    border: '1px solid black', 
+    height: '50px', 
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    marginBottom: '20px', 
+    marginLeft: 'auto', 
+    marginRight: 'auto'
+}
+
 
 export default class RSVP extends Component {
     render() {
@@ -101,24 +121,25 @@ export default class RSVP extends Component {
                     <RSVPForm>
                         <label for="rsvpForm">What is your mailing address?</label>
                         <TextBox type="text" name="address" placeholder="address" />
+                        <TextBox type="text" name="city-zip" placeholder="city, state and zip" />
                         <FinePrint>Ask once per household.</FinePrint>
                     </RSVPForm>
                     <RSVPForm>
                         <label for="rsvpForm">Are you friend or family of...?</label>
                         <RSVPArea>
                             <Radio type="radio" name="Bride"  /><label for="Bride">Bride Name</label>
-                            <Radio type="radio" name="Groom"  /><label for="Grrom">Groom Name</label>
+                            <Radio type="radio" name="Groom"  /><label for="Groom">Groom Name</label>
                             <Radio type="radio" name="Both"  /><label for="Both">Both</label>
                             <FinePrint>Ask each individual guest</FinePrint>
                         </RSVPArea>
                     </RSVPForm>
                     <ButtonArea>
                         <Buttons>
-                            <Button className="button">Add Question</Button>
-                            <Button className="button">Save</Button>
+                            <Button style={buttonStyles}>Add Question</Button>
+                            <Button style={buttonStyles}>Save</Button>
                         </Buttons>
                         <RSVPLink>
-                            <Link to="/guestlist">Full Guest List</Link>
+                            <StyledLink to="/guestlist">Full Guest List</StyledLink>
                             <Route path='/guestlist' component={GuestList}/>
                         </RSVPLink>
                     </ButtonArea>

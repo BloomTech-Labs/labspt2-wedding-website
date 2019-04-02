@@ -6,7 +6,6 @@ import Pricing from '../pricing/Pricing'
 import RSVP from '../rsvp/rsvp'
 import Billing from '../pages/billing'
 import Settings from '../pages/settings'
-import Page from '../Page'
 
 // Other imports
 import styled from 'styled-components'
@@ -22,13 +21,13 @@ const NavPage = styled.div`
     @media screen and (max-width: 1024px) {
         margin-left: 0;
         margin-right: 0;
+        padding: 0;
         width: 100%;
     }
 
     @media screen and (max-width: 450px) {
         width: 90%;
         font-size: 10px;
-    }
 `;
 
 const MenuLogo = styled.h3`
@@ -39,6 +38,7 @@ const MenuLogo = styled.h3`
     background-repeat: no-repeat;
     background-position: center;
     margin: 0;
+    padding: 25px 0;
     text-decoration: none;
     text-transform: uppercase;
 
@@ -61,8 +61,8 @@ const SideNav = styled.div`
     min-width: 150px;
 
     @media screen and (max-width: 1024px) {
-     flex-direction: column; 
-     width: 100%;
+    flex-direction: column; 
+    width: 100%;
     }
 
     @media screen and (max-width: 450px) {
@@ -82,8 +82,12 @@ const Menu = styled.nav`
 
     @media screen and (max-width: 1024px) {
         display: flex;
-     height: 100px;  
-     justify-content: center;
+        height: 100px; 
+        width: 80%;
+        align-items: center;
+        margin-left: auto; 
+        margin-right: auto;
+        justify-content: center;
     }
 
     @media screen and (max-width: 450px) {
@@ -106,9 +110,10 @@ const MenuList = styled.ul`
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin: 0;
+        margin-left: auto; 
+        margin-right: auto;
         height: 100px;
-        width: 90%;
+        width: 100%;
     }
 
     @media screen and (max-width: 450px) {
@@ -116,20 +121,20 @@ const MenuList = styled.ul`
         height: 50px;
         margin: 0;
     }
-
 `;
 
 const MenuListItem = styled.li`
-    margin: 10px;
+    margin: 10px 0;
+    text-align: left;
 
     @media screen and (max-width: 1024px) {
         display: flex;
-        margin: 0 50px
-        
+        margin: 0 30px;
+        text-align: center;
     }
 
     @media screen and (max-width: 450px) {
-        width: 350px;
+        width: 300px;
         margin: 0 5px;
                 
     }
@@ -150,22 +155,33 @@ const RTStyles = styled.div`
     }
 `;
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000000;
+`;
+
+const STLink = styled(Link)`
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #010101;
+`;
+
 export default class Navigation extends Component {
     render() {
         return (
              <Router>
-                 <Page>
                     <NavPage>
-                     <MenuLogo><Link to="/">Home</Link></MenuLogo>
+                     <MenuLogo><StyledLink to="/">Home</StyledLink></MenuLogo>
                     <SideNav>
                         <Menu>
                             <div>
                                 <MenuList>
-                                    <MenuListItem><Link to="/" >Home</Link></MenuListItem>
-                                    <MenuListItem><Link to="/settings" >Settings</Link></MenuListItem>
-                                    <MenuListItem><Link to="/pricing" >Pricing</Link></MenuListItem>
-                                    <MenuListItem><Link to="/billing" >Billing</Link></MenuListItem>
-                                    <MenuListItem><Link to="/rsvp" >RSVP</Link></MenuListItem>
+                                    <MenuListItem><STLink to="/" >Home</STLink></MenuListItem>
+                                    <MenuListItem><STLink to="/settings" >Settings</STLink></MenuListItem>
+                                    <MenuListItem><STLink to="/pricing" >Pricing</STLink></MenuListItem>
+                                    <MenuListItem><STLink to="/billing" >Billing</STLink></MenuListItem>
+                                    <MenuListItem><STLink to="/rsvp" >RSVP</STLink></MenuListItem>
                                 </MenuList>
                             </div>
                         </Menu>
@@ -178,7 +194,6 @@ export default class Navigation extends Component {
                         </RTStyles>
                     </SideNav>
                     </NavPage>
-                 </Page>
              </Router>
         );
     }
