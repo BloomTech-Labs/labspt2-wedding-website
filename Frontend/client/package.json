@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
     "fontawesome": "^5.6.3",
     "react": "^16.8.3",
     "react-button-component": "^1.0.0",

@@ -25,6 +25,21 @@ const WP1Body = styled.div`
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+
+  @media screen and (max-width: 991px) {
+    /* start of large tablet styles */
+    max-width: 991px;
+    }
+    
+    @media screen and (max-width: 767px) {
+    /* start of medium tablet styles */
+    max-width: 767px;
+    }
+    
+    @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    max-width: 479px;
+    }
 `;
 
 const HeaderWrapper = styled.div`

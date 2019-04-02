@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Route, Link
 } from 'react-router-dom'
-import RSVP from './RSVP'
+import RSVP from './rsvp'
 import { FaPlus } from 'react-icons/fa'
 
 export default class GuestList extends Component {
