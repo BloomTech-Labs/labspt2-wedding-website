@@ -97,7 +97,6 @@ questionsByUId = (req, res) => {
   const {
     id
   } = req.params
-  console.log('outside promise')
   helper.userById(id).then(async user => {
     try{ 
       const qsReturned = await db('rsvpQuestions').where('users_id', id)
