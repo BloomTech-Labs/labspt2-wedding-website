@@ -9,6 +9,7 @@ aws.config.update({
   accessKeyId:
     process.env.AWS_KEY_ID || 'add the AWS key id to your .env file.',
   region: 'us-east-2',
+  directory: 'userUploads',
 })
 
 const s3 = new aws.S3()
@@ -20,15 +21,13 @@ const upload = multer({
     limits: {
       filesize: 50,
     },
-    // contentType: (req, file, cb) => {
-    //     checkFileType(file, cb)
-    // },
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: 'bucket-owner-full-control',
     metadata: (req, file, cb) => {
       const { id } = req.params
       //using id to be able to grab all images for a specific user page by custom field-name.
       cb(null, {
-        fieldname: `user${id}`,
+        fieldName: `user${id}`,
       })
     },
     key: (req, file, cb) => {
@@ -37,6 +36,7 @@ const upload = multer({
     },
   }),
 })
+module.exports = upload
 
 // checkFileType = (file, cb) => {
 //     //allowed extensions
@@ -49,5 +49,3 @@ const upload = multer({
 //         cb('Error: images only!')
 //     }
 // }
-
-module.exports = upload

@@ -25,7 +25,7 @@ module.exports = {
   },
 
   deleteAnswer: id => {
-    db('rsvpAnswers')
+    return db('rsvpAnswers')
       .where('id', id)
       .del()
   },

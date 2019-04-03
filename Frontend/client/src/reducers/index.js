@@ -63,7 +63,7 @@ export default (state = initialState, action) => {
         fetching: false,
       }
     case LOGOUT:
-      return { ...state, userInfo: null }
+      return { ...state, userInfo: null, guests: null }
     case GET_GUESTS:
       console.log('guests action:', action.payload)
       return { ...state, guests: action.payload, fetching: false }

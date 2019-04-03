@@ -128,14 +128,16 @@ class Dashboard extends Component {
     let rsvpNo = 0
     let rsvpMaybe = 0
     let rsvpNoA = 0
-    this.props.guests.map(guest => {
-      if (guest.rsvp || guest.rsvpMaybe) {
-        guest.rsvp === 1 ? rsvpYes++ : rsvpNo++
-        rsvpMaybe++
-      } else {
-        rsvpNoA++
-      }
-    })
+    if (this.props.guests) {
+      this.props.guests.map(guest => {
+        if (guest.rsvp || guest.rsvpMaybe) {
+          guest.rsvp === 1 ? rsvpYes++ : rsvpNo++
+          rsvpMaybe++
+        } else {
+          rsvpNoA++
+        }
+      })
+    }
     console.log('rsvpYes :', rsvpYes)
     console.log('rsvpNo :', rsvpNo)
     console.log('rsvpMaybe :', rsvpMaybe)

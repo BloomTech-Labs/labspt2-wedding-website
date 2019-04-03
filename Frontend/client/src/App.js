@@ -55,6 +55,7 @@ class App extends Component {
         let decoded = jwt_decode(token.toString())
         console.log('decoded token', decoded)
         this.props.setUser(decoded)
+        this.props.fetchGuests(decoded.id)
         localStorage.setItem('jwt', query.token)
         this.setState(
           {
