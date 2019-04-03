@@ -20,7 +20,7 @@ module.exports = {
   },
 
   deleteGuest: id => {
-    db('guestList')
+    return db('guestList')
       .where('id', id)
       .del()
   },
