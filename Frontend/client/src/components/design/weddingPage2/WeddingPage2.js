@@ -19,9 +19,7 @@ const WP1Body = styled.div`
   margin: 0 auto;
   background-image: url(${BackgroundDesign2});
   width: 100%;
-  max-width: 1080px;
-  height: 232.5vh;
-  ackground-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -49,6 +47,11 @@ const HeaderWrapper = styled.div`
   -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
   -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
   box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    width: 95%;
+    }
 `;
 
 const WhoWrapper = styled.div`
@@ -60,19 +63,24 @@ const WhoWrapper = styled.div`
   justify-content: center;
   margin-top: 5%;
   font-size: 5rem;
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    font-size: 2.5rem
+    }
 `;
 
 //Styled components don't work with the plugin react-textarea-autosize
 const headerStyle = {
   backgroundColor: "rgb(158, 143, 110)",
   border: "none",
-  width: "100%",
+  width: "90%",
   textAlign: "center",
   fontSize: "4.5rem",
   padding: "2%",
   color: "black",
   fontFamily: "Averia Serif Libre, cursive",
-  marginTop: "2%"
+  marginTop: "2%",
 };
 
 const WhenWrapper = styled.div`
@@ -84,11 +92,22 @@ const WhenWrapper = styled.div`
   justify-content: center;
   margin-top: 5%;
   font-size: 5rem;
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    font-size: 2.5rem;
+    }
 `;
 
 const NavWrapper = styled.div`
   width: 15%;
   margin: 5%;
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    width: 80%
+    margin: 0 auto;
+    }
 `;
 
 const Menu = styled.ul`
@@ -107,6 +126,14 @@ const Menu = styled.ul`
   -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
   -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
   box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    flex-direction: row;
+    list-style-type: none;
+    height: auto;
+    width: auto;
+    }
 `;
 
 const Camper = styled.img`
@@ -121,6 +148,11 @@ const Camper = styled.img`
   -webkit-transform: rotate(-20deg); /* Safari 3-8 */
   transform: rotate(-20deg);
   border: 1px solid black;
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    display: none;
+    }
 `;
 
 const Girl = styled.img`
@@ -135,6 +167,11 @@ const Girl = styled.img`
   -webkit-transform: rotate(20deg); /* Safari 3-8 */
   transform: rotate(20deg);
   border: 1px solid black;
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    display: none;
+    }
 `;
 
 const A = styled.a`
@@ -145,6 +182,12 @@ const A = styled.a`
 
 const NavAndCoupleWrapper = styled.div`
   display: flex;
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    flex-direction: column;
+    align-items: center;
+    }
 `;
 
 const PrettyWCWrapper = styled.div`
@@ -178,6 +221,11 @@ const Story = styled.h3`
   color: black;
   font-family: "Rye", cursive;
   font-size: 3rem;
+
+  @media screen and (max-width: 479px) {
+    /* start of phone styles */
+    margin: 0;
+    }
 `;
 
 const Heart = styled.img`
@@ -204,7 +252,6 @@ const userInput = {
   backgroundColor: "rgb(158, 143, 110)",
   border: "none",
   width: "100%",
-  height: "auto",
   textAlign: "center",
   fontSize: "1.5rem",
   padding: "3%",
@@ -292,7 +339,7 @@ export default class WeddingPage2 extends Component {
         <div>
           <HeaderWrapper>
             <WhoWrapper>
-              <form onSubmit={this.handleChange}>
+              <form style={{marginLeft: "5%"}} onSubmit={this.handleChange}>
                 <Textarea
                   style={headerStyle}
                   type="text"
@@ -305,7 +352,7 @@ export default class WeddingPage2 extends Component {
               </form>
             </WhoWrapper>
             <WhenWrapper>
-              <form onSubmit={this.handleChange}>
+              <form style={{marginLeft: "5%"}} onSubmit={this.handleChange}>
                 <Textarea
                   style={headerStyle}
                   type="text"
@@ -353,18 +400,18 @@ export default class WeddingPage2 extends Component {
           <Heart src={heartArrow} alt="A heart with an arrow through it" />
           <Love src={love} alt="Do what you love what you do" />
           <StoryWrapper>
-            <form onSubmit={this.handleChange}>
+            <form style={{width: "80%"}} onSubmit={this.handleChange}>
               <Textarea
                 style={userInput}
                 type="text"
                 rows="2"
                 cols="20"
-                placeholder="How did you meet"
+                placeholder="How did the two of you meet"
                 wrap="hard"
               />
               <button onClick={this.handleChange}>Submit</button>
             </form>
-            <form onSubmit={this.handleChange}>
+            <form style={{width: "80%"}} onSubmit={this.handleChange}>
               <Textarea
                 style={userInput}
                 type="text"
