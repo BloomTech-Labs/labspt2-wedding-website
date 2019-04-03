@@ -1,12 +1,7 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('rsvpAnswers', table => {
+  return knex.schema.createTable('rsvpQuestions', table => {
     table.increments()
-    table.string('answer_body')
-    table.integer('rsvpQuestions_id').unsigned()
-    table
-      .foreign('rsvpQuestions_id')
-      .references('id')
-      .on('users')
+    table.string('Question_body').notNullable()
     table.integer('users_id').unsigned()
     table
       .foreign('users_id')
@@ -17,9 +12,10 @@ exports.up = function(knex, Promise) {
       .foreign('guestList_id')
       .references('id')
       .on('guestList')
+      
   })
 }
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('rsvpAnswers')
+  return knex.schema.dropTableIfExists('rsvpQuestions')
 }

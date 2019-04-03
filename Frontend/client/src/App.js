@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
-import LandingPage from './components/landingPage/LandingPage'
+
+
+import LandingPage from "./components/landingPage/LandingPage";
+
 
 import './App.css'
 import StripeBtn from './components/Stripe/stripeBtn'

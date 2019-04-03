@@ -10,6 +10,7 @@ const StripeBtn = () => {
       amount: 999,
       token: token,
     }
+   
     axios
       .post('http://localhost:3000', body)
       .then(response => {
@@ -30,9 +31,9 @@ const StripeBtn = () => {
       amount={999} //Dummy amount in cents $9.99
       token={onToken}
       stripeKey={publishableKey}
-      image
-      src='' //Pop-in header image
       billingAddress={false}
+      allowRememberMe={false}
+
     />
   )
 }

@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     
     Will have to check with team 
   */
+  //removed the socialname column
   return knex.schema.createTable('users', tbl => {
     tbl.increments()
     tbl.string('socialId').unique()
@@ -15,7 +16,9 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .unique()
     tbl.string('username').unique()
-    tbl.string('socialName')
+    tbl.string('partnerName1')
+    tbl.string('partnerName2')
+    tbl.date('weddingDate')
     tbl.string('password')
     tbl.string('weddingParty')
     //feel that venue location should be an object to separate sections of the address
