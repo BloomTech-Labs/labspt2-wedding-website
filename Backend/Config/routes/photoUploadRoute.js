@@ -19,7 +19,7 @@ addImage = (req, res) => {
                 }]
             })
         }
-        const image = req.file.key;
+        const image = req.file.location;
         console.log(image)
         const newImage = {
             imgUrl: image,
@@ -48,3 +48,4 @@ GetLivePhotos = (req, res) => {
         res.status(500).send(err)
     })
 }
+
