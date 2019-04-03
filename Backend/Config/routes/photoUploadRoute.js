@@ -19,7 +19,8 @@ addImage = (req, res) => {
                 }]
             })
         }
-        const image = req.file.location;
+        const image = req.file.key;
+        console.log(image)
         const newImage = {
             imgUrl: image,
             name,
