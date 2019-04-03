@@ -10,10 +10,10 @@ export const SOCIAL_USER = 'SOCIAL_USER'
 export const GET_USERS = 'GET_USERS'
 export const GET_USER = 'GET_USER'
 export const GET_GUESTS = 'GET_GUESTS'
-export const GET_GUEST = 'GET_GUEST'
+// export const GET_GUEST = 'GET_GUEST'
+export const GET_QS = 'GET_QS'
 export const UPDATING = 'UPDATING'
 export const DELETE = 'DELETE'
-export const DELETE_SUCCESS = 'DELETE_SUCCESS'
 export const ERROR = 'ERROR'
 export const LOGOUT = 'LOGOUT'
 
@@ -141,23 +141,25 @@ export const fetchGuests = id => dispatch => {
       })
     })
 }
-export const fetchGuest = id => dispatch => {
-  dispatch({ type: FETCHING })
-  axios
-    .get(`${api}/guest/${id}`)
-    .then(res => {
-      dispatch({
-        type: GET_GUEST,
-        paylaod: res.data,
-      })
-    })
-    .catch(err => {
-      dispatch({
-        type: ERROR,
-        paylaod: err,
-      })
-    })
-}
+// we already have all the guests on store so this enpoind is no longer needed
+
+// export const fetchGuest = id => dispatch => {
+//   dispatch({ type: FETCHING })
+//   axios
+//     .get(`${api}/guest/${id}`)
+//     .then(res => {
+//       dispatch({
+//         type: GET_GUEST,
+//         paylaod: res.data,
+//       })
+//     })
+//     .catch(err => {
+//       dispatch({
+//         type: ERROR,
+//         paylaod: err,
+//       })
+//     })
+// }
 
 export const addGuest = (userId, guest) => dispatch => {
   axios
@@ -189,6 +191,63 @@ export const deleteGuest = (userId, id) => dispatch => {
   axios
     .delete(`${api}/guest/${id}`)
     .then(() => fetchGuests(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const fetchQuestions = id => dispatch => {
+  dispatch({ type: FETCHING })
+  axios
+    .get(`${api}/${id}/questions`)
+
+    .then(res => {
+      dispatch({
+        type: GET_QS,
+        payload: res.data,
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        paylaod: err,
+      })
+    })
+}
+
+export const addQuestion = (userId, question) => dispatch => {
+  axios
+    .post(`${api}/${userId}/addquestion'`, question)
+    .then(() => fetchQuestions(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const editQuestion = (userId, id, question) => dispatch => {
+  dispatch({ type: UPDATING })
+  axios
+    .put(`${api}/update-question/${userId}/${id}`, question)
+    .then(() => fetchQuestions(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const deleteQuestion = (userId, id) => dispatch => {
+  dispatch({ type: DELETE })
+  axios
+    .delete(`${api}/questions/${id}`)
+    .then(() => fetchQuestions(userId)(dispatch))
     .catch(err => {
       dispatch({
         type: ERROR,

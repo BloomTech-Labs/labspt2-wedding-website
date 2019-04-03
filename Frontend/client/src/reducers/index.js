@@ -6,13 +6,12 @@ import {
   SET_USER,
   SOCIAL_USER,
   OAUTH_USER,
-  GET_USERS,
   GET_USER,
   GET_GUESTS,
   GET_GUEST,
+  GET_QS,
   UPDATING,
   DELETE,
-  DELETE_SUCCESS,
   ERROR,
   LOGOUT,
 } from '../actions/index'
@@ -27,10 +26,8 @@ const initialState = {
   updatingUser: false,
   //guest
   guests: null,
-  guest: null,
-  addingGuest: false,
-  updatingGuest: false,
-  //questions
+  updating: false,
+  userQuestions: {},
   //answers
 }
 
@@ -65,10 +62,13 @@ export default (state = initialState, action) => {
     case LOGOUT:
       return { ...state, userInfo: null, guests: null }
     case GET_GUESTS:
-      console.log('guests action:', action.payload)
+      return { ...state, guests: action.payload, fetching: false }
+    case GET_QS:
+      return { ...state, userQuestions: action.payload, fetching: false }
+    case UPDATING:
       return { ...state, guests: action.payload, fetching: false }
     case ERROR:
-      return { ...state, fetching: false, err: action.payload }
+      return { ...state, updating: true }
     default:
       return state
   }

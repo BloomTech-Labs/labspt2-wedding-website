@@ -6,6 +6,7 @@ module.exports = server => {
   server.post('/:user/addquestion', addNewQuestion)
   server.put('/update-question/:user/:questionId', editQuestion)
   server.get('/users/:id/questions', questionsByUId)
+  server.delete('/questions/:id', removeQuestion)
 }
 
 getAllUserQuestions = (req, res) => {
@@ -41,7 +42,7 @@ addNewQuestion = (req, res) => {
     })
 }
 
-editQuestion = (res, req) => {
+editQuestion = (req, res) => {
   const question = req.body
   const { user, questionId } = req.params
   question.users_id = user
@@ -61,7 +62,7 @@ editQuestion = (res, req) => {
     })
 }
 
-removeQuestion = (req, body) => {
+removeQuestion = (req, res) => {
   const { id } = req.params
   helper
     .deleteQuestion(id)
