@@ -1,4 +1,5 @@
 const helper = require('../helpers/questionsDB')
+const db = require('../dbConfig')
 
 module.exports = server => {
   server.get('/users/:id/questions', questionsById)
@@ -21,31 +22,21 @@ getAllUserQuestions = (req, res) => {
 //NEED TO FIGURE OUT THE PARAM SETTINGS FOR THE USER AND QUESTION ID
 questionsById = (req, res) => {
   const {id} = req.params
-  console.log('test teste stes')
   helper
     .questionsWAnswersByUserId(id)
     .then(qs => {
-      console.log(qs)
-      qs.forEach(column => {
-        console.log(column)
-        console.log('questionId:',column.rsvpQuestions_id )
-        console.log('answerBody:',column.answerBody)
-        let removeRepeat = [...new Set(column.rsvpQuestions_id)]
-        console.log('filtered question ids:', removeRepeat)
-        let answerObject = {
-          answerBody: 'blabla',
-          guestId: 'id'
-        }
-        
-        const returnObj = {
-          userId: qs.users_id,
-          questionId: qs.rsvpQuestions_id,
-          questionBody: qs.Question_body,
-          answers: {
-            answersArr
-          }
-        }
-      })
+     
+      // db('rsvpAnswers').where(')
+      // qs.forEach(column => {
+      //   console.log(column)
+      //   let removeRepeat = [...new Set(column.rsvpQuestions_id)]
+      //   console.log('filtered question ids:', removeRepeat)
+      //   let answerObject = {
+      //     answerBody: 'blabla',
+      //     guestId: 'id'
+      //   }
+
+      // })
     })
     .catch(err => {
       console.log(err)
