@@ -1,47 +1,18 @@
 const db = require('../dbConfig')
 const { Model } = require('objection')
+const knex = require('knex')
 const passport = require('passport')
+const jwtHelper = require('../../Auth/jwt/jwtHelper')
+
+Model.knex(db)
 
 module.exports = server => {
   server.get('/auth', authHome),
     server.get('/auth/fail', fail),
-    server.post(
-      '/auth/register-login',
-      passport.authenticate('json', {
-        session: false,
-      }),
-      regLogin
-    ),
-    server.get(
-      '/auth/google',
-      passport.authenticate('google', {
-        session: false,
-        scope: ['profile', 'email'],
-      })
-    ),
-    server.get(
-      '/auth/google/callback',
-      passport.authenticate('google', {
-        failureRedirect: '/auth/fail',
-        session: false,
-      }),
-      googleCB
-    ),
-    server.get(
-      '/auth/facebook',
-      passport.authenticate('facebook', {
-        session: false,
-        scope: ['email'],
-      })
-    ),
-    server.get(
-      '/auth/facebook/callback',
-      passport.authenticate('facebook', {
-        failureRedirect: '/auth/fail',
-        session: false,
-      }),
-      facebookCB
-    )
+    server.post('/auth/register-login', regLoginMiddle, regLogin),
+    server.get('/auth/google', googleGetMiddle),
+    server.get('/auth/google/callback', googleCallBackMiddle, googleCB),
+    server.get('/auth/facebook', facebookGetMiddle)
 }
 
 authHome = (req, res) => {
@@ -56,26 +27,27 @@ fail = (req, res) => {
   })
 }
 //-------Middleware for login route
-// regLoginMiddle = () => {
-//     passport.authenticate('json', {
-//         session: false
-//     })
-// }
+regLoginMiddle = () => {
+  passport.authenticate('json', {
+    session: false,
+  })
+}
 
 regLogin = (req, res) => {
   const user = req.user
-  const tokenUser = {
-    userID: user.id,
+  console.log(user)
+  const userInfo = {
+    id: user.id,
+    username: user.username,
     email: user.email,
+    isPremium: user.isPremium,
   }
   if (user.id) {
-    const token = jwtHelper.generateToken(tokenUser)
-    res.status(201).json({
-      token,
-    })
+    const token = jwtHelper.generateToken(userInfo)
+    res.status(201).json({ token, userInfo })
   } else {
     res.status(500).json({
-      message: `${user}`,
+      message: `${req.user}`,
     })
   }
 }
@@ -83,60 +55,46 @@ regLogin = (req, res) => {
 //----------------->Google Routes<------------------------
 
 //---google redirect midleware
-// googleGetMiddle = () => {
-//     return passport.authenticate('google', {
-//         session: false,
-//         scope: ['profile', 'email'],
-//     })
-// }
+googleGetMiddle = () => {
+  passport.authenticate('google', {
+    session: false,
+    scope: ['profile', 'email'],
+  })
+}
 //---google callback middleware
-// googleCallBackMiddle = () => {
-//     passport.authenticate('google', {
-//         failureRedirect: '/auth/fail',
-//         session: false,
-//     })
-// }
+googleCallBackMiddle = () => {
+  passport.authenticate('google', {
+    failureRedirect: '/auth/fail',
+    session: false,
+  })
+}
 
 googleCB = (req, res) => {
   const user = req.user
   console.log('google user:', user)
   const tokenUser = {
-    userID: user.id,
+    userId: user.id,
+    username: user.username,
     email: user.email,
+    partnerName1: user.partnerName1,
+    partnerName2: user.partnerName1,
+    weddingDate: user.weddingDate,
+    weddingParty: user.weddingParty,
+    venueLocation: user.venueLocation,
+    isPremium: user.isPremium,
   }
   const token = jwtHelper.generateToken(tokenUser)
-  console.log('GOOGLE Token:', token)
-  res.status(201).json({
-    token,
-  })
+  // redirects to account set up
+  console.log('token :', token)
+  res.redirect('http://localhost:3000?token=' + token)
 }
 
 //------------------->Facebook Routes<--------------------------
 
 //---Facebook redirect middleware
-// facebookGetMiddle = () => {
-//     passport.authenticate('facebook', {
-//         session: false,
-//         scope: ['email'],
-//     })
-// }
-//---facebook call back middleware
-// facebookCBMiddle = () => {
-//     passport.authenticate('facebook', {
-//         failureRedirect: '/auth/fail',
-//         session: false,
-//     })
-// }
-
-facebookCB = (req, res) => {
-  const user = req.user
-  const tokenUser = {
-    userID: user.id,
-    email: user.email,
-  }
-  const token = jwtHelper.generateToken(tokenUser)
-  console.log('GOOGLE Token:', token)
-  res.status(201).json({
-    token,
+facebookGetMiddle = () => {
+  passport.authenticate('facebook', {
+    session: false,
+    scope: ['email'],
   })
 }
