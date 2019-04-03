@@ -8,41 +8,68 @@ import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from "react-datepicker";
 import styled from 'styled-components'
-import Page from '../Page'
  
 import "react-datepicker/dist/react-datepicker.css";
 
 const SettingsPage = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 1280px;
+  min-width: 1025px;
+  justify-content: space-around;
+  height: 100vh;
+  max-height: 500px;
+  margin-top: 50px;
+
+  @media only screen and (max-width: 1024px) and (min-width: 800px) {
+    flex-direction: column;
+    width: 50%;
+  }
+
 `;
 
 const SettingsBox = styled.div`
-  width: 500px;
-  border: 1px solid black;
-  justify-content: left;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
 
 `;
 
 const Box = styled.div`
   display: flex;
-
+  margin: 10px 0;
+  justify-content: space-between;
 `;
 
 const RightBox = styled.div`
-
+  display: flex;
+  width: 100%;
+  margin: 10px 0;
 `;
 
 const SpecialBox = styled.div`
-
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 `;
 
 const InputBox = styled.input`
-
+  border-bottom: 1px solid #000000;
+  width: 90%;
 `;
 
 const buttonDiv = {
-
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  marginBottom: '25px',
+  marginTop: '25px',
+  height: '50px',
+  boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
+  width: '26%'
 }
 
 export default class Settings extends Component {
