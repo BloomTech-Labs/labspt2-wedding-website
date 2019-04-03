@@ -25,8 +25,7 @@ const configLivePhotoRoute = require('../Config/routes/photoUploadRoute')
 const configQuestionRoutes = require('../Config/routes/questionsRoute')
 const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
 const configAuthRoutes = require('../Config/routes/authRoute')
-
-const server = express()
+const configStripeRoute = require('../Config/routes/stripeRoute')
 
 const paymentApi = require('../Config/routes/paymentRoute')
 
@@ -46,6 +45,7 @@ configLivePhotoRoute(server)
 configQuestionRoutes(server)
 configRsvpAnswersRoutes(server)
 configAuthRoutes(server)
+configStripeRoute(server)
 
 
 server.get('/', (req, res) => {
@@ -151,25 +151,25 @@ module.exports = server
 // )
 
 //Stripe
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const stripeChargeCallback = res => (stripeErr, stripeRes) => {
-  if (stripeErr) {
-    res.status(500).send({ error: stripeErr });
-  } else {
-    res.status(200).send({ success: stripeRes });
-  }
-};
-server.post(
-  '/stripe',(req, res)=> {
-    console.log(req)
-    const body = {
-      source: req.body.token.id,
-      amount: req.body.amount,
-      currency: "usd"
-    };
-    stripe.charges.create(body, stripeChargeCallback(res));
-  }
-)
+// const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+// const stripeChargeCallback = res => (stripeErr, stripeRes) => {
+//   if (stripeErr) {
+//     res.status(500).send({ error: stripeErr });
+//   } else {
+//     res.status(200).send({ success: stripeRes });
+//   }
+// };
+// server.post(
+//   '/stripe',(req, res)=> {
+//     console.log(req)
+//     const body = {
+//       source: req.body.token.id,
+//       amount: req.body.amount,
+//       currency: "usd"
+//     };
+//     stripe.charges.create(body, stripeChargeCallback(res));
+//   }
+// )
 
 // ----- twitter uses oauth1.0a and requires an instance of expres-session but we are working with jwt
 

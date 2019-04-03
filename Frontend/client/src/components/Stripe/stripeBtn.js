@@ -12,7 +12,7 @@ const StripeBtn = () => {
     }
    
     axios
-      .post('http://localhost:3000', body)
+      .post('http://localhost:3700/stripe', body)
       .then(response => {
         console.log(response)
         alert('Payment Success')
