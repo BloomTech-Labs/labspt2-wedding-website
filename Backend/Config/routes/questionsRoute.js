@@ -21,11 +21,10 @@ getAllUserQuestions = (req, res) => {
 }
 //NEED TO FIGURE OUT THE PARAM SETTINGS FOR THE USER AND QUESTION ID
 questionsById = (req, res) => {
-  const {id} = req.params
+  const { id } = req.params
   helper
     .questionsWAnswersByUserId(id)
     .then(qs => {
-     
       // db('rsvpAnswers').where(')
       // qs.forEach(column => {
       //   console.log(column)
@@ -35,7 +34,6 @@ questionsById = (req, res) => {
       //     answerBody: 'blabla',
       //     guestId: 'id'
       //   }
-
       // })
     })
     .catch(err => {
