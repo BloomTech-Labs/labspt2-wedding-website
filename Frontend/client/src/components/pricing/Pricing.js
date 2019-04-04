@@ -5,6 +5,8 @@ const Price = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    width: 100%;
+    min-width: 1024px;
 `;
 
 const Box = styled.div`
@@ -32,6 +34,10 @@ const BoxList = styled.ul`
     flex-direction: column;
 `;
 
+const H2 = styled.h2`
+    text-align: center;
+`;
+
 
 export default class Pricing extends Component {
     render() {
@@ -48,7 +54,7 @@ export default class Pricing extends Component {
                     </BoxList>
                  </Box>
                  <hr />
-                 <h2>$0</h2>
+                 <H2>$0</H2>
              </Price>
         );
     }

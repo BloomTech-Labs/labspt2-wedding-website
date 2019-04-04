@@ -15,16 +15,20 @@ const SettingsPage = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  max-width: 1280px;
+
   min-width: 1025px;
   justify-content: space-around;
   height: 100vh;
   max-height: 500px;
   margin-top: 50px;
 
-  @media only screen and (max-width: 1024px) and (min-width: 800px) {
+  @media only screen and (max-width: 1024px) and (min-width: 600px) {
     flex-direction: column;
+    width: 100%;
+    min-width: 350px;
     width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
 `;
@@ -34,24 +38,42 @@ const SettingsBox = styled.div`
   flex-direction: column;
   width: 450px;
 
+  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    width: 100%;
+    max-width: 350px;
+    justify-content: center;
+    margin: 0;
+  }
 `;
 
 const Box = styled.div`
   display: flex;
   margin: 10px 0;
   justify-content: space-between;
+
+  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    min-width: 500px;
+  }
 `;
 
 const RightBox = styled.div`
   display: flex;
   width: 100%;
   margin: 10px 0;
+
+  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    min-width: 500px;
+  }
 `;
 
 const SpecialBox = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+
+  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    min-width: 500px;
+  }
 `;
 
 const InputBox = styled.input`
@@ -68,8 +90,8 @@ const buttonDiv = {
   marginBottom: '25px',
   marginTop: '25px',
   height: '50px',
+  minWidth: '200px',
   boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-  width: '26%'
 }
 
 export default class Settings extends Component {

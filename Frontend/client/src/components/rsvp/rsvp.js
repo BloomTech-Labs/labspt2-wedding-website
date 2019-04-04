@@ -14,6 +14,7 @@ const RSVPPage = styled.div`
     align-items: center;
     height: 100%;
     width: 100%;
+    min-width: 1024px;
     margin: 0 auto;
     padding-top: 50px;
 `;

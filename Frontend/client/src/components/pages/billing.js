@@ -22,7 +22,9 @@ const newButton = {
 const BillingDiv = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+
+    width: 100%;
+    min-width: 1024px;
 `;
 
 const BillBox = styled.div`
@@ -30,6 +32,7 @@ const BillBox = styled.div`
     flex-direction: column;
     align-items: center;
     width: 300px;
+    margin: 0 auto;
     height: auto;
     border: 1px solid #000000;
 `;
@@ -43,12 +46,16 @@ const BillInput = styled.input`
     margin-bottom: 5px;
 `;
 
+const H2 = styled.h2`
+    text-align: center;
+`;
+
 
 export default class Billing extends Component {
     render() {
         return (
              <BillingDiv>
-                <h2>Billing</h2>
+                <H2>Billing</H2>
                 <BillBox>
                     <label for="card-holder">Cardholder Name</label>
                     <BillInput type="text" id="card-holder" placeholder="Cardholder Name" />
