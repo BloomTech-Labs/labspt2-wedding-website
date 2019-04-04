@@ -261,3 +261,22 @@ export const deleteQuestion = (userId, id) => dispatch => {
       })
     })
 }
+
+// export const fetchAnswers = questionId => dispatch => {
+//   dispatch({ type: FETCHING })
+//   axios
+//     .get(`${api}/rsvp/answer/${questionId}`)
+
+//     .then(res => {
+//       dispatch({
+//         type: GET_AS,
+//         payload: res.data,
+//       })
+//     })
+//     .catch(err => {
+//       dispatch({
+//         type: ERROR,
+//         paylaod: err,
+//       })
+//     })
+// }
