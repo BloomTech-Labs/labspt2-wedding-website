@@ -1,5 +1,4 @@
 require('dotenv').config()
-// const request = require('request')
 const passport = require('passport')
 const auth = require('../Auth/passportConfig')
 const jwtHelper = require('../Auth/jwt/jwtHelper')
