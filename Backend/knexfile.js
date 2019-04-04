@@ -54,7 +54,7 @@ module.exports = {
   testing: {
     client: 'sqlite3',
     connection: {
-      filename: './data/gweddingLabsTestDB.sqlite3',
+      filename: './data/weddingLabsTestDB.sqlite3',
     },
     useNullAsDefault: true,
     migrations: {
