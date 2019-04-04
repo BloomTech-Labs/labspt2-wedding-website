@@ -19,6 +19,7 @@ const upload = multer({
         limits: {
             filesize: 50
         },
+        //this prevents the forced upload by stating the file type
         contentType: multerS3.AUTO_CONTENT_TYPE,
         acl: 'bucket-owner-full-control',
         metadata: (req, file, cb) => {
