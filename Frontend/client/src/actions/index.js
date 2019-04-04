@@ -12,6 +12,7 @@ export const GET_USER = 'GET_USER'
 export const GET_GUESTS = 'GET_GUESTS'
 // export const GET_GUEST = 'GET_GUEST'
 export const GET_QS = 'GET_QS'
+export const GET_AS = 'GET_AS'
 export const UPDATING = 'UPDATING'
 export const DELETE = 'DELETE'
 export const ERROR = 'ERROR'
@@ -123,6 +124,8 @@ export const editUser = (id, user) => dispatch => {
     })
 }
 
+//guest
+
 export const fetchGuests = id => dispatch => {
   dispatch({ type: FETCHING })
   axios
@@ -198,6 +201,8 @@ export const deleteGuest = (userId, id) => dispatch => {
       })
     })
 }
+
+//questions
 
 export const fetchQuestions = id => dispatch => {
   dispatch({ type: FETCHING })

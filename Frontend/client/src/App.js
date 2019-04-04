@@ -14,7 +14,7 @@ import Login from './components/landingPage/login'
 import DashBoard from './components/clientDashboard/Dashboard'
 import Navigation from './components/sidenav/sidenav'
 import Pricing from './components/pricing/Pricing'
-import RSVP from './components/rsvp/rsvp'
+import QuestionList from './components/rsvp/questionList'
 import Billing from './components/pages/billing'
 import Settings from './components/settings/Settings'
 import GuestList from './components/guest/guestList'
@@ -96,6 +96,7 @@ class App extends Component {
                 <Route path='/pricing' component={Pricing} />
                 <Route path='/billing' component={Billing} />
                 <Route path='/guests' component={GuestList} />
+                <Route path='/rsvp' component={QuestionList} />
               </Switch>
             </div>
           </Router>

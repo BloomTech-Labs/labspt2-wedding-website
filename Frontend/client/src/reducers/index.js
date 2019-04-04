@@ -27,7 +27,7 @@ const initialState = {
   //guest
   guests: null,
   updating: false,
-  userQuestions: {},
+  userQuestions: null,
   //answers
 }
 
