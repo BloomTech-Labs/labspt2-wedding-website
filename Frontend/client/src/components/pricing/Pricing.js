@@ -7,6 +7,15 @@ const Price = styled.div`
     margin: 0 auto;
     width: 100%;
     min-width: 1024px;
+
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
+        flex-direction: column;
+        width: 100%;
+        min-width: 350px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
 `;
 
 const Box = styled.div`

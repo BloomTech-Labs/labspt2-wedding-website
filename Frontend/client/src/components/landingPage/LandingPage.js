@@ -7,8 +7,8 @@ import {
 
 import styled from 'styled-components'
 
-// import Login from './login';
-// import DemoCarousel from "./Carousel";
+import Login from './login';
+import DemoCarousel from "./Carousel";
 import SideNav from '../sidenav/sidenav'
 
 const LPStyle = styled.div`
@@ -44,8 +44,8 @@ export default class LandingPage extends Component {
         <Router>
           <LPStyle>
           <Route path='/' component={SideNav}/>
-            {/* <Route exact path="/" component={DemoCarousel}></Route> */}
-            {/* <ButtonDiv>
+            {/* <Route exact path="/" component={DemoCarousel}></Route>
+            <ButtonDiv>
               <Link to="/login" component={Login}>Get Started</Link>
             </ButtonDiv>
             <Route exact path="/login" component={Login}></Route> */}

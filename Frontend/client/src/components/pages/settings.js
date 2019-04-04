@@ -22,7 +22,7 @@ const SettingsPage = styled.div`
   max-height: 500px;
   margin-top: 50px;
 
-  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
     flex-direction: column;
     width: 100%;
     min-width: 350px;
@@ -31,6 +31,8 @@ const SettingsPage = styled.div`
     margin-right: auto;
   }
 
+
+
 `;
 
 const SettingsBox = styled.div`
@@ -38,7 +40,7 @@ const SettingsBox = styled.div`
   flex-direction: column;
   width: 450px;
 
-  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
     width: 100%;
     max-width: 350px;
     justify-content: center;
@@ -53,6 +55,10 @@ const Box = styled.div`
 
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     min-width: 500px;
+  }
+
+  @media screen and (max-width: 599px){
+    max-width: 400px;
   }
 `;
 
@@ -89,8 +95,8 @@ const buttonDiv = {
   marginRight: 'auto',
   marginBottom: '25px',
   marginTop: '25px',
-  height: '50px',
-  minWidth: '200px',
+  height: '100px',
+  minWidth: '250px',
   boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
 }
 

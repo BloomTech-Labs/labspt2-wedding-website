@@ -18,7 +18,7 @@ const NavPage = styled.div`
     padding: 0 15px;
     width: 100%;
 
-    @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
         margin: 0;
         padding: 0;
         width: 100%;
@@ -32,7 +32,7 @@ const MenuLogo = styled.h3`
     margin: 0;
     padding: 25px 0;
 
-    @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
         text-align: center;
         width: 100%;
     }
@@ -44,7 +44,7 @@ const SideNav = styled.div`
     width: 20%;
     min-width: 150px;
 
-    @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
         flex-direction: column;
         width: 100%;
     }
@@ -59,7 +59,7 @@ const Menu = styled.nav`
     height: 400px;
     padding: 0 40px 0 0;
 
-    @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
         display: flex;
         height: 100px;
         width: 90%;
@@ -74,7 +74,7 @@ const MenuList = styled.ul`
     margin: 0;
     padding; 10px;
 
-    @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -92,6 +92,10 @@ const MenuListItem = styled.li`
         display: flex;
         margin: 0 30px;
         text-align: center;
+    }
+
+    @media only screen and (max-width: 599px){
+        margin: 0 5px;
     }
 `;
 

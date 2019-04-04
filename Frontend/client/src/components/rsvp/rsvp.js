@@ -16,7 +16,15 @@ const RSVPPage = styled.div`
     width: 100%;
     min-width: 1024px;
     margin: 0 auto;
-    padding-top: 50px;
+
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
+        flex-direction: column;
+        width: 100%;
+        min-width: 350px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
 `;
 
 const RSVPForm = styled.div`
