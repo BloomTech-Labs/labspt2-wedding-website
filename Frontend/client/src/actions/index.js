@@ -224,8 +224,9 @@ export const fetchQuestions = id => dispatch => {
 }
 
 export const addQuestion = (userId, question) => dispatch => {
+  console.log('question :', question)
   axios
-    .post(`${api}/${userId}/addquestion'`, question)
+    .post(`${api}/${userId}/addquestion`, question)
     .then(() => fetchQuestions(userId)(dispatch))
     .catch(err => {
       dispatch({

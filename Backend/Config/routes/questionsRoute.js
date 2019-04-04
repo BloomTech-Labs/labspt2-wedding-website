@@ -25,6 +25,7 @@ getAllUserQuestions = (req, res) => {
 
 addNewQuestion = (req, res) => {
   const newQ = req.body
+  console.log('newQ :', newQ)
   const { user } = req.params
   newQ.users_id = user
   console.log(newQ)
@@ -63,17 +64,19 @@ editQuestion = (req, res) => {
 }
 
 removeQuestion = (req, res) => {
+  console.log('remove q fire')
   const { id } = req.params
   helper
     .deleteQuestion(id)
     .then(number => {
       number
-        ? res.status(404).json({
-            message: 'Question Not Found',
-          })
-        : res.json({
-            message: 'Its gone!',
-          })
+      // ? res.status(404).json({
+      //     message: 'Question Not Found',
+      //   })
+      // :
+      res.json({
+        message: 'Its gone!',
+      })
     })
     .catch(err => {
       res.status(500).send({

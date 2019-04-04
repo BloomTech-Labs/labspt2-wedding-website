@@ -7,7 +7,7 @@ class Question extends React.Component {
     super(props)
     this.state = {
       question: {
-        Question_body: '',
+        Question_body: this.props.questionInfo.Question_body,
       },
       updating: false,
     }

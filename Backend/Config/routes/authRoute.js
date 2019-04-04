@@ -1,6 +1,5 @@
 const db = require('../dbConfig')
 const { Model } = require('objection')
-const knex = require('knex')
 const passport = require('passport')
 const jwtHelper = require('../../Auth/jwt/jwtHelper')
 
@@ -9,10 +8,43 @@ Model.knex(db)
 module.exports = server => {
   server.get('/auth', authHome),
     server.get('/auth/fail', fail),
-    server.post('/auth/register-login', regLoginMiddle, regLogin),
-    server.get('/auth/google', googleGetMiddle),
-    server.get('/auth/google/callback', googleCallBackMiddle, googleCB),
-    server.get('/auth/facebook', facebookGetMiddle)
+    server.post(
+      '/auth/register-login',
+      passport.authenticate('json', {
+        session: false,
+      }),
+      regLogin
+    ),
+    server.get(
+      '/auth/google',
+      passport.authenticate('google', {
+        session: false,
+        scope: ['profile', 'email'],
+      })
+    ),
+    server.get(
+      '/auth/google/callback',
+      passport.authenticate('google', {
+        failureRedirect: '/auth/fail',
+        session: false,
+      }),
+      googleCB
+    ),
+    server.get(
+      '/auth/facebook',
+      passport.authenticate('facebook', {
+        session: false,
+        scope: ['email'],
+      })
+    ),
+    server.get(
+      '/auth/facebook/callback',
+      passport.authenticate('facebook', {
+        failureRedirect: '/auth/fail',
+        session: false,
+      }),
+      facebookCB
+    )
 }
 
 authHome = (req, res) => {
@@ -27,27 +59,26 @@ fail = (req, res) => {
   })
 }
 //-------Middleware for login route
-regLoginMiddle = () => {
-  passport.authenticate('json', {
-    session: false,
-  })
-}
+// regLoginMiddle = () => {
+//     passport.authenticate('json', {
+//         session: false
+//     })
+// }
 
 regLogin = (req, res) => {
   const user = req.user
-  console.log(user)
-  const userInfo = {
-    id: user.id,
-    username: user.username,
+  const tokenUser = {
+    userID: user.id,
     email: user.email,
-    isPremium: user.isPremium,
   }
   if (user.id) {
-    const token = jwtHelper.generateToken(userInfo)
-    res.status(201).json({ token, userInfo })
+    const token = jwtHelper.generateToken(tokenUser)
+    res.status(201).json({
+      token,
+    })
   } else {
     res.status(500).json({
-      message: `${req.user}`,
+      message: `${user}`,
     })
   }
 }
@@ -55,19 +86,19 @@ regLogin = (req, res) => {
 //----------------->Google Routes<------------------------
 
 //---google redirect midleware
-googleGetMiddle = () => {
-  passport.authenticate('google', {
-    session: false,
-    scope: ['profile', 'email'],
-  })
-}
+// googleGetMiddle = () => {
+//     return passport.authenticate('google', {
+//         session: false,
+//         scope: ['profile', 'email'],
+//     })
+// }
 //---google callback middleware
-googleCallBackMiddle = () => {
-  passport.authenticate('google', {
-    failureRedirect: '/auth/fail',
-    session: false,
-  })
-}
+// googleCallBackMiddle = () => {
+//     passport.authenticate('google', {
+//         failureRedirect: '/auth/fail',
+//         session: false,
+//     })
+// }
 
 googleCB = (req, res) => {
   const user = req.user
@@ -92,9 +123,29 @@ googleCB = (req, res) => {
 //------------------->Facebook Routes<--------------------------
 
 //---Facebook redirect middleware
-facebookGetMiddle = () => {
-  passport.authenticate('facebook', {
-    session: false,
-    scope: ['email'],
+// facebookGetMiddle = () => {
+//     passport.authenticate('facebook', {
+//         session: false,
+//         scope: ['email'],
+//     })
+// }
+//---facebook call back middleware
+// facebookCBMiddle = () => {
+//     passport.authenticate('facebook', {
+//         failureRedirect: '/auth/fail',
+//         session: false,
+//     })
+// }
+
+facebookCB = (req, res) => {
+  const user = req.user
+  const tokenUser = {
+    userID: user.id,
+    email: user.email,
+  }
+  const token = jwtHelper.generateToken(tokenUser)
+  console.log('GOOGLE Token:', token)
+  res.status(201).json({
+    token,
   })
 }
