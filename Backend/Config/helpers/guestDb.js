@@ -9,6 +9,14 @@ module.exports = {
     }
     return db('guestList')
   },
+
+  guestsByUserId: id => {
+    return db('guestList')
+      .select('*')
+      .from('guestList')
+      .where('userId', id)
+  },
+
   addGuest: guest => {
     return db('guestList').insert(guest)
   },
