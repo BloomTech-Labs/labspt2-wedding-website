@@ -1,6 +1,7 @@
 const db = require('../dbConfig')
 const { Model } = require('objection')
 const passport = require('passport')
+const jwtHelper = require('../../Auth/jwt/jwtHelper')
 
 Model.knex(db)
 
