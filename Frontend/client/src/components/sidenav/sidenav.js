@@ -7,6 +7,103 @@ import { logout } from '../../actions'
 
 import styled from 'styled-components'
 
+const NavPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 15px;
+  width: 100%;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+`
+
+const MenuLogo = styled.h3`
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  margin: 0;
+  padding: 25px 0;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    text-align: center;
+    width: 100%;
+  }
+`
+
+const SideNav = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+  min-width: 150px;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    flex-direction: column;
+    width: 100%;
+  }
+`
+
+const Menu = styled.nav`
+  display: flex;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  position: relative;
+  height: 400px;
+  padding: 0 40px 0 0;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    display: flex;
+    height: 100px;
+    width: 90%;
+    justify-content: center;
+    margin: 0 auto;
+  }
+`
+
+const MenuList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 10px;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+  }
+`
+
+const MenuListItem = styled.li`
+  display: flex;
+  margin: 10px 0;
+  text-align: left;
+  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    display: flex;
+    margin: 0 30px;
+    text-align: center;
+  }
+  @media only screen and (max-width: 599px) {
+    margin: 0 5px;
+  }
+`
+
+const RTStyles = styled.div`
+  display: flex;
+  width: 100%;
+`
+
+const StyledLink = styled(Link)`
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #010101;
+`
+
+const STLink = styled(Link)`
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #010101;
+`
 const Button = styled.button`
   border-radius: 5%;
   color: white;
@@ -19,58 +116,6 @@ const Button = styled.button`
   background: #52c4b9;
 `
 
-const sideNav = {
-  display: 'flex',
-  flexDirection: 'row',
-  height: '100vh',
-  justifyContent: 'left',
-  width: '20%',
-}
-
-const menuLogo = {
-  display: 'flex',
-  width: '92px',
-  backgroundSize: 'cover 100%',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  margin: '0',
-  textDecoration: 'none',
-  textTransform: 'uppercase',
-}
-
-const menu = {
-  backgroundColor: '#FFFFFF',
-  boxShadow: '0px 2px 24px 0px rgba(0, 0, 0, 0.15)',
-  borderRadius: '8px',
-  display: 'flex',
-  padding: '0 40px',
-  position: 'relative',
-}
-
-const menuListItem = {
-  listStyleType: 'none',
-  margin: '10px -30px',
-}
-
-const menuList = {
-  listStyleType: 'none',
-  padding: '0',
-  height: '100%',
-  margin: '0',
-  marginRight: '40px',
-}
-
-const menuLink = {
-  color: '#3A3E47',
-  display: 'inline-block',
-  height: '100%',
-  fontSize: '16px',
-  textDecoration: 'none',
-  textTransform: 'uppercase',
-  alignItems: 'center',
-  padding: '0 3px',
-}
-
 class Navigation extends Component {
   handleClick = () => {
     this.props.logout()
@@ -79,45 +124,34 @@ class Navigation extends Component {
 
   render() {
     return (
-      <div>
-        <h3>
-          <Link style={menuLogo} to='/'>
-            Dashboard
-          </Link>
-        </h3>
-        <div style={sideNav}>
-          <nav style={menu}>
+      <NavPage>
+        <MenuLogo>
+          <StyledLink to='/'>Home</StyledLink>
+        </MenuLogo>
+        <SideNav>
+          <Menu>
             <div>
-              <ul style={menuList}>
-                <li style={menuListItem}>
-                  <Link to='/pricing' style={menuLink}>
-                    Pricing
-                  </Link>
-                </li>
-                <li style={menuListItem}>
-                  <Link to='/billing' style={menuLink}>
-                    Billing
-                  </Link>
-                </li>
-                <li style={menuListItem}>
-                  <Link to='/settings' style={menuLink}>
-                    Account Settings
-                  </Link>
-                </li>
-                {/* <li style={menuListItem}>
-                    <Link to='/rsvp' style={menuLink}>
-                      RSVP
-                    </Link>
-                  </li> */}
-                <li style={menuListItem}>
+              <MenuList>
+                <MenuListItem>
+                  <STLink to='/pricing'>Pricing</STLink>
+                </MenuListItem>
+                <MenuListItem>
+                  <STLink to='/billing'>Billing</STLink>
+                </MenuListItem>
+                <MenuListItem>
+                  <STLink to='/settings'>Account Settings</STLink>
+                </MenuListItem>
+                <MenuListItem>
+                  <STLink to='/rsvp'>RSVP</STLink>
+                </MenuListItem>
+                <MenuListItem>
                   <Button onClick={this.handleClick}>Sign Out</Button>
-                </li>
-              </ul>
+                </MenuListItem>
+              </MenuList>
             </div>
-          </nav>
-        </div>
-        <div />
-      </div>
+          </Menu>
+        </SideNav>
+      </NavPage>
     )
   }
 }
