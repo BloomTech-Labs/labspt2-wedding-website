@@ -9,7 +9,7 @@ class Guest extends React.Component {
       guest: {
         firstName: this.props.guestInfo.firstName,
         lastName: this.props.guestInfo.lastName,
-        email: this.props.guestInfo.lastName,
+        email: this.props.guestInfo.email,
       },
       updating: false,
     }

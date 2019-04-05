@@ -16,6 +16,9 @@ const configQuestionRoutes = require('../Config/routes/questionsRoute')
 const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
 const configAuthRoutes = require('../Config/routes/authRoute')
 
+const configStripeRoute = require('../Config/routes/stripeRoute')
+const paymentApi = require('../Config/routes/paymentRoute')
+
 const server = express()
 
 auth(passport)
@@ -34,6 +37,7 @@ configLivePhotoRoute(server)
 configQuestionRoutes(server)
 configRsvpAnswersRoutes(server)
 configAuthRoutes(server)
+configStripeRoute(server)
 
 server.get('/', (req, res) => {
   res.status(200).json({

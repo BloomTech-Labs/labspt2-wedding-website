@@ -15,7 +15,7 @@ import DashBoard from './components/clientDashboard/Dashboard'
 import Navigation from './components/sidenav/sidenav'
 import Pricing from './components/pricing/Pricing'
 import QuestionList from './components/rsvp/questionList'
-import Billing from './components/pages/billing'
+import StripeBtn from './components/Stripe/stripeBtn'
 import Settings from './components/settings/Settings'
 import GuestList from './components/guest/guestList'
 import UserSetup from './components/landingPage/userSetup'
@@ -94,7 +94,7 @@ class App extends Component {
                 <Route exact path='/' component={DashBoard} />
                 <Route path='/settings' component={Settings} />
                 <Route path='/pricing' component={Pricing} />
-                <Route path='/billing' component={Billing} />
+                <Route path='/billing' component={StripeBtn} />
                 <Route path='/guests' component={GuestList} />
                 <Route path='/rsvp' component={QuestionList} />
               </Switch>

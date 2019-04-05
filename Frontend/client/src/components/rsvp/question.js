@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteQuestion, editQuestion, fetchAnswers } from '../../actions'
+import { deleteQuestion, editQuestion } from '../../actions'
 
 import axios from 'axios'
 import Answer from './answer'
@@ -18,23 +18,26 @@ class Question extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const api = 'http://localhost:3700'
-    const questionId = this.props.questionInfo.id
-    axios
-      .get(`${api}/rsvp/answer/${questionId}`)
-      .then(res => {
-        console.log(res)
-        this.setState({
-          answers: res,
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+  //axios call on CDM by typing a new question
+
+  // componentDidMount() {
+  //   const api = 'http://localhost:3700'
+  //   const questionId = this.props.questionInfo.id
+  //   axios
+  //     .get(`${api}/rsvp/answer/${questionId}`)
+  //     .then(res => {
+  //       console.log(res)
+  //       this.setState({
+  //         answers: res,
+  //       })
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // }
 
   inputHandler = e => {
+    e.preventDefault()
     const { question } = { ...this.state }
     const currentState = question
     const { name, value } = e.target
@@ -59,6 +62,19 @@ class Question extends React.Component {
     })
   }
   answersHandler = () => {
+    const api = 'http://localhost:3700'
+    const questionId = this.props.questionInfo.id
+    axios
+      .get(`${api}/rsvp/answer/${questionId}`)
+      .then(res => {
+        console.log(res)
+        this.setState({
+          answers: res,
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
     this.setState({
       answersTab: !this.state.answersTab,
     })
@@ -83,7 +99,13 @@ class Question extends React.Component {
         {this.state.answersTab ? (
           this.state.answers > 0 ? (
             this.state.answers.map(answer => {
-              return <Answer key={Math.random()} answer={answer} />
+              return (
+                <Answer
+                  key={Math.random()}
+                  answer={answer}
+                  questionId={this.props.questionInfo.id}
+                />
+              )
             })
           ) : (
             <div>
@@ -115,5 +137,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteQuestion, editQuestion, fetchAnswers }
+  { deleteQuestion, editQuestion }
 )(Question)
