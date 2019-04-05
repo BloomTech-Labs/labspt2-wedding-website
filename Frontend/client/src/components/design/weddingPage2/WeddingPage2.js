@@ -155,24 +155,35 @@ const Camper = styled.img`
     }
 `;
 
-const Girl = styled.img`
-  width: 12%;
-  height: 17vh;
-  margin: 30% 3%;
-  position: absolute;
-  -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
-  border: 1px solid black;
+// const Girl = styled.img`
+//   width: 12%;
+//   height: 17vh;
+//   margin: 30% 3%;
+//   position: absolute;
+//   -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
+//   -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
+//   box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
+//   -ms-transform: rotate(20deg); /* IE 9 */
+//   -webkit-transform: rotate(20deg); /* Safari 3-8 */
+//   transform: rotate(20deg);
+//   border: 1px solid black;
 
-  @media screen and (max-width: 479px) {
-    /* start of phone styles */
-    display: none;
-    }
-`;
+//   @media screen and (max-width: 479px) {
+//     /* start of phone styles */
+//     display: none;
+//     }
+
+//     @media screen and (max-width: 767px) {
+//       /* start of medium tablet styles */
+//       display: none;
+//       }
+
+//       @media screen and (max-width: 991px) {
+//         /* start of large tablet styles */
+//         display: none:
+//         }
+      
+// `;
 
 const A = styled.a`
   text-decoration: none;
@@ -388,7 +399,7 @@ export default class WeddingPage2 extends Component {
                 </Menu>
               </nav>
             </NavWrapper>
-            <Girl src={girl} alt="A Woman With Glasses" />
+            {/* <Girl src={girl} alt="A Woman With Glasses" /> */}
             <Camper src={camper} alt="Happy Camper" />
             <PrettyWCWrapper>{content()}</PrettyWCWrapper>
           </NavAndCoupleWrapper>
