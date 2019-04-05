@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "index.js",
+    "start": "node index.js",
     "server": "nodemon index.js",
     "test": "cross-env TESTING_DB=testing jest --watch --verbose"
   },
