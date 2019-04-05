@@ -15,9 +15,7 @@ const configLivePhotoRoute = require('../Config/routes/photoUploadRoute')
 const configQuestionRoutes = require('../Config/routes/questionsRoute')
 const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
 const configAuthRoutes = require('../Config/routes/authRoute')
-
 const configStripeRoute = require('../Config/routes/stripeRoute')
-const paymentApi = require('../Config/routes/paymentRoute')
 
 const server = express()
 

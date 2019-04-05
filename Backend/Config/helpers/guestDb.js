@@ -28,7 +28,6 @@ module.exports = {
   },
 
   deleteGuest: id => {
-    console.log('id on delete helper', id)
     return db('guestList')
       .where('id', id)
       .del()

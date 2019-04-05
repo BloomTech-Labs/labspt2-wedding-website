@@ -2,12 +2,10 @@ const helper = require('../helpers/rsvpAnswersDb.js')
 const db = require('../dbConfig')
 
 module.exports = server => {
-  server.get('/rsvp/answers', allAnswers)
   server.get('/rsvp/answer/:id', answerByQId)
   server.post('/rsvp/answers', addAnswer)
 }
 
-allAnswers = (req, res) => {}
 answerByQId = (req, res) => {
   const { id } = req.params
   helper

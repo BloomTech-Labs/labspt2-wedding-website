@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     
     Will have to check with team 
   */
+  //removed the socialname column
   return knex.schema.createTable('users', tbl => {
     tbl.increments()
     tbl.string('socialId').unique()

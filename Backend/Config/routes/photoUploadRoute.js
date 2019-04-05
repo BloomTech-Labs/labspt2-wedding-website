@@ -1,5 +1,5 @@
 const db = require('../dbConfig')
-const upload = require('../Photobucket/file-uploader')
+const upload = require('../photoBucket/file-uploader')
 const singleUpload = upload.single('image')
 
 module.exports = server => {
