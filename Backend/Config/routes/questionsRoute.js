@@ -6,12 +6,11 @@ module.exports = server => {
   server.post('/:user/addquestion', addNewQuestion)
   server.put('/update-question/:user/:questionId', editQuestion)
   server.get('/users/:id/questions', questionsByUId)
+  server.delete('/questions/:id', removeQuestion)
 }
 
 getAllUserQuestions = (req, res) => {
-  const {
-    id
-  } = req.params
+  const { id } = req.params
   helper
     .allQuestionsById(id)
     .then(questions => {
@@ -19,39 +18,33 @@ getAllUserQuestions = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        error: err
+        error: err,
       })
     })
 }
 
-
 addNewQuestion = (req, res) => {
   const newQ = req.body
-  const {
-    user
-  } = req.params
+  const { user } = req.params
   newQ.users_id = user
   console.log(newQ)
   helper
     .addQuestion(newQ)
     .then(id => {
       res.status(201).json({
-        message: 'Question Added'
+        message: 'Question Added',
       })
     })
     .catch(err => {
       res.status(500).send({
-        error: err
+        error: err,
       })
     })
 }
 
-editQuestion = (res, req) => {
+editQuestion = (req, res) => {
   const question = req.body
-  const {
-    user,
-    questionId
-  } = req.params
+  const { user, questionId } = req.params
   question.users_id = user
   console.log(req.params)
   // need to check for ID and return 404 if false
@@ -59,31 +52,29 @@ editQuestion = (res, req) => {
     .updateQuestion(questionId, question)
     .then(number => {
       res.status(202).json({
-        message: 'Question Updated'
+        message: 'Question Updated',
       })
     })
     .catch(err => {
       res.status(500).send({
-        error: err
+        error: err,
       })
     })
 }
 
 removeQuestion = (req, body) => {
-  const {
-    id
-  } = req.params
+  const { id } = req.params
   helper
     .deleteQuestion(id)
     .then(number => {
       number
-        ?
-        res.status(404).json({
-          message: 'Question Not Found',
-        }) :
-        res.json({
-          message: 'Its gone!',
-        })
+      // ? res.status(404).json({
+      //     message: 'Question Not Found',
+      //   })
+      // :
+      res.json({
+        message: 'Its gone!',
+      })
     })
     .catch(err => {
       res.status(500).send({
@@ -93,29 +84,26 @@ removeQuestion = (req, body) => {
 }
 
 questionsByUId = (req, res) => {
-  const {
-    id
-  } = req.params
+  const { id } = req.params
   helper.userById(id).then(async user => {
-    try{ 
+    try {
       const qsReturned = await db('rsvpQuestions').where('users_id', id)
-      let allQs =  qsReturned.map(obj => {
-        return  {
+      let allQs = qsReturned.map(obj => {
+        return {
           questionId: obj.id,
-          question: obj.Question_body
+          question: obj.Question_body,
         }
       })
       let anotherObj = {
         username: user.username,
         user_id: user.id,
-        questions: allQs
+        questions: allQs,
       }
 
       res.json(anotherObj)
-    
-    } catch (err){
+    } catch (err) {
       res.status(500).send({
-        error: 'Internal server error'
+        error: 'Internal server error',
       })
     }
   })

@@ -1,7 +1,7 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('guestList')
-  .truncate()
+    .truncate()
     .then(function() {
       // Inserts seed entries
       return knex('guestList').insert([
@@ -83,6 +83,38 @@ exports.seed = function(knex, Promise) {
           lastName: 'lastname',
           email: 'guest@email9.com',
           userId: 5,
+          rsvp: true,
+        },
+        {
+          id: 11,
+          firstName: 'name',
+          lastName: 'lastname',
+          email: 'guest@email10.com',
+          userId: 6,
+          rsvpMaybe: true,
+        },
+        {
+          id: 12,
+          firstName: 'name',
+          lastName: 'lastname',
+          email: 'guest@email11.com',
+          userId: 6,
+          rsvp: true,
+        },
+        {
+          id: 13,
+          firstName: 'name',
+          lastName: 'lastname',
+          email: 'guest@email12.com',
+          userId: 6,
+          rsvpMaybe: true,
+        },
+        {
+          id: 14,
+          firstName: 'name',
+          lastName: 'lastname',
+          email: 'guest@email13.com',
+          userId: 6,
           rsvp: true,
         },
       ])

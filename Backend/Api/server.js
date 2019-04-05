@@ -2,7 +2,6 @@ require('dotenv').config()
 // const request = require('request')
 const passport = require('passport')
 const auth = require('../Auth/passportConfig')
-const jwtHelper = require('../Auth/jwt/jwtHelper')
 
 const express = require('express')
 const cors = require('cors')
@@ -16,6 +15,7 @@ const configLivePhotoRoute = require('../Config/routes/photoUploadRoute')
 const configQuestionRoutes = require('../Config/routes/questionsRoute')
 const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
 const configAuthRoutes = require('../Config/routes/authRoute')
+const configStripeRoute = require('../Config/routes/stripeRoute')
 
 const server = express()
 
@@ -35,11 +35,11 @@ configLivePhotoRoute(server)
 configQuestionRoutes(server)
 configRsvpAnswersRoutes(server)
 configAuthRoutes(server)
-
+configStripeRoute(server)
 
 server.get('/', (req, res) => {
   res.status(200).json({
-    api: 'WOW welcome to the JoinOurBigDay API!'
+    api: 'WOW welcome to the JoinOurBigDay API!',
   })
 })
 
