@@ -6,7 +6,7 @@ const localPg = {
   password: process.env.DB_PASS,
 };
 
-const dbConnection = process.env.DATABASE_URL;
+const dbConnection = process.env.DATABASE_URL || localPg;
 
 module.exports = {
 
@@ -14,13 +14,13 @@ module.exports = {
     client: 'sqlite3',
     connection: {
       filename: './data/labsDB.sqlite3'
-    },
+    }, 
     useNullAsDefault: true,
-    migrations: {
+    migrations:{
       directory: './data/migrations'
-    },
-    seeds: {
-      directory: './data/seeds'
+    }, 
+    seeds:{
+      directory: '.data/seeds'
     }
   },
 
@@ -28,7 +28,7 @@ module.exports = {
     client: 'pg',
     connection: {
       database: 'my_db',
-      user: 'username',
+      user:     'username',
       password: 'password'
     },
     pool: {
@@ -55,13 +55,13 @@ module.exports = {
   testing: {
     client: 'sqlite3',
     connection: {
-      filename: './data/gweddingLabsTestDB.sqlite3'
+      filename: './data/weddingLabsTestDB.sqlite3'
     },
     useNullAsDefault: true,
-    migrations: {
+    migrations:{
       directory: './data/migrations'
     },
-    seeds: {
+    seeds:{
       directory: './data/seeds'
     },
   }
