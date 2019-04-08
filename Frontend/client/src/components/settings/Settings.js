@@ -151,6 +151,7 @@ class Settings extends Component {
   }
 
   render() {
+    console.log('settings state', this.state)
     return (
       <div>
         <SettingsPage>

@@ -16,7 +16,9 @@ class GoogleSuggest extends React.Component {
   }
 
   handleSelectSuggest(suggest) {
-    this.props.suggest(suggest.suggest.formatted_address)
+    console.log('google paces suggest', suggest)
+    const address = suggest.formatted_address
+    this.props.suggest(address)
   }
 
   render() {

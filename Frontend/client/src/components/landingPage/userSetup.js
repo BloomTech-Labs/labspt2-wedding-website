@@ -4,31 +4,38 @@ import { editUser } from '../../actions'
 import { withRouter } from 'react-router'
 
 import DatePicker from 'react-datepicker'
+import GoogleSuggest from '../googleSuggest'
 
 class UserSetup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
-      weddingParty: '',
-      venueLocation: '',
-      partnerName1: '',
-      partnerName2: '',
-      weddingDate: new Date(),
+      userInfo: {
+        username: '',
+        weddingParty: '',
+        venueLocation: '',
+        partnerName1: '',
+        partnerName2: '',
+        weddingDate: new Date(),
+      },
+      search: '',
     }
   }
-  // user react-google-places-suggest for venue location
-  // @ https://github.com/xuopled/react-google-places-suggest#readme
+
   inputHandler = e => {
+    const { userInfo } = { ...this.state }
+    const currentState = userInfo
+    const { name, value } = e.target
+    currentState[name] = value
     this.setState({
-      [e.target.name]: e.target.value,
+      user: value,
     })
     console.log('input handled')
   }
 
-  handleChangeDate = date => {
+  hadleChangeDate = date => {
     this.setState({
-      weddingDate: date,
+      userInfo: { ...this.state.userInfo, weddingDate: date },
     })
   }
 
@@ -36,9 +43,25 @@ class UserSetup extends Component {
     e.preventDefault()
     const userId = this.props.userInfo.id
     console.log('usersetup id', userId)
-    console.log(this.state)
-    this.props.editUser(userId, this.state)
+    console.log(this.state.userInfo)
+    this.props.editUser(userId, this.state.userInfo)
     this.props.history.push('/')
+  }
+
+  handleLocationChange(fieldValue) {
+    this.setState({
+      // search: e.target.value, value: e.target.value
+      search: fieldValue,
+      userInfo: { ...this.state.userInfo, venueLocation: fieldValue },
+    })
+  }
+
+  handleSelectSuggest(suggest) {
+    console.log(suggest)
+    this.setState({
+      search: '',
+      userInfo: { ...this.state.userInfo, venueLocation: suggest },
+    })
   }
 
   render() {
@@ -84,12 +107,11 @@ class UserSetup extends Component {
             onChange={this.inputHandler}
           />
           <label htmlFor=''>Venue Location</label>
-          <input
-            type='text'
-            placeholder='Venue Location'
-            name='venueLocation'
-            value={this.state.venueLocation}
-            onChange={this.inputHandler}
+          <GoogleSuggest
+            onChange={this.handleLocationChange.bind(this)}
+            suggest={this.handleSelectSuggest.bind(this)}
+            search={this.state.search}
+            value={this.state.userInfo.venueLocation}
           />
           <button onClick={this.handleSubmit}> Done </button>
         </form>

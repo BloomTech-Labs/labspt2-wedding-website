@@ -14,6 +14,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import createEncryptor from 'redux-persist-transform-encrypt'
 import storage from 'redux-persist/lib/storage'
+require('dotenv').config()
 
 const encryptor = createEncryptor({
   secretKey: 'my-super-secret-key',
