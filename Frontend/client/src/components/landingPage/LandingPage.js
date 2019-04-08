@@ -1,9 +1,6 @@
 // importing dependencies
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route, Link
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import styled from 'styled-components'
 
@@ -40,7 +37,7 @@ const ButtonDiv = styled.div`
 
 
 export default class LandingPage extends Component {
-  render(){
+  render() {
     return (
         <Router>
           <LPStyle>
@@ -54,4 +51,4 @@ export default class LandingPage extends Component {
         </Router>
     )
   }
-};
+}
