@@ -1,121 +1,161 @@
-import React, { Component } from "react";
-import Button from "react-button-component";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import GuestList from "./GuestList";
-import SideNav from "../sidenav/sidenav";
+import React, { Component } from 'react'
+import Button from 'react-button-component'
+import {
+    BrowserRouter as Router,
+    Route, Link
+} from 'react-router-dom'
+import GuestList from '../rsvp/GuestList'
+import Page from '../Page'
+import styled from 'styled-components'
 
-const rsvpPage = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  height: "100%",
-  width: "400px",
-  margin: "0 auto",
-  paddingTop: "50px"
-};
+const RSVPPage = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    min-width: 1024px;
+    margin: 0 auto;
 
-const rsvpForm = {
-  display: "flex",
-  flexDirection: "column",
-  width: "400px",
-  height: "200px",
-  border: "1px solid #000000",
-  marginBottom: "25px",
-  alignItems: "center",
-  justifyContent: "center"
-};
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
+        flex-direction: column;
+        width: 100%;
+        min-width: 350px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+`;
 
-const textBox = {
-  width: "250px",
-  margin: "5px 25px",
-  height: "25px"
-};
+const RSVPForm = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 200px;
+    border: 1px solid #000000;
+    margin-bottom: 25px;
+    align-items: center;
+    justify-content: center;
 
-const rsvpArea = {
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
-  fontSize: "12px",
-  width: "150px",
-  justifyContent: "left",
-  padding: "10px 0"
-};
+    @media screen and (max-width: 600px){
+        width: 370px;
+        margin-left: auto;
+    }
+`;
 
-const radio = {
-  width: "50px"
-};
+const TextBox = styled.input`
+    width: 250px;
+    margin: 10px 25px;
+    height: 25px;
+`;
 
-const finePrint = {
-  fontSize: "10px",
-  justifyContent: "end"
-};
+const Radio = styled.input`
+    width: 50px;
+`;
+
+const RSVPArea = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 12px;
+    width: 150px;
+    justify-content: left;
+    padding: 10px 0;
+`;
+
+const FinePrint = styled.p`
+    font-size: 10px;
+    justify-content: end;
+`;
+
+const RSVPLink = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const ButtonArea = styled.div`
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+`;
+
+const Buttons = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const StyledLink = styled(Link)`
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #010101;
+    margin: 0 5px;
+    width: 200px;
+`;
+
+const buttonStyles = {
+    width: '200px', 
+    border: '1px solid black', 
+    height: '50px', 
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    marginBottom: '20px', 
+    marginLeft: 'auto', 
+    marginRight: 'auto'
+}
+
 
 export default class RSVP extends Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <div>
-            <SideNav />
-          </div>
-          <div style={rsvpPage}>
-            <h2>RSVP Guest List</h2>
-            <div style={rsvpForm}>
-              <label for="rsvpForm">Guest Name</label>
-              <input
-                type="text"
-                name="first"
-                placeholder="First Name"
-                style={textBox}
-              />
-              <input
-                type="text"
-                name="last"
-                placeholder="Last Name"
-                style={textBox}
-              />
-              <p style={finePrint}>Ask each individual guest</p>
-            </div>
-            <div style={rsvpForm}>
-              <label for="rsvpForm">Will you be attending our wedding?</label>
-              <div style={rsvpArea}>
-                <input type="radio" name="attending" style={radio} />
-                <label for="rsvpArea">Attending</label>
-                <input type="radio" name="non-attending" style={radio} />
-                <label for="rsvpArea">Not Attending</label>
-              </div>
-              <p style={finePrint}>Ask each individual guest</p>
-            </div>
-            <div style={rsvpForm}>
-              <label for="rsvpForm">What is your mailing address?</label>
-              <input
-                type="text"
-                name="address"
-                placeholder="address"
-                style={textBox}
-              />
-              <p style={finePrint}>Ask once per household.</p>
-            </div>
-            <div style={rsvpForm}>
-              <label for="rsvpForm">Are you friend or family of...?</label>
-              <div style={rsvpArea}>
-                <input type="radio" name="Bride" style={radio} />
-                <label for="Bride">Bride Name</label>
-                <input type="radio" name="Groom" style={radio} />
-                <label for="Grrom">Groom Name</label>
-                <input type="radio" name="Both" style={radio} />
-                <label for="Both">Both</label>
-                <p style={finePrint}>Ask each individual guest</p>
-              </div>
-            </div>
-            <Button className="button">Add Question</Button>
-            <Button className="button">Save</Button>
+    render() {
+      return (
+          <Router>
+            <Page>
+                <RSVPPage>
+                    <h2>RSVP Guest List</h2>
+                    <RSVPForm>
+                    <label for="rsvpForm">Guest Name</label>
+                        <TextBox type="text" name="first" placeholder="First Name" />
+                        <TextBox type="text" name="last" placeholder="Last Name" />
+                        <FinePrint>Ask each individual guest</FinePrint>
+                    </RSVPForm>
+                    <RSVPForm>
+                    <label for="rsvpForm">Will you be attending our wedding?</label>
+                        <RSVPArea>
+                            <Radio type="radio" name="attending"/><label for="rsvpArea">Attending</label>
+                            <Radio type="radio" name="non-attending" /><label for="rsvpArea">Not Attending</label>
+                        </RSVPArea>
+                        <FinePrint>Ask each individual guest</FinePrint>
+                    </RSVPForm>
+                    <RSVPForm>
+                        <label for="rsvpForm">What is your mailing address?</label>
+                        <TextBox type="text" name="address" placeholder="address" />
+                        <TextBox type="text" name="city-zip" placeholder="city, state and zip" />
+                        <FinePrint>Ask once per household.</FinePrint>
+                    </RSVPForm>
+                    <RSVPForm>
+                        <label for="rsvpForm">Are you friend or family of...?</label>
+                        <RSVPArea>
+                            <Radio type="radio" name="Bride"  /><label for="Bride">Bride Name</label>
+                            <Radio type="radio" name="Groom"  /><label for="Groom">Groom Name</label>
+                            <Radio type="radio" name="Both"  /><label for="Both">Both</label>
+                            <FinePrint>Ask each individual guest</FinePrint>
+                        </RSVPArea>
+                    </RSVPForm>
+                    <ButtonArea>
+                        <Buttons>
+                            <Button style={buttonStyles}>Add Question</Button>
+                            <Button style={buttonStyles}>Save</Button>
+                        </Buttons>
+                        <RSVPLink>
+                            <StyledLink to="/guestlist">Full Guest List</StyledLink>
+                            <Route path='/guestlist' component={GuestList}/>
+                        </RSVPLink>
+                    </ButtonArea>
+                </RSVPPage>
+            </Page>
+          </Router>
 
-            {/* <Link to="/guestlist">Full Guest List</Link>
-                <Route path='/guestlist' component={GuestList} /> */}
-          </div>
-        </div>
-      </Router>
-    );
-  }
+      )
+    };
 }

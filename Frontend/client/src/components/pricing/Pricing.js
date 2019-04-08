@@ -1,61 +1,70 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-import SideNav from "../sidenav/sidenav";
+const Price = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 1024px;
 
-const pricing = {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  margin: "0 auto",
-  width: "100%",
-  minWidth: "500px"
-};
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
+        flex-direction: column;
+        width: 100%;
+        min-width: 350px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+`;
 
-const box = {
-  display: "flex",
-  flexDirection: "row",
-  border: "2px solid #000000",
-  width: "50%",
-  height: "50%",
-  margin: "0 auto"
-};
+const Box = styled.div`
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #000000;
+    width: 300px;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+`;
 
-const boxLi = {
-  listStyleType: "none",
-  margin: "5px 0"
-};
+const BoxLI = styled.li`
+    list-style-type: none;
+    margin: 5px 0;
+`;
 
-const pricingLogo = {
-  textAlign: "center"
-};
+const PricingLogo = styled.h1`
+    text-align: center;
+`;
 
-const boxList = {
-  display: "flex",
-  flexDirection: "column"
-};
+const BoxList = styled.ul`
+    display: flex;
+    flex-direction: column;
+`;
+
+const H2 = styled.h2`
+    text-align: center;
+`;
+
 
 export default class Pricing extends Component {
-  render() {
-    return (
-      <div>
-        <div>
-          <SideNav />
-        </div>
-        <div style={pricing}>
-          <h1 style={pricingLogo}>Pricing</h1>
-          <hr />
-          <div style={box}>
-            <ul style={boxList}>
-              <li style={boxLi}>Planning Dashboard</li>
-              <li style={boxLi}>Digital RSVPs</li>
-              <li style={boxLi}>Free Website Hosting</li>
-              <li style={boxLi}>Wedding Website</li>
-            </ul>
-          </div>
-          <hr />
-          <h2 style={pricingLogo}>$0</h2>
-        </div>
-      </div>
-    );
-  }
+    render() {
+        return (
+             <Price>
+                 <PricingLogo>Pricing</PricingLogo>
+                 <hr />
+                 <Box>
+                    <BoxList>
+                        <BoxLI>Planning Dashboard</BoxLI>
+                        <BoxLI>Digital RSVPs</BoxLI>
+                        <BoxLI>Free Website Hosting</BoxLI>
+                        <BoxLI>Wedding Website</BoxLI>
+                    </BoxList>
+                 </Box>
+                 <hr />
+                 <H2>$0</H2>
+             </Price>
+        );
+    }
 }
