@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import Login from './login';
 import DemoCarousel from "./Carousel";
 import SideNav from '../sidenav/sidenav'
+import Dashboard from '../pages/Dashboard'
 
 const LPStyle = styled.div`
   display: flex;
@@ -43,7 +44,7 @@ export default class LandingPage extends Component {
     return (
         <Router>
           <LPStyle>
-          <Route path='/' component={SideNav}/>
+          <Route path='/' component={Dashboard}/>
             {/* <Route exact path="/" component={DemoCarousel}></Route>
             <ButtonDiv>
               <Link to="/login" component={Login}>Get Started</Link>

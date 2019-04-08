@@ -90,7 +90,7 @@ const MenuListItem = styled.li`
 
     @media only screen and (max-width: 1024px) and (min-width: 600px) {
         display: flex;
-        margin: 0 30px;
+        margin: 0 20px;
         text-align: center;
     }
 
