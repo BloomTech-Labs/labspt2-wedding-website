@@ -19,7 +19,7 @@ export const ERROR = 'ERROR'
 export const LOGOUT = 'LOGOUT'
 
 // needs to be stored on secret .env file for production
-const api = 'http://localhost:3700' || 'https://joinourbigday.herokuapp.com'
+const api = 'https://joinourbigday.herokuapp.com'
 
 //Login in / Registering
 export const loginRegister = creds => dispatch => {

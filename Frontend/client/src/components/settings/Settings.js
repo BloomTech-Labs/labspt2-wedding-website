@@ -3,57 +3,93 @@ import { withRouter } from 'react-router'
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from 'react-datepicker'
+import GoogleSuggest from '../googleSuggest'
 
 import { connect } from 'react-redux'
 import { editUser } from '../../actions'
+import styled from 'styled-components'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
-const settingsPage = {
-  display: 'flex',
-  width: '100%',
-  maxWidth: '1200px',
-  minWidth: '700px',
-  justifyContent: 'space-between',
-  height: '100vh',
-  maxHeight: '600px',
-  // marginLeft: 'auto',
-  // marginRight: 'auto',
-  marginTop: '100px',
-}
+const SettingsPage = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 1025px;
+  justify-content: space-around;
+  height: 100vh;
+  max-height: 500px;
+  margin-top: 50px;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`
 
-const settingsBox = {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '45%',
-}
+const SettingsBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    width: 100%;
+    max-width: 350px;
+    justify-content: center;
+    margin: 0;
+  }
+`
 
-const box = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  marginBottom: '5px',
-  marginTop: '20px',
-}
+const Box = styled.div`
+  display: flex;
+  margin: 10px 0;
+  justify-content: space-between;
+  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    min-width: 500px;
+  }
+  @media screen and (max-width: 599px) {
+    max-width: 400px;
+  }
+`
 
-const rightBox = {
-  display: 'flex',
-  marginBottom: '5px',
-  marginTop: '20px',
-  width: '100%',
-}
+const RightBox = styled.div`
+  display: flex;
+  width: 100%;
+  margin: 10px 0;
+  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    min-width: 500px;
+  }
+`
 
-const buttonDiv = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  marginBottom: '25px',
-  marginTop: '25px',
-  height: '50px',
-  boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-  width: '26%',
-}
+const SpecialBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  @media only screen and (max-width: 1024px) and (min-width: 600px) {
+    min-width: 500px;
+  }
+`
+
+const InputBox = styled.input`
+  border-bottom: 1px solid #000000;
+  width: 90%;
+`
+
+const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  height: 100px;
+  min-width: 250px;
+  width: 100%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`
 
 class Settings extends Component {
   constructor(props) {
@@ -68,6 +104,7 @@ class Settings extends Component {
         weddingDate: new Date(),
       },
       currentPassword: '',
+      search: '',
     }
     this.hadleChangeDate = this.hadleChangeDate.bind(this)
   }
@@ -85,7 +122,7 @@ class Settings extends Component {
 
   hadleChangeDate = date => {
     this.setState({
-      weddingDate: date,
+      userInfo: { ...this.state.userInfo, weddingDate: date },
     })
   }
 
@@ -97,12 +134,28 @@ class Settings extends Component {
     // needs to wait until loading = false to push to dashboard
   }
 
+  handleLocationChange(fieldValue) {
+    this.setState({
+      // search: e.target.value, value: e.target.value
+      search: fieldValue,
+      userInfo: { ...this.state.userInfo, venueLocation: fieldValue },
+    })
+  }
+
+  handleSelectSuggest(suggest) {
+    console.log(suggest)
+    this.setState({
+      search: '',
+      userInfo: { ...this.state.userInfo, venueLocation: suggest },
+    })
+  }
+
   render() {
     return (
       <div>
-        <div style={settingsPage}>
-          <div style={settingsBox}>
-            <div style={box}>
+        <SettingsPage>
+          <SettingsBox>
+            <Box>
               <label htmlFor='email'>Email:</label>
               <input
                 type='email'
@@ -111,19 +164,14 @@ class Settings extends Component {
                 placeholder='user@email.com'
                 onChange={this.inputHandler}
               />
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                marginTop: '10px',
-              }}>
+            </Box>
+            <SpecialBox>
               <input type='checkbox' name='emails?' value='false' />
               <label for='checkbox'>Emails?</label>
               <input type='checkbox' name='texts?' value='false' />
               <label for='checkbox'>Texts?</label>
-            </div>
-            <div style={box}>
+            </SpecialBox>
+            <Box>
               <label htmlFor='old'>Old Password:</label>
               <input
                 type='password'
@@ -132,8 +180,8 @@ class Settings extends Component {
                 value={this.state.currentPassword}
                 onChange={this.inputHandler}
               />
-            </div>
-            <div style={box}>
+            </Box>
+            <Box>
               <label htmlFor='new'>New Password:</label>
               <input
                 type='password'
@@ -142,14 +190,11 @@ class Settings extends Component {
                 placeholder='********'
                 onChange={this.inputHandler}
               />
-            </div>
-            <div style={buttonDiv}>
-              <button onClick={this.handleSave}>Save</button>
-            </div>
-          </div>
-          <div style={settingsBox}>
-            <div style={rightBox}>
-              <input
+            </Box>
+          </SettingsBox>
+          <SettingsBox>
+            <RightBox>
+              <InputBox
                 type='text'
                 name='partnerName1'
                 placeholder='Partner Name'
@@ -159,9 +204,9 @@ class Settings extends Component {
               />{' '}
               <FaEdit />
               <FaTrash />
-            </div>
-            <div style={rightBox}>
-              <input
+            </RightBox>
+            <RightBox>
+              <InputBox
                 type='text'
                 name='partnerName2'
                 value={this.state.userInfo.partnerName2}
@@ -171,33 +216,29 @@ class Settings extends Component {
               />{' '}
               <FaEdit />
               <FaTrash />
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                marginTop: '10px',
-              }}>
+            </RightBox>
+            <SpecialBox>
               <label for='calander'>Wedding Date</label>
               <DatePicker
                 selected={this.state.userInfo.weddingDate}
                 onChange={this.handleChangeDate} //only when value has changed
               />
-            </div>
-            <div style={rightBox}>
-              <input
-                type='text'
-                name='venueLocation'
+            </SpecialBox>
+            <RightBox>
+              <GoogleSuggest
+                onChange={this.handleLocationChange.bind(this)}
+                suggest={this.handleSelectSuggest.bind(this)}
+                search={this.state.search}
                 value={this.state.userInfo.venueLocation}
-                onChange={this.inputHandler}
-                placeholder='Wedding Location'
-                style={{ borderBottom: '1px solid black', width: '90%' }}
               />
               <FaEdit />
               <FaTrash />
-            </div>
-          </div>
-        </div>
+            </RightBox>
+          </SettingsBox>
+          <SettingsBox>
+            <Button onClick={this.handleSave}>Save</Button>
+          </SettingsBox>
+        </SettingsPage>
       </div>
     )
   }

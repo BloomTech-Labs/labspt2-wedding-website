@@ -19,7 +19,7 @@
     "react-day-picker": "^7.3.0",
     "react-dom": "^16.8.3",
     "react-google-maps-loader": "^4.2.5",
-    "react-google-places-suggest": "^3.6.1",
+    "react-google-places-suggest": "^3.7.1",
     "react-icons": "^3.5.0",
     "react-minimal-pie-chart": "^3.5.0",
     "react-redux": "^6.0.1",

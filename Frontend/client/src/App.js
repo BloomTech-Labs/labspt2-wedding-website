@@ -20,10 +20,17 @@ import Settings from './components/settings/Settings'
 import GuestList from './components/guest/guestList'
 import UserSetup from './components/landingPage/userSetup'
 
-const row = {
-  display: 'flex',
-  flexDirection: 'row',
-}
+import styled from 'styled-components'
+
+const Container = styled.div`
+  display: flex;
+  max-width: 1600px;
+  margin: auto;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    display: flex;
+    flex-direction: column;
+  }
+`
 
 // components from front end merge
 
@@ -87,7 +94,7 @@ class App extends Component {
       } else {
         return (
           <Router className='App'>
-            <div style={row}>
+            <Container>
               <Navigation />
 
               <Switch>
@@ -98,7 +105,7 @@ class App extends Component {
                 <Route path='/guests' component={GuestList} />
                 <Route path='/rsvp' component={QuestionList} />
               </Switch>
-            </div>
+            </Container>
           </Router>
         )
       }

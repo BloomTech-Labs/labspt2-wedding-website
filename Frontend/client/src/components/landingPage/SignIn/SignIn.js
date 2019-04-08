@@ -70,7 +70,7 @@ class SignIn extends Component {
             <button className='FormField__Button mr-20'>Sign In</button>
           </div>
         </form>
-        <a href='http://localhost:3700/auth/google'>Google</a>
+        <a href='https://joinourbigday.herokuapp.com/auth/google'>Google</a>
       </div>
     )
   }

@@ -62,15 +62,17 @@ class Question extends React.Component {
     })
   }
   answersHandler = () => {
-    const api = 'http://localhost:3700'
+    console.log('GET ANSERS fired')
+    const api = 'https://joinourbigday.herokuapp.com/'
     const questionId = this.props.questionInfo.id
     axios
       .get(`${api}/rsvp/answer/${questionId}`)
       .then(res => {
-        console.log(res)
+        const answers = res.data.answers
         this.setState({
-          answers: res,
+          answers: answers,
         })
+        console.log(this.state)
       })
       .catch(err => {
         console.log(err)
@@ -97,7 +99,7 @@ class Question extends React.Component {
         <button onClick={this.updateHandler}>update</button>
         <button onClick={this.answersHandler}>See answers</button>
         {this.state.answersTab ? (
-          this.state.answers > 0 ? (
+          this.state.answers.length > 0 ? (
             this.state.answers.map(answer => {
               return (
                 <Answer

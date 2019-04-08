@@ -12,27 +12,33 @@ class Answer extends React.Component {
 
   componentDidMount() {
     const guestsArr = this.props.guests
-    const guestId = this.props.answer.guestList_id
-    const guestObj = guestsArr.find(guest => {
-      if (guest) {
-        return guest.id === `${guestId}`
-      }
-    })
-
-    this.setState({
-      guest: guestObj,
-    })
+    const guestId = this.state.answer.guestid
+    console.log('guestId :', guestId)
+    const guestObj = guestsArr.find(guest => guest.id === guestId)
+    setTimeout(() => {
+      this.setState({
+        guest: guestObj,
+      })
+    }, 200)
+    console.log('guestObj :', guestObj)
   }
 
   render() {
+    console.log('this.state :', this.state)
+    console.log('answer props:', this.props)
     return (
       <div>
         <h3>Guest:</h3>
-        <p>
-          {this.state.guest.firstName} {this.state.guest.firstName}
-        </p>
+        {this.state.guest ? (
+          <p>
+            {this.state.guest.firstName} {this.state.guest.lastName}
+          </p>
+        ) : (
+          <p>Loding name</p>
+        )}
+
         <h3>Answer</h3>
-        <p>{this.state.answer.answer_body}</p>
+        <p>{this.state.answer.answer}</p>
       </div>
     )
   }

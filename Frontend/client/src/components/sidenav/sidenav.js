@@ -10,9 +10,9 @@ import styled from 'styled-components'
 const NavPage = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 0 15px;
-  width: 100%;
+  width: 20%;
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
     margin: 0;
     padding: 0;
@@ -54,9 +54,10 @@ const Menu = styled.nav`
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
     display: flex;
     height: 100px;
-    width: 90%;
+    width: 100%;
     justify-content: center;
     margin: 0 auto;
+    padding: 0;
   }
 `
 
@@ -64,27 +65,33 @@ const MenuList = styled.ul`
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 10px;
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 100px;
-    width: 100%;
+    padding: 0;
   }
+`
+const MenuContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 `
 
 const MenuListItem = styled.li`
   display: flex;
   margin: 10px 0;
-  text-align: left;
+  text-align: center;
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     display: flex;
     margin: 0 30px;
     text-align: center;
+    padding: 0;
   }
   @media only screen and (max-width: 599px) {
     margin: 0 5px;
+    padding: 0;
   }
 `
 
@@ -105,15 +112,19 @@ const STLink = styled(Link)`
   color: #010101;
 `
 const Button = styled.button`
+  display: flex;
   border-radius: 5%;
-  color: white;
+  color: black;
   border: none;
   outline: none;
   border-radius: 25px;
-  padding: 15px 70px;
   font-size: 0.8em;
   font-weight: 500;
   background: #52c4b9;
+  width: 50%;
+  align-self: center;
+  justify-content: center;
+  margin-bottom: 10px;
 `
 
 class Navigation extends Component {
@@ -130,25 +141,23 @@ class Navigation extends Component {
         </MenuLogo>
         <SideNav>
           <Menu>
-            <div>
+            <MenuContainer>
               <MenuList>
                 <MenuListItem>
                   <STLink to='/pricing'>Pricing</STLink>
                 </MenuListItem>
                 <MenuListItem>
-                  <STLink to='/billing'>Billing</STLink>
+                  <STLink to='/billing'>Premium</STLink>
                 </MenuListItem>
                 <MenuListItem>
-                  <STLink to='/settings'>Account Settings</STLink>
+                  <STLink to='/settings'>Settings</STLink>
                 </MenuListItem>
                 <MenuListItem>
                   <STLink to='/rsvp'>RSVP</STLink>
                 </MenuListItem>
-                <MenuListItem>
-                  <Button onClick={this.handleClick}>Sign Out</Button>
-                </MenuListItem>
               </MenuList>
-            </div>
+              <Button onClick={this.handleClick}>Sign Out</Button>
+            </MenuContainer>
           </Menu>
         </SideNav>
       </NavPage>

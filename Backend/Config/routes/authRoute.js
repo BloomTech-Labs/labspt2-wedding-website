@@ -107,7 +107,7 @@ googleCB = (req, res) => {
     username: user.username,
     email: user.email,
     partnerName1: user.partnerName1,
-    partnerName2: user.partnerName1,
+    partnerName2: user.partnerName2,
     weddingDate: user.weddingDate,
     weddingParty: user.weddingParty,
     venueLocation: user.venueLocation,

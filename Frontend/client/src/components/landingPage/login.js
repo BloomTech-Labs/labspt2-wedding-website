@@ -8,6 +8,9 @@ import styled from 'styled-components'
 
 const LoginPage = styled.div`
   height: 100vh;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   color: white;
 `
