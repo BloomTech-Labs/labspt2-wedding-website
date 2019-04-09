@@ -2,9 +2,10 @@ const helper = require('../helpers/userDb')
 const bcrypt = require('bcrypt')
 
 module.exports = server => {
-  server.get('/users', allUsers),
-    server.get('/users/:id', userById),
+  server.get('/users', allUsers)
+    server.get('/users/:id', userById)
     server.put('/users/:id', editUser)
+    server.get('/users/:id/images', userPhotos)
 }
 
 allUsers = (req, res) => {
@@ -81,4 +82,15 @@ removeUser = (req, res) => {
         error: err,
       })
     })
+}
+
+userPhotos = (req, res) =>{
+  const { id } = req.params
+  helper.getUserPhotos(id).then(images =>{
+    
+  
+    res.json(images)
+  } ).catch(err=>{
+    res.status(500).send(err)
+  })
 }

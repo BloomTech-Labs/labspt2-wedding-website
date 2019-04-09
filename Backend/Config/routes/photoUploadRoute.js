@@ -3,8 +3,9 @@ const upload = require('../photoBucket/file-uploader')
 const singleUpload = upload.single('image')
 
 module.exports = server => {
-  server.post('/users/:id/upload', addImage)
+  server.post('/users/:id/live-upload', addImage)
   server.get('/users/:id/live-photos', GetLivePhotos)
+  server.post('/users/:id/user-upload', addUserImage)
 }
 
 addImage = (req, res) => {
@@ -52,4 +53,41 @@ GetLivePhotos = (req, res) => {
     .catch(err => {
       res.status(500).send(err)
     })
+}
+
+addUserImage = (req, res) => {
+  const userId = req.params.id
+  singleUpload(req, res, err => {
+   console.log('inside single')
+    const { photoName } = req.body
+    if (err) {
+      res.status(422).send({
+        errors: [
+          {
+            title: 'Image Upload Error',
+            detail: err.message,
+          },
+        ],
+      })
+    }
+    const image = req.file.location
+    console.log(image)
+    const newImage = {
+      imgUrl: image,
+     photoName,
+      userId
+    }
+
+    db('userPhotos')
+      .insert(newImage)
+      .then(id => {
+        res.status(201).send(newImage)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).send({
+          error: err,
+        })
+      })
+  })
 }

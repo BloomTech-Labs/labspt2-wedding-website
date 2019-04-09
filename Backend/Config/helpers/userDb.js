@@ -36,4 +36,7 @@ module.exports = {
       .where('id', id)
       .del()
   },
+  getUserPhotos: (id) =>{
+    return db('userPhotos').where('userId', id)
+  }
 }
