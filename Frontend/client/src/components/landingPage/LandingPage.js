@@ -1,13 +1,11 @@
 // importing dependencies
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 
 import styled from 'styled-components'
 
-import Login from './login/Login'
+import Login from './login'
 import DemoCarousel from './Carousel'
-import SideNav from '../sidenav/sidenav'
-import Dashboard from '../pages/Dashboard'
 
 const LPStyle = styled.div`
   display: flex;
@@ -16,7 +14,6 @@ const LPStyle = styled.div`
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-
   @media screen and (max-width: 1024) {
     width: 1000px;
     margin: 0;
@@ -35,19 +32,18 @@ const ButtonDiv = styled.div`
   width: 200px;
 `
 
-export default class LandingPage extends Component {
-  render() {
-    return (
-      <Router>
-        <LPStyle>
-          <Route path='/' component={Dashboard} />
-          {/* <Route exact path="/" component={DemoCarousel}></Route>
-            <ButtonDiv>
-              <Link to="/login" component={Login}>Get Started</Link>
-            </ButtonDiv>
-            <Route exact path="/login" component={Login}></Route> */}
-        </LPStyle>
-      </Router>
-    )
-  }
+function LandingPage({ match }) {
+  return (
+    <LPStyle>
+      {/* <Route exact path='/' component={DemoCarousel} /> */}
+      <Route exact path={`${match.path}`} component={DemoCarousel} />
+      <ButtonDiv>
+        <Link to='/login' component={Login}>
+          Get Started
+        </Link>
+      </ButtonDiv>
+    </LPStyle>
+  )
 }
+
+export default LandingPage

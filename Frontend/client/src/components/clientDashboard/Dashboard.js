@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PieChart from "react-minimal-pie-chart";
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import moment from 'moment'
 
-import styled from "styled-components";
+import PieChart from 'react-minimal-pie-chart'
 
-import SideNav from "../sidenav/sidenav";
+import styled from 'styled-components'
 
 const DashContainer = styled.div`
   max-width: 1080px;
@@ -12,7 +13,7 @@ const DashContainer = styled.div`
   margin: 0 auto;
   display: flex;
   background-color: #4c5d72;
-`;
+`
 const Button = styled.button`
   border-radius: 5%;
   color: white;
@@ -23,7 +24,7 @@ const Button = styled.button`
   font-size: 0.8em;
   font-weight: 500;
   background: #52c4b9;
-`;
+`
 
 const ShareButton = styled.button`
   border-radius: 5%;
@@ -37,7 +38,7 @@ const ShareButton = styled.button`
   background: #52c4b9;
   float: right;
   margin-right: 5%;
-`;
+`
 
 const GLButton = styled.button`
   border-radius: 5%;
@@ -50,103 +51,117 @@ const GLButton = styled.button`
   font-weight: 500;
   background: #52c4b9;
   margin-left: 5%;
-`;
+`
 
 const SignOut = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-end;
-`;
+`
 
 const HeadContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10% 3% 0% 3%;
   width: 100%;
-`;
+`
 
 const Head = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-`;
+`
 
 const NameDate = styled.div`
-display: flex;
-flex-direction column;
-`;
+  display: flex;
+  flex-direction: column;
+`
 
-const Location = styled.div``;
+const Location = styled.div``
 
 const H1 = styled.h1`
   font-size: 2.5em;
   text-align: center;
   color: white;
   margin-top: 5%;
-`;
+`
 
 const H2 = styled.h2`
   font-size: 2.5em;
   text-align: center;
   color: white;
   margin-top: 12%;
-`;
+`
 
 const GuestList = styled.div`
-margin-top: 5%;
-border-top: 2px solid #707C8B;
-padding 3%;
-`;
+  margin-top: 5%;
+  border-top: 2px solid #707c8b;
+  padding: 3%;
+`
 
 const H3 = styled.h3`
   font-size: 1.5em;
   color: white;
   margin-bottom: 5%;
-`;
+`
 
 const RSVP = styled.div`
-margin-top: 5%;
-border-top: 2px solid #707C8B;
-padding 3%;
-display: flex;
-justify-content: space-between;
-`;
+  margin-top: 5%;
+  border-top: 2px solid #707c8b;
+  padding: 3%;
+  display: flex;
+  justify-content: space-between;
+`
 
 const Registry = styled.div`
-border-top: 2px solid #707C8B;
-padding 3%;
-`;
+  border-top: 2px solid #707c8b;
+  padding: 3%;
+`
 
 const Pie = styled.div`
   width: 25%;
-`;
+`
 
 class Dashboard extends Component {
   render() {
+    let rsvpYes = 0
+    let rsvpNo = 0
+    let rsvpMaybe = 0
+    let rsvpNoA = 0
+    if (this.props.guests) {
+      this.props.guests.map(guest => {
+        if (guest.rsvp || guest.rsvpMaybe) {
+          guest.rsvp === 1 ? rsvpYes++ : rsvpNo++
+          rsvpMaybe++
+        } else {
+          rsvpNoA++
+        }
+      })
+    }
+    console.log('rsvpYes :', rsvpYes)
+    console.log('rsvpNo :', rsvpNo)
+    console.log('rsvpMaybe :', rsvpMaybe)
+    console.log('rsvpNoA :', rsvpNoA)
     return (
       <DashContainer>
-        <div>
-          <SideNav />
-          <SignOut>
-            {/* Not sure if this will be in menu or not */}
-            <Button>Sign Out</Button>
-          </SignOut>
-        </div>
         <HeadContainer>
           <Head>
             <NameDate>
-              <Link to="/Design">
+              <Link to='/Design'>
                 <Button>Change Design</Button>
               </Link>
               {/* Will need to write code that auto populates name and date for wedding. */}
-              <H1>Bri & Ryan's Wedding</H1>
-              <H1>June 14, 2019</H1>
+              <H1>
+                {this.props.userInfo.partnerName1} &amp;{' '}
+                {this.props.userInfo.partnerName2}'s Wedding
+              </H1>
+              <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
             </NameDate>
             <Location>
               {/* This will need to share the link to the personal wedding web page */}
               <ShareButton>Share</ShareButton>
               {/* Will need to populate info from server */}
-              <H2>Wedding Reception Hall San Diego, Ca</H2>
+              <H2>{this.props.userInfo.venueLocation}</H2>
             </Location>
           </Head>
 
@@ -155,7 +170,7 @@ class Dashboard extends Component {
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
             <Button>Import CSV</Button>
             {/* Needs to route to guest list */}
-            <Link to="/rsvp">
+            <Link to='/guests'>
               <GLButton>Guest List</GLButton>
             </Link>
           </GuestList>
@@ -167,14 +182,23 @@ class Dashboard extends Component {
             <Pie>
               <PieChart
                 data={[
-                  { title: "One", value: 10, color: "#E38627" },
-                  { title: "Two", value: 15, color: "#C13C37" },
-                  { title: "Three", value: 20, color: "#6A2135" }
+                  { title: 'yes', value: rsvpYes, color: '#E38627' },
+                  { title: 'no', value: rsvpNo, color: '#C13C37' },
+                  { title: 'maybe', value: rsvpMaybe, color: '#6A2135' },
+                  { title: 'maybe', value: rsvpNoA, color: '#668B8B' },
                 ]}
+                label
+                labelStyle={{
+                  fontSize: '12px',
+                  fontFamily: 'sans-serif',
+                }}
+                radius={42}
+                labelPosition={120}
+                animate
+                reveal
               />
-              ;
             </Pie>
-            <Link to="RSVP">
+            <Link to='RSVP'>
               <Button>Edit Questions</Button>
             </Link>
           </RSVP>
@@ -185,8 +209,16 @@ class Dashboard extends Component {
           </Registry>
         </HeadContainer>
       </DashContainer>
-    );
+    )
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  guests: state.guests,
+})
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Dashboard)
