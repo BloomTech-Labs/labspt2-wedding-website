@@ -7,17 +7,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
-<<<<<<< HEAD
-    "prop-types": "^15.7.2",
-    "react": "^16.8.3",
-    "react-button-component": "^1.0.0",
-    "react-datepicker": "^2.3.0",
-    "react-dom": "^16.8.3",
-    "react-icons": "^3.5.0",
-    "react-redux": "^6.0.1",
-    "react-responsive-carousel": "^3.1.47",
-    "react-router-dom": "^5.0.0",
-=======
     "babel-core": "^6.26.3",
     "fontawesome": "^5.6.3",
     "react": "^16.8.3",
@@ -32,7 +21,6 @@
     "react-responsive-carousel": "^3.1.47",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
->>>>>>> c066e8707821309e382f31bc703d65161f4ef756
     "react-scripts": "^2.1.5",
     "react-textarea-autosize": "^7.1.0",
     "redux": "^4.0.1",
