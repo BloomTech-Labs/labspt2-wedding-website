@@ -1,7 +1,56 @@
 import React, { Component } from 'react'
-
 import { connect } from 'react-redux'
 import { loginRegister } from '../../../actions/index'
+import styled from 'styled-components'
+
+const FormCenter = styled.div`
+  margin-bottom: 100px;
+`
+
+const FormField = styled.div`
+  margin-bottom: 40px;
+`
+
+const FormLabel = styled.div`
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  color: white;
+`
+
+const FormInput = styled.input`
+  width: 85%;
+  background-color: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  border-bottom: 1px solid #445366;
+  font-size: 1em;
+  font-weight: 300;
+  padding-bottom: 10px;
+  margin-top: 10px;
+`
+
+const FormCBLabel = styled.div`
+  color: #646f7d;
+  font-size: 0.9em;
+`
+
+const FormCheckBox = styled.input`
+  position: relative;
+  top: 1.5px;
+`
+
+const FormButton = styled.button`
+  background-color: #52c4b9;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 70px;
+  font-size: 0.8em;
+  font-weight: 500;
+`
 
 class SignUp extends Component {
   constructor(props) {
@@ -48,13 +97,11 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className='FormCenter'>
-        <form className='FormFields' onSubmit={this.handleSubmit}>
-          <div className='FormField'>
-            <label htmlFor='username' className='FormField__Label'>
-              Username
-            </label>
-            <input
+      <FormCenter>
+        <form onSubmit={this.handleSubmit}>
+          <FormField>
+            <FormLabel htmlFor='username'>Username</FormLabel>
+            <FormInput
               type='text'
               // id='email'
               className='FormField__Input'
@@ -63,12 +110,10 @@ class SignUp extends Component {
               value={this.state.username}
               onChange={this.handleChange}
             />
-          </div>
-          <div className='FormField'>
-            <label htmlFor='email' className='FormField__Label'>
-              E-mail
-            </label>
-            <input
+          </FormField>
+          <FormField>
+            <FormLabel htmlFor='email'>E-mail</FormLabel>
+            <FormInput
               type='text'
               id='email'
               className='FormField__Input'
@@ -77,12 +122,10 @@ class SignUp extends Component {
               value={this.state.email}
               onChange={this.handleChange}
             />
-          </div>
-          <div className='FormField'>
-            <label htmlFor='password' className='FormField__Label'>
-              Password
-            </label>
-            <input
+          </FormField>
+          <FormField>
+            <FormLabel htmlFor='password'>Password</FormLabel>
+            <FormInput
               type='password'
               id='password'
               className='FormField__Input'
@@ -91,12 +134,12 @@ class SignUp extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
-          </div>
-          <div className='FormField'>
-            <label className='FormField__CheckboxLabel'>
-              <input
+          </FormField>
+
+          <FormField>
+            <FormCBLabel>
+              <FormCheckBox
                 type='checkbox'
-                className='FormField__Checkbox'
                 name='hasAgreed'
                 value={this.state.hasAgreed}
                 onChange={this.handleChange}
@@ -105,14 +148,14 @@ class SignUp extends Component {
               <a href='http://' className='FormField__TermsLink'>
                 terms of service
               </a>
-            </label>
-          </div>
+            </FormCBLabel>
+          </FormField>
 
-          <div className='FormField'>
-            <button className='FormField__Button mr-20'>Sign Up</button>
-          </div>
+          <FormField>
+            <FormButton>Sign Up</FormButton>
+          </FormField>
         </form>
-      </div>
+      </FormCenter>
     )
   }
 }

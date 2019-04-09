@@ -22,6 +22,8 @@ import UserSetup from './components/landingPage/userSetup'
 
 import styled from 'styled-components'
 
+import './App.css'
+
 const Container = styled.div`
   display: flex;
   max-width: 1600px;

@@ -50,6 +50,8 @@ class Question extends React.Component {
 
   deleteHandler = e => {
     e.preventDefault()
+    console.log('delete question :', this.props.userInfo.id)
+    console.log('delete question :', this.props.questionInfo.id)
     this.props.deleteQuestion(
       this.props.userInfo.id,
       this.props.questionInfo.id

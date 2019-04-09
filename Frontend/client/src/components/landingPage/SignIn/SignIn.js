@@ -1,7 +1,46 @@
 import React, { Component } from 'react'
-
 import { connect } from 'react-redux'
 import { loginRegister } from '../../../actions/index'
+import styled from 'styled-components'
+
+const FormCenter = styled.div`
+  margin-bottom: 100px;
+`
+
+const FormField = styled.div`
+  margin-bottom: 40px;
+`
+
+const FormLabel = styled.div`
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  color: white;
+`
+
+const FormInput = styled.input`
+  width: 85%;
+  background-color: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  border-bottom: 1px solid #445366;
+  font-size: 1em;
+  font-weight: 300;
+  padding-bottom: 10px;
+  margin-top: 10px;
+`
+
+const FormButton = styled.button`
+  background-color: #52c4b9;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 70px;
+  font-size: 0.8em;
+  font-weight: 500;
+`
 
 class SignIn extends Component {
   constructor(props) {
@@ -37,11 +76,11 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className='FormCenter'>
-        <form className='FormFields' onSubmit={this.handleSubmit}>
-          <div className='FormField'>
-            <label className='FormField__Label'>Username</label>
-            <input
+      <FormCenter>
+        <form onSubmit={this.handleSubmit}>
+          <FormField>
+            <FormLabel>Username</FormLabel>
+            <FormInput
               // id='email'
               className='FormField__Input'
               placeholder='Enter your email'
@@ -49,13 +88,11 @@ class SignIn extends Component {
               value={this.state.email}
               onChange={this.handleChange}
             />
-          </div>
+          </FormField>
 
-          <div className='FormField'>
-            <label className='FormField__Label' htmlFor='password'>
-              Password
-            </label>
-            <input
+          <FormField>
+            <FormLabel htmlFor='password'>Password</FormLabel>
+            <FormInput
               type='password'
               id='password'
               className='FormField__Input'
@@ -64,14 +101,14 @@ class SignIn extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
-          </div>
+          </FormField>
 
-          <div className='FormField'>
-            <button className='FormField__Button mr-20'>Sign In</button>
-          </div>
+          <FormField>
+            <FormButton>Sign In</FormButton>
+          </FormField>
         </form>
         <a href='https://joinourbigday.herokuapp.com/auth/google'>Google</a>
-      </div>
+      </FormCenter>
     )
   }
 }
