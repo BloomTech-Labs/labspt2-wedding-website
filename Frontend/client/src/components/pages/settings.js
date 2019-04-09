@@ -8,7 +8,7 @@ import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from "react-datepicker";
 import styled from 'styled-components'
- 
+import ScrollAnimation from 'react-animate-on-scroll'; 
 import "react-datepicker/dist/react-datepicker.css";
 
 const SettingsPage = styled.div`

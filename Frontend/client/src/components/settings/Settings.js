@@ -3,10 +3,21 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import DatePicker from "react-datepicker";
-
+import styled from 'styled-components'
 import SideNav from "../sidenav/sidenav";
 
 import "react-datepicker/dist/react-datepicker.css";
+
+const SettingsPage = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 700px;
+  justify-content: space-between;
+  height: 100vh;
+  max-height: 600px;
+  margin-top: 100px;
+`;
 
 const settingsPage = {
   display: "flex",

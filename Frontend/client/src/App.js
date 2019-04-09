@@ -8,7 +8,7 @@ import WeddingPage1 from "./components/design/weddingPage1/WeddingPage1";
 import WeddingPage2 from "./components/design/weddingPage2/WeddingPage2";
 import WeddingPage3 from "./components/design/weddingPage3/WeddingPage3";
 import Pricing from "./components/pricing/Pricing";
-import RSVP from "./components/rsvp/RSVP";
+import RSVP from "./components/rsvp/rsvp";
 import Billing from "./components/billing/Billing";
 import Settings from "./components/settings/Settings";
 import DashBoard from "./components/clientDashboard/Dashboard";

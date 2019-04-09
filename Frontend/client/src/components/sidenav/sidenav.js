@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 // page imports
 import Pricing from '../pricing/Pricing'
 import RSVP from '../rsvp/rsvp'
 import Billing from '../pages/billing'
 import Settings from '../pages/settings'
+import Home from '../pages/Home'
 
 // Other imports
 import styled from 'styled-components'
@@ -135,11 +136,14 @@ export default class Navigation extends Component {
                             </div>
                         </Menu>
                         <RTStyles>
-                            <Route exact path="/"></Route>
-                            <Route exact path="/settings" component={Settings}></Route>
-                            <Route exact path="/pricing" component={Pricing}></Route>
-                            <Route exact path="/billing" component={Billing}></Route>
-                            <Route exact path="/rsvp" component={RSVP}></Route>
+                            <Switch>
+                                <Route path="/settings" component={Settings} />
+                                <Route path="/pricing" component={Pricing} />
+                                <Route path="/billing" component={Billing} />
+                                <Route path="/rsvp" component={RSVP} />
+                                <Route path="/" component={Home} />                              
+                            </Switch>
+
                         </RTStyles>
                     </SideNav>
                     </NavPage>

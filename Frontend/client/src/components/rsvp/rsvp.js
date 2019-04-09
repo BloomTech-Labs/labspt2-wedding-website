@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from 'react-button-component'
+import ScrollAnimation from 'react-animate-on-scroll';
 import {
     BrowserRouter as Router,
     Route, Link
@@ -127,12 +128,16 @@ export default class RSVP extends Component {
                         </RSVPArea>
                         <FinePrint>Ask each individual guest</FinePrint>
                     </RSVPForm>
+                    <ScrollAnimation animateIn="fadeInLeft">
                     <RSVPForm>
                         <label for="rsvpForm">What is your mailing address?</label>
                         <TextBox type="text" name="address" placeholder="address" />
                         <TextBox type="text" name="city-zip" placeholder="city, state and zip" />
                         <FinePrint>Ask once per household.</FinePrint>
-                    </RSVPForm>
+                    </RSVPForm>                        
+                    </ScrollAnimation>
+
+                    <ScrollAnimation animateIn="fadeInUp">
                     <RSVPForm>
                         <label for="rsvpForm">Are you friend or family of...?</label>
                         <RSVPArea>
@@ -151,7 +156,8 @@ export default class RSVP extends Component {
                             <StyledLink to="/guestlist">Full Guest List</StyledLink>
                             <Route path='/guestlist' component={GuestList}/>
                         </RSVPLink>
-                    </ButtonArea>
+                    </ButtonArea>                        
+                    </ScrollAnimation>
                 </RSVPPage>
             </Page>
           </Router>
