@@ -69,7 +69,7 @@ class UserSetup extends Component {
       <div>
         <h1>User Setup</h1>
         <form>
-          {!this.props.userInfo ? (
+          {!this.props.userInfo.username ? (
             <div>
               <label htmlFor=''>Username</label>
               <input
