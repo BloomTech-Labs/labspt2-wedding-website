@@ -2,7 +2,6 @@ const db = require('../dbConfig')
 const { Model } = require('objection')
 const passport = require('passport')
 const jwtHelper = require('../../Auth/jwt/jwtHelper')
-
 Model.knex(db)
 
 module.exports = server => {
@@ -72,17 +71,24 @@ regLogin = (req, res) => {
     username: user.username,
     email: user.email,
   }
-
   const userInfo = {
-    userId: user.id,
+    id: user.id,
     username: user.username,
     email: user.email,
+    partnerName1: user.partnerName1,
+    partnerName2: user.partnerName2,
+    weddingDate: user.weddingDate,
+    weddingParty: user.weddingParty,
+    venueLocation: user.venueLocation,
+    isPremium: user.isPremium,
   }
+  const user
   if (user.id) {
+    console.log('token User:', tokenUser)
     const token = jwtHelper.generateToken(tokenUser)
     res.status(201).json({
       token,
-      userInfo,
+      userInfo
     })
   } else {
     res.status(500).json({
@@ -112,11 +118,11 @@ googleCB = (req, res) => {
   const user = req.user
   console.log('google user:', user)
   const tokenUser = {
-    userId: user.id,
+    id: user.id,
     username: user.username,
     email: user.email,
     partnerName1: user.partnerName1,
-    partnerName2: user.partnerName1,
+    partnerName2: user.partnerName2,
     weddingDate: user.weddingDate,
     weddingParty: user.weddingParty,
     venueLocation: user.venueLocation,
@@ -125,7 +131,7 @@ googleCB = (req, res) => {
   const token = jwtHelper.generateToken(tokenUser)
   // redirects to account set up
   console.log('token :', token)
-  res.redirect('https://joinourbigday.netlify.com/?token=' + token)
+  res.redirect('http://localhost:3000?token=' + token)
 }
 
 //------------------->Facebook Routes<--------------------------
@@ -148,10 +154,9 @@ googleCB = (req, res) => {
 facebookCB = (req, res) => {
   const user = req.user
   const tokenUser = {
-    userId: user.id,
+    userID: user.id,
     email: user.email,
   }
-
   const token = jwtHelper.generateToken(tokenUser)
   console.log('GOOGLE Token:', token)
   res.status(201).json({
