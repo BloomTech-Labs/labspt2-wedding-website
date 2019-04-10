@@ -69,14 +69,18 @@ class UserSetup extends Component {
       <div>
         <h1>User Setup</h1>
         <form>
-          <label htmlFor=''>Username</label>
-          <input
-            type='text'
-            placeholder='Create a username'
-            name='username'
-            value={this.state.userInfo.username}
-            onChange={this.inputHandler}
-          />
+          {!this.props.userInfo ? (
+            <div>
+              <label htmlFor=''>Username</label>
+              <input
+                type='text'
+                placeholder='Create a username'
+                name='username'
+                value={this.state.userInfo.username}
+                onChange={this.inputHandler}
+              />
+            </div>
+          ) : null}
           <label htmlFor=''>Partner 1</label>
           <input
             type='text'
