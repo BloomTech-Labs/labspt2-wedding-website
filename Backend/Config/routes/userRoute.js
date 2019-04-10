@@ -25,7 +25,6 @@ userById = (req, res) => {
   helper
     .getUsers(id)
     .then(row => {
-      console.log('user by id endpoint', row)
       !row[0]
         ? res.json(row)
         : res.status(404).json({
