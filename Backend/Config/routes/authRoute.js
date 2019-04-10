@@ -82,13 +82,13 @@ regLogin = (req, res) => {
     venueLocation: user.venueLocation,
     isPremium: user.isPremium,
   }
-  const user
+
   if (user.id) {
     console.log('token User:', tokenUser)
     const token = jwtHelper.generateToken(tokenUser)
     res.status(201).json({
       token,
-      userInfo
+      userInfo,
     })
   } else {
     res.status(500).json({
