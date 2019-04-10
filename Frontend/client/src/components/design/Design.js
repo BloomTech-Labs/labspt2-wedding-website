@@ -7,9 +7,9 @@ export default class Design extends Component {
   render() {
     return (
       <div>
-        <div>
+        {/* <div>
           <Sidenav />
-        </div>
+        </div> */}
         <div>
           <Link to="/design1">Design 1</Link>
         </div>
