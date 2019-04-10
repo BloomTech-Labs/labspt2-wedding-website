@@ -74,7 +74,7 @@ class UserSetup extends Component {
             type='text'
             placeholder='Create a username'
             name='username'
-            value={this.state.username}
+            value={this.state.userInfo.username}
             onChange={this.inputHandler}
           />
           <label htmlFor=''>Partner 1</label>
@@ -82,7 +82,7 @@ class UserSetup extends Component {
             type='text'
             placeholder='partner'
             name='partnerName1'
-            value={this.state.partnerName1}
+            value={this.state.userInfo.partnerName1}
             onChange={this.inputHandler}
           />
           <label htmlFor=''>Partner 2</label>
@@ -90,12 +90,12 @@ class UserSetup extends Component {
             type='text'
             placeholder='partner'
             name='partnerName2'
-            value={this.state.partnerName2}
+            value={this.state.userInfo.partnerName2}
             onChange={this.inputHandler}
           />
           <label for='calander'>Wedding Date</label>
           <DatePicker
-            selected={this.state.weddingDate}
+            selected={this.state.userInfo.weddingDate}
             onChange={this.handleChangeDate} //only when value has changed
           />
           <label htmlFor=''>Wedding Party</label>
@@ -103,7 +103,7 @@ class UserSetup extends Component {
             type='text'
             placeholder='Wedding party name'
             name='weddingParty'
-            value={this.state.weddingParty}
+            value={this.state.userInfo.weddingParty}
             onChange={this.inputHandler}
           />
           <label htmlFor=''>Venue Location</label>
