@@ -157,7 +157,7 @@ class Navigation extends Component {
                   <STLink to='/rsvp'>RSVP</STLink>
                 </MenuListItem>
                 <MenuListItem>
-                  <STLink to='/design'>Site</STLink>
+                  <STLink to='/design'>Design</STLink>
                 </MenuListItem>
               </MenuList>
               <Button onClick={this.handleClick}>Sign Out</Button>
