@@ -5,9 +5,17 @@ const jwt = require('jsonwebtoken')
 
 module.exports = {
   generateToken: user => {
+    console.log(user)
     const payload = {
-      id: user.id,
+      id: user.userId,
       username: user.username,
+      email: user.email,
+      partnerName1: user.partnerName1,
+      partnerName2: user.partnerName2,
+      weddingDate: user.weddingDate,
+      weddingParty: user.weddingParty,
+      venueLocation: user.venueLocation,
+      isPremium: user.isPremium,
     }
     const secret = process.env.JWT_SECRET
     const options = {

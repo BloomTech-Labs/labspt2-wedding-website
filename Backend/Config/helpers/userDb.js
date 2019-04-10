@@ -9,8 +9,10 @@ module.exports = {
         .select(
           'id',
           'username',
-          'socialName',
           'email',
+          'partnerName1',
+          'partnerName2',
+          'weddingDate',
           'weddingParty',
           'venueLocation',
           'isPremium'

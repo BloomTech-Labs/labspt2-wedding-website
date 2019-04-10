@@ -1,39 +1,49 @@
-import React, { Component } from "react";
-import Login from './login';
-import DemoCarousel from "./Carousel";
-import SideNav from '../sidenav';
-import Pricing from '../pages/pricing';
-import RSVP from '../pages/rsvp';
+// importing dependencies
+import React, { Component } from 'react'
+import { Route, Link } from 'react-router-dom'
 
-export default class LandingPage extends Component {
-  render(){
-    return (
-        <div>
-            <DemoCarousel />
-            <Login />
-            <br />
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              color: 'black'
-            }}>
-              <SideNav />
-              <Pricing />
-              <div><a href="#">Logout</a></div>
-            </div>
-            <br />
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              color: 'black'
-            }}>
-              <SideNav />
-              <RSVP />
-              <div><a href="#">Logout</a></div>
-            </div>
-            
-        </div>
-    )
+import styled from 'styled-components'
+
+import Login from './login'
+import DemoCarousel from './Carousel'
+
+const LPStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 1024) {
+    width: 1000px;
+    margin: 0;
   }
-};  
+`
 
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+  height: 100px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 200px;
+`
+
+function LandingPage({ match }) {
+  return (
+    <LPStyle>
+      {/* <Route exact path='/' component={DemoCarousel} /> */}
+      <Route exact path={`${match.path}`} component={DemoCarousel} />
+      <ButtonDiv>
+        <Link to='/login' component={Login}>
+          Get Started
+        </Link>
+      </ButtonDiv>
+    </LPStyle>
+  )
+}
+
+export default LandingPage

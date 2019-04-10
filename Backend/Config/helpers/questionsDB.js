@@ -1,34 +1,44 @@
 const db = require('../dbConfig')
 
 module.exports = {
-  allQuestionsById: id  => {
+  allQuestionsById: id => {
     return db('rsvpQuestions').where('users_id', id)
   },
-
 
   questionsWAnswersByUserId: id => {
     //expects the user Id
     if (id) {
       return db('rsvpQuestions')
-      .from('rsvpQuestions').leftJoin('rsvpAnswers', 'rsvpQuestions.id', 'rsvpAnswers.rsvpQuestions_id')
-      .where('rsvpAnswers.users_id', id)
+        .from('rsvpQuestions')
+        .leftJoin(
+          'rsvpAnswers',
+          'rsvpQuestions.id',
+          'rsvpAnswers.rsvpQuestions_id'
+        )
+        .where('rsvpAnswers.users_id', id)
     }
     return db('rsvpQuestions')
   },
 
   addQuestion: Question => {
-    return db('rsvpQuestions').leftJoin('users', 'users_id', 'users.id')
+    return db('rsvpQuestions').insert(Question)
   },
 
-  updateQuestion: (id, answer) => {
+  updateQuestion: (id, updated) => {
     return db('rsvpQuestions')
       .where('id', id)
-      .update(answer)
+      .update(updated)
   },
 
   deleteQuestion: id => {
-    db('rsvpQuestions')
+    return db('rsvpQuestions')
       .where('id', id)
       .del()
+  },
+
+  userById: id => {
+    return db('users')
+      .where('id', id)
+      .first()
   },
 }
