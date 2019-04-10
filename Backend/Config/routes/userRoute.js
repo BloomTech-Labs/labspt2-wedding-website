@@ -87,8 +87,6 @@ removeUser = (req, res) => {
 userPhotos = (req, res) =>{
   const { id } = req.params
   helper.getUserPhotos(id).then(images =>{
-    
-  
     res.json(images)
   } ).catch(err=>{
     res.status(500).send(err)
