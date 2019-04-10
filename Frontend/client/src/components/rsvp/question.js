@@ -127,7 +127,7 @@ class Question extends React.Component {
               value={this.state.question.Question_body}
               onChange={this.inputHandler}
             />
-            <button onClick={this.submitUpdateHandler}>Update guest</button>
+            <button onClick={this.submitUpdateHandler}>Update</button>
           </form>
         ) : null}
       </div>
