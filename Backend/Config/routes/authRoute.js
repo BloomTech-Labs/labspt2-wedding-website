@@ -68,13 +68,21 @@ fail = (req, res) => {
 regLogin = (req, res) => {
   const user = req.user
   const tokenUser = {
-    userID: user.id,
+    userId: user.id,
+    username: user.username,
+    email: user.email,
+  }
+
+  const userInfo = {
+    userId: user.id,
+    username: user.username,
     email: user.email,
   }
   if (user.id) {
     const token = jwtHelper.generateToken(tokenUser)
     res.status(201).json({
       token,
+      userInfo,
     })
   } else {
     res.status(500).json({
@@ -140,9 +148,10 @@ googleCB = (req, res) => {
 facebookCB = (req, res) => {
   const user = req.user
   const tokenUser = {
-    userID: user.id,
+    userId: user.id,
     email: user.email,
   }
+
   const token = jwtHelper.generateToken(tokenUser)
   console.log('GOOGLE Token:', token)
   res.status(201).json({
