@@ -95,10 +95,11 @@ const MenuListItem = styled.li`
   }
 `
 
-const RTStyles = styled.div`
-  display: flex;
-  width: 100%;
-`
+// Unused
+// const RTStyles = styled.div`
+//   display: flex;
+//   width: 100%;
+// `
 
 const StyledLink = styled(Link)`
   text-transform: uppercase;
@@ -154,6 +155,9 @@ class Navigation extends Component {
                 </MenuListItem>
                 <MenuListItem>
                   <STLink to='/rsvp'>RSVP</STLink>
+                </MenuListItem>
+                <MenuListItem>
+                  <STLink to='/design'>Site</STLink>
                 </MenuListItem>
               </MenuList>
               <Button onClick={this.handleClick}>Sign Out</Button>

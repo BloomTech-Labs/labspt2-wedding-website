@@ -19,6 +19,10 @@ import StripeBtn from './components/Stripe/stripeBtn'
 import Settings from './components/settings/Settings'
 import GuestList from './components/guest/guestList'
 import UserSetup from './components/landingPage/userSetup'
+import Design from "./components/design/Design";
+import WeddingPage1 from "./components/design/weddingPage1/WeddingPage1";
+import WeddingPage2 from "./components/design/weddingPage2/WeddingPage2";
+import WeddingPage3 from "./components/design/weddingPage3/WeddingPage3";
 
 import styled from 'styled-components'
 
@@ -36,10 +40,6 @@ const Container = styled.div`
 
 // components from front end merge
 
-// import Design from "./components/design/Design";
-// import WeddingPage1 from "./components/design/weddingPage1/WeddingPage1";
-// import WeddingPage2 from "./components/design/weddingPage2/WeddingPage2";
-// import WeddingPage3 from "./components/design/weddingPage3/WeddingPage3";
 // import Settings from "./components/settings/Settings";
 // import DashBoard from "./components/clientDashboard/Dashboard";
 
@@ -106,6 +106,10 @@ class App extends Component {
                 <Route path='/billing' component={StripeBtn} />
                 <Route path='/guests' component={GuestList} />
                 <Route path='/rsvp' component={QuestionList} />
+                <Route path='/design' component={Design} />
+                <Route path='/design1' component={WeddingPage1} />
+                <Route path='/design2' component={WeddingPage2} />
+                <Route path='/design3' component={WeddingPage3} />
               </Switch>
             </Container>
           </Router>
@@ -148,10 +152,6 @@ export default withRouter(
 //         <Switch>
 //           <Route exact path="/" component={LandingPage} />
 //           <Route path="/login" component={Login} />
-//           <Route path="/design" component={Design} />
-//           <Route path="/design1" component={WeddingPage1} />
-//           <Route path="/design2" component={WeddingPage2} />
-//           <Route path="/design3" component={WeddingPage3} />
 //           <Route path="/pricing" component={Pricing} />
 //           <Route path="/rsvp" component={RSVP} />
 //           <Route path="/billing" component={Billing} />
