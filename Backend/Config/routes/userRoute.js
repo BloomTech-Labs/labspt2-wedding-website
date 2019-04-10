@@ -22,17 +22,16 @@ allUsers = (req, res) => {
 }
 
 userById = (req, res) => {
-  const {
-    id
-  } = req.params
+  const { id } = req.params
   helper
     .getUsers(id)
     .then(row => {
-      console.log('user by id endpoint', row) !row[0] ?
-        res.json(row) :
-        res.status(404).json({
-          error: 'User with that ID not found',
-        })
+      console.log('user by id endpoint', row)
+      !row[0]
+        ? res.json(row)
+        : res.status(404).json({
+            error: 'User with that ID not found',
+          })
     })
     .catch(err => {
       res
@@ -44,9 +43,7 @@ userById = (req, res) => {
 }
 
 editUser = (req, res) => {
-  const {
-    id
-  } = req.params
+  const { id } = req.params
   const user = req.body
   let password = user.password
   console.log('no hash :', user)
@@ -68,20 +65,17 @@ editUser = (req, res) => {
 }
 
 removeUser = (req, res) => {
-  const {
-    id
-  } = req.params
+  const { id } = req.params
   helper
     .deleteUser(id)
     .then(number => {
       !number
-        ?
-        res.status(404).json({
-          message: 'user Not Found',
-        }) :
-        res.json({
-          message: 'Its gone!',
-        })
+        ? res.status(404).json({
+            message: 'user Not Found',
+          })
+        : res.json({
+            message: 'Its gone!',
+          })
     })
     .catch(err => {
       res.status(500).send({
@@ -91,12 +85,13 @@ removeUser = (req, res) => {
 }
 
 userPhotos = (req, res) => {
-  const {
-    id
-  } = req.params
-  helper.getUserPhotos(id).then(images => {
-    res.json(images)
-  }).catch(err => {
-    res.status(500).send(err)
-  })
+  const { id } = req.params
+  helper
+    .getUserPhotos(id)
+    .then(images => {
+      res.json(images)
+    })
+    .catch(err => {
+      res.status(500).send(err)
+    })
 }
