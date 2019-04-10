@@ -20,7 +20,6 @@ const SettingsPage = styled.div`
   height: 100vh;
   max-height: 500px;
   margin-top: 50px;
-  border: 1px solid black;
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
     flex-direction: column;
     width: 100vw;
@@ -35,7 +34,6 @@ const SettingsBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 450px;
-  border: 1px solid blue;
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
     width: 100%;
     max-width: 350px;
