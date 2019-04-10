@@ -44,8 +44,20 @@ class UserSetup extends Component {
     const userId = this.props.userInfo.id
     console.log('usersetup id', userId)
     console.log(this.state.userInfo)
-    this.props.editUser(userId, this.state.userInfo)
-    this.props.history.push('/')
+    if (this.state.userInfo.username === '') {
+      const userInfo = {
+        weddingParty: this.state.userInfo.weddingParty,
+        venueLocation: this.state.userInfo.venueLocation,
+        partnerName1: this.state.userInfo.partnerName1,
+        partnerName2: this.state.userInfo.partnerName2,
+        weddingDate: new Date(),
+      }
+      this.props.editUser(userId, userInfo)
+      this.props.history.push('/')
+    } else {
+      this.props.editUser(userId, this.state.userInfo)
+      this.props.history.push('/')
+    }
   }
 
   handleLocationChange(fieldValue) {
