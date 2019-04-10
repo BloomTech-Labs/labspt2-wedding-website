@@ -8,10 +8,10 @@ import {
   OAUTH_USER,
   GET_USER,
   GET_GUESTS,
-  GET_GUEST,
+  // GET_GUEST,
   GET_QS,
   UPDATING,
-  DELETE,
+  // DELETE,
   ERROR,
   LOGOUT,
 } from '../actions/index'

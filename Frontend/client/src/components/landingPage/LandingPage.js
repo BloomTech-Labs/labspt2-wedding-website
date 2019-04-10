@@ -1,5 +1,5 @@
 // importing dependencies
-import React, { Component } from 'react'
+import React from 'react'
 import { Route, Link } from 'react-router-dom'
 
 import styled from 'styled-components'

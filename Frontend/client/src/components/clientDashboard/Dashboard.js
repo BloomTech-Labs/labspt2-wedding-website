@@ -53,11 +53,12 @@ const GLButton = styled.button`
   margin-left: 5%;
 `
 
-const SignOut = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-`
+// Unused
+// const SignOut = styled.div`
+//   display: flex;
+//   width: 100%;
+//   justify-content: flex-end;
+// `
 
 const HeadContainer = styled.div`
   display: flex;
@@ -122,6 +123,7 @@ const Pie = styled.div`
   width: 25%;
 `
 
+//This is throwing an error, no return value
 class Dashboard extends Component {
   render() {
     let rsvpYes = 0
