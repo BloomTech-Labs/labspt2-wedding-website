@@ -98,7 +98,6 @@ class App extends Component {
           <Router className='App'>
             <Container>
               <Navigation />
-
               <Switch>
                 <Route exact path='/' component={DashBoard} />
                 <Route path='/settings' component={Settings} />
