@@ -149,7 +149,7 @@ const userInput = {
   textShadow: "0px 0px 0px #000000"
 };
 
-class WeddingPage2 extends Component {
+class WeddingPage1 extends Component {
   constructor() {
     super();
 
@@ -230,14 +230,14 @@ class WeddingPage2 extends Component {
             <Bell2 src={bells} alt="It's some more bells" />
           </BellWrapper>
           <WhoWrapper>
-            <H1>
+            <h1>
               {this.props.userInfo.partnerName1} &amp;{' '}
               {this.props.userInfo.partnerName2}'s Wedding
-            </H1>
+            </h1>
           </WhoWrapper>
           <WhenWrapper>
-            <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
-            <H2>{this.props.userInfo.venueLocation}</H2>
+            <h1>{moment(this.props.userInfo.weddingDate).format('ll')}</h1>
+            <h2>{this.props.userInfo.venueLocation}</h2>
           </WhenWrapper>
           <NavWrapper>
             {/* This nav menu will need to be set up with restricted privilages. Look but don't touch privilages. */}
