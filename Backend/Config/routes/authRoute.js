@@ -131,7 +131,7 @@ googleCB = (req, res) => {
   const token = jwtHelper.generateToken(tokenUser)
   // redirects to account set up
   console.log('token :', token)
-  res.redirect('https://joinourbigday.netlify.com/token=' + token)
+  res.redirect('https://joinourbigday.netlify.com/?token=' + token)
 }
 
 //------------------->Facebook Routes<--------------------------
