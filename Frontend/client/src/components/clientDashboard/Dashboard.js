@@ -4,8 +4,12 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 
 import PieChart from 'react-minimal-pie-chart'
+import Modal from 'react-modal'
+
+import RegistryModal from '../modals/registry'
 
 import styled from 'styled-components'
+Modal.setAppElement('#root')
 
 const DashContainer = styled.div`
   max-width: 1080px;
@@ -125,6 +129,19 @@ const Pie = styled.div`
 
 //This is throwing an error, no return value
 class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      modal: false,
+    }
+  }
+
+  handleModal = () => {
+    this.setState({
+      modal: !this.state.modal,
+    })
+  }
+
   render() {
     let rsvpYes = 0
     let rsvpNo = 0
@@ -207,8 +224,11 @@ class Dashboard extends Component {
           <Registry>
             <H3>Registry</H3>
             {/* Amazon registry goes here. Need to figure out how */}
-            <Button>Add Registry</Button>
+            <Button onClick={this.handleModal}>Add Registry</Button>
           </Registry>
+          <Modal isOpen={this.state.modal}>
+            <RegistryModal handleClose={this.handleModal} />
+          </Modal>
         </HeadContainer>
       </DashContainer>
     )

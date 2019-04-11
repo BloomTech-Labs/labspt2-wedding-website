@@ -17,8 +17,10 @@ class Registry extends Component {
   }
 
   render() {
+    console.log('registry', this.props)
     return (
       <div>
+        <button onClick={() => this.props.handleClose()}>Close</button>
         <form>
           <label htmlFor='link'>Registry Link</label>
           <input
