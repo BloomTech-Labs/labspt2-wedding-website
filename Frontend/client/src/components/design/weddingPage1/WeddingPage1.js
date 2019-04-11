@@ -137,6 +137,9 @@ const userInput = {
   textShadow: "0px 0px 0px #000000"
 };
 
+const RSVPWrapper = styled.div`
+`
+
 class WeddingPage1 extends Component {
   constructor() {
     super();
@@ -255,7 +258,9 @@ class WeddingPage1 extends Component {
               {/* </Menu> */}
             {/* </nav>
           </NavWrapper> */}
-          <PrettyWCWrapper>{content()}</PrettyWCWrapper>
+          <PrettyWCWrapper>
+          {/* {content()} */}
+          </PrettyWCWrapper>
           <StoryWrapper>
             <Story>Our Story</Story>
           </StoryWrapper>
