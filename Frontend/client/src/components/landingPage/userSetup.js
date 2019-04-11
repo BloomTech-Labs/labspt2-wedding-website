@@ -44,8 +44,20 @@ class UserSetup extends Component {
     const userId = this.props.userInfo.id
     console.log('usersetup id', userId)
     console.log(this.state.userInfo)
-    this.props.editUser(userId, this.state.userInfo)
-    this.props.history.push('/')
+    if (this.state.userInfo.username === '') {
+      const userInfo = {
+        weddingParty: this.state.userInfo.weddingParty,
+        venueLocation: this.state.userInfo.venueLocation,
+        partnerName1: this.state.userInfo.partnerName1,
+        partnerName2: this.state.userInfo.partnerName2,
+        weddingDate: new Date(),
+      }
+      this.props.editUser(userId, userInfo)
+      this.props.history.push('/')
+    } else {
+      this.props.editUser(userId, this.state.userInfo)
+      this.props.history.push('/')
+    }
   }
 
   handleLocationChange(fieldValue) {
@@ -69,20 +81,24 @@ class UserSetup extends Component {
       <div>
         <h1>User Setup</h1>
         <form>
-          <label htmlFor=''>Username</label>
-          <input
-            type='text'
-            placeholder='Create a username'
-            name='username'
-            value={this.state.username}
-            onChange={this.inputHandler}
-          />
+          {!this.props.userInfo.username ? (
+            <div>
+              <label htmlFor=''>Username</label>
+              <input
+                type='text'
+                placeholder='Create a username'
+                name='username'
+                value={this.state.userInfo.username}
+                onChange={this.inputHandler}
+              />
+            </div>
+          ) : null}
           <label htmlFor=''>Partner 1</label>
           <input
             type='text'
             placeholder='partner'
             name='partnerName1'
-            value={this.state.partnerName1}
+            value={this.state.userInfo.partnerName1}
             onChange={this.inputHandler}
           />
           <label htmlFor=''>Partner 2</label>
@@ -90,12 +106,12 @@ class UserSetup extends Component {
             type='text'
             placeholder='partner'
             name='partnerName2'
-            value={this.state.partnerName2}
+            value={this.state.userInfo.partnerName2}
             onChange={this.inputHandler}
           />
           <label for='calander'>Wedding Date</label>
           <DatePicker
-            selected={this.state.weddingDate}
+            selected={this.state.userInfo.weddingDate}
             onChange={this.handleChangeDate} //only when value has changed
           />
           <label htmlFor=''>Wedding Party</label>
@@ -103,7 +119,7 @@ class UserSetup extends Component {
             type='text'
             placeholder='Wedding party name'
             name='weddingParty'
-            value={this.state.weddingParty}
+            value={this.state.userInfo.weddingParty}
             onChange={this.inputHandler}
           />
           <label htmlFor=''>Venue Location</label>

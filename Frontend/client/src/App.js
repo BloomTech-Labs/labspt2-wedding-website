@@ -19,10 +19,10 @@ import StripeBtn from './components/Stripe/stripeBtn'
 import Settings from './components/settings/Settings'
 import GuestList from './components/guest/guestList'
 import UserSetup from './components/landingPage/userSetup'
-import Design from "./components/design/Design";
-import WeddingPage1 from "./components/design/weddingPage1/WeddingPage1";
-import WeddingPage2 from "./components/design/weddingPage2/WeddingPage2";
-import WeddingPage3 from "./components/design/weddingPage3/WeddingPage3";
+import Design from './components/design/Design'
+import WeddingPage1 from './components/design/weddingPage1/WeddingPage1'
+import WeddingPage2 from './components/design/weddingPage2/WeddingPage2'
+import WeddingPage3 from './components/design/weddingPage3/WeddingPage3'
 
 import styled from 'styled-components'
 
@@ -98,7 +98,6 @@ class App extends Component {
           <Router className='App'>
             <Container>
               <Navigation />
-
               <Switch>
                 <Route exact path='/' component={DashBoard} />
                 <Route path='/settings' component={Settings} />
