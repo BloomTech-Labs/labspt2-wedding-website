@@ -8,6 +8,14 @@ class Registry extends Component {
       name: '',
     }
   }
+
+  inputHandler = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+    console.log('input handled')
+  }
+
   render() {
     return (
       <div>
