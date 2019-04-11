@@ -237,6 +237,7 @@ class WeddingPage2 extends Component {
           </WhoWrapper>
           <WhenWrapper>
             <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
+            <H2>{this.props.userInfo.venueLocation}</H2>
           </WhenWrapper>
           <NavWrapper>
             {/* This nav menu will need to be set up with restricted privilages. Look but don't touch privilages. */}
