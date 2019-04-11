@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Textarea from "react-textarea-autosize";
+import { connect } from 'react-redux'
+import moment from 'moment'
 
 import styled from "styled-components";
 
@@ -147,7 +149,7 @@ const userInput = {
   textShadow: "0px 0px 0px #000000"
 };
 
-export default class WeddingPage2 extends Component {
+class WeddingPage2 extends Component {
   constructor() {
     super();
 
@@ -228,30 +230,13 @@ export default class WeddingPage2 extends Component {
             <Bell2 src={bells} alt="It's some more bells" />
           </BellWrapper>
           <WhoWrapper>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={headerStyle}
-                type="text"
-                rows="2"
-                cols="20"
-                placeholder="Tell us your names"
-                wrap="hard"
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
+            <H1>
+              {this.props.userInfo.partnerName1} &amp;{' '}
+              {this.props.userInfo.partnerName2}'s Wedding
+            </H1>
           </WhoWrapper>
           <WhenWrapper>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={headerStyle}
-                type="text"
-                rows="2"
-                cols="20"
-                placeholder="When is the big day"
-                wrap="hard"
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
+            <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
           </WhenWrapper>
           <NavWrapper>
             {/* This nav menu will need to be set up with restricted privilages. Look but don't touch privilages. */}
@@ -314,3 +299,13 @@ export default class WeddingPage2 extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  guests: state.guests,
+})
+
+export default connect(
+  mapStateToProps,
+  {}
+)(WeddingPage1)
