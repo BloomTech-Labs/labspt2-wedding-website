@@ -2,9 +2,10 @@ const helper = require('../helpers/userDb')
 const bcrypt = require('bcrypt')
 
 module.exports = server => {
-  server.get('/users', allUsers),
-    server.get('/users/:id', userById),
-    server.put('/users/:id', editUser)
+  server.get('/users', allUsers)
+  server.get('/users/:id', userById)
+  server.put('/users/:id', editUser)
+  server.get('/users/:id/images', userPhotos)
 }
 
 allUsers = (req, res) => {
@@ -25,12 +26,11 @@ userById = (req, res) => {
   helper
     .getUsers(id)
     .then(row => {
-      console.log('user by id endpoint', row)
-      !row[0]
-        ? res.json(row)
-        : res.status(404).json({
-            error: 'User with that ID not found',
-          })
+       !row[0] ?
+        res.json(row) :
+        res.status(404).json({
+          error: 'User with that ID not found',
+        })
     })
     .catch(err => {
       res
@@ -64,21 +64,35 @@ editUser = (req, res) => {
 }
 
 removeUser = (req, res) => {
-  const { id } = req.params
+  const {
+    id
+  } = req.params
   helper
     .deleteUser(id)
     .then(number => {
       !number
-        ? res.status(404).json({
-            message: 'user Not Found',
-          })
-        : res.json({
-            message: 'Its gone!',
-          })
+        ?
+        res.status(404).json({
+          message: 'user Not Found',
+        }) :
+        res.json({
+          message: 'Its gone!',
+        })
     })
     .catch(err => {
       res.status(500).send({
         error: err,
       })
     })
+}
+
+userPhotos = (req, res) => {
+  const {
+    id
+  } = req.params
+  helper.getUserPhotos(id).then(images => {
+    res.json(images)
+  }).catch(err => {
+    res.status(500).send(err)
+  })
 }

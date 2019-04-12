@@ -69,6 +69,8 @@ export default (state = initialState, action) => {
       return { ...state, guests: action.payload, fetching: false }
     case ERROR:
       return { ...state, updating: true }
+    case USER_FEED:
+      reutn {}
     default:
       return state
   }

@@ -262,6 +262,11 @@ export const deleteQuestion = (userId, id) => dispatch => {
     })
 }
 
+export const getUserPhotoFeed = (id) => dispatch =>{
+  dispatch({type: })
+}
+
+
 // export const fetchAnswers = questionId => dispatch => {
 //   dispatch({ type: FETCHING })
 //   axios
