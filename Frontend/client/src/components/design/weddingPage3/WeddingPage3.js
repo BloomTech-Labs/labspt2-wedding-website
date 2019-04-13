@@ -122,7 +122,7 @@ const Footer = styled.div`
   padding: 5%;
 `;
 
-class WeddingPage2 extends Component {
+class WeddingPage3 extends Component {
   constructor() {
     super();
 
