@@ -2,7 +2,7 @@
   "name": "JoinOurBigDay-Backend",
   "version": "1.0.0",
   "engines": {
-    "node": "^11.9.0",
+    "node": "^11.3.0",
     "yarn": "^1.13.0"
   },
   "main": "index.js",
@@ -22,6 +22,8 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
+    "csv": "^5.1.1",
+    "csv-parse": "^4.4.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "helmet": "^3.15.1",
