@@ -114,6 +114,9 @@ const userInput = {
   textShadow: "0px 0px 0px #000000"
 };
 
+const RSVPWrapper = styled.div`
+`
+
 const Footer = styled.div`
   background: black;
   padding: 5%;
@@ -200,4 +203,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {}
-)(WeddingPage1)
+)(WeddingPage3)
