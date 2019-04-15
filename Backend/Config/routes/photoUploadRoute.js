@@ -11,6 +11,7 @@ module.exports = server => {
 addImage = (req, res) => {
   const userId = req.params.id
   singleUpload(req, res, err => {
+    console.log(req.file.fieldname)
     const {
       name,
       caption
@@ -23,12 +24,12 @@ addImage = (req, res) => {
         }, ],
       })
     }
-    const image = req.file.location
-    console.log(image)
+    const img = req.file.location
+    console.log(img)
     const newImage = {
-      imgUrl: image,
-      name,
       user_id: userId,
+      imgUrl: img,
+      name,
       caption,
     }
     db('livePhotos')

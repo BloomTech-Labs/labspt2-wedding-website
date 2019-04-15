@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import Textarea from "react-textarea-autosize";
+import { connect } from 'react-redux'
+import moment from 'moment'
 
 import styled from "styled-components";
-
-import Spinner from "../Spinner";
-import Images from "../Images";
-import Buttons from "../Buttons";
-import { API_URL } from "../config";
 
 import arrow from "../media/arrow.png";
 import BackgroundDesign2 from "../media/BackgroundDesign2.jpg";
@@ -47,19 +44,6 @@ const WhoWrapper = styled.div`
   font-size: 5rem;
 `;
 
-//Styled components don't work with the plugin react-textarea-autosize
-const headerStyle = {
-  backgroundColor: "rgb(158, 143, 110)",
-  border: "none",
-  width: "100%",
-  textAlign: "center",
-  fontSize: "4.5rem",
-  padding: "2%",
-  color: "black",
-  fontFamily: "Averia Serif Libre, cursive",
-  marginTop: "2%"
-};
-
 const WhenWrapper = styled.div`
   width: 100%;
   display: -webkit-box;
@@ -69,29 +53,6 @@ const WhenWrapper = styled.div`
   justify-content: center;
   margin-top: 5%;
   font-size: 5rem;
-`;
-
-const NavWrapper = styled.div`
-  width: 15%;
-  margin: 5%;
-`;
-
-const Menu = styled.ul`
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background: rgb(158, 143, 110);
-  width: 100%;
-  padding: 3%;
-  text-align: center;
-  align-content: space-evenly;
-  height: 258px;
-  -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
 `;
 
 const Camper = styled.img`
@@ -199,14 +160,14 @@ const userInput = {
   textShadow: "0px 0px 0px #000000"
 };
 
-export default class WeddingPage2 extends Component {
+const RSVPWrapper = styled.div`
+`
+
+class WeddingPage2 extends Component {
   constructor() {
     super();
 
     this.state = {
-      value: "",
-      uploading: false,
-      images: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -217,118 +178,33 @@ export default class WeddingPage2 extends Component {
     event.preventDefault();
   }
   //handleChange is for textarea input
-  //onChange is for photo upload
-  onChange = e => {
-    const errs = [];
-    const files = Array.from(e.target.files);
-
-    this.setState({ uploading: true });
-
-    const formData = new FormData();
-    const types = ["image/png", "image/jpeg", "image/gif"];
-
-    files.forEach((file, i) => {
-      if (types.every(type => file.type !== type)) {
-        errs.push(`'${file.type}' is not a supported format`);
-      }
-
-      if (file.size > 150000) {
-        errs.push(`'${file.name}' is too large, please pick a smaller file`);
-      }
-
-      formData.append(i, file);
-    });
-
-    fetch(`${API_URL}/image-upload`, {
-      method: "POST",
-      body: formData
-    })
-      .then(res => res.json())
-      .then(images => {
-        this.setState({
-          uploading: false,
-          images
-        });
-      });
-  };
-
-  removeImage = id => {
-    this.setState({
-      images: this.state.images.filter(image => image.public_id !== id)
-    });
-  };
 
   render() {
-    //Not very DRY. Could be it's own component.
-    const { uploading, images } = this.state;
-
-    const content = () => {
-      switch (true) {
-        case uploading:
-          return <Spinner />;
-        case images.length > 0:
-          return <Images images={images} removeImage={this.removeImage} />;
-        default:
-          return <Buttons onChange={this.onChange} />;
-      }
-    };
     return (
       <WP1Body>
         <div>
           <HeaderWrapper>
             <WhoWrapper>
-              <form onSubmit={this.handleChange}>
-                <Textarea
-                  style={headerStyle}
-                  type="text"
-                  rows="2"
-                  cols="20"
-                  placeholder="Tell us your names"
-                  wrap="hard"
-                />
-                <button onClick={this.handleChange}>Submit</button>
-              </form>
+            <h1>
+              {this.props.userInfo.partnerName1} &amp;{' '}
+              {this.props.userInfo.partnerName2}'s Wedding
+            </h1>
             </WhoWrapper>
             <WhenWrapper>
-              <form onSubmit={this.handleChange}>
-                <Textarea
-                  style={headerStyle}
-                  type="text"
-                  rows="2"
-                  cols="20"
-                  placeholder="When is the big day"
-                  wrap="hard"
-                />
-                <button onClick={this.handleChange}>Submit</button>
-              </form>
+              <h1>{moment(this.props.userInfo.weddingDate).format('ll')}</h1>
+              <h2>{this.props.userInfo.venueLocation}</h2>
             </WhenWrapper>
           </HeaderWrapper>
           <NavAndCoupleWrapper>
-            <NavWrapper>
-              {/* This nav menu will need to be set up with restricted privilages. Look but don't touch privilages. */}
-              <nav>
-                <Menu>
-                  <li>
-                    <A href="http://" className="menu_link menu_link-active">
-                      Home
-                    </A>
-                  </li>
-                  <li>
-                    <A href="http://" className="menu_link">
-                      Designs
-                    </A>
-                  </li>
-                  <li>
-                    <A href="http://" className="menu_link">
-                      Pricing
-                    </A>
-                  </li>
-                </Menu>
-              </nav>
-            </NavWrapper>
+            <RSVPWrapper>
+              <button>
+                {/* This will need to be linked to the answers page once it exists. */}
+                RSVP 
+              </button>
+            </RSVPWrapper>
             <Girl src={girl} alt="A Woman With Glasses" />
             <Camper src={camper} alt="Happy Camper" />
-            <PrettyWCWrapper>{content()}</PrettyWCWrapper>
+            <PrettyWCWrapper></PrettyWCWrapper>
           </NavAndCoupleWrapper>
           <StoryWrapper>
             <Arrow src={arrow} alt="Arrow" />
@@ -366,3 +242,13 @@ export default class WeddingPage2 extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  guests: state.guests,
+})
+
+export default connect(
+  mapStateToProps,
+  {}
+)(WeddingPage2)

@@ -17,6 +17,7 @@ export const UPDATING = 'UPDATING'
 export const DELETE = 'DELETE'
 export const ERROR = 'ERROR'
 export const LOGOUT = 'LOGOUT'
+export const USER_FEED = "USER_FEED"
 
 // needs to be stored on secret .env file for production
 const api = 'https://joinourbigday.herokuapp.com'
@@ -262,26 +263,53 @@ export const deleteQuestion = (userId, id) => dispatch => {
     })
 }
 
-export const getUserPhotoFeed = (id) => dispatch =>{
-  dispatch({type: })
-}
-
 
 // export const fetchAnswers = questionId => dispatch => {
-//   dispatch({ type: FETCHING })
-//   axios
-//     .get(`${api}/rsvp/answer/${questionId}`)
+  //   dispatch({ type: FETCHING })
+  //   axios
+  //     .get(`${api}/rsvp/answer/${questionId}`)
+  
+  //     .then(res => {
+    //       dispatch({
+      //         type: GET_AS,
+      //         payload: res.data,
+      //       })
+      //     })
+      //     .catch(err => {
+        //       dispatch({
+          //         type: ERROR,
+          //         paylaod: err,
+          //       })
+          //     })
+          // }
+          
+export const fetchPhotoFeed = (id) => dispatch =>{
+  dispatch({type: FETCHING })
+  axios
+    .get(`${api}/users/${id}/live-photos`)
+    .then(res =>{
+      dispatch({
+        type:USER_FEED,
+        payload: res.data,
+      })
+    }).catch(err=>{
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
 
-//     .then(res => {
-//       dispatch({
-//         type: GET_AS,
-//         payload: res.data,
-//       })
-//     })
-//     .catch(err => {
-//       dispatch({
-//         type: ERROR,
-//         paylaod: err,
-//       })
-//     })
-// }
+export const postImageFeed = (image, id) => dispatch =>{
+  dispatch({ type: FETCHING })
+  axios
+    .post(`${api}/users/${id}/live-upload`, image)
+    .then( () => fetchPhotoFeed(id)(dispatch))
+    .catch(err=>{
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+          

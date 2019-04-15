@@ -97,12 +97,12 @@ class Settings extends Component {
     super(props)
     this.state = {
       userInfo: {
-        email: '',
+        email: this.props.userInfo.email,
         password: '',
-        partnerName1: '',
-        partnerName2: '',
-        venueLocation: '',
-        weddingDate: new Date(),
+        partnerName1: this.props.userInfo.partnerName1,
+        partnerName2: this.props.userInfo.partnerName2,
+        venueLocation: this.props.userInfo.venueLocation,
+        weddingDate: this.props.userInfo.weddingDate,
       },
       currentPassword: '',
       search: '',

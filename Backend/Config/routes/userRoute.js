@@ -26,11 +26,11 @@ userById = (req, res) => {
   helper
     .getUsers(id)
     .then(row => {
-       !row[0] ?
-        res.json(row) :
-        res.status(404).json({
-          error: 'User with that ID not found',
-        })
+      !row[0]
+        ? res.json(row)
+        : res.status(404).json({
+            error: 'User with that ID not found',
+          })
     })
     .catch(err => {
       res
