@@ -1,6 +1,7 @@
 require('dotenv').config()
 const User = require('./models/userModel')
 const bcrypt = require('bcrypt')
+const crypto = require('crypto-random-string')
 const Joi = require('joi')
 const validation = require('../Config/helpers/validation')
 
@@ -72,11 +73,13 @@ module.exports = passport => {
 
                 //check for email field
                 if (email) {
+                  const verifyToken = crypto(16)
                   User.query()
                     .insert({
                       username: username,
                       email: email,
                       password: hash,
+                      verifyToken: verifyToken,
                     })
                     .then(user => {
                       //success

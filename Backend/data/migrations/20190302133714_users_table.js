@@ -24,6 +24,8 @@ exports.up = function(knex, Promise) {
     //feel that venue location should be an object to separate sections of the address
     tbl.string('venueLocation')
     tbl.boolean('isPremium').defaultTo(false)
+    tbl.boolean('verify').defaultTo(false)
+    tbl.string('verifyToken')
     // this won't be needed with the new rsvp questions and answers tables
     // tbl.json('rsvpExtraQuestions')
   })

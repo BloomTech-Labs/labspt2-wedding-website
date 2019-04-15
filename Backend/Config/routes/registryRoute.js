@@ -1,4 +1,3 @@
-const helper = require('../helpers/questionsDB')
 const db = require('../dbConfig')
 
 module.exports = server => {

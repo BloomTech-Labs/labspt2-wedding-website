@@ -2,6 +2,8 @@ const db = require('../dbConfig')
 const { Model } = require('objection')
 const passport = require('passport')
 const jwtHelper = require('../../Auth/jwt/jwtHelper')
+const { sendVerificationEmail } = require('../helpers/emailVerification')
+
 Model.knex(db)
 
 module.exports = server => {
@@ -81,11 +83,13 @@ regLogin = (req, res) => {
     weddingParty: user.weddingParty,
     venueLocation: user.venueLocation,
     isPremium: user.isPremium,
+    verifyToken: user.verifyToken,
   }
 
   if (user.id) {
     console.log('token User:', tokenUser)
     const token = jwtHelper.generateToken(tokenUser)
+    sendVerificationEmail(user.email, user.verifyToken)
     res.status(201).json({
       token,
       userInfo,
