@@ -1,5 +1,6 @@
 const db = require('../dbConfig')
 const { Model } = require('objection')
+const User = require('../../Auth/models/userModel')
 const passport = require('passport')
 const jwtHelper = require('../../Auth/jwt/jwtHelper')
 const { sendVerificationEmail } = require('../helpers/emailVerification')
@@ -45,7 +46,8 @@ module.exports = server => {
         session: false,
       }),
       facebookCB
-    )
+    ),
+    server.post('/auth/verification', verifyEmail)
 }
 
 authHome = (req, res) => {
@@ -117,6 +119,36 @@ regLogin = (req, res) => {
 //         session: false,
 //     })
 // }
+
+verifyEmail = (req, res) => {
+  User.query()
+    // finds user to verify via email
+    .findOne('email', req.query.email)
+    .then(user => {
+      if (user) {
+        if (user.verify) {
+          res.status(202).json({ message: 'Email already verified' })
+        } else {
+          const userToken = user.verifyToken
+          const queryToken = req.query.token
+          console.log('tokens :', userToken, queryToken)
+          if (userToken === queryToken) {
+            console.log('yep they match')
+            User.query()
+              .update({ verify: true })
+              .where('email', req.query.email)
+            res.status(200).json({ message: 'Email has been verified' })
+          }
+        }
+      } else {
+        console.log('failed')
+        res.status(404).json({ message: ' email not found' })
+      }
+    })
+    .catch(() => {
+      res.status(500).json({ message: 'verification failed' })
+    })
+}
 
 googleCB = (req, res) => {
   const user = req.user

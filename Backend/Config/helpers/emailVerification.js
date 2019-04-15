@@ -26,7 +26,7 @@ module.exports = {
         content: [
           {
             type: 'text/plain',
-            value: `Click on this link to verify your email ${hostUrl}/verification?token=${token}&email=${to}`,
+            value: `Click on this link to verify your email ${hostUrl}/auth/verification?token=${token}&email=${to}`,
           },
         ],
       },
