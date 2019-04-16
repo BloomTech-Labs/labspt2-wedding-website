@@ -23,6 +23,7 @@ import Design from './components/design/Design'
 import WeddingPage1 from './components/design/weddingPage1/WeddingPage1'
 import WeddingPage2 from './components/design/weddingPage2/WeddingPage2'
 import WeddingPage3 from './components/design/weddingPage3/WeddingPage3'
+import Verify from './components/landingPage/verify'
 
 import styled from 'styled-components'
 
@@ -124,6 +125,7 @@ class App extends Component {
             <Route exact path='/' component={LandingPage} />
             {/* login Should have singup first */}
             <Route path='/login' component={Login} />
+            <Route path='/verify' component={Verify} />
           </Switch>
         </div>
       </Router>

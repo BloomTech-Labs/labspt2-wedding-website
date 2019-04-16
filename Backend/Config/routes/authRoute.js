@@ -86,6 +86,7 @@ regLogin = (req, res) => {
     venueLocation: user.venueLocation,
     isPremium: user.isPremium,
     verifyToken: user.verifyToken,
+    verify: user.verify,
   }
 
   if (user.id) {
@@ -121,23 +122,24 @@ regLogin = (req, res) => {
 // }
 
 verifyEmail = (req, res) => {
+  const email = req.body.email
+  const token = req.body.token
   User.query()
     // finds user to verify via email
-    .findOne('email', req.query.email)
+    .findOne('email', email)
     .then(user => {
       if (user) {
         if (user.verify) {
           res.status(202).json({ message: 'Email already verified' })
         } else {
           const userToken = user.verifyToken
-          const queryToken = req.query.token
-          console.log('tokens :', userToken, queryToken)
-          if (userToken === queryToken) {
+          console.log('tokens :', userToken, token)
+          if (userToken === token) {
             console.log('yep they match')
             User.query()
               .update({ verify: true })
-              .where('email', req.query.email)
-            res.status(200).json({ message: 'Email has been verified' })
+              .where('email', email)
+            res.status(200).json({ message: 'Email verification successfull' })
           }
         }
       } else {
@@ -145,7 +147,8 @@ verifyEmail = (req, res) => {
         res.status(404).json({ message: ' email not found' })
       }
     })
-    .catch(() => {
+    .catch(err => {
+      console.log(err)
       res.status(500).json({ message: 'verification failed' })
     })
 }

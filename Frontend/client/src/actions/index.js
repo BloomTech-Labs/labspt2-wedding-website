@@ -280,3 +280,18 @@ export const deleteQuestion = (userId, id) => dispatch => {
 //       })
 //     })
 // }
+
+export const verifyUser = verifyCreds => dispatch => {
+  axios
+    .post(`${api}/auth/verification`, verifyCreds)
+    .then(() => {
+      dispatch({ type: LOGOUT })
+      localStorage.removeItem('jwt')
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
