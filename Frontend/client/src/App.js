@@ -23,7 +23,7 @@ import Design from './components/design/Design'
 import WeddingPage1 from './components/design/weddingPage1/WeddingPage1'
 import WeddingPage2 from './components/design/weddingPage2/WeddingPage2'
 import WeddingPage3 from './components/design/weddingPage3/WeddingPage3'
-
+import WeddingPhotos from './components/weddingPhotos/livePhotoPage'
 import styled from 'styled-components'
 
 import './App.css'
@@ -98,6 +98,7 @@ class App extends Component {
           <Router className='App'>
             <Container>
               <Navigation />
+             
               <Switch>
                 <Route exact path='/' component={DashBoard} />
                 <Route path='/settings' component={Settings} />
@@ -109,6 +110,7 @@ class App extends Component {
                 <Route path='/design1' component={WeddingPage1} />
                 <Route path='/design2' component={WeddingPage2} />
                 <Route path='/design3' component={WeddingPage3} />
+                <Route path='/weddingPhotos' component={WeddingPhotos}/>
               </Switch>
             </Container>
           </Router>
