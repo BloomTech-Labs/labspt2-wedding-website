@@ -126,6 +126,7 @@ class App extends Component {
             <Route exact path='/' component={LandingPage} />
             {/* login Should have singup first */}
             <Route path='/login' component={Login} />
+            <Route path='/weddingPhotos' component={WeddingPhotos}/> 
           </Switch>
         </div>
       </Router>

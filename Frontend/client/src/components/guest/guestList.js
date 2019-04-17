@@ -26,6 +26,7 @@ class GuestList extends Component {
     })
     console.log('input handled')
   }
+  
 
   addGuestHandler = e => {
     e.preventDefault()
