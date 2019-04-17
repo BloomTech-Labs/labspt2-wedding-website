@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Textarea from "react-textarea-autosize";
-import { connect } from 'react-redux'
-import moment from 'moment'
+import { connect } from 'react-redux';
+import moment from 'moment';
+
+import CountDown from "../CountDown";
 
 import styled from "styled-components";
 
@@ -49,6 +51,7 @@ const WhoWrapper = styled.div`
   justify-content: center;
   margin-top: 5%;
   font-size: 5rem;
+  text-align: center;
 `;
 
 const WhenWrapper = styled.div`
@@ -57,14 +60,30 @@ const WhenWrapper = styled.div`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 5%;
   font-size: 5rem;
+  text-align: center;
 `;
 
-const A = styled.a`
+const H1 = styled.h1`
   text-decoration: none;
-  font-family: "Pacifico", cursive;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 2px 2px 0px #FFFFFF;
+  @media (max-width : 480px) {
+    font-size: 3rem;
+    }
+`;
+
+const H2 = styled.h2`
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  margin-top: 4%;
+  text-shadow: 2px 2px 0px #FFFFFF;
+  @media (max-width : 480px) {
+    font-size: 3rem;
+    }
 `;
 
 const PrettyWCWrapper = styled.div`
@@ -83,12 +102,22 @@ const StoryWrapper = styled.div`
   border-bottom: 1px solid black;
   background: rgb(157, 242, 188);
   opacity: 0.8;
+  @media (max-width : 480px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    }
 `;
 
 const Story = styled.h3`
   color: black;
   font-family: "Lobster", cursive;
   font-size: 3rem;
+  @media (max-width : 480px) {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    }
 `;
 
 //Styled components don't work with the plugin react-textarea-autosize
@@ -133,15 +162,18 @@ class WeddingPage1 extends Component {
             <Bell2 src={bells} alt="It's some more bells" />
           </BellWrapper>
           <WhoWrapper>
-            <h1>
+            <H1>
               {this.props.userInfo.partnerName1} &amp;{' '}
               {this.props.userInfo.partnerName2}'s Wedding
-            </h1>
+            </H1>  
           </WhoWrapper>
           <WhenWrapper>
-            <h1>{moment(this.props.userInfo.weddingDate).format('ll')}</h1>
-            <h2>{this.props.userInfo.venueLocation}</h2>
+            <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
+            <H2>{this.props.userInfo.venueLocation}</H2>
           </WhenWrapper>
+          <div>
+            <CountDown />
+          </div>
           <RSVPWrapper>
             <button>
               {/* This will need to be linked to the answers page once it exists. */}

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Textarea from "react-textarea-autosize";
-import { connect } from 'react-redux'
-import moment from 'moment'
+import { connect } from 'react-redux';
+import moment from 'moment';
+
+import CountDown from "../CountDown";
 
 import styled from "styled-components";
 
@@ -158,6 +160,9 @@ class WeddingPage3 extends Component {
             <h1>{moment(this.props.userInfo.weddingDate).format('ll')}</h1>
             <h2>{this.props.userInfo.venueLocation}</h2>
           </WhenWrapper>
+          <div>
+            <CountDown />
+          </div>
           <CoupleWrapper>
             <HeartWP3 src={heartWP3} alt="A Heart" />
           </CoupleWrapper>
