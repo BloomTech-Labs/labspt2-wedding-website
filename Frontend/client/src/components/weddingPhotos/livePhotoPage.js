@@ -3,7 +3,15 @@ import { connect } from 'react-redux'
 import { fetchPhotoFeed, }  from '../../actions'
 import { Input, Label } from 'reactstrap'
 import { Modal, FormGroup, Button, FormText } from 'react-bootstrap'
+import logo from '../../Images/jobdLogo.png'
+import styled from 'styled-components'
+import photoCard from '../weddingPhotos/photoCard'
+import PhotoCard from '../weddingPhotos/photoCard';
 
+
+const Image = styled.img `
+width: 100%
+`
 class WeddingPhotos extends React.Component {
     constructor(props){
       super(props);
@@ -12,21 +20,22 @@ class WeddingPhotos extends React.Component {
         userInfo: this.props.userInfo,
         show: false,
         caption: '',
-        source: ''
+        source: logo
       }
        this.handleShow = e =>{
         this.setState({show: true})
       }
       this.handleClose = e =>{
-        this.setState({show: false})
+        this.setState({show: false, source: ''})
       }
       this.fileChange = e =>{
+       console.log(e.target.files)
         this.setState({source: URL.createObjectURL(e.target.files[0])})
       }
     
     }
     render() {
-      console.log(this.state.userInfo)
+      console.log('userInfo',this.props.userInfo)
       return (
         <div>
           <Button onClick={this.handleShow}>Add a photo</Button>
@@ -38,9 +47,8 @@ class WeddingPhotos extends React.Component {
             </Modal.Header>
             <Modal.Body>
               <FormGroup>
-                <Label for='weddingPhotos'>Image File</Label>
-                <Input type="file" name="image" onChange={this.fileChange} />
-                <img src={this.state.source} alt="your image" />
+                <input type="file" name="image" accept='image/*' onChange={this.fileChange} />
+                <Image src={this.state.source} />
                 <FormText color="muted"/>
                 Please only upload Image files or Video files under 50MB. We appreciate your patience when uploading videos
                 <FormText/> 
@@ -56,7 +64,7 @@ class WeddingPhotos extends React.Component {
           </Modal>
           </div>
           <h1>Live Wedding Photos</h1>
-          
+          <PhotoCard  />
         </div>
         );
     }
