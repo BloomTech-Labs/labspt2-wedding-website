@@ -13,6 +13,7 @@ export const GET_GUESTS = 'GET_GUESTS'
 // export const GET_GUEST = 'GET_GUEST'
 export const GET_QS = 'GET_QS'
 export const GET_AS = 'GET_AS'
+export const GET_REGISTRY = 'GET_REGISTRY'
 export const UPDATING = 'UPDATING'
 export const DELETE = 'DELETE'
 export const ERROR = 'ERROR'
@@ -280,3 +281,59 @@ export const deleteQuestion = (userId, id) => dispatch => {
 //       })
 //     })
 // }
+export const fetchRegistry = id => dispatch => {
+  dispatch({ type: FETCHING })
+  axios
+    .get(`${api}/registry/${id}`)
+
+    .then(res => {
+      dispatch({
+        type: GET_REGISTRY,
+        payload: res.data,
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        paylaod: err,
+      })
+    })
+}
+export const addRegistry = (userId, registry) => dispatch => {
+  console.log('question :', registry)
+  axios
+    .post(`${api}/registry/${userId}`, registry)
+    .then(() => fetchRegistry(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const editRegistry = (userId, id, registry) => dispatch => {
+  dispatch({ type: UPDATING })
+  axios
+    .put(`${api}/registry/${userId}/${id}`, registry)
+    .then(() => fetchRegistry(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const deleteRegistry = (userId, id) => dispatch => {
+  dispatch({ type: DELETE })
+  axios
+    .delete(`${api}/questions/${id}`)
+    .then(() => fetchQuestions(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}

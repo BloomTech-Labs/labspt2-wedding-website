@@ -11,6 +11,7 @@ import {
   // GET_GUEST,
   GET_QS,
   UPDATING,
+  GET_REGISTRY,
   // DELETE,
   ERROR,
   LOGOUT,
@@ -28,6 +29,7 @@ const initialState = {
   guests: null,
   updating: false,
   userQuestions: null,
+  userRegistry: null,
   //answers
 }
 
@@ -44,7 +46,12 @@ export default (state = initialState, action) => {
     case SOCIAL_USER:
       return { ...state, authProcess: true }
     case GET_USER:
-      return { ...state, userInfo: action.payload, fetching: false }
+      return {
+        ...state,
+        userInfo: action.payload,
+        fetching: false,
+        updating: false,
+      }
     case OAUTH_USER:
       return {
         ...state,
@@ -62,11 +69,29 @@ export default (state = initialState, action) => {
     case LOGOUT:
       return { ...state, userInfo: null, guests: null }
     case GET_GUESTS:
-      return { ...state, guests: action.payload, fetching: false }
+      return {
+        ...state,
+        guests: action.payload,
+        fetching: false,
+        updating: false,
+      }
     case GET_QS:
-      return { ...state, userQuestions: action.payload, fetching: false }
+      return {
+        ...state,
+        userQuestions: action.payload,
+        fetching: false,
+        updating: false,
+      }
+    case GET_REGISTRY:
+      return {
+        ...state,
+        userRegistry: action.payload,
+        fetching: false,
+        updating: false,
+      }
     case UPDATING:
-      return { ...state, guests: action.payload, fetching: false }
+      // return { ...state, guests: action.payload, fetching: false }
+      return { ...state, fetching: false, updating: true }
     case ERROR:
       return { ...state, updating: true }
     default:

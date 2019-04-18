@@ -51,7 +51,12 @@ editRegistry = (req, res) => {
 
 removeRegistry = (req, res) => {
   const { id } = req.params
-  helper.deleteRegistry(id).then(() => {
-    res.json({ message: 'Its gone!' })
-  })
+  helper
+    .deleteRegistry(id)
+    .then(() => {
+      res.json({ message: 'Its gone!' })
+    })
+    .catch(() => {
+      res.status(500).json({ message: 'deleting registry failed' })
+    })
 }

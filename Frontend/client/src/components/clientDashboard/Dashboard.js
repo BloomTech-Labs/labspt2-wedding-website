@@ -30,6 +30,18 @@ const Button = styled.button`
   background: #52c4b9;
 `
 
+const RegistryItem = styled.div`
+  border-radius: 5%;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 70px;
+  font-size: 0.8em;
+  font-weight: 500;
+  background: goldenrod;
+`
+
 const ShareButton = styled.button`
   border-radius: 5%;
   color: white;
@@ -224,6 +236,15 @@ class Dashboard extends Component {
           <Registry>
             <H3>Registry</H3>
             {/* Amazon registry goes here. Need to figure out how */}
+            {this.state.registry ? (
+              this.state.registry.length > 0 ? (
+                this.state.registry.map(rItem => {
+                  return <RegistryItem>{rItem.registryName}</RegistryItem>
+                })
+              ) : (
+                <RegistryItem>No Registry Added yet</RegistryItem>
+              )
+            ) : null}
             <Button onClick={this.handleModal}>Add Registry</Button>
           </Registry>
           <Modal isOpen={this.state.modal}>
@@ -238,6 +259,7 @@ class Dashboard extends Component {
 const mapStateToProps = state => ({
   userInfo: state.userInfo,
   guests: state.guests,
+  registry: state.userRegistry,
 })
 
 export default connect(
