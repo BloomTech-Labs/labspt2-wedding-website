@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addRegistry } from '../../actions'
-class Registry extends Component {
+class AddRegistry extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -17,9 +17,12 @@ class Registry extends Component {
     console.log('input handled')
   }
 
-  handleAdd = () => {
+  handleAdd = e => {
+    e.preventDefault()
     //get userId from parent component via props
-    const userId = this.props.user
+    const userId = this.props.user.id
+    console.log(userId)
+    console.log(this.state)
     this.props.addRegistry(userId, this.state)
   }
 
@@ -33,7 +36,7 @@ class Registry extends Component {
           <input
             type='text'
             name='registryUrl'
-            value={this.state.link}
+            value={this.state.registryUrl}
             placeholder='Add a Registry'
             onChange={this.inputHandler}
           />
@@ -41,7 +44,7 @@ class Registry extends Component {
           <input
             type='text'
             name='registryName'
-            value={this.state.name}
+            value={this.state.registryName}
             placeholder='Display Name'
             onChange={this.inputHandler}
           />
@@ -57,4 +60,4 @@ const mapStateToProps = state => {}
 export default connect(
   mapStateToProps,
   { addRegistry }
-)(Registry)
+)(AddRegistry)

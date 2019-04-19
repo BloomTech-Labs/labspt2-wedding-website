@@ -4,8 +4,8 @@ const db = require('../dbConfig')
 module.exports = server => {
   server.get('/registry/:id', getUserRegistry)
   server.post('/registry/:user', addNewRegistry)
-  server.put('/registry/:userId/:registryId', updateRegistry)
-  server.delete('/registry/:id/:registry', removeRegistry)
+  server.put('/registry/:userId/:registryId', editRegistry)
+  server.delete('/registry/:id', removeRegistry)
 }
 
 getUserRegistry = (req, res) => {
@@ -22,14 +22,18 @@ getUserRegistry = (req, res) => {
 
 addNewRegistry = (req, res) => {
   const newR = req.body
+  console.log('newreg', newR)
   const { user } = req.params
+  console.log(user)
   newR.userId = user
+  console.log('newr new', newR)
   helper
     .addRegistry(newR)
     .then(id => {
       res.status(201).json({ message: 'Registry added' })
     })
-    .catch(() => {
+    .catch(err => {
+      console.log(err)
       res.status(500).json({ message: 'Adding registry failed' })
     })
 }

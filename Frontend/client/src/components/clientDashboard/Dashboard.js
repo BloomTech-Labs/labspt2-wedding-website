@@ -6,8 +6,8 @@ import moment from 'moment'
 import PieChart from 'react-minimal-pie-chart'
 import Modal from 'react-modal'
 
-import RegistryModal from '../modals/registry'
-
+import RegistryAddModal from '../modals/addRegistry'
+import RegistryViewModal from '../modals/viewRegistry'
 import styled from 'styled-components'
 Modal.setAppElement('#root')
 
@@ -28,18 +28,21 @@ const Button = styled.button`
   font-size: 0.8em;
   font-weight: 500;
   background: #52c4b9;
+  cursor: pointer;
 `
 
-const RegistryItem = styled.div`
+const RegistryItem = styled.button`
   border-radius: 5%;
   color: white;
   border: none;
   outline: none;
   border-radius: 25px;
   padding: 15px 70px;
+  margin-right: 15px;
   font-size: 0.8em;
   font-weight: 500;
   background: goldenrod;
+  cursor: pointer;
 `
 
 const ShareButton = styled.button`
@@ -109,6 +112,10 @@ const H2 = styled.h2`
   color: white;
   margin-top: 12%;
 `
+const RegistryContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
 
 const GuestList = styled.div`
   margin-top: 5%;
@@ -145,12 +152,27 @@ class Dashboard extends Component {
     super(props)
     this.state = {
       modal: false,
+      regModal: null,
     }
   }
 
   handleModal = () => {
     this.setState({
       modal: !this.state.modal,
+    })
+  }
+
+  handleRegModal = (e, id) => {
+    e.preventDefault()
+    console.log('regmodal')
+    this.setState({
+      regModal: id,
+    })
+  }
+
+  closeRegModal = () => {
+    this.setState({
+      regModal: null,
     })
   }
 
@@ -169,6 +191,9 @@ class Dashboard extends Component {
         }
       })
     }
+
+    const registry = []
+    console.log('registry :', registry)
     console.log('rsvpYes :', rsvpYes)
     console.log('rsvpNo :', rsvpNo)
     console.log('rsvpMaybe :', rsvpMaybe)
@@ -236,19 +261,39 @@ class Dashboard extends Component {
           <Registry>
             <H3>Registry</H3>
             {/* Amazon registry goes here. Need to figure out how */}
-            {this.state.registry ? (
-              this.state.registry.length > 0 ? (
-                this.state.registry.map(rItem => {
-                  return <RegistryItem>{rItem.registryName}</RegistryItem>
-                })
-              ) : (
-                <RegistryItem>No Registry Added yet</RegistryItem>
-              )
-            ) : null}
-            <Button onClick={this.handleModal}>Add Registry</Button>
+            <RegistryContainer>
+              {this.props.registry ? (
+                this.props.registry.length > 0 ? (
+                  this.props.registry.map(rItem => {
+                    registry.push(rItem)
+                    return (
+                      <div>
+                        <RegistryItem
+                          onClick={e => this.handleRegModal(e, rItem.id)}>
+                          {rItem.registryName}
+                        </RegistryItem>
+                      </div>
+                    )
+                  })
+                ) : (
+                  <RegistryItem>No Registry Added yet</RegistryItem>
+                )
+              ) : null}
+              <Button onClick={this.handleModal}>Add Registry</Button>
+            </RegistryContainer>
           </Registry>
           <Modal isOpen={this.state.modal}>
-            <RegistryModal handleClose={this.handleModal} />
+            <RegistryAddModal
+              user={this.props.userInfo}
+              handleClose={this.handleModal}
+            />
+          </Modal>
+          <Modal isOpen={this.state.regModal}>
+            <RegistryViewModal
+              registry={registry[this.state.regModal - 1]}
+              user={this.props.userInfo}
+              handleClose={this.closeRegModal}
+            />
           </Modal>
         </HeadContainer>
       </DashContainer>

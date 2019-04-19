@@ -305,6 +305,7 @@ export const addRegistry = (userId, registry) => dispatch => {
     .post(`${api}/registry/${userId}`, registry)
     .then(() => fetchRegistry(userId)(dispatch))
     .catch(err => {
+      console.log('err :', err)
       dispatch({
         type: ERROR,
         payload: err,
@@ -315,7 +316,7 @@ export const addRegistry = (userId, registry) => dispatch => {
 export const editRegistry = (userId, id, registry) => dispatch => {
   dispatch({ type: UPDATING })
   axios
-    .put(`${api}/registry/${userId}/${id}`, registry)
+    .put(`${api}/registry/${id}`, registry)
     .then(() => fetchRegistry(userId)(dispatch))
     .catch(err => {
       dispatch({
@@ -326,10 +327,11 @@ export const editRegistry = (userId, id, registry) => dispatch => {
 }
 
 export const deleteRegistry = (userId, id) => dispatch => {
+  console.log('id :', id)
   dispatch({ type: DELETE })
   axios
-    .delete(`${api}/questions/${id}`)
-    .then(() => fetchQuestions(userId)(dispatch))
+    .delete(`${api}/registry/${id}`)
+    .then(() => fetchRegistry(userId)(dispatch))
     .catch(err => {
       dispatch({
         type: ERROR,

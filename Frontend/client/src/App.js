@@ -117,6 +117,7 @@ class App extends Component {
     }
 
     return (
+      // user Is not auth
       // needs nav bar for going b/t landing page and login component
       <Router className='App'>
         <div>
