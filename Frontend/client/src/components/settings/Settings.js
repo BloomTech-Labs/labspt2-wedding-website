@@ -19,19 +19,6 @@ const SettingsPage = styled.div`
   margin-top: 100px;
 `;
 
-const settingsPage = {
-  display: "flex",
-  width: "100%",
-  maxWidth: "1200px",
-  minWidth: "700px",
-  justifyContent: "space-between",
-  height: "100vh",
-  maxHeight: "600px",
-  // marginLeft: 'auto',
-  // marginRight: 'auto',
-  marginTop: "100px"
-};
-
 const settingsBox = {
   display: "flex",
   flexDirection: "column",
@@ -87,7 +74,7 @@ export default class Settings extends Component {
           <div>
             <SideNav />
           </div>
-          <div style={settingsPage}>
+          <SettingsPage>
             <div style={settingsBox}>
               <div style={box}>
                 <label htmlFor="email">Email:</label>
@@ -177,7 +164,7 @@ export default class Settings extends Component {
                 <FaTrash />
               </div>
             </div>
-          </div>
+          </SettingsPage>
         </div>
       </Router>
     );

@@ -141,7 +141,7 @@ export default class Navigation extends Component {
                                 <Route path="/pricing" component={Pricing} />
                                 <Route path="/billing" component={Billing} />
                                 <Route path="/rsvp" component={RSVP} />
-                                <Route path="/" component={Home} />                              
+                                <Route path="/" exact component={Home} />                              
                             </Switch>
 
                         </RTStyles>
