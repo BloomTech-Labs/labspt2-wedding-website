@@ -71,6 +71,12 @@ regLogin = (req, res) => {
     username: user.username,
     email: user.email,
   }
+
+  const userInfo = {
+    userId: user.id,
+    username: user.username,
+    email: user.email,
+  }
   const userInfo = {
     id: user.id,
     username: user.username,
@@ -122,7 +128,7 @@ googleCB = (req, res) => {
     username: user.username,
     email: user.email,
     partnerName1: user.partnerName1,
-    partnerName2: user.partnerName2,
+    partnerName2: user.partnerName1,
     weddingDate: user.weddingDate,
     weddingParty: user.weddingParty,
     venueLocation: user.venueLocation,
@@ -154,9 +160,10 @@ googleCB = (req, res) => {
 facebookCB = (req, res) => {
   const user = req.user
   const tokenUser = {
-    userID: user.id,
+    userId: user.id,
     email: user.email,
   }
+
   const token = jwtHelper.generateToken(tokenUser)
   console.log('GOOGLE Token:', token)
   res.status(201).json({

@@ -18,6 +18,7 @@ export const UPDATING = 'UPDATING'
 export const DELETE = 'DELETE'
 export const ERROR = 'ERROR'
 export const LOGOUT = 'LOGOUT'
+export const USER_FEED = 'USER_FEED'
 
 // needs to be stored on secret .env file for production
 const api = /* 'https://joinourbigday.herokuapp.com' */ 'http://localhost:3700'
@@ -267,6 +268,38 @@ export const deleteQuestion = (userId, id) => dispatch => {
 //   dispatch({ type: FETCHING })
 //   axios
 //     .get(`${api}/rsvp/answer/${questionId}`)
+
+//     .then(res => {
+//       dispatch({
+//         type: GET_AS,
+//         payload: res.data,
+//       })
+//     })
+//     .catch(err => {
+//       dispatch({
+//         type: ERROR,
+//         paylaod: err,
+//       })
+//     })
+// }
+
+export const fetchPhotoFeed = id => dispatch => {
+  dispatch({ type: FETCHING })
+  axios
+    .get(`${api}/users/${id}/live-photos`)
+    .then(res => {
+      dispatch({
+        type: USER_FEED,
+        payload: res.data,
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
 
 //     .then(res => {
 //       dispatch({

@@ -15,6 +15,7 @@ import {
   // DELETE,
   ERROR,
   LOGOUT,
+  USER_FEED
 } from '../actions/index'
 
 const initialState = {
@@ -94,6 +95,8 @@ export default (state = initialState, action) => {
       return { ...state, fetching: false, updating: true }
     case ERROR:
       return { ...state, updating: true }
+    case USER_FEED:
+      return {...state, photoCards: action.payload, fetching: false }
     default:
       return state
   }
