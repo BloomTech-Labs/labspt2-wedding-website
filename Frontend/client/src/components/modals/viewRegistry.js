@@ -13,8 +13,6 @@ class AddRegistry extends Component {
     }
   }
 
-  componentDidMount() {}
-
   inputHandler = e => {
     e.preventDefault()
     const { registry } = { ...this.state }
@@ -36,7 +34,7 @@ class AddRegistry extends Component {
     const userId = this.props.user.id
     console.log('userId', userId)
     e.preventDefault()
-    this.props.editRegistry(userId, this.props.registry.id, this.state)
+    this.props.editRegistry(userId, this.props.registry.id, this.state.registry)
     this.setState({ edit: false })
   }
 

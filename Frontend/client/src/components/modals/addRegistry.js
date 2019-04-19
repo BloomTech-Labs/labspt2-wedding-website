@@ -24,6 +24,7 @@ class AddRegistry extends Component {
     console.log(userId)
     console.log(this.state)
     this.props.addRegistry(userId, this.state)
+    this.props.handleClose()
   }
 
   render() {

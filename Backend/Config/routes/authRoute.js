@@ -71,12 +71,6 @@ regLogin = (req, res) => {
     username: user.username,
     email: user.email,
   }
-
-  const userInfo = {
-    userId: user.id,
-    username: user.username,
-    email: user.email,
-  }
   const userInfo = {
     id: user.id,
     username: user.username,
