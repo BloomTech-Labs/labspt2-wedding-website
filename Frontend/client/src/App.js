@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import moment from 'moment';
 import { setUser, fetchGuests } from './actions'
 
 import queryString from 'query-string'
@@ -106,7 +107,7 @@ class App extends Component {
                 <Route path='/guests' component={GuestList} />
                 <Route path='/rsvp' component={QuestionList} />
                 <Route path='/design' component={Design} />
-                <Route path='/design1' component={WeddingPage1} />
+                <Route path='/(design1|hutton)' component={WeddingPage1} />
                 <Route path='/design2' component={WeddingPage2} />
                 <Route path='/design3' component={WeddingPage3} />
               </Switch>
@@ -117,6 +118,7 @@ class App extends Component {
     }
 
     return (
+      //Guest routes
       // needs nav bar for going b/t landing page and login component
       <Router className='App'>
         <div>
@@ -124,6 +126,7 @@ class App extends Component {
             <Route exact path='/' component={LandingPage} />
             {/* login Should have singup first */}
             <Route path='/login' component={Login} />
+            <Route path='/hutton' component={WeddingPage1} />
           </Switch>
         </div>
       </Router>
