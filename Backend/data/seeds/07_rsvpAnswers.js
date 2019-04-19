@@ -1,7 +1,7 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('rsvpAnswers')
-    .truncate()
+  .truncate()
     .then(function() {
       // Inserts seed entries
       return knex('rsvpAnswers').insert([
@@ -43,20 +43,9 @@ exports.seed = function(knex, Promise) {
         {
           id: 6,
           answer_body: 'another answer',
-          rsvpQuestions_id: 6,
-          guestList_id: 11,
-        },
-        {
-          id: 7,
-          answer_body: 'another answer 1',
-          rsvpQuestions_id: 6,
-          guestList_id: 14,
-        },
-        {
-          id: 8,
-          answer_body: 'another answer 2',
-          rsvpQuestions_id: 6,
-          guestList_id: 13,
+          rsvpQuestions_id: 1,
+          users_id: 1,
+          guestList_id: 2,
         },
       ])
     })

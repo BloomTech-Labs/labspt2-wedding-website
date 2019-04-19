@@ -13,14 +13,15 @@ export const GET_GUESTS = 'GET_GUESTS'
 // export const GET_GUEST = 'GET_GUEST'
 export const GET_QS = 'GET_QS'
 export const GET_AS = 'GET_AS'
+export const GET_REGISTRY = 'GET_REGISTRY'
 export const UPDATING = 'UPDATING'
 export const DELETE = 'DELETE'
 export const ERROR = 'ERROR'
 export const LOGOUT = 'LOGOUT'
-export const USER_FEED = "USER_FEED"
+export const USER_FEED = 'USER_FEED'
 
 // needs to be stored on secret .env file for production
-const api = 'https://joinourbigday.herokuapp.com'
+const api = 'https://joinourbigday.herokuapp.com' /*'http://localhost:3700'*/
 
 //Login in / Registering
 export const loginRegister = creds => dispatch => {
@@ -263,53 +264,111 @@ export const deleteQuestion = (userId, id) => dispatch => {
     })
 }
 
-
 // export const fetchAnswers = questionId => dispatch => {
-  //   dispatch({ type: FETCHING })
-  //   axios
-  //     .get(`${api}/rsvp/answer/${questionId}`)
-  
-  //     .then(res => {
-    //       dispatch({
-      //         type: GET_AS,
-      //         payload: res.data,
-      //       })
-      //     })
-      //     .catch(err => {
-        //       dispatch({
-          //         type: ERROR,
-          //         paylaod: err,
-          //       })
-          //     })
-          // }
-          
-export const fetchPhotoFeed = (id) => dispatch =>{
-  dispatch({type: FETCHING })
-  axios
-    .get(`${api}/users/${id}/live-photos`)
-    .then(res =>{
-      dispatch({
-        type:USER_FEED,
-        payload: res.data,
-      })
-    }).catch(err=>{
-      dispatch({
-        type: ERROR,
-        payload: err,
-      })
-    })
-}
+//   dispatch({ type: FETCHING })
+//   axios
+//     .get(`${api}/rsvp/answer/${questionId}`)
 
-export const postImageFeed = (image, id) => dispatch =>{
+//     .then(res => {
+//       dispatch({
+//         type: GET_AS,
+//         payload: res.data,
+//       })
+//     })
+//     .catch(err => {
+//       dispatch({
+//         type: ERROR,
+//         paylaod: err,
+//       })
+//     })
+// }
+
+export const fetchPhotoFeed = id => dispatch => {
   dispatch({ type: FETCHING })
   axios
-    .post(`${api}/users/${id}/live-upload`, image)
-    .then( () => fetchPhotoFeed(id)(dispatch))
-    .catch(err=>{
+    .get(`${api}/users/${id}/live-photos`)
+    .then(res => {
+      dispatch({
+        type: USER_FEED,
+        payload: res.data,
+      })
+    })
+    .catch(err => {
       dispatch({
         type: ERROR,
         payload: err,
       })
     })
 }
-          
+
+//     .then(res => {
+//       dispatch({
+//         type: GET_AS,
+//         payload: res.data,
+//       })
+//     })
+//     .catch(err => {
+//       dispatch({
+//         type: ERROR,
+//         paylaod: err,
+//       })
+//     })
+// }
+export const fetchRegistry = id => dispatch => {
+  dispatch({ type: FETCHING })
+  axios
+    .get(`${api}/registry/${id}`)
+
+    .then(res => {
+      dispatch({
+        type: GET_REGISTRY,
+        payload: res.data,
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        paylaod: err,
+      })
+    })
+}
+export const addRegistry = (userId, registry) => dispatch => {
+  console.log('question :', registry)
+  axios
+    .post(`${api}/registry/${userId}`, registry)
+    .then(() => fetchRegistry(userId)(dispatch))
+    .catch(err => {
+      console.log('err :', err)
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const editRegistry = (userId, id, registry) => dispatch => {
+  dispatch({ type: UPDATING })
+  axios
+    .put(`${api}/registry/${userId}/${id}`, registry)
+    .then(() => fetchRegistry(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const deleteRegistry = (userId, id) => dispatch => {
+  console.log('id :', id)
+  dispatch({ type: DELETE })
+  axios
+    .delete(`${api}/registry/${id}`)
+    .then(() => fetchRegistry(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}

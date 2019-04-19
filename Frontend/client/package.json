@@ -24,6 +24,7 @@
     "react-google-places-suggest": "^3.7.1",
     "react-icons": "^3.5.0",
     "react-minimal-pie-chart": "^3.5.0",
+    "react-modal": "^3.8.1",
     "react-redux": "^6.0.1",
     "react-responsive-carousel": "^3.1.47",
     "react-router": "^4.3.1",
