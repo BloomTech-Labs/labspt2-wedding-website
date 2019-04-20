@@ -64,7 +64,7 @@ class WeddingPhotos extends React.Component {
           </Modal>
           </div>
           <h1>Live Wedding Photos</h1>
-          <PhotoCard  />
+          {/* <PhotoCard data  /> */}
         </div>
         );
     }

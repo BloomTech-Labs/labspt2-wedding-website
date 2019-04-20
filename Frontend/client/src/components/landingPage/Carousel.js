@@ -5,7 +5,12 @@ import { Carousel } from 'react-responsive-carousel';
 class DemoCarousel extends Component {
     render(){
         return (
-            <Carousel>
+            <Carousel 
+            autoPlay 
+            transitionTime='3000'
+             interval='5000' 
+             infiniteLoop={true}
+             showThumbs={false} > 
                 <div>
                     <img src="https://i.pinimg.com/originals/9e/84/e0/9e84e075585f2bd99892ff4f1cfd9b77.jpg" alt="1" />
                     <p className="legend">Image 1</p>
