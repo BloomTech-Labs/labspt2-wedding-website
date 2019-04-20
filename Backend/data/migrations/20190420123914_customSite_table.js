@@ -5,7 +5,10 @@ exports.up = function(knex, Promise) {
     tbl.string('story')
     tbl.integer('siteDesign')
     tbl.string('proposalStory')
-    tbl.integer('userId').unsigned()
+    tbl
+      .integer('userId')
+      .unsigned()
+      .notNullable()
     tbl.foreign('userId').references('users.id')
   })
 }

@@ -30,7 +30,7 @@ module.exports = {
 
   removeSiteInfo: userId => {
     return db('customSite')
-      .where('userId', id)
+      .where('userId', userId)
       .del()
   },
 }
