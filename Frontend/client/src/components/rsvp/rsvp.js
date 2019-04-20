@@ -53,6 +53,16 @@ const TextBox = styled.input`
     height: 25px;
 `;
 
+const RSVPInput = styled.input`
+  width: 60%;
+  height: 28px;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255,255,255,0.3);
+  transition: 0.3s all;
+  margin: 10px 0;
+`;
+
 const Radio = styled.input`
     width: 50px;
 `;
@@ -119,8 +129,8 @@ export default class RSVP extends Component {
                     <h2>RSVP Guest List</h2>
                     <RSVPForm>
                     <label for="rsvpForm">Guest Name</label>
-                        <TextBox type="text" name="first" placeholder="First Name" />
-                        <TextBox type="text" name="last" placeholder="Last Name" />
+                        <RSVPInput type="text" name="first" placeholder="First Name" />
+                        <RSVPInput type="text" name="last" placeholder="Last Name" />
                         <FinePrint>Ask each individual guest</FinePrint>
                     </RSVPForm>
                     <RSVPForm>
@@ -134,8 +144,8 @@ export default class RSVP extends Component {
                     <ScrollAnimation animateIn="fadeInLeft">
                     <RSVPForm>
                         <label for="rsvpForm">What is your mailing address?</label>
-                        <TextBox type="text" name="address" placeholder="address" />
-                        <TextBox type="text" name="city-zip" placeholder="city, state and zip" />
+                        <RSVPInput type="text" name="address" placeholder="address" />
+                        <RSVPInput type="text" name="city-zip" placeholder="city, state and zip" />
                         <FinePrint>Ask once per household.</FinePrint>
                     </RSVPForm>                        
                     </ScrollAnimation>

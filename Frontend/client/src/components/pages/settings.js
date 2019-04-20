@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
-import Button from 'react-button-component'
+
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from "react-datepicker";
@@ -39,6 +39,8 @@ const SettingsBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 450px;
+  justify-content: center;
+
 
 
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
@@ -53,6 +55,7 @@ const Box = styled.div`
   display: flex;
   margin: 10px 0;
   justify-content: space-between;
+  align-items: center;
 
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     min-width: 500px;
@@ -66,12 +69,15 @@ const Box = styled.div`
 const BoxArea = styled.div`
     background-color: #ffffff;
     padding: 20px;
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
 `;
 
 const RightBox = styled.div`
   display: flex;
   width: 100%;
   margin: 10px 0;
+  align-items: center;
 
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     min-width: 500px;
@@ -90,22 +96,36 @@ const SpecialBox = styled.div`
 `;
 
 const InputBox = styled.input`
-  border-bottom: 1px solid #000000;
-  width: 90%;
+  width: 100%;
+  height: 28px;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255,255,255,0.3);
+  transition: 0.3s all;
+  margin: 10px 0;
 `;
 
-const buttonDiv = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  marginBottom: '25px',
-  marginTop: '25px',
-  height: '100px',
-  minWidth: '250px',
-  boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-}
+const LeftInput = styled.input`
+  width: 50%;
+  height: 28px;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255,255,255,0.3);
+  transition: 0.3s all;
+`;
+
+const Button = styled.button`
+  width: 50%;
+  margin: 0 auto;
+  height: 100px;
+  font-size: 24px;
+  text-transform: uppercase;
+`;
+
+const ButtonLink = styled(Link)`
+  text-decoration: none;
+`;
+
 
 export default class Settings extends Component {
   constructor(props) {
@@ -131,11 +151,11 @@ export default class Settings extends Component {
               <BoxArea>
                 <Box>
                   <label htmlFor="email">Email:</label>
-                  <input type="email" name="email" value="email" placeholder="user@email.com" />
+                  <LeftInput type="email" name="email" value="email" placeholder="user@email.com" />
                 </Box>
                 <Box>
                   <label htmlFor="phone">Phone:</label>
-                  <input type="text" name="Phone" value="Phone" placeholder="###-###-####" />
+                  <LeftInput type="text" name="Phone" value="Phone" placeholder="###-###-####" />
                 </Box>
                 <SpecialBox>
                   <input type="checkbox" name="emails?" value="false" />
@@ -145,11 +165,11 @@ export default class Settings extends Component {
                 </SpecialBox>
                 <Box>
                   <label htmlFor="old">Old Password:</label>
-                  <input type="password" name="old"  placeholder="********" />
+                  <LeftInput type="password" name="old"  placeholder="********" />
                 </Box>
                 <Box>
                   <label htmlFor="new">New Password:</label>
-                  <input type="password" name="new"  placeholder="********" />
+                  <LeftInput type="password" name="new"  placeholder="********" />
                 </Box>                  
               </BoxArea>
 
@@ -171,14 +191,14 @@ export default class Settings extends Component {
                   />
                 </SpecialBox>
                 <RightBox>
-                  <input type="wedding" name="wedding" placeholder="Wedding Location" style={{borderBottom: '1px solid black', width: '90%'}} /><FaEdit /><FaTrash />
+                  <InputBox type="wedding" name="wedding" placeholder="Wedding Location" style={{borderBottom: '1px solid black', width: '90%'}} /><FaEdit /><FaTrash />
                 </RightBox>                  
               </BoxArea>
 
               </SettingsBox>
               <SettingsBox>
-                  <Button style={buttonDiv}>
-                    <Link to="/">Save</Link>
+                  <Button>
+                    <ButtonLink to="/">Save</ButtonLink>
                   </Button>
               </SettingsBox>
           </SettingsPage>

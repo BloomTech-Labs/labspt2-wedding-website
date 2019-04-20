@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import './pricing.css'
 
 const Price = styled.div`
     display: flex;
@@ -38,6 +39,10 @@ const Box = styled.div`
 
 `;
 
+const HRStyle = styled.hr`
+    width: 50%;
+`;
+
 const BoxLI = styled.li`
     list-style-type: none;
     margin: 5px 0;
@@ -61,9 +66,9 @@ export default class Pricing extends Component {
     render() {
         return (
              <Price>
-             <PriceArea>
+             <PriceArea className="effect2">
                  <PricingLogo>Pricing</PricingLogo>
-                 <hr />
+                 <HRStyle />
                  <Box>
                     <BoxList>
                         <BoxLI>Planning Dashboard</BoxLI>
@@ -72,7 +77,7 @@ export default class Pricing extends Component {
                         <BoxLI>Wedding Website</BoxLI>
                     </BoxList>
                  </Box>
-                 <hr />
+                 <HRStyle />
                  <H2>$0</H2>                 
              </PriceArea>
 

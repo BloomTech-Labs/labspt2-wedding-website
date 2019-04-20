@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from 'react-button-component';
 import styled from 'styled-components'
+import './billing.css'
 
 const ButtonDiv = styled.div`
     display: flex;
@@ -52,16 +53,17 @@ const BillBox = styled.div`
     width: 300px;
     margin: 0 auto;
     height: auto;
-    border: 1px solid #000000;
+
 `;
 
 const BillInput = styled.input`
-    width: 90%;
-    height: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 5px;
+  width: 100%;
+  height: 28px;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255,255,255,0.3);
+  transition: 0.3s all;
+  margin: 10px 0;
 `;
 
 const H2 = styled.h2`
@@ -77,15 +79,15 @@ export default class Billing extends Component {
                 <H2>Billing</H2>
                 <BillBox>
                     <label for="card-holder">Cardholder Name</label>
-                    <BillInput type="text" id="card-holder" placeholder="Cardholder Name" />
+                    <BillInput className="inputField" type="text" id="card-holder" placeholder="Cardholder Name" />
                     <label for="card-number">Card Number</label>
-                    <BillInput type="text" id="card-number" placeholder="Card Number" />
+                    <BillInput className="inputField" type="text" id="card-number" placeholder="Card Number" />
                     <label for="card-exp">Exp Date</label>
-                    <BillInput type="text" id="card-exp" placeholder="Exp Date" />
+                    <BillInput className="inputField" type="text" id="card-exp" placeholder="Exp Date" />
                     <label for="card-code">Special Code</label>
-                    <BillInput type="text" id="card-code" placeholder="Special Code" />
+                    <BillInput className="inputField" type="text" id="card-code" placeholder="Special Code" />
                     <label for="card-zip">Billing Zip</label>
-                    <BillInput type="text" id="card-zip" placeholder="Billing Zip" />
+                    <BillInput className="inputField" type="text" id="card-zip" placeholder="Billing Zip" />
                 </BillBox>
              </BillingArea>
                 <ButtonDiv>
