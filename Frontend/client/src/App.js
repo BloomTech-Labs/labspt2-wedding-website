@@ -20,6 +20,7 @@ import Settings from './components/settings/Settings'
 import GuestList from './components/guest/guestList'
 import UserSetup from './components/landingPage/userSetup'
 import Design from './components/design/Design'
+import CustomSite from './components/design/customSite'
 import WeddingPage1 from './components/design/weddingPage1/WeddingPage1'
 import WeddingPage2 from './components/design/weddingPage2/WeddingPage2'
 import WeddingPage3 from './components/design/weddingPage3/WeddingPage3'
@@ -125,6 +126,7 @@ class App extends Component {
             <Route exact path='/' component={LandingPage} />
             {/* login Should have singup first */}
             <Route path='/login' component={Login} />
+            <Route path='/:customSite' component={CustomSite} />
           </Switch>
         </div>
       </Router>
