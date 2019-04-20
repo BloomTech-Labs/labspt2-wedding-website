@@ -22,6 +22,8 @@ const newButton = {
 const BillingDiv = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     width: 100%;
     min-width: 1024px;
@@ -34,6 +36,13 @@ const BillingDiv = styled.div`
         margin-left: auto;
         margin-right: auto;
       }
+`;
+
+const BillingArea = styled.div`
+    width: 400px;
+    background-color: white;  
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
+    padding-bottom: 50px;
 `;
 
 const BillBox = styled.div`
@@ -64,6 +73,7 @@ export default class Billing extends Component {
     render() {
         return (
              <BillingDiv>
+             <BillingArea>
                 <H2>Billing</H2>
                 <BillBox>
                     <label for="card-holder">Cardholder Name</label>
@@ -77,11 +87,12 @@ export default class Billing extends Component {
                     <label for="card-zip">Billing Zip</label>
                     <BillInput type="text" id="card-zip" placeholder="Billing Zip" />
                 </BillBox>
+             </BillingArea>
                 <ButtonDiv>
                     <Button style={newButton} onClick={() => alert('Welcome to our site!')}>
                         Buy Now
                     </Button>
-                </ButtonDiv>
+                </ButtonDiv>                 
              </BillingDiv>
         );
     }

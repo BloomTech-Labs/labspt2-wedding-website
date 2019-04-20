@@ -12,6 +12,7 @@ const Button = styled.button`
 const TableDiv = styled.div`
   display: flex;
   width: 100%;
+
 `;
 
 const GuestPage = styled.div`
@@ -22,6 +23,7 @@ const GuestPage = styled.div`
   margin: 0 40px;
   justify-content: center;
   flex-direction: column;
+  background-color: white;  
 `;
 
 const TopRow = styled.div`

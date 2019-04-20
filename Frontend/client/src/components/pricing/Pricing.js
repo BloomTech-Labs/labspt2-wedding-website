@@ -6,7 +6,10 @@ const Price = styled.div`
     flex-direction: column;
     margin: 0 auto;
     width: 100%;
-    min-width: 1024px;
+    min-width: 1080px;
+    justify-content: center;
+    align-items: center;
+
 
     @media only screen and (max-width: 1024px) and (min-width: 400px) {
         flex-direction: column;
@@ -18,15 +21,21 @@ const Price = styled.div`
       }
 `;
 
+const PriceArea = styled.div`
+    width: 400px;
+    background-color: white;  
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
+`;
+
 const Box = styled.div`
     display: flex;
     flex-direction: row;
-    border: 2px solid #000000;
     width: 300px;
     height: 50%;
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+
 `;
 
 const BoxLI = styled.li`
@@ -52,6 +61,7 @@ export default class Pricing extends Component {
     render() {
         return (
              <Price>
+             <PriceArea>
                  <PricingLogo>Pricing</PricingLogo>
                  <hr />
                  <Box>
@@ -63,7 +73,9 @@ export default class Pricing extends Component {
                     </BoxList>
                  </Box>
                  <hr />
-                 <H2>$0</H2>
+                 <H2>$0</H2>                 
+             </PriceArea>
+
              </Price>
         );
     }

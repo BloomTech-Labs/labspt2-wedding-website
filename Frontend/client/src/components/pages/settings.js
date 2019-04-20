@@ -40,6 +40,7 @@ const SettingsBox = styled.div`
   flex-direction: column;
   width: 450px;
 
+
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
     width: 100%;
     max-width: 350px;
@@ -62,6 +63,11 @@ const Box = styled.div`
   }
 `;
 
+const BoxArea = styled.div`
+    background-color: #ffffff;
+    padding: 20px;
+`;
+
 const RightBox = styled.div`
   display: flex;
   width: 100%;
@@ -76,6 +82,7 @@ const SpecialBox = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  width: 100%;
 
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     min-width: 500px;
@@ -121,6 +128,7 @@ export default class Settings extends Component {
         <Router>
           <SettingsPage>
               <SettingsBox>
+              <BoxArea>
                 <Box>
                   <label htmlFor="email">Email:</label>
                   <input type="email" name="email" value="email" placeholder="user@email.com" />
@@ -142,9 +150,12 @@ export default class Settings extends Component {
                 <Box>
                   <label htmlFor="new">New Password:</label>
                   <input type="password" name="new"  placeholder="********" />
-                </Box>
+                </Box>                  
+              </BoxArea>
+
               </SettingsBox>
               <SettingsBox>
+              <BoxArea>
                 <RightBox>
                   <InputBox type="partner" name="partner" placeholder="Partner Name" /> <FaEdit /><FaTrash />
                 </RightBox>
@@ -161,7 +172,9 @@ export default class Settings extends Component {
                 </SpecialBox>
                 <RightBox>
                   <input type="wedding" name="wedding" placeholder="Wedding Location" style={{borderBottom: '1px solid black', width: '90%'}} /><FaEdit /><FaTrash />
-                </RightBox>
+                </RightBox>                  
+              </BoxArea>
+
               </SettingsBox>
               <SettingsBox>
                   <Button style={buttonDiv}>
