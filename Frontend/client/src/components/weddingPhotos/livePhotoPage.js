@@ -5,7 +5,6 @@ import { Input, Label } from 'reactstrap'
 import { Modal, FormGroup, Button, FormText } from 'react-bootstrap'
 import logo from '../../Images/jobdLogo.png'
 import styled from 'styled-components'
-import photoCard from '../weddingPhotos/photoCard'
 import PhotoCard from '../weddingPhotos/photoCard';
 
 
@@ -64,7 +63,9 @@ class WeddingPhotos extends React.Component {
           </Modal>
           </div>
           <h1>Live Wedding Photos</h1>
-          {/* <PhotoCard data  /> */}
+          {this.photoCards.map(img =>
+          <PhotoCard key={img.imgURL} info={img}/>
+            )}
         </div>
         );
     }

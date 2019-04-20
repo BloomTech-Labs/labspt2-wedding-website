@@ -60,7 +60,9 @@ class Login extends Component {
         return (
              <Router>
                 <LoginPage>
-                    <Aside></Aside>
+                    <Aside>
+                        <img src="" alt=""/>
+                    </Aside>
                     <LoginForm>
                     <PageSwitch>
                         <NavLink to="/sign-in" className="PageSwitcher__Item">Sign In</NavLink>
