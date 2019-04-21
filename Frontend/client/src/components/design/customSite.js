@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import Axios from 'axios'
 
@@ -7,7 +8,7 @@ import WeddingPage2 from './weddingPage2/WeddingPage2'
 import WeddingPage3 from './weddingPage3/WeddingPage3'
 import Spinner from './Spinner'
 
-const URL = "";
+const URL = "http://localhost:3700";
 
 class CustomSite extends Component {
   constructor(props) {
@@ -52,20 +53,22 @@ class CustomSite extends Component {
 
   //we Should send all that to state and pass the state to the weddingSite depending on the design chosen by the user
   componentDidMount() {
-    siteUrl = this.props.match.params.customSite
-    axios
+    Axios
       .get('${URL}/customSite/:siteUrl')
-      console.log(siteUrl)
       .then(response => {
         console.log(response)
           this.setState({
-            userUrl:userUrl
+            userUrl
           })
       })
       .catch(error => {
-        message: "There was a problem processing your request. Please try again."
+        throw "There was a problem processing your request. Please try again."
       })
   }
+  newMethod() {
+    // siteUrl = this.props.match.params.customSite;
+  }
+
   render() {
     /* 
       if statements for loading when loading is true show loading text/animation
@@ -89,12 +92,19 @@ class CustomSite extends Component {
       </div>
     )
   }
+}
+}
 
-export default CustomSite
+const mapStateToProps = state => ({
+  loading: state.loading,
+  userUrl: state.userUrl,
+  story: state.story,
+  siteDesign: state.siteDesign,
+  proposalStory: state.proposalStory,
+  userId: state.userId
+})
 
-/* I think the above needs to be written as 
-  export default function (props) {
-    return <h1>{props.match.params.customSite}</h1>
-  }
-  but I'm not positive
-  */
+export default connect(
+  mapStateToProps,
+  {}
+)(CustomSite)
