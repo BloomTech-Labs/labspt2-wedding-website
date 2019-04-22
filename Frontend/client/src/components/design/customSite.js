@@ -8,7 +8,7 @@ import WeddingPage2 from './weddingPage2/WeddingPage2'
 import WeddingPage3 from './weddingPage3/WeddingPage3'
 import Spinner from './Spinner'
 
-const URL = "http://localhost:3700";
+const URL = 'http://localhost:3700'
 
 class CustomSite extends Component {
   constructor(props) {
@@ -16,11 +16,11 @@ class CustomSite extends Component {
     this.state = {
       // everything needed for the site should be stored here
       loading: true,
-      userUrl: '',
-      story: '',
-      siteDesign: '',
-      proposalStory: '',
-      userId: ''
+      // story: '',
+      // siteDesign: '',
+      // proposalStory: '',
+      // userId: '',
+      site: null,
     }
   }
 
@@ -53,16 +53,13 @@ class CustomSite extends Component {
 
   //we Should send all that to state and pass the state to the weddingSite depending on the design chosen by the user
   componentDidMount() {
-    Axios
-      .get('${URL}/customSite/:siteUrl')
-      .then(response => {
-        console.log(response)
-          this.setState({
-            userUrl
-          })
+    Axios.get(`${URL}/customSite/${this.props.match.params.customSite}`)
+      .then(res => {
+        console.log(res.data[0])
+        this.setState({ site: res.data[0], loading: false })
       })
       .catch(error => {
-        throw "There was a problem processing your request. Please try again."
+        throw 'There was a problem processing your request. Please try again.'
       })
   }
   newMethod() {
@@ -70,6 +67,7 @@ class CustomSite extends Component {
   }
 
   render() {
+    console.log(this.state)
     /* 
       if statements for loading when loading is true show loading text/animation
 
@@ -79,32 +77,28 @@ class CustomSite extends Component {
       if userUrl is not found on the db.. return a not found type of page/message
     */
 
-  if (!userUrl) {
-    throw "Error 404: Page Not Found"
-  }
+    // if (!userUrl) {
+    //   throw "Error 404: Page Not Found"
+    // }
 
-  if (this.state.loading=true) {
-    return <Spinner /> 
-   } else {
-    return (
-      <div>
-        <h1>{this.props.match.params.customSite}</h1>
-      </div>
-    )
+    if (this.state.loading) {
+      return <div>Loading Site</div>
+    } else {
+      if (!this.state.site) {
+        return <div>does not exist</div>
+      } else {
+        if (this.state.site.siteDesign === 1) {
+          return <WeddingPage1 siteInfo={this.state.site} />
+        }
+        if (this.state.site.siteDesign === 2) {
+          return <WeddingPage2 siteInfo={this.state.site} />
+        }
+        if (this.state.site.siteDesign === 3) {
+          return <WeddingPage3 siteInfo={this.state.site} />
+        }
+      }
+    }
   }
 }
-}
 
-const mapStateToProps = state => ({
-  loading: state.loading,
-  userUrl: state.userUrl,
-  story: state.story,
-  siteDesign: state.siteDesign,
-  proposalStory: state.proposalStory,
-  userId: state.userId
-})
-
-export default connect(
-  mapStateToProps,
-  {}
-)(CustomSite)
+export default CustomSite

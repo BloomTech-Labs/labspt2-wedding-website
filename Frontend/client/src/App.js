@@ -106,7 +106,12 @@ class App extends Component {
                 <Route path='/billing' component={StripeBtn} />
                 <Route path='/guests' component={GuestList} />
                 <Route path='/rsvp' component={QuestionList} />
-                <Route path='/design' component={Design} />
+                <Route
+                  path='/design'
+                  render={props => (
+                    <Design {...props} user={this.props.userInfo} />
+                  )}
+                />
                 <Route path='/design1' component={WeddingPage1} />
                 <Route path='/design2' component={WeddingPage2} />
                 <Route path='/design3' component={WeddingPage3} />

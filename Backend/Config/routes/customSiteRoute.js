@@ -9,6 +9,7 @@ module.exports = server => {
 
 siteByUrl = (req, res) => {
   const { siteUrl } = req.params
+  console.log(siteUrl)
   helper
     .getSiteInfoByUrl(siteUrl)
     .then(siteInfo => {
@@ -18,8 +19,9 @@ siteByUrl = (req, res) => {
         res.status(404).json({ message: 'no Site under that url' })
       }
     })
-    .catch(() => {
-      res.status(500).json({ message: 'gettinf site info failed' })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'getting site info failed' })
     })
 }
 
@@ -27,13 +29,14 @@ addSiteInfo = (req, res) => {
   const { userId } = req.params
   const siteInfo = req.body
   siteInfo.userId = userId
-
+  console.log(siteInfo)
   helper
-    .addSiteInfo(siteinfo)
+    .addSiteInfo(siteInfo)
     .then(newSite => {
       res.status(201).json(newSite)
     })
-    .catch(() => {
+    .catch(err => {
+      console.log(err)
       res.status(500).json({ message: 'Failed adding site info' })
     })
 }

@@ -3,9 +3,10 @@ const db = require('../dbConfig')
 module.exports = {
   getSiteInfoByUrl: url => {
     //RETURNS custom site table and userInfo
+    console.log(url)
     return db('customSite')
       .select(
-        'customSite',
+        'customSite.*',
         'users.partnerName1',
         'users.partnerName2',
         'users.weddingDate',
@@ -19,6 +20,7 @@ module.exports = {
   },
 
   addSiteInfo: siteInfo => {
+    console.log('helper', siteInfo)
     return db('customSite').insert(siteInfo)
   },
 
