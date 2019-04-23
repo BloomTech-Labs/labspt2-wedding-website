@@ -5,7 +5,7 @@ import Axios from 'axios'
 import WeddingPage1 from './weddingPage1/WeddingPage1'
 import WeddingPage2 from './weddingPage2/WeddingPage2'
 import WeddingPage3 from './weddingPage3/WeddingPage3'
-import Spinner from './Spinner'
+
 
 const URL = 'http://localhost:3700'
 
