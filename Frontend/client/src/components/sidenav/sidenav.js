@@ -59,7 +59,7 @@ const Menu = styled.nav`
   border-radius: 8px;
   position: relative;
   height: 400px;
-  padding: 0 40px 0 0;
+  padding: 0 40px 0 20px;
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
     display: flex;
     height: 100px;

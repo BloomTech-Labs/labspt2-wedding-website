@@ -1,3 +1,34 @@
+.pricePage {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid white;
+  max-width: 2500px;
+  min-width: 1025px;
+  justify-content: center;
+
+}
+
+.priceArea {
+  width: 450px;
+  height: 40%;
+  padding: 50px 0 0 0;
+  background-color: white;
+}
+
+.boxStyle {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+
+}
+
+.liStyle {
+  list-style-type: none;
+  margin: 15px 0;
+}
+
 .effect2
 {
   position: relative;
@@ -31,4 +62,12 @@
   transform: rotate(3deg);
   right: 10px;
   left: auto;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 400px) {
+  .priceArea {
+    padding: 0;
+    margin: 25px 0 0 0;
+    height: 30%;
+  }
 }

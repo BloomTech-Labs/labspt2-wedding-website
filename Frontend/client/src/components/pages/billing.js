@@ -24,6 +24,7 @@ const BillingDiv = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 
   width: 100%;
   min-width: 1024px;
@@ -40,9 +41,10 @@ const BillingDiv = styled.div`
 
 const BillingArea = styled.div`
     width: 400px;
+    height: 100%;
     background-color: white;  
     box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
-    padding-bottom: 50px;
+    padding: 25px 0 50px 0;
 `;
 
 const BillBox = styled.div`
@@ -67,6 +69,8 @@ const BillInput = styled.input`
 
 const H2 = styled.h2`
   text-align: center;
+  padding-bottom: 50px;
+  font-size: 24px;
 `
 
 export default class Billing extends Component {

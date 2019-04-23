@@ -20,6 +20,7 @@ const GuestPage = styled.div`
   max-width: 1440px;
   min-width: 1024px;
   width: 100%;
+  height: 70vh;
   margin: 0 40px;
   justify-content: center;
   flex-direction: column;

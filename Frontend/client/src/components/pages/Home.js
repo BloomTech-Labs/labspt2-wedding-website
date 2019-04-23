@@ -17,12 +17,16 @@ const HomePage = styled.div`
   // border: 1px solid black;
 `;
 
+const H1 = styled.div `
+  font-size: 24px;
+`;
+
 export default class Home extends Component {
     render() {
       return (
         <Router>
           <HomePage>
-              <h1>Welcome to the Dashboard.</h1>
+              <H1>Welcome to the Dashboard.</H1>
           </HomePage>
         </Router>
       )

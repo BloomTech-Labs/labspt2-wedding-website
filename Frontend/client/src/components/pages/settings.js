@@ -3,6 +3,7 @@ import {
     BrowserRouter as Router,
     Link
 } from 'react-router-dom'
+import './settings.css'
 
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
@@ -13,23 +14,18 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const SettingsPage = styled.div`
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
-
-  min-width: 1025px;
-  justify-content: space-around;
   height: 100vh;
-  max-height: 500px;
-  margin-top: 50px;
+  width: 100vw;
+  max-width: 1800px;
+  min-width: 1025px;
+  margin: 0 auto;
+  justify-content: space-around;
+  border: 1px solid white;
 
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    ${'' /* flex-direction: column;
-    width: 100%;
-    max-width: 1000px;
-    min-width: 350px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto; */}
+  @media screen only and (max-width: 1024px) {
+    flex-direction: column;
   }
 
 `;
@@ -38,58 +34,28 @@ const SettingsBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 450px;
-  justify-content: center;
+  background-color: #ffffff;
+  margin: 0 25px;
+  height: 300px;
 
-
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    ${'' /* width: 350px;
-    justify-content: center;
-    margin: 0; */}
-  }
 `;
 
 const Box = styled.div`
   display: flex;
-  margin: 10px 0;
   justify-content: space-between;
-  align-items: center;
-
-  @media only screen and (max-width: 1024px) and (min-width: 600px) {
-    min-width: 500px;
-  }
-
-  @media screen and (max-width: 599px){
-    max-width: 400px;
-  }
 `;
 
 const BoxArea = styled.div`
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
+
 `;
 
 const RightBox = styled.div`
-  display: flex;
-  width: 100%;
-  margin: 10px 0;
-  align-items: center;
 
-  @media only screen and (max-width: 1024px) and (min-width: 600px) {
-    min-width: 500px;
-  }
 `;
 
 const SpecialBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
-  width: 100%;
-
-  @media only screen and (max-width: 1024px) and (min-width: 600px) {
-    min-width: 500px;
-  }
 `;
 
 const InputBox = styled.input`
@@ -109,18 +75,7 @@ const LeftInput = styled.input`
   position: relative;
   background-color: rgba(255,255,255,0.3);
   transition: 0.3s all;
-`;
-
-const Button = styled.button`
-  width: 50%;
-  margin: 0 auto;
-  height: 100px;
-  font-size: 24px;
-  text-transform: uppercase;
-`;
-
-const ButtonLink = styled(Link)`
-  text-decoration: none;
+  margin: 10px 0;
 `;
 
 
@@ -143,9 +98,9 @@ export default class Settings extends Component {
     render() {
       return (
         <Router>
-          <SettingsPage>
-              <SettingsBox>
-              <BoxArea>
+          <div className="settingsPage">
+              <div className='settingsBox'>
+              <div>
                 <Box>
                   <label htmlFor="email">Email:</label>
                   <LeftInput type="email" name="email" value="email" placeholder="user@email.com" />
@@ -168,17 +123,17 @@ export default class Settings extends Component {
                   <label htmlFor="new">New Password:</label>
                   <LeftInput type="password" name="new"  placeholder="********" />
                 </Box>                  
-              </BoxArea>
+              </div>
 
-              </SettingsBox>
-              <SettingsBox>
-              <BoxArea>
-                <RightBox>
+              </div>
+              <div className="settingsBox">
+              <div>
+                <div className='rightBox'>
                   <InputBox type="partner" name="partner" placeholder="Partner Name" /> <FaEdit /><FaTrash />
-                </RightBox>
-                <RightBox>
+                </div>
+                <div className='rightBox'>
                   <InputBox type="partner" name="partner" placeholder="Partner Name"/> <FaEdit /><FaTrash />
-                </RightBox>
+                </div>
                 <SpecialBox>
                   <label for="calander">Wedding Date</label>
                   <DatePicker
@@ -187,18 +142,18 @@ export default class Settings extends Component {
                     onChange={this.handleChange} //only when value has changed
                   />
                 </SpecialBox>
-                <RightBox>
+                <div className='rightBox'>
                   <InputBox type="wedding" name="wedding" placeholder="Wedding Location" style={{borderBottom: '1px solid black', width: '90%'}} /><FaEdit /><FaTrash />
-                </RightBox>                  
-              </BoxArea>
+                </div>                  
+              </div>
 
-              </SettingsBox>
-              <SettingsBox>
-                  <Button>
-                    <ButtonLink to="/">Save</ButtonLink>
-                  </Button>
-              </SettingsBox>
-          </SettingsPage>
+              </div>
+              <div>
+                  <button className='saveButton'>
+                    <Link to="/">Save</Link>
+                  </button>
+              </div>
+          </div>
         </Router>
       )
     };
