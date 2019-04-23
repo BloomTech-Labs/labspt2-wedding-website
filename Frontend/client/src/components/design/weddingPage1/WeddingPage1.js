@@ -80,6 +80,8 @@ const StoryWrapper = styled.div`
   opacity: 0.8;
 `
 
+const Story = styled.h1``
+
 const RSVPWrapper = styled.div``
 
 class WeddingPage1 extends Component {
@@ -123,6 +125,12 @@ class WeddingPage1 extends Component {
           <PrettyWCWrapper />
           <StoryWrapper>
             <Story>Our Story</Story>
+          </StoryWrapper>
+          <StoryWrapper>
+            <Story>Our Story</Story>
+            <p>{this.props.siteInfo.story}</p>
+            <Story>Proposal Story</Story>
+            <p>{this.props.siteInfo.proposalStory}</p>
           </StoryWrapper>
         </div>
       </WP1Body>

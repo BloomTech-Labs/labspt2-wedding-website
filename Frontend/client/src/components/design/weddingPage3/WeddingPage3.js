@@ -70,6 +70,7 @@ const StoryWrapper = styled.div`
   padding-bottom: 3%
   background: #878d96;
 `
+const Story = styled.div``
 
 const RSVPWrapper = styled.div``
 
@@ -119,7 +120,12 @@ class WeddingPage3 extends Component {
           <StoryWrapper>
             <Story>Our Story</Story>
           </StoryWrapper>
-          
+          <StoryWrapper>
+            <Story>Our Story</Story>
+            <p>{this.props.siteInfo.story}</p>
+            <Story>Proposal Story</Story>
+            <p>{this.props.siteInfo.proposalStory}</p>
+          </StoryWrapper>
         </WP3Body>
         <Footer />
       </ContentWrapper>

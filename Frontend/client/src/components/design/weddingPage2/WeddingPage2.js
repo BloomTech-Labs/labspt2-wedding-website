@@ -90,6 +90,13 @@ const NavAndCoupleWrapper = styled.div`
   display: flex;
 `
 
+const PrettyWCWrapper = styled.div`
+  display: flex;
+  width: 60%;
+  justify-content: center;
+  margin: 20% 0% 5% 0%;
+`
+
 const Arrow = styled.img`
   width: 33%;
   height: 13vh;
@@ -113,6 +120,10 @@ const Love = styled.img`
   -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
   box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
 `
+
+const StoryWrapper = styled.div``
+
+const Story = styled.h1``
 
 const RSVPWrapper = styled.div``
 
