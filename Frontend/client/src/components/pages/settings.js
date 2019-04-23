@@ -23,12 +23,13 @@ const SettingsPage = styled.div`
   margin-top: 50px;
 
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    flex-direction: column;
+    ${'' /* flex-direction: column;
     width: 100%;
+    max-width: 1000px;
     min-width: 350px;
     width: 50%;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */}
   }
 
 `;
@@ -40,10 +41,8 @@ const SettingsBox = styled.div`
   justify-content: center;
 
 
-
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    width: 100%;
-    max-width: 350px;
+    width: 350px;
     justify-content: center;
     margin: 0;
   }
