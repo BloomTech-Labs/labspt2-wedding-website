@@ -48,11 +48,6 @@ const RSVPForm = styled.div`
     }
 `;
 
-const TextBox = styled.input`
-    width: 250px;
-    margin: 10px 25px;
-    height: 25px;
-`;
 
 const RSVPInput = styled.input`
   width: 60%;

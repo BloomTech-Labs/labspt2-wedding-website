@@ -8,6 +8,7 @@ import Billing from '../pages/billing'
 import Settings from '../pages/settings'
 import Home from '../pages/Home'
 import GuestList from '../rsvp/GuestList'
+import Exit from '../pages/exit'
 
 // Other imports
 import styled from 'styled-components'
@@ -135,6 +136,7 @@ export default class Navigation extends Component {
                                     <MenuListItem><STLink to="/billing" >Billing</STLink></MenuListItem>
                                     <MenuListItem><STLink to="/rsvp" >RSVP</STLink></MenuListItem>
                                     <MenuListItem><STLink to="/guestlist" >Guests</STLink></MenuListItem>
+                                    <MenuListItem><STLink to="/exit" >Logout</STLink></MenuListItem>
                                 </MenuList>
                             </div>
                         </Menu>
@@ -145,7 +147,7 @@ export default class Navigation extends Component {
                                 <Route path="/billing" component={Billing} />
                                 <Route path="/rsvp" component={RSVP} />
                                 <Route path='/guestlist' component={GuestList}/>
-                                
+                                <Route path='/exit' component={Exit}/>
                                 <Route path="/" component={Home} />                              
                             </Switch>
 

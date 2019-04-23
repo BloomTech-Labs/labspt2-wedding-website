@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import styled from 'styled-components'
-import { FaPlus, FaTrash, FaUser } from 'react-icons/fa'
+import { FaPlus, FaTrash } from 'react-icons/fa'
 
 const Button = styled.button`
   background-color: red;
