@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
-import {
-    BrowserRouter as Router,
-    Link
-} from 'react-router-dom'
-
+import { withRouter } from 'react-router'
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker'
+import GoogleSuggest from '../googleSuggest'
+import {
+Link
+} from 'react-router-dom'
+
+
+import { connect } from 'react-redux'
+import { editUser } from '../../actions'
 import styled from 'styled-components'
-// import ScrollAnimation from 'react-animate-on-scroll'; 
-import "react-datepicker/dist/react-datepicker.css";
+
+import 'react-datepicker/dist/react-datepicker.css'
 
 const SettingsPage = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-
   min-width: 1025px;
   justify-content: space-around;
   height: 100vh;
@@ -127,83 +130,233 @@ const ButtonLink = styled(Link)`
 `;
 
 
-export default class Settings extends Component {
+class Settings extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      startDate: new Date()
-    };
-    this.handleChange = this.handleChange.bind(this);
+      userInfo: {
+        email: this.props.userInfo.email,
+        password: '',
+        partnerName1: this.props.userInfo.partnerName1,
+        partnerName2: this.props.userInfo.partnerName2,
+        venueLocation: this.props.userInfo.venueLocation,
+        weddingDate: this.props.userInfo.weddingDate,
+      },
+      currentPassword: '',
+      search: '',
+    }
+    this.hadleChangeDate = this.hadleChangeDate.bind(this)
   }
- 
-  handleChange(date) {
+
+  inputHandler = e => {
+    const { userInfo } = { ...this.state }
+    const currentState = userInfo
+    const { name, value } = e.target
+    currentState[name] = value
     this.setState({
-      startDate: date
-    });
+      user: value,
+    })
+    console.log('input handled')
+  }
+
+  hadleChangeDate = date => {
+    this.setState({
+      userInfo: { ...this.state.userInfo, weddingDate: date },
+    })
+  }
+
+  handleSave = e => {
+    e.preventDefault()
+    const userId = this.props.userInfo.id
+    this.props.editUser(userId, this.state.userInfo)
+    this.props.history.push('/')
+    // needs to wait until loading = false to push to dashboard
+  }
+
+  handleLocationChange(fieldValue) {
+    this.setState({
+      // search: e.target.value, value: e.target.value
+      search: fieldValue,
+      userInfo: { ...this.state.userInfo, venueLocation: fieldValue },
+    })
+  }
+
+  handleSelectSuggest(suggest) {
+    console.log(suggest)
+    this.setState({
+      search: '',
+      userInfo: { ...this.state.userInfo, venueLocation: suggest },
+    })
   }
 
 
-    render() {
-      return (
-        <Router>
-          <SettingsPage>
-          <h1>Settings</h1>
-              <SettingsBox>
-              <BoxArea>
-                <Box>
-                  <label htmlFor="email">Email:</label>
-                  <LeftInput type="email" name="email" value="email" placeholder="user@email.com" />
-                </Box>
-                <Box>
-                  <label htmlFor="phone">Phone:</label>
-                  <LeftInput type="text" name="Phone" value="Phone" placeholder="###-###-####" />
-                </Box>
-                <SpecialBox>
-                  <input type="checkbox" name="emails?" value="false" />
-                  <label for="checkbox">Emails?</label>
-                  <input type="checkbox" name="texts?" value="false" />
-                  <label for="checkbox">Texts?</label>
-                </SpecialBox>
-                <Box>
-                  <label htmlFor="old">Old Password:</label>
-                  <LeftInput type="password" name="old"  placeholder="********" />
-                </Box>
-                <Box>
-                  <label htmlFor="new">New Password:</label>
-                  <LeftInput type="password" name="new"  placeholder="********" />
-                </Box>                  
-              </BoxArea>
+//     render() {
+//       return (
+//         <Router>
+//           <SettingsPage>
+//           <h1>Settings</h1>
+//               <SettingsBox>
+//               <BoxArea>
+//                 <Box>
+//                   <label htmlFor="email">Email:</label>
+//                   <LeftInput type="email" name="email" value="email" placeholder="user@email.com" />
+//                 </Box>
+//                 <Box>
+//                   <label htmlFor="phone">Phone:</label>
+//                   <LeftInput type="text" name="Phone" value="Phone" placeholder="###-###-####" />
+//                 </Box>
+//                 <SpecialBox>
+//                   <input type="checkbox" name="emails?" value="false" />
+//                   <label for="checkbox">Emails?</label>
+//                   <input type="checkbox" name="texts?" value="false" />
+//                   <label for="checkbox">Texts?</label>
+//                 </SpecialBox>
+//                 <Box>
+//                   <label htmlFor="old">Old Password:</label>
+//                   <LeftInput type="password" name="old"  placeholder="********" />
+//                 </Box>
+//                 <Box>
+//                   <label htmlFor="new">New Password:</label>
+//                   <LeftInput type="password" name="new"  placeholder="********" />
+//                 </Box>                  
+//               </BoxArea>
 
-              </SettingsBox>
-              <SettingsBox>
-              <BoxArea>
-                <RightBox>
-                  <InputBox type="partner" name="partner" placeholder="Partner Name" /> <FaEdit /><FaTrash />
-                </RightBox>
-                <RightBox>
-                  <InputBox type="partner" name="partner" placeholder="Partner Name"/> <FaEdit /><FaTrash />
-                </RightBox>
-                <SpecialBox>
-                  <label for="calander">Wedding Date</label>
-                  <DatePicker
-                    selected={this.state.date}
-                    onSelect={this.handleSelect} //when day is clicked
-                    onChange={this.handleChange} //only when value has changed
-                  />
-                </SpecialBox>
-                <RightBox>
-                  <InputBox type="wedding" name="wedding" placeholder="Wedding Location" style={{borderBottom: '1px solid black', width: '90%'}} /><FaEdit /><FaTrash />
-                </RightBox>                  
-              </BoxArea>
+//               </SettingsBox>
+//               <SettingsBox>
+//               <BoxArea>
+//                 <RightBox>
+//                   <InputBox type="partner" name="partner" placeholder="Partner Name" /> <FaEdit /><FaTrash />
+//                 </RightBox>
+//                 <RightBox>
+//                   <InputBox type="partner" name="partner" placeholder="Partner Name"/> <FaEdit /><FaTrash />
+//                 </RightBox>
+//                 <SpecialBox>
+//                   <label for="calander">Wedding Date</label>
+//                   <DatePicker
+//                     selected={this.state.date}
+//                     onSelect={this.handleSelect} //when day is clicked
+//                     onChange={this.handleChange} //only when value has changed
+//                   />
+//                 </SpecialBox>
+//                 <RightBox>
+//                   <InputBox type="wedding" name="wedding" placeholder="Wedding Location" style={{borderBottom: '1px solid black', width: '90%'}} /><FaEdit /><FaTrash />
+//                 </RightBox>                  
+//               </BoxArea>
 
-              </SettingsBox>
-              <SettingsBox>
-                  <Button>
-                    <ButtonLink to="/">Save</ButtonLink>
-                  </Button>
-              </SettingsBox>
-          </SettingsPage>
-        </Router>
-      )
-    };
+//               </SettingsBox>
+//               <SettingsBox>
+//                   <Button>
+//                     <ButtonLink to="/">Save</ButtonLink>
+//                   </Button>
+//               </SettingsBox>
+//           </SettingsPage>
+//         </Router>
+//       )
+//     };
+// }
+  render() {
+    console.log('settings state', this.state)
+    return (
+      <div>
+        <SettingsPage>
+          <SettingsBox>
+            <Box>
+              <label htmlFor='email'>Email:</label>
+              <input
+                type='email'
+                name='email'
+                value={this.state.userInfo.email}
+                placeholder='user@email.com'
+                onChange={this.inputHandler}
+              />
+            </Box>
+            <SpecialBox>
+              <input type='checkbox' name='emails?' value='false' />
+              <label for='checkbox'>Emails?</label>
+              <input type='checkbox' name='texts?' value='false' />
+              <label for='checkbox'>Texts?</label>
+            </SpecialBox>
+            <Box>
+              <label htmlFor='old'>Old Password:</label>
+              <input
+                type='password'
+                name='old'
+                placeholder='********'
+                value={this.state.currentPassword}
+                onChange={this.inputHandler}
+              />
+            </Box>
+            <Box>
+              <label htmlFor='new'>New Password:</label>
+              <input
+                type='password'
+                name='new'
+                value={this.state.userInfo.password}
+                placeholder='********'
+                onChange={this.inputHandler}
+              />
+            </Box>
+          </SettingsBox>
+          <SettingsBox>
+            <RightBox>
+              <InputBox
+                type='text'
+                name='partnerName1'
+                placeholder='Partner Name'
+                value={this.state.userInfo.partnerName1}
+                onChange={this.inputHandler}
+                style={{ borderBottom: '1px solid black', width: '90%' }}
+              />{' '}
+              <FaEdit />
+              <FaTrash />
+            </RightBox>
+            <RightBox>
+              <InputBox
+                type='text'
+                name='partnerName2'
+                value={this.state.userInfo.partnerName2}
+                placeholder='Partner Name'
+                onChange={this.inputHandler}
+                style={{ borderBottom: '1px solid black', width: '90%' }}
+              />{' '}
+              <FaEdit />
+              <FaTrash />
+            </RightBox>
+            <SpecialBox>
+              <label for='calander'>Wedding Date</label>
+              <DatePicker
+                selected={this.state.userInfo.weddingDate}
+                onChange={this.handleChangeDate} //only when value has changed
+              />
+            </SpecialBox>
+            <RightBox>
+              <GoogleSuggest
+                onChange={this.handleLocationChange.bind(this)}
+                suggest={this.handleSelectSuggest.bind(this)}
+                search={this.state.search}
+                value={this.state.userInfo.venueLocation}
+              />
+              <FaEdit />
+              <FaTrash />
+            </RightBox>
+          </SettingsBox>
+          <SettingsBox>
+            <Button onClick={this.handleSave}>Save</Button>
+          </SettingsBox>
+        </SettingsPage>
+      </div>
+    )
+  }
 }
+
+const mapStateToProps = state => ({
+  loading: state.fetching,
+  userInfo: state.userInfo,
+})
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { editUser }
+  )(Settings)
+)

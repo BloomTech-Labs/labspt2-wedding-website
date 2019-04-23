@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import Textarea from "react-textarea-autosize";
+import { connect } from 'react-redux'
+import moment from 'moment'
 
 import styled from "styled-components";
-
-import Spinner from "../Spinner";
-import Images from "../Images";
-import Buttons from "../Buttons";
-import { API_URL } from "../config";
 
 import background3 from "../media/rainbowbackground.jpg";
 import heartWP3 from "../media/heartWP3.jpg";
@@ -42,19 +39,6 @@ const WhoWrapper = styled.div`
   font-size: 5rem;
 `;
 
-//Styled components don't work with the plugin react-textarea-autosize
-const headerStyle = {
-  backgroundColor: "#878d96",
-  border: "none",
-  width: "100%",
-  textAlign: "center",
-  fontSize: "4.5rem",
-  padding: "2%",
-  color: "black",
-  fontFamily: "Averia Serif Libre, cursive",
-  marginTop: "2%"
-};
-
 const WhenWrapper = styled.div`
   width: 100%;
   display: -webkit-box;
@@ -64,20 +48,6 @@ const WhenWrapper = styled.div`
   justify-content: center;
   margin-top: 5%;
   font-size: 5rem;
-`;
-
-const NavWrapper = styled.div`
-  width: 100%;
-  padding: 3%;
-  background-color: black;
-`;
-
-const Menu = styled.ul`
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: space-evenly;
 `;
 
 const A1 = styled.a`
@@ -144,19 +114,19 @@ const userInput = {
   textShadow: "0px 0px 0px #000000"
 };
 
+const RSVPWrapper = styled.div`
+`
+
 const Footer = styled.div`
   background: black;
   padding: 5%;
 `;
 
-export default class WeddingPage2 extends Component {
+class WeddingPage3 extends Component {
   constructor() {
     super();
 
     this.state = {
-      value: "",
-      uploading: false,
-      images: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -167,115 +137,29 @@ export default class WeddingPage2 extends Component {
     event.preventDefault();
   }
   //handleChange is for textarea input
-  //onChange is for photo upload
-  onChange = e => {
-    const errs = [];
-    const files = Array.from(e.target.files);
-
-    this.setState({ uploading: true });
-
-    const formData = new FormData();
-    const types = ["image/png", "image/jpeg", "image/gif"];
-
-    files.forEach((file, i) => {
-      if (types.every(type => file.type !== type)) {
-        errs.push(`'${file.type}' is not a supported format`);
-      }
-
-      if (file.size > 150000) {
-        errs.push(`'${file.name}' is too large, please pick a smaller file`);
-      }
-
-      formData.append(i, file);
-    });
-
-    fetch(`${API_URL}/image-upload`, {
-      method: "POST",
-      body: formData
-    })
-      .then(res => res.json())
-      .then(images => {
-        this.setState({
-          uploading: false,
-          images
-        });
-      });
-  };
-
-  removeImage = id => {
-    this.setState({
-      images: this.state.images.filter(image => image.public_id !== id)
-    });
-  };
 
   render() {
-    //Not very DRY. Could be it's own component.
-    const { uploading, images } = this.state;
-
-    const content = () => {
-      switch (true) {
-        case uploading:
-          return <Spinner />;
-        case images.length > 0:
-          return <Images images={images} removeImage={this.removeImage} />;
-        default:
-          return <Buttons onChange={this.onChange} />;
-      }
-    };
     return (
       <ContentWrapper>
-        <NavWrapper>
-          {/* This nav menu will need to be set up with restricted privilages. Look but don't touch privilages. */}
-          <nav>
-            <Menu>
-              <li>
-                <A1 href="http://" className="menu_link menu_link-active">
-                  Home
-                </A1>
-              </li>
-              <li>
-                <A2 href="http://" className="menu_link">
-                  Designs
-                </A2>
-              </li>
-              <li>
-                <A3 href="http://" className="menu_link">
-                  Pricing
-                </A3>
-              </li>
-            </Menu>
-          </nav>
-        </NavWrapper>
+        <RSVPWrapper>
+          <button>
+            {/* This will need to be linked to the answers page once it exists. */}
+            RSVP 
+          </button>
+        </RSVPWrapper>
         <WP3Body>
           <WhoWrapper>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={headerStyle}
-                type="text"
-                rows="2"
-                cols="20"
-                placeholder="Tell us your names"
-                wrap="hard"
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
+            <h1>
+              {this.props.userInfo.partnerName1} &amp;{' '}
+              {this.props.userInfo.partnerName2}'s Wedding
+            </h1>
           </WhoWrapper>
           <WhenWrapper>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={headerStyle}
-                type="text"
-                rows="2"
-                cols="20"
-                placeholder="When is the big day"
-                wrap="hard"
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
+            <h1>{moment(this.props.userInfo.weddingDate).format('ll')}</h1>
+            <h2>{this.props.userInfo.venueLocation}</h2>
           </WhenWrapper>
           <CoupleWrapper>
             <HeartWP3 src={heartWP3} alt="A Heart" />
-            {content()}
           </CoupleWrapper>
           <StoryWrapper>
             <Story>Our Story</Story>
@@ -310,3 +194,13 @@ export default class WeddingPage2 extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  guests: state.guests,
+})
+
+export default connect(
+  mapStateToProps,
+  {}
+)(WeddingPage3)

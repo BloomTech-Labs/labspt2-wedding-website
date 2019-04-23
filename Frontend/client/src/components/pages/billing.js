@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
-import Button from 'react-button-component';
+import React, { Component } from 'react'
+import Button from 'react-button-component'
 import styled from 'styled-components'
 import './billing.css'
 
 const ButtonDiv = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
-`;
-
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+`
 
 const newButton = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '200px',
-    height: '100px',
-    boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-    fontSize: '20px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '200px',
+  height: '100px',
+  boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
+  fontSize: '20px',
 }
 
 const BillingDiv = styled.div`
@@ -26,18 +25,18 @@ const BillingDiv = styled.div`
     justify-content: center;
     align-items: center;
 
-    width: 100%;
-    min-width: 1024px;
+  width: 100%;
+  min-width: 1024px;
 
-    @media only screen and (max-width: 1024px) and (min-width: 400px) {
-        flex-direction: column;
-        width: 100%;
-        min-width: 350px;
-        width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-`;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`
 
 const BillingArea = styled.div`
     width: 400px;
@@ -67,9 +66,8 @@ const BillInput = styled.input`
 `;
 
 const H2 = styled.h2`
-    text-align: center;
-`;
-
+  text-align: center;
+`
 
 export default class Billing extends Component {
     render() {

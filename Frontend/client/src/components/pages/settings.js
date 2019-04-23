@@ -42,9 +42,9 @@ const SettingsBox = styled.div`
 
 
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    width: 350px;
+    ${'' /* width: 350px;
     justify-content: center;
-    margin: 0;
+    margin: 0; */}
   }
 `;
 

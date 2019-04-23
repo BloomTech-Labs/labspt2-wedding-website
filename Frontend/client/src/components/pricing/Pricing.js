@@ -3,9 +3,14 @@ import styled from 'styled-components'
 import './pricing.css'
 
 const Price = styled.div`
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 1024px;
+
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
     flex-direction: column;
-    margin: 0 auto;
     width: 100%;
     min-width: 1080px;
     justify-content: center;
@@ -44,23 +49,22 @@ const HRStyle = styled.hr`
 `;
 
 const BoxLI = styled.li`
-    list-style-type: none;
-    margin: 5px 0;
-`;
+  list-style-type: none;
+  margin: 5px 0;
+`
 
 const PricingLogo = styled.h1`
-    text-align: center;
-`;
+  text-align: center;
+`
 
 const BoxList = styled.ul`
-    display: flex;
-    flex-direction: column;
-`;
+  display: flex;
+  flex-direction: column;
+`
 
 const H2 = styled.h2`
-    text-align: center;
-`;
-
+  text-align: center;
+`
 
 export default class Pricing extends Component {
     render() {
