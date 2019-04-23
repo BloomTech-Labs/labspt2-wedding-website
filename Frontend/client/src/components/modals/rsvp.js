@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
+import RsvpQuestion from './subModalComponents/rsvpQuestion'
+
 const URL = 'http://localhost:3700'
 
 class Rsvp extends Component {
@@ -14,7 +16,7 @@ class Rsvp extends Component {
       rsvpComment: '',
       codeStatus: null,
       code: '',
-      vaue: '',
+      value: 'yes',
       questions: null,
     }
   }
@@ -142,10 +144,10 @@ class Rsvp extends Component {
               {this.state.questions
                 ? this.state.questions.map(question => {
                     return (
-                      <div>
-                        <h2>Question: {question.Question_body}</h2>
-                        <label htmlFor='label'>Answer the Question</label>
-                      </div>
+                      <RsvpQuestion
+                        question={question}
+                        guestId={this.state.guest.id}
+                      />
                     )
                   })
                 : null}
