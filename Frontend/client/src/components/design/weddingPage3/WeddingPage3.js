@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Textarea from 'react-textarea-autosize'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
@@ -50,27 +49,6 @@ const WhenWrapper = styled.div`
   font-size: 5rem;
 `
 
-const A1 = styled.a`
-  text-decoration: none;
-  color: red;
-  font-size: 1.5rem;
-  font-family: 'Anton', sans-serif;
-`
-
-const A2 = styled.a`
-  text-decoration: none;
-  color: orange;
-  font-size: 1.5rem;
-  font-family: 'Anton', sans-serif;
-`
-
-const A3 = styled.a`
-  text-decoration: none;
-  color: yellow;
-  font-size: 1.5rem;
-  font-family: 'Anton', sans-serif;
-`
-
 const CoupleWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -92,27 +70,6 @@ const StoryWrapper = styled.div`
   padding-bottom: 3%
   background: #878d96;
 `
-
-const Story = styled.h3`
-  color: black;
-  font-family: 'Cabin', sans-serif;
-  font-size: 3rem;
-`
-
-//Styled components don't work with the plugin react-textarea-autosize
-const userInput = {
-  backgroundColor: '#878d96',
-  border: 'none',
-  width: '100%',
-  height: 'auto',
-  textAlign: 'center',
-  fontSize: '1.5rem',
-  padding: '3%',
-  color: 'black',
-  fontFamily: 'Averia Serif Libre, cursive',
-  marginTop: '2%',
-  textShadow: '0px 0px 0px #000000',
-}
 
 const RSVPWrapper = styled.div``
 
@@ -162,30 +119,7 @@ class WeddingPage3 extends Component {
           <StoryWrapper>
             <Story>Our Story</Story>
           </StoryWrapper>
-          <StoryWrapper>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={userInput}
-                type='text'
-                rows='2'
-                cols='20'
-                placeholder='How did you meet'
-                wrap='hard'
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={userInput}
-                type='text'
-                rows='2'
-                cols='20'
-                placeholder='Tell us about the proposal'
-                wrap='hard'
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
-          </StoryWrapper>
+          
         </WP3Body>
         <Footer />
       </ContentWrapper>
