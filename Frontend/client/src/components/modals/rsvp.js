@@ -15,6 +15,7 @@ class Rsvp extends Component {
       codeStatus: null,
       code: '',
       vaue: '',
+      questions: null,
     }
   }
 
@@ -39,6 +40,13 @@ class Rsvp extends Component {
         console.log(res)
         if (res.status === 200) {
           this.setState({ guest: res.data, codeStatus: true })
+          Axios.get(`${URL}/${res.data.userId}/questions`)
+            .then(res => {
+              this.setState({ questions: res.data })
+            })
+            .catch(err => {
+              console.log('Qs err', err)
+            })
         }
       })
       .catch(err => {
@@ -131,6 +139,16 @@ class Rsvp extends Component {
                 />
                 <button onClick={e => this.handleRsvp(e)}>Submit Rsvp</button>
               </form>
+              {this.state.questions
+                ? this.state.questions.map(question => {
+                    return (
+                      <div>
+                        <h2>Question: {question.Question_body}</h2>
+                        <label htmlFor='label'>Answer the Question</label>
+                      </div>
+                    )
+                  })
+                : null}
             </div>
           </div>
         )
