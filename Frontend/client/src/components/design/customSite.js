@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 import Axios from 'axios'
 
@@ -61,9 +60,6 @@ class CustomSite extends Component {
       .catch(error => {
         throw 'There was a problem processing your request. Please try again.'
       })
-  }
-  newMethod() {
-    // siteUrl = this.props.match.params.customSite;
   }
 
   render() {

@@ -12,6 +12,10 @@ import girl from '../media/girlwithglasses.jpg'
 import heartArrow from '../media/heartArrow.png'
 import love from '../media/love.jpg'
 
+import Modal from 'react-modal'
+import RsvpModal from '../../modals/rsvp'
+Modal.setAppElement('#root')
+
 const WP1Body = styled.div`
   margin: 0 auto;
   background-image: url(${BackgroundDesign2});
@@ -163,10 +167,11 @@ const userInput = {
 const RSVPWrapper = styled.div``
 
 class WeddingPage2 extends Component {
-  constructor() {
-    super()
-
-    this.state = {}
+  constructor(props) {
+    super(props)
+    this.state = {
+      modal: false,
+    }
 
     this.handleChange = this.handleChange.bind(this)
   }
@@ -176,6 +181,12 @@ class WeddingPage2 extends Component {
     event.preventDefault()
   }
   //handleChange is for textarea input
+
+  handleModal = () => {
+    this.setState({
+      modal: !this.state.modal,
+    })
+  }
 
   render() {
     return (
@@ -195,11 +206,17 @@ class WeddingPage2 extends Component {
           </HeaderWrapper>
           <NavAndCoupleWrapper>
             <RSVPWrapper>
-              <button>
+              <button onClick={this.handleModal}>
                 {/* This will need to be linked to the answers page once it exists. */}
                 RSVP
               </button>
             </RSVPWrapper>
+            <Modal isOpen={this.state.modal}>
+              <RsvpModal
+                user={this.props.siteInfo}
+                handleClose={this.handleModal}
+              />
+            </Modal>
             <Girl src={girl} alt='A Woman With Glasses' />
             <Camper src={camper} alt='Happy Camper' />
             <PrettyWCWrapper />
