@@ -13,8 +13,9 @@ const RSVPPage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    ${'' /* height: 100%; */}
     width: 100%;
+    max-width: 1280px;
     min-width: 1024px;
     margin: 0 auto;
 

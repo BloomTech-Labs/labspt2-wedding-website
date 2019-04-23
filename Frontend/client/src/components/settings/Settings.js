@@ -147,6 +147,7 @@ export default class Settings extends Component {
       return (
         <Router>
           <SettingsPage>
+          <h1>Settings</h1>
               <SettingsBox>
               <BoxArea>
                 <Box>

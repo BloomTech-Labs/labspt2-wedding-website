@@ -13,6 +13,7 @@ const HomePage = styled.div`
   width: 100%;
   height: 100vh;
   align-items: center;
+  color: #ffffff;
   // border: 1px solid black;
 `;
 

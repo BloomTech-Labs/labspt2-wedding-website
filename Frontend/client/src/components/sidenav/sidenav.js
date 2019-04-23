@@ -33,6 +33,7 @@ const MenuLogo = styled.h3`
     width: 100px;
     margin: 0;
     padding: 25px 0;
+    color: #ffffff;
 
     @media only screen and (max-width: 1024px) and (min-width: 400px) {
         text-align: center;
@@ -109,7 +110,7 @@ const RTStyles = styled.div`
 const StyledLink = styled(Link)`
     text-transform: uppercase;
     text-decoration: none;
-    color: #010101;
+    color: #ffffff;
 `;
 
 const STLink = styled(Link)`

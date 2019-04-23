@@ -31,8 +31,6 @@ const SettingsPage = styled.div`
     margin-right: auto;
   }
 
-
-
 `;
 
 const SettingsBox = styled.div`
