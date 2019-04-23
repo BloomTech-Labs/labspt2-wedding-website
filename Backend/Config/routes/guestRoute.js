@@ -4,6 +4,7 @@ module.exports = server => {
   server.get('/guest', allGuest)
   server.get('/guest/:id', guestById)
   server.get('/user/guests/:id', guestByUserId)
+  server.get('/guest/auth/:code', guestByCode)
   server.post('/guest', addGuest)
   server.put('/guest/:id', editGuest)
   server.delete('/guest/:id', removeGuest)
@@ -48,6 +49,23 @@ guestByUserId = (req, res) => {
     })
     .catch(err => {
       console.log(err)
+      res.status(500).json({ message: 'Failed to get guests' })
+    })
+}
+
+guestByCode = (req, res) => {
+  const { code } = req.params
+  console.log('route', code)
+  helper
+    .getByCode(code)
+    .then(guest => {
+      if (guest) {
+        res.status(200).json(guest)
+      } else {
+        res.status(404).json({ message: 'No guest created with that code' })
+      }
+    })
+    .catch(() => {
       res.status(500).json({ message: 'Failed to get guests' })
     })
 }
