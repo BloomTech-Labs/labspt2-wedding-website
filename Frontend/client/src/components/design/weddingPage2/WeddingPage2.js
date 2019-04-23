@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Textarea from 'react-textarea-autosize'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
@@ -87,47 +86,13 @@ const Girl = styled.img`
   border: 1px solid black;
 `
 
-const A = styled.a`
-  text-decoration: none;
-  font-family: 'Rye', cursive;
-  color: black;
-`
-
 const NavAndCoupleWrapper = styled.div`
   display: flex;
-`
-
-const PrettyWCWrapper = styled.div`
-  display: flex;
-  width: 60%;
-  justify-content: center;
-  margin: 20% 0% 5% 0%;
 `
 
 const Arrow = styled.img`
   width: 33%;
   height: 13vh;
-`
-
-const StoryWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  padding: 3%;
-  background: rgb(158, 143, 110);
-  opacity: 0.8;
-  margin: 0 auto;
-  -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  align-items: center;
-  margin-bottom: 3%;
-`
-
-const Story = styled.h3`
-  color: black;
-  font-family: 'Rye', cursive;
-  font-size: 3rem;
 `
 
 const Heart = styled.img`
@@ -148,21 +113,6 @@ const Love = styled.img`
   -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
   box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
 `
-
-//Styled components don't work with the plugin react-textarea-autosize
-const userInput = {
-  backgroundColor: 'rgb(158, 143, 110)',
-  border: 'none',
-  width: '100%',
-  height: 'auto',
-  textAlign: 'center',
-  fontSize: '1.5rem',
-  padding: '3%',
-  color: 'black',
-  fontFamily: 'Averia Serif Libre, cursive',
-  marginTop: '2%',
-  textShadow: '0px 0px 0px #000000',
-}
 
 const RSVPWrapper = styled.div``
 
@@ -231,30 +181,6 @@ class WeddingPage2 extends Component {
           </StoryWrapper>
           <Heart src={heartArrow} alt='A heart with an arrow through it' />
           <Love src={love} alt='Do what you love what you do' />
-          {/* <StoryWrapper>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={userInput}
-                type='text'
-                rows='2'
-                cols='20'
-                placeholder='How did you meet'
-                wrap='hard'
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={userInput}
-                type='text'
-                rows='2'
-                cols='20'
-                placeholder='Tell us about the proposal'
-                wrap='hard'
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
-          </StoryWrapper> */}
         </div>
       </WP1Body>
     )
