@@ -63,9 +63,9 @@ class WeddingPhotos extends React.Component {
           </Modal>
           </div>
           <h1>Live Wedding Photos</h1>
-          {this.photoCards.map(img =>
+          {/* {this.photoCards.map(img =>
           <PhotoCard key={img.imgURL} info={img}/>
-            )}
+            )} */}
         </div>
         );
     }

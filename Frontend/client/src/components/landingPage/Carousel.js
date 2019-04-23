@@ -11,7 +11,8 @@ class DemoCarousel extends Component {
              interval='8000' 
              infiniteLoop={true}
              showThumbs={false} 
-             showStatus={false}> 
+             showStatus={false}
+            > 
              //make this into a component and use a helper object to render
                 <div>
                     <img src="https://i.pinimg.com/originals/9e/84/e0/9e84e075585f2bd99892ff4f1cfd9b77.jpg" alt="1" />

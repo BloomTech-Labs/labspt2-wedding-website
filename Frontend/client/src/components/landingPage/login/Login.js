@@ -61,7 +61,6 @@ class Login extends Component {
              <Router>
                 <LoginPage>
                     <Aside>
-                        <img src="" alt=""/>
                     </Aside>
                     <LoginForm>
                     <PageSwitch>

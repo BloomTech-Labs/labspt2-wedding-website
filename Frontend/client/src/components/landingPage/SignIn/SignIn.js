@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loginRegister } from '../../../actions/index'
 import styled from 'styled-components'
+import GoogleButton from 'react-google-button'
+
+
 
 const FormCenter = styled.div`
   margin-bottom: 100px;
@@ -39,8 +42,8 @@ const FormButton = styled.button`
   border-radius: 25px;
   padding: 15px 70px;
   font-size: 0.8em;
-  font-weight: 500;
-`
+   font-weight: 500;
+` 
 
 class SignIn extends Component {
   constructor(props) {
@@ -107,7 +110,8 @@ class SignIn extends Component {
             <FormButton>Sign In</FormButton>
           </FormField>
         </form>
-        <a href='https://joinourbigday.herokuapp.com/auth/google'>Google</a>
+        <a href='https://joinourbigday.herokuapp.com/auth/google'><GoogleButton/></a> <br/>
+        {/* <a href='https://joinourbigday.herokuapp.com/auth/facebook'>facebook</a> */}
       </FormCenter>
     )
   }
