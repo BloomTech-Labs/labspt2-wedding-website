@@ -62,11 +62,6 @@ const WhenWrapper = styled.div`
   font-size: 5rem;
 `
 
-const A = styled.a`
-  text-decoration: none;
-  font-family: 'Pacifico', cursive;
-`
-
 const PrettyWCWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -84,27 +79,6 @@ const StoryWrapper = styled.div`
   background: rgb(157, 242, 188);
   opacity: 0.8;
 `
-
-const Story = styled.h3`
-  color: black;
-  font-family: 'Lobster', cursive;
-  font-size: 3rem;
-`
-
-//Styled components don't work with the plugin react-textarea-autosize
-const userInput = {
-  backgroundColor: 'rgb(158, 143, 110 0.3)',
-  border: 'none',
-  width: '100%',
-  height: 'auto',
-  textAlign: 'center',
-  fontSize: '1.5rem',
-  padding: '3%',
-  color: 'black',
-  fontFamily: 'Averia Serif Libre, cursive',
-  marginTop: '2%',
-  textShadow: '0px 0px 0px #000000',
-}
 
 const RSVPWrapper = styled.div``
 
@@ -149,30 +123,6 @@ class WeddingPage1 extends Component {
           <PrettyWCWrapper />
           <StoryWrapper>
             <Story>Our Story</Story>
-          </StoryWrapper>
-          <StoryWrapper>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={userInput}
-                type='text'
-                rows='2'
-                cols='20'
-                placeholder='How did you meet'
-                wrap='hard'
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
-            <form onSubmit={this.handleChange}>
-              <Textarea
-                style={userInput}
-                type='text'
-                rows='2'
-                cols='20'
-                placeholder='Tell us about the proposal'
-                wrap='hard'
-              />
-              <button onClick={this.handleChange}>Submit</button>
-            </form>
           </StoryWrapper>
         </div>
       </WP1Body>
