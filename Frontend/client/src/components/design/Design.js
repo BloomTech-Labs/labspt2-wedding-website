@@ -79,6 +79,7 @@ height: 30px;
 border-radius: 8px;
 margin: 3% auto;
 display: flex;
+justify-content: center;
 `
 
 const Head = styled.div`
