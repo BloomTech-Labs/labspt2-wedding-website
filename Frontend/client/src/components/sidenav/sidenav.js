@@ -77,24 +77,13 @@ class Navigation extends Component {
                   </Link>
                 </li>
                 <li className='listItem'>
-                  <Link to='/guestlist' className='style-link'>
+                  <Link to='/guests' className='style-link'>
                     Guests
                   </Link>
                 </li>
               </ul>
               <Button onClick={this.handleClick}>Sign Out</Button>
             </div>
-          </div>
-          <div className='routeStyles'>
-            {/* <Switch>
-              <Route path='/settings' component={Settings} />
-              <Route path='/pricing' component={Pricing} />
-              <Route path='/billing' component={Billing} />
-              <Route path='/rsvp' component={RSVP} />
-              <Route path='/exit' component={Exit} />
-              <Route path='/' component={Home} />
-            </Switch> */}
-            <Route path='/guestlist' component={GuestList} />
           </div>
         </div>
       </div>
