@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Textarea from 'react-textarea-autosize'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
