@@ -26,14 +26,15 @@ const GuestPage = styled.div`
   flex-direction: column;
   background-color: white;  
 
-  ${'' /* @media only screen and (max-width: 1024px) and (min-width: 400px) {
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
     flex-direction: column;
     width: 100%;
     min-width: 350px;
+    max-width: 1000px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-  } */}
+  }
 
 `;
 

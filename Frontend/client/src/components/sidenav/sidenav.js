@@ -18,45 +18,6 @@ import { logout } from '../../actions'
 
 import styled from 'styled-components'
 
-const NavPage = styled.div`
-
-`
-
-const MenuLogo = styled.h3`
-
-`
-
-const SideNav = styled.div`
-
-`
-
-const Menu = styled.nav`
-
-`
-
-const MenuList = styled.ul`
-
-`
-const MenuContainer = styled.div`
-
-`
-
-const MenuListItem = styled.li`
-
-`
-
-// Unused
-const RTStyles = styled.div`
-
-`;
-
-const StyledLink = styled(Link)`
-
-`;
-
-const STLink = styled(Link)`
-
-`;
 
 // const Button = styled.button`
 //   display: flex;
@@ -111,49 +72,6 @@ export default class Navigation extends Component {
              </Router>
         );
     }
-
-
-
-// class Navigation extends Component {
-//   handleClick = () => {
-//     this.props.logout()
-//     this.props.history.push('/')
-//   }
-
-//   render() {
-//     return (
-//       <NavPage>
-//         <MenuLogo>
-//           <StyledLink to='/'>Home</StyledLink>
-//         </MenuLogo>
-//         <SideNav>
-//           <Menu>
-//             <MenuContainer>
-//               <MenuList>
-//                 <MenuListItem>
-//                   <STLink to='/pricing'>Pricing</STLink>
-//                 </MenuListItem>
-//                 <MenuListItem>
-//                   <STLink to='/billing'>Premium</STLink>
-//                 </MenuListItem>
-//                 <MenuListItem>
-//                   <STLink to='/settings'>Settings</STLink>
-//                 </MenuListItem>
-//                 <MenuListItem>
-//                   <STLink to='/rsvp'>RSVP</STLink>
-//                 </MenuListItem>
-//                 <MenuListItem>
-//                   <STLink to='/design'>Design</STLink>
-//                 </MenuListItem>
-//               </MenuList>
-//               <Button onClick={this.handleClick}>Sign Out</Button>
-//             </MenuContainer>
-//           </Menu>
-//         </SideNav>
-//       </NavPage>
-//     )
-//   }
-// }
 
 // const mapStateToProps = state => {}
 
