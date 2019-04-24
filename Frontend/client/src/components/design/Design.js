@@ -16,6 +16,9 @@ export default class Design extends Component {
         <div>
           <Link to='/design3'>Design 3</Link>
         </div>
+        <div>
+          
+        </div>
       </div>
     )
   }

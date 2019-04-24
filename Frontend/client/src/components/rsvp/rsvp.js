@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from 'react-button-component'
+import ScrollAnimation from 'react-animate-on-scroll';
 import {
     BrowserRouter as Router,
     Route, Link
@@ -12,16 +13,17 @@ const RSVPPage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    ${'' /* height: 100%; */}
     width: 100%;
+    max-width: 1280px;
     min-width: 1024px;
     margin: 0 auto;
 
+
     @media only screen and (max-width: 1024px) and (min-width: 400px) {
         flex-direction: column;
+        min-width: 500px;
         width: 100%;
-        min-width: 350px;
-        width: 50%;
         margin-left: auto;
         margin-right: auto;
       }
@@ -36,6 +38,8 @@ const RSVPForm = styled.div`
     margin-bottom: 25px;
     align-items: center;
     justify-content: center;
+    opacity: 1;
+    background-color: white;
 
     @media screen and (max-width: 600px){
         width: 370px;
@@ -43,10 +47,15 @@ const RSVPForm = styled.div`
     }
 `;
 
-const TextBox = styled.input`
-    width: 250px;
-    margin: 10px 25px;
-    height: 25px;
+
+const RSVPInput = styled.input`
+  width: 60%;
+  height: 28px;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255,255,255,0.3);
+  transition: 0.3s all;
+  margin: 10px 0;
 `;
 
 const Radio = styled.input`
@@ -88,9 +97,14 @@ const Buttons = styled.div`
 const StyledLink = styled(Link)`
     text-transform: uppercase;
     text-decoration: none;
-    color: #010101;
+    color: #FFFFFF;
     margin: 0 5px;
     width: 200px;
+`;
+
+const H2 = styled.h2 `
+    font-size: 24px;
+    color: #ffffff;
 `;
 
 const buttonStyles = {
@@ -112,11 +126,11 @@ export default class RSVP extends Component {
           <Router>
             <Page>
                 <RSVPPage>
-                    <h2>RSVP Guest List</h2>
+                    <H2>RSVP Guest List</H2>
                     <RSVPForm>
                     <label for="rsvpForm">Guest Name</label>
-                        <TextBox type="text" name="first" placeholder="First Name" />
-                        <TextBox type="text" name="last" placeholder="Last Name" />
+                        <RSVPInput type="text" name="first" placeholder="First Name" />
+                        <RSVPInput type="text" name="last" placeholder="Last Name" />
                         <FinePrint>Ask each individual guest</FinePrint>
                     </RSVPForm>
                     <RSVPForm>
@@ -127,12 +141,16 @@ export default class RSVP extends Component {
                         </RSVPArea>
                         <FinePrint>Ask each individual guest</FinePrint>
                     </RSVPForm>
+                    <ScrollAnimation animateIn="fadeInLeft">
                     <RSVPForm>
                         <label for="rsvpForm">What is your mailing address?</label>
-                        <TextBox type="text" name="address" placeholder="address" />
-                        <TextBox type="text" name="city-zip" placeholder="city, state and zip" />
+                        <RSVPInput type="text" name="address" placeholder="address" />
+                        <RSVPInput type="text" name="city-zip" placeholder="city, state and zip" />
                         <FinePrint>Ask once per household.</FinePrint>
-                    </RSVPForm>
+                    </RSVPForm>                        
+                    </ScrollAnimation>
+
+                    <ScrollAnimation animateIn="fadeInUp">
                     <RSVPForm>
                         <label for="rsvpForm">Are you friend or family of...?</label>
                         <RSVPArea>
@@ -151,7 +169,8 @@ export default class RSVP extends Component {
                             <StyledLink to="/guestlist">Full Guest List</StyledLink>
                             <Route path='/guestlist' component={GuestList}/>
                         </RSVPLink>
-                    </ButtonArea>
+                    </ButtonArea>                        
+                    </ScrollAnimation>
                 </RSVPPage>
             </Page>
           </Router>
