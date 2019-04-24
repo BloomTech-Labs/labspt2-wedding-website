@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+// seems that is not needed with the table
 import Guest from './guest'
 import { fetchGuests, addGuest, deleteGuest } from '../../actions/'
 
 import ReactTable from 'react-table'
+import 'react-table/react-table.css'
 import styled from 'styled-components'
 
 const Button = styled.button`
@@ -15,27 +17,35 @@ const EditButton = styled.button`
   background-color: blue;
   color: #fefefe;
 `
-const TableContainer = styled.div`
-  margin-top: 30px;
-  background-color: white;
-  border: 2px solid black;
-`
+// const TableContainer = styled.div`
+//   margin-left: 50px;
+//   margin-top: 30px;
+//   background-color: white;
+//   border: 2px solid black;
+//   max-height: 800px;
+//   border-radius: 20px;
+// `
 
 const AddContainer = styled.div`
   margin-top: 60px;
   background-color: white;
-  border: 2px solid black;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid gray;
 `
+// Update guestnot working
 
 class GuestList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      userId: this.props.userInfo.id,
-      code: null,
+      addGuest: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        userId: this.props.userInfo.id,
+        code: null,
+      },
     }
   }
 
@@ -46,10 +56,14 @@ class GuestList extends Component {
   }
 
   inputHandler = e => {
+    e.preventDefault()
+    const { addGuest } = { ...this.state }
+    const currentState = addGuest
+    const { name, value } = e.target
+    currentState[name] = value
     this.setState({
-      [e.target.name]: e.target.value,
+      user: value,
     })
-    console.log('input handled')
   }
 
   codeGenerator = () => {
@@ -79,17 +93,21 @@ class GuestList extends Component {
   addGuestHandler = e => {
     e.preventDefault()
     const guestCode = this.codeGenerator()
-    this.state.code = guestCode
+    this.state.addGuest.code = guestCode
     const userId = this.props.userInfo.id
     console.log('add guest id', userId)
-    console.log('state', this.state)
-    this.props.addGuest(userId, this.state)
-    this.setState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      code: null,
-    })
+    console.log('state', this.state.addGuest)
+    this.props.addGuest(userId, this.state.addGuest)
+    this.setState(prevState => ({
+      addGuest: {
+        ...prevState.addGuest,
+        firstName: '',
+        lastName: '',
+        email: '',
+        userId: this.props.userInfo.id,
+        code: null,
+      },
+    }))
   }
 
   deleteHandler = (e, guestId) => {
@@ -147,7 +165,6 @@ class GuestList extends Component {
           justifyContent: 'center',
         },
         Cell: props => {
-          console.log('props', props)
           let rsvp = <p>Pending</p>
           if (props.original.rsvp !== null) {
             if (props.original.rsvp === 1) {
@@ -203,39 +220,45 @@ class GuestList extends Component {
               type='text'
               placeholder='First Name'
               name='firstName'
-              value={this.state.firstName}
+              value={this.state.addGuest.firstName}
               onChange={this.inputHandler}
             />
             <input
               type='text'
               placeholder='Last Name'
               name='lastName'
-              value={this.state.lastName}
+              value={this.state.addGuest.lastName}
               onChange={this.inputHandler}
             />
             <input
               type='text'
               placeholder='email'
               name='email'
-              value={this.state.email}
+              value={this.state.addGuest.email}
               onChange={this.inputHandler}
             />
             <button onClick={this.addGuestHandler}>Add guest</button>
           </form>
         </AddContainer>
-        <TableContainer>
-          {this.props.guests ? (
-            <ReactTable
-              columns={columns}
-              data={this.props.guests}
-              filterable
-              defaultPageSize={5}
-              noDataText={'Please watchFile...'}
-              showPaginationTop
-              showPaginationBottom={false}
-            />
-          ) : null}
-        </TableContainer>
+        {this.props.guests ? (
+          <ReactTable
+            columns={columns}
+            data={this.props.guests}
+            filterable
+            defaultPageSize={10}
+            pageSizeOptions={[5, 10, 20]}
+            noDataText={'Loading Guests'}
+            showPaginationTop
+            showPaginationBottom={false}
+            style={{
+              height: '400px',
+              borderRadius: '20px',
+              backgroundColor: 'white',
+              marginTop: '30px',
+              overflow: 'hidden',
+            }}
+          />
+        ) : null}
       </div>
     )
   }
