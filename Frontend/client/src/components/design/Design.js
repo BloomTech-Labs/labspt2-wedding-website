@@ -12,7 +12,8 @@ const URL = 'http://localhost:3700'
 const DesignBody = styled.div`
 background: white;
 border-radius: 8px;
-margin: 3%;
+margin: 0% 3%;
+width: 100%;
 `
 
 const TemplateWrapper = styled.div`
@@ -20,6 +21,10 @@ display: flex;
 justify content: space-evenly;
 width: 100%;
 margin: 3%;
+`
+
+const StoryWrapper = styled.div`
+width: 100%;
 `
 
 const SampleWrapper1 = styled.div`
@@ -56,12 +61,33 @@ margin: 3%;
 `
 
 const Head = styled.div`
+display: flex;
+margin: 3%;
 `
 
 const H1 = styled.h1`
+font-size: 2rem;
 `
 
 const H2 = styled.h2`
+font-size: 1.5rem;
+margin: 3%;
+`
+
+const H3 = styled.h3`
+font-size: 1rem;
+margin: 0% 3% 3% 3%;
+`
+
+const Story = styled.textarea`
+width: 80%;
+height: 200px;
+margin: 0% 3%;
+background-color: #f8f8f8;
+border: 2px solid #ccc;
+border-radius: 4px;
+outline: none;
+overflow: auto;
 `
 
 class Design extends Component {
@@ -113,15 +139,19 @@ class Design extends Component {
           <H1>Here you can create your own personal web page for your wedding.</H1>
         </Head>
         <StoryWrapper>
+        <H2>First, help everyone celebrate your big day with you, by telling us how you met.</H2> 
+        <H3>You can come back here to change, edit, or update your story at any time.</H3> 
         <form>
-        <input
+        <Story
             type='text'
             placeholder='Couple Story'
             name='story'
             value={this.state.story}
             onChange={this.inputHandler}
+            wrap='soft'
           />
-          <input
+          <H2>Now tell us about the proposal.</H2>
+          <Story
             type='text'
             placeholder='Proposal Story'
             name='proposalStory'
