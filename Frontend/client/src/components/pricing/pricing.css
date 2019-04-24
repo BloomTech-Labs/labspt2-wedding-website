@@ -1,22 +1,73 @@
-.pricing {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin-top: 5%;
-    align-items: center;
-    color: #000000;
+.pricePage {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid white;
+  max-width: 2500px;
+  min-width: 1025px;
+  justify-content: center;
+
 }
 
-.box {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #000;
-    width: 50%;
-    height: 50%;
+.priceArea {
+  width: 450px;
+  height: 40%;
+  padding: 50px 0 0 0;
+  background-color: white;
 }
 
-.box li {
-    list-style-type: none;
-    margin: 0 5px;
+.boxStyle {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 
+}
+
+.liStyle {
+  list-style-type: none;
+  margin: 15px 0;
+}
+
+.effect2
+{
+  position: relative;
+}
+.effect2:before, .effect2:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.effect2:after
+{
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 400px) {
+  .priceArea {
+    padding: 0;
+    margin: 25px 0 0 0;
+    height: 30%;
+  }
 }

@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 import Login from './login'
 import DemoCarousel from './Carousel'
+import Dashboard from '../pages/Dashboard'
 
 const LPStyle = styled.div`
   display: flex;
@@ -36,12 +37,12 @@ function LandingPage({ match }) {
   return (
     <LPStyle>
       {/* <Route exact path='/' component={DemoCarousel} /> */}
-      <Route exact path={`${match.path}`} component={DemoCarousel} />
-      <ButtonDiv>
+      <Route exact path={`${match.path}`} component={Dashboard} />
+      {/* <ButtonDiv>
         <Link to='/login' component={Login}>
           Get Started
         </Link>
-      </ButtonDiv>
+      </ButtonDiv> */}
     </LPStyle>
   )
 }
