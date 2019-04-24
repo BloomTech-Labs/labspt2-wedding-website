@@ -98,9 +98,14 @@ const Buttons = styled.div`
 const StyledLink = styled(Link)`
     text-transform: uppercase;
     text-decoration: none;
-    color: #010101;
+    color: #FFFFFF;
     margin: 0 5px;
     width: 200px;
+`;
+
+const H2 = styled.h2 `
+    font-size: 24px;
+    color: #ffffff;
 `;
 
 const buttonStyles = {
@@ -122,7 +127,7 @@ export default class RSVP extends Component {
           <Router>
             <Page>
                 <RSVPPage>
-                    <h2>RSVP Guest List</h2>
+                    <H2>RSVP Guest List</H2>
                     <RSVPForm>
                     <label for="rsvpForm">Guest Name</label>
                         <RSVPInput type="text" name="first" placeholder="First Name" />
