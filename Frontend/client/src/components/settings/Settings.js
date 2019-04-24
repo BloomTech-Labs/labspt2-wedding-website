@@ -4,10 +4,7 @@ import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from 'react-datepicker'
 import GoogleSuggest from '../googleSuggest'
-import {
-Link
-} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { editUser } from '../../actions'
@@ -16,16 +13,40 @@ import styled from 'styled-components'
 import 'react-datepicker/dist/react-datepicker.css'
 
 const SettingsPage = styled.div`
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   width: 100%;
   min-width: 1025px;
   justify-content: space-around;
   height: 100vh;
   max-height: 500px;
-  margin-top: 50px;
+  margin-top: 50px; */
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding-top: 60px;
+  /* width: 100vw;
+    max-width: 1800px;
+    min-width: 1025px; */
+  margin: 0 auto;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1280px;
+  min-width: 1024px;
 
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    /* flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto; */
+
+    /* flex-direction: column;
+    width: 100%;
+    align-items: center; */
     flex-direction: column;
     width: 100%;
     min-width: 350px;
@@ -33,26 +54,37 @@ const SettingsPage = styled.div`
     margin-left: auto;
     margin-right: auto;
   }
-
-
-
-`;
+`
 
 const SettingsBox = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  width: 450px;
+  justify-content: center; */
+
   display: flex;
   flex-direction: column;
   width: 450px;
+  background-color: #ffffff;
+  margin: 0 25px;
+  height: 300px;
+  padding: 10px 25px;
+  border-radius: 5%;
   justify-content: center;
 
-
-
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    /* width: 100%;
+    max-width: 350px;
+    justify-content: center;
+    margin: 0; */
+
     width: 100%;
     max-width: 350px;
     justify-content: center;
     margin: 0;
+    height: 250px;
   }
-`;
+`
 
 const Box = styled.div`
   display: flex;
@@ -64,17 +96,17 @@ const Box = styled.div`
     min-width: 500px;
   }
 
-  @media screen and (max-width: 599px){
+  @media screen and (max-width: 599px) {
     max-width: 400px;
   }
-`;
+`
 
 const BoxArea = styled.div`
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-`;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+`
 
 const RightBox = styled.div`
   display: flex;
@@ -85,7 +117,7 @@ const RightBox = styled.div`
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     min-width: 500px;
   }
-`;
+`
 
 const SpecialBox = styled.div`
   display: flex;
@@ -96,26 +128,27 @@ const SpecialBox = styled.div`
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     min-width: 500px;
   }
-`;
+`
 
 const InputBox = styled.input`
   width: 100%;
   height: 28px;
   border-radius: 4px;
   position: relative;
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   transition: 0.3s all;
   margin: 10px 0;
-`;
+`
 
 const LeftInput = styled.input`
   width: 50%;
   height: 28px;
   border-radius: 4px;
   position: relative;
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   transition: 0.3s all;
-`;
+  margin: 10px 0;
+`
 
 const Button = styled.button`
   width: 50%;
@@ -123,12 +156,11 @@ const Button = styled.button`
   height: 100px;
   font-size: 24px;
   text-transform: uppercase;
-`;
+`
 
 const ButtonLink = styled(Link)`
   text-decoration: none;
-`;
-
+`
 
 class Settings extends Component {
   constructor(props) {
@@ -189,71 +221,6 @@ class Settings extends Component {
     })
   }
 
-
-//     render() {
-//       return (
-//         <Router>
-//           <SettingsPage>
-//           <h1>Settings</h1>
-//               <SettingsBox>
-//               <BoxArea>
-//                 <Box>
-//                   <label htmlFor="email">Email:</label>
-//                   <LeftInput type="email" name="email" value="email" placeholder="user@email.com" />
-//                 </Box>
-//                 <Box>
-//                   <label htmlFor="phone">Phone:</label>
-//                   <LeftInput type="text" name="Phone" value="Phone" placeholder="###-###-####" />
-//                 </Box>
-//                 <SpecialBox>
-//                   <input type="checkbox" name="emails?" value="false" />
-//                   <label for="checkbox">Emails?</label>
-//                   <input type="checkbox" name="texts?" value="false" />
-//                   <label for="checkbox">Texts?</label>
-//                 </SpecialBox>
-//                 <Box>
-//                   <label htmlFor="old">Old Password:</label>
-//                   <LeftInput type="password" name="old"  placeholder="********" />
-//                 </Box>
-//                 <Box>
-//                   <label htmlFor="new">New Password:</label>
-//                   <LeftInput type="password" name="new"  placeholder="********" />
-//                 </Box>                  
-//               </BoxArea>
-
-//               </SettingsBox>
-//               <SettingsBox>
-//               <BoxArea>
-//                 <RightBox>
-//                   <InputBox type="partner" name="partner" placeholder="Partner Name" /> <FaEdit /><FaTrash />
-//                 </RightBox>
-//                 <RightBox>
-//                   <InputBox type="partner" name="partner" placeholder="Partner Name"/> <FaEdit /><FaTrash />
-//                 </RightBox>
-//                 <SpecialBox>
-//                   <label for="calander">Wedding Date</label>
-//                   <DatePicker
-//                     selected={this.state.date}
-//                     onSelect={this.handleSelect} //when day is clicked
-//                     onChange={this.handleChange} //only when value has changed
-//                   />
-//                 </SpecialBox>
-//                 <RightBox>
-//                   <InputBox type="wedding" name="wedding" placeholder="Wedding Location" style={{borderBottom: '1px solid black', width: '90%'}} /><FaEdit /><FaTrash />
-//                 </RightBox>                  
-//               </BoxArea>
-
-//               </SettingsBox>
-//               <SettingsBox>
-//                   <Button>
-//                     <ButtonLink to="/">Save</ButtonLink>
-//                   </Button>
-//               </SettingsBox>
-//           </SettingsPage>
-//         </Router>
-//       )
-//     };
-// }
   render() {
     console.log('settings state', this.state)
     return (
@@ -262,7 +229,7 @@ class Settings extends Component {
           <SettingsBox>
             <Box>
               <label htmlFor='email'>Email:</label>
-              <input
+              <LeftInput
                 type='email'
                 name='email'
                 value={this.state.userInfo.email}
@@ -278,7 +245,7 @@ class Settings extends Component {
             </SpecialBox>
             <Box>
               <label htmlFor='old'>Old Password:</label>
-              <input
+              <LeftInput
                 type='password'
                 name='old'
                 placeholder='********'
@@ -288,7 +255,7 @@ class Settings extends Component {
             </Box>
             <Box>
               <label htmlFor='new'>New Password:</label>
-              <input
+              <LeftInput
                 type='password'
                 name='new'
                 value={this.state.userInfo.password}
@@ -340,9 +307,9 @@ class Settings extends Component {
               <FaTrash />
             </RightBox>
           </SettingsBox>
-          <SettingsBox>
+          <RightBox>
             <Button onClick={this.handleSave}>Save</Button>
-          </SettingsBox>
+          </RightBox>
         </SettingsPage>
       </div>
     )

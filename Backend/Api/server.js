@@ -17,6 +17,7 @@ const configRsvpAnswersRoutes = require('../Config/routes/rsvpAnswersRoute')
 const configAuthRoutes = require('../Config/routes/authRoute')
 const configStripeRoute = require('../Config/routes/stripeRoute')
 const configRegistryRoute = require('../Config/routes/registryRoute')
+const configCustomSiteRoute = require('../Config/routes/customSiteRoute')
 
 const server = express()
 
@@ -38,6 +39,7 @@ configRsvpAnswersRoutes(server)
 configAuthRoutes(server)
 configStripeRoute(server)
 configRegistryRoute(server)
+configCustomSiteRoute(server)
 
 server.get('/', (req, res) => {
   res.status(200).json({

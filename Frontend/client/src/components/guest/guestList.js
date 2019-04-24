@@ -72,7 +72,7 @@ class GuestList extends Component {
           <button onClick={this.addGuestHandler}>Add guest</button>
         </form>
         <div>
-          {this.props.loading ? <h1>Loading Note List</h1> : null}
+          {this.props.loading ? <h1>Loading Guest List</h1> : null}
           {this.props.guests
             ? this.props.guests.map(guest => {
                 return <Guest key={Math.random()} guestInfo={guest} />

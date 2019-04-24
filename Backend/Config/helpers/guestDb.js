@@ -32,4 +32,11 @@ module.exports = {
       .where('id', id)
       .del()
   },
+
+  getByCode: code => {
+    console.log(code)
+    return db('guestList')
+      .where('code', code)
+      .first()
+  },
 }
