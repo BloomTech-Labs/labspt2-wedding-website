@@ -14,7 +14,17 @@ const HomePage = styled.div`
   height: 100vh;
   align-items: center;
   color: #ffffff;
-  // border: 1px solid black;
+
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+
+  }
 `;
 
 const H1 = styled.div `

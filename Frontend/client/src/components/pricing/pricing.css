@@ -2,7 +2,6 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-  border: 1px solid white;
   max-width: 2500px;
   min-width: 1025px;
   justify-content: center;
@@ -67,7 +66,16 @@
 @media only screen and (max-width: 1024px) and (min-width: 400px) {
   .priceArea {
     padding: 0;
-    margin: 25px 0 0 0;
+    /* margin: 25px 0 0 0; */
     height: 30%;
+  }
+
+  .pricePage {
+    flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

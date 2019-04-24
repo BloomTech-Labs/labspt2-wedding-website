@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import './sidenav.css'
+
 
 // page imports
 import Pricing from '../pricing/Pricing'
@@ -17,109 +19,43 @@ import { logout } from '../../actions'
 import styled from 'styled-components'
 
 const NavPage = styled.div`
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-  padding: 0 15px;
-  width: 20%;
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
+
 `
 
 const MenuLogo = styled.h3`
-  display: flex;
-  justify-content: center;
-  width: 100px;
-  margin: 0;
-  padding: 25px 0;
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    text-align: center;
-    width: 100%;
-  }
+
 `
 
 const SideNav = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 20%;
-  min-width: 150px;
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    flex-direction: column;
-    width: 100%;
-  }
+
 `
 
 const Menu = styled.nav`
-  display: flex;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  position: relative;
-  height: 400px;
-  padding: 0 40px 0 20px;
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    display: flex;
-    height: 100px;
-    width: 100%;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0;
-  }
+
 `
 
 const MenuList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100px;
-    padding: 0;
-  }
+
 `
 const MenuContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0;
+
 `
 
 const MenuListItem = styled.li`
-  display: flex;
-  margin: 10px 0;
-  text-align: center;
-  @media only screen and (max-width: 1024px) and (min-width: 600px) {
-    display: flex;
-    margin: 0 30px;
-    text-align: center;
-    padding: 0;
-  }
-  @media only screen and (max-width: 599px) {
-    margin: 0 5px;
-    padding: 0;
-  }
+
 `
 
 // Unused
 const RTStyles = styled.div`
-  display: flex;
-  width: 100%;
+
 `;
 
 const StyledLink = styled(Link)`
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #ffffff;
+
 `;
 
 const STLink = styled(Link)`
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #010101;
+
 `;
 
 // const Button = styled.button`
@@ -142,23 +78,23 @@ export default class Navigation extends Component {
     render() {
         return (
              <Router>
-                    <NavPage>
-                     <MenuLogo><StyledLink to="/">Home</StyledLink></MenuLogo>
-                    <SideNav>
-                        <Menu>
+                    <div className='navPage'>
+                     <h3 className='menuLogo'><Link to="/" className='styled-link'>Home</Link></h3>
+                    <div className='sideNav'>
+                        <div className='menu'>
                             <div>
-                                <MenuList>
-                                    <MenuListItem><STLink to="/" >Home</STLink></MenuListItem>
-                                    <MenuListItem><STLink to="/settings" >Settings</STLink></MenuListItem>
-                                    <MenuListItem><STLink to="/pricing" >Pricing</STLink></MenuListItem>
-                                    <MenuListItem><STLink to="/billing" >Billing</STLink></MenuListItem>
-                                    <MenuListItem><STLink to="/rsvp" >RSVP</STLink></MenuListItem>
-                                    <MenuListItem><STLink to="/guestlist" >Guests</STLink></MenuListItem>
-                                    <MenuListItem><STLink to="/exit" >Logout</STLink></MenuListItem>
-                                </MenuList>
+                                <ul className='menuList'>
+                                    <li className='listItem'><Link to="/" className='style-link' >Home</Link></li>
+                                    <li className='listItem'><Link to="/settings"  className='style-link'>Settings</Link></li>
+                                    <li className='listItem'><Link to="/pricing"  className='style-link'>Pricing</Link></li>
+                                    <li className='listItem'><Link to="/billing"  className='style-link'>Billing</Link></li>
+                                    <li className='listItem'><Link to="/rsvp"  className='style-link'>RSVP</Link></li>
+                                    <li className='listItem'><Link to="/guestlist"  className='style-link'>Guests</Link></li>
+                                    <li className='listItem'><Link to="/exit"  className='style-link'>Logout</Link></li>
+                                </ul>
                             </div>
-                        </Menu>
-                        <RTStyles>
+                        </div>
+                        <div className='routeStyles'>
                             <Switch>
                                 <Route path="/settings" component={Settings} />
                                 <Route path="/pricing" component={Pricing} />
@@ -169,9 +105,9 @@ export default class Navigation extends Component {
                                 <Route path="/" component={Home} />                              
                             </Switch>
 
-                        </RTStyles>
-                    </SideNav>
-                    </NavPage>
+                        </div>
+                    </div>
+                    </div>
              </Router>
         );
     }
