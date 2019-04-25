@@ -60,6 +60,7 @@ class Design extends Component {
             <Link to='/design3'>Design 3</Link>
           </div>
         </div>
+<<<<<<< HEAD
         <button>Preview</button>
         <form>
           <input
@@ -94,6 +95,11 @@ class Design extends Component {
           />
           <button onClick={this.handleSubmit}>Apply</button>
         </form>
+=======
+        <div>
+          
+        </div>
+>>>>>>> 69257408c187ddaa25ae072ab5f3ab053b83d872
       </div>
     )
   }

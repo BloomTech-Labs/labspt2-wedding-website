@@ -82,11 +82,27 @@ const GLButton = styled.button`
 const HeadContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10% 3% 0% 3%;
+  margin: 0 auto;
   width: 100%;
-`
+  min-width: 1024px;
+
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
 const Head = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+
+const DashPage = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
