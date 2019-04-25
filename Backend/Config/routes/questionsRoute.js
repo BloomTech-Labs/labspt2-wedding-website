@@ -62,12 +62,12 @@ editQuestion = (req, res) => {
     })
 }
 
-removeQuestion = (req, body) => {
+removeQuestion = (req, res) => {
   const { id } = req.params
   helper
     .deleteQuestion(id)
     .then(number => {
-      number
+      // number
       // ? res.status(404).json({
       //     message: 'Question Not Found',
       //   })

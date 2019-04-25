@@ -154,9 +154,10 @@ googleCB = (req, res) => {
 facebookCB = (req, res) => {
   const user = req.user
   const tokenUser = {
-    userID: user.id,
+    userId: user.id,
     email: user.email,
   }
+
   const token = jwtHelper.generateToken(tokenUser)
   console.log('GOOGLE Token:', token)
   res.status(201).json({
