@@ -2,7 +2,7 @@ const db = require('../dbConfig')
 
 module.exports = {
   rsvpAnswers: () => {
-    return db(rsvpAnswers)
+    return db('rsvpAnswers')
   },
 
   rsvpAnswersById: id => {
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   deleteAnswer: id => {
-    db('rsvpAnswers')
+    return db('rsvpAnswers')
       .where('id', id)
       .del()
   },

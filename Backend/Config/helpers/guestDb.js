@@ -9,6 +9,14 @@ module.exports = {
     }
     return db('guestList')
   },
+
+  guestsByUserId: id => {
+    return db('guestList')
+      .select('*')
+      .from('guestList')
+      .where('userId', id)
+  },
+
   addGuest: guest => {
     return db('guestList').insert(guest)
   },
@@ -20,8 +28,15 @@ module.exports = {
   },
 
   deleteGuest: id => {
-    db('guestList')
+    return db('guestList')
       .where('id', id)
       .del()
+  },
+
+  getByCode: code => {
+    console.log(code)
+    return db('guestList')
+      .where('code', code)
+      .first()
   },
 }

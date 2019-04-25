@@ -9,8 +9,10 @@ module.exports = {
         .select(
           'id',
           'username',
-          'socialName',
           'email',
+          'partnerName1',
+          'partnerName2',
+          'weddingDate',
           'weddingParty',
           'venueLocation',
           'isPremium'
@@ -34,4 +36,7 @@ module.exports = {
       .where('id', id)
       .del()
   },
+  getUserPhotos: (id) =>{
+    return db('userPhotos').where('userId', id)
+  }
 }
