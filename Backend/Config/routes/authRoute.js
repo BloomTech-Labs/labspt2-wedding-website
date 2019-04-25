@@ -71,13 +71,20 @@ regLogin = (req, res) => {
     username: user.username,
     email: user.email,
   }
-
   const userInfo = {
-    userId: user.id,
+    id: user.id,
     username: user.username,
     email: user.email,
+    partnerName1: user.partnerName1,
+    partnerName2: user.partnerName2,
+    weddingDate: user.weddingDate,
+    weddingParty: user.weddingParty,
+    venueLocation: user.venueLocation,
+    isPremium: user.isPremium,
   }
+
   if (user.id) {
+    console.log('token User:', tokenUser)
     const token = jwtHelper.generateToken(tokenUser)
     res.status(201).json({
       token,
@@ -115,7 +122,7 @@ googleCB = (req, res) => {
     username: user.username,
     email: user.email,
     partnerName1: user.partnerName1,
-    partnerName2: user.partnerName1,
+    partnerName2: user.partnerName2,
     weddingDate: user.weddingDate,
     weddingParty: user.weddingParty,
     venueLocation: user.venueLocation,
@@ -124,7 +131,7 @@ googleCB = (req, res) => {
   const token = jwtHelper.generateToken(tokenUser)
   // redirects to account set up
   console.log('token :', token)
-  res.redirect('https://joinourbigday.netlify.com/?token=' + token)
+  res.redirect('http://localhost:3000/?token=' + token)
 }
 
 //------------------->Facebook Routes<--------------------------

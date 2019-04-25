@@ -4,7 +4,7 @@ import SignUp from './SignUp/SignUp'
 import SignIn from './SignIn/SignIn'
 import logo from "../../Images/jobdLogo.png"
 
-import './login.css'
+// import './login.css'
 import styled from 'styled-components'
 
 const LoginPage = styled.div`

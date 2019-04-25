@@ -4,6 +4,7 @@ import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from 'react-datepicker'
 import GoogleSuggest from '../googleSuggest'
+import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { editUser } from '../../actions'
@@ -12,17 +13,42 @@ import styled from 'styled-components'
 import 'react-datepicker/dist/react-datepicker.css'
 
 const SettingsPage = styled.div`
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   width: 100%;
   min-width: 1025px;
   justify-content: space-around;
   height: 100vh;
   max-height: 500px;
-  margin-top: 50px;
+  margin-top: 50px; */
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding-top: 60px;
+  /* width: 100vw;
+    max-width: 1800px;
+    min-width: 1025px; */
+  margin: 0 auto;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1280px;
+  min-width: 1024px;
+
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    /* flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto; */
+
+    /* flex-direction: column;
+    width: 100%;
+    align-items: center; */
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     min-width: 350px;
     width: 50%;
     margin-left: auto;
@@ -31,14 +57,32 @@ const SettingsPage = styled.div`
 `
 
 const SettingsBox = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  width: 450px;
+  justify-content: center; */
+
   display: flex;
   flex-direction: column;
   width: 450px;
+  background-color: #ffffff;
+  margin: 0 25px;
+  height: 300px;
+  padding: 10px 25px;
+  border-radius: 5%;
+  justify-content: center;
+
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    /* width: 100%;
+    max-width: 350px;
+    justify-content: center;
+    margin: 0; */
+
     width: 100%;
     max-width: 350px;
     justify-content: center;
     margin: 0;
+    height: 250px;
   }
 `
 
@@ -46,19 +90,30 @@ const Box = styled.div`
   display: flex;
   margin: 10px 0;
   justify-content: space-between;
-  width: 100%;
+  align-items: center;
+
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     min-width: 500px;
   }
+
   @media screen and (max-width: 599px) {
     max-width: 400px;
   }
+`
+
+const BoxArea = styled.div`
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 `
 
 const RightBox = styled.div`
   display: flex;
   width: 100%;
   margin: 10px 0;
+  align-items: center;
+
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     min-width: 500px;
   }
@@ -68,28 +123,43 @@ const SpecialBox = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  width: 100%;
+
   @media only screen and (max-width: 1024px) and (min-width: 600px) {
     min-width: 500px;
   }
 `
 
 const InputBox = styled.input`
-  border-bottom: 1px solid #000000;
-  width: 90%;
+  width: 100%;
+  height: 28px;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 0.3s all;
+  margin: 10px 0;
+`
+
+const LeftInput = styled.input`
+  width: 50%;
+  height: 28px;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 0.3s all;
+  margin: 10px 0;
 `
 
 const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 25px;
-  margin-top: 25px;
+  width: 50%;
+  margin: 0 auto;
   height: 100px;
-  min-width: 250px;
-  width: 100%;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 24px;
+  text-transform: uppercase;
+`
+
+const ButtonLink = styled(Link)`
+  text-decoration: none;
 `
 
 class Settings extends Component {
@@ -159,7 +229,7 @@ class Settings extends Component {
           <SettingsBox>
             <Box>
               <label htmlFor='email'>Email:</label>
-              <input
+              <LeftInput
                 type='email'
                 name='email'
                 value={this.state.userInfo.email}
@@ -175,7 +245,7 @@ class Settings extends Component {
             </SpecialBox>
             <Box>
               <label htmlFor='old'>Old Password:</label>
-              <input
+              <LeftInput
                 type='password'
                 name='old'
                 placeholder='********'
@@ -185,7 +255,7 @@ class Settings extends Component {
             </Box>
             <Box>
               <label htmlFor='new'>New Password:</label>
-              <input
+              <LeftInput
                 type='password'
                 name='new'
                 value={this.state.userInfo.password}
@@ -237,9 +307,9 @@ class Settings extends Component {
               <FaTrash />
             </RightBox>
           </SettingsBox>
-          <SettingsBox>
+          <RightBox>
             <Button onClick={this.handleSave}>Save</Button>
-          </SettingsBox>
+          </RightBox>
         </SettingsPage>
       </div>
     )

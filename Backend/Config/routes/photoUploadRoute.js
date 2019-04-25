@@ -12,16 +12,15 @@ addImage = (req, res) => {
   const userId = req.params.id
   singleUpload(req, res, err => {
     console.log(req.file.fieldname)
-    const {
-      name,
-      caption
-    } = req.body
+    const { name, caption } = req.body
     if (err) {
       res.status(422).send({
-        errors: [{
-          title: 'Image Upload Error',
-          detail: err.message,
-        }, ],
+        errors: [
+          {
+            title: 'Image Upload Error',
+            detail: err.message,
+          },
+        ],
       })
     }
     const img = req.file.location
@@ -47,9 +46,7 @@ addImage = (req, res) => {
 }
 
 GetLivePhotos = (req, res) => {
-  const {
-    id
-  } = req.params
+  const { id } = req.params
   console.log(id)
   db('livePhotos')
     .where('user_id', id)
@@ -63,15 +60,15 @@ addUserImage = (req, res) => {
   const userId = req.params.id
   singleUpload(req, res, err => {
     console.log('inside single')
-    const {
-      photoName
-    } = req.body
+    const { photoName } = req.body
     if (err) {
       res.status(422).send({
-        errors: [{
-          title: 'Image Upload Error',
-          detail: err.message,
-        }, ],
+        errors: [
+          {
+            title: 'Image Upload Error',
+            detail: err.message,
+          },
+        ],
       })
     }
     const image = req.file.location
@@ -79,7 +76,7 @@ addUserImage = (req, res) => {
     const newImage = {
       imgUrl: image,
       photoName,
-      userId
+      userId,
     }
     db('userPhotos')
       .insert(newImage)

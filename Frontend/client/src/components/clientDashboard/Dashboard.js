@@ -4,8 +4,12 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 
 import PieChart from 'react-minimal-pie-chart'
+import Modal from 'react-modal'
 
+import RegistryAddModal from '../modals/addRegistry'
+import RegistryViewModal from '../modals/viewRegistry'
 import styled from 'styled-components'
+Modal.setAppElement('#root')
 
 const DashContainer = styled.div`
   max-width: 1080px;
@@ -24,6 +28,21 @@ const Button = styled.button`
   font-size: 0.8em;
   font-weight: 500;
   background: #52c4b9;
+  cursor: pointer;
+`
+
+const RegistryItem = styled.button`
+  border-radius: 5%;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 70px;
+  margin-right: 15px;
+  font-size: 0.8em;
+  font-weight: 500;
+  background: goldenrod;
+  cursor: pointer;
 `
 
 const ShareButton = styled.button`
@@ -63,11 +82,27 @@ const GLButton = styled.button`
 const HeadContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10% 3% 0% 3%;
+  margin: 0 auto;
   width: 100%;
-`
+  min-width: 1024px;
+
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
 const Head = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+
+const DashPage = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -92,6 +127,10 @@ const H2 = styled.h2`
   text-align: center;
   color: white;
   margin-top: 12%;
+`
+const RegistryContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
 const GuestList = styled.div`
@@ -125,6 +164,34 @@ const Pie = styled.div`
 
 //This is throwing an error, no return value
 class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      modal: false,
+      regModal: null,
+    }
+  }
+
+  handleModal = () => {
+    this.setState({
+      modal: !this.state.modal,
+    })
+  }
+
+  handleRegModal = (e, id) => {
+    e.preventDefault()
+    console.log('regmodal')
+    this.setState({
+      regModal: id,
+    })
+  }
+
+  closeRegModal = () => {
+    this.setState({
+      regModal: null,
+    })
+  }
+
   render() {
     let rsvpYes = 0
     let rsvpNo = 0
@@ -140,6 +207,9 @@ class Dashboard extends Component {
         }
       })
     }
+
+    const registry = []
+    console.log('registry :', registry)
     console.log('rsvpYes :', rsvpYes)
     console.log('rsvpNo :', rsvpNo)
     console.log('rsvpMaybe :', rsvpMaybe)
@@ -207,8 +277,40 @@ class Dashboard extends Component {
           <Registry>
             <H3>Registry</H3>
             {/* Amazon registry goes here. Need to figure out how */}
-            <Button>Add Registry</Button>
+            <RegistryContainer>
+              {this.props.registry ? (
+                this.props.registry.length > 0 ? (
+                  this.props.registry.map(rItem => {
+                    registry.push(rItem)
+                    return (
+                      <div>
+                        <RegistryItem
+                          onClick={e => this.handleRegModal(e, rItem.id)}>
+                          {rItem.registryName}
+                        </RegistryItem>
+                      </div>
+                    )
+                  })
+                ) : (
+                  <RegistryItem>No Registry Added yet</RegistryItem>
+                )
+              ) : null}
+              <Button onClick={this.handleModal}>Add Registry</Button>
+            </RegistryContainer>
           </Registry>
+          <Modal isOpen={this.state.modal}>
+            <RegistryAddModal
+              user={this.props.userInfo}
+              handleClose={this.handleModal}
+            />
+          </Modal>
+          <Modal isOpen={this.state.regModal}>
+            <RegistryViewModal
+              registry={registry[this.state.regModal - 1]}
+              user={this.props.userInfo}
+              handleClose={this.closeRegModal}
+            />
+          </Modal>
         </HeadContainer>
       </DashContainer>
     )
@@ -218,6 +320,7 @@ class Dashboard extends Component {
 const mapStateToProps = state => ({
   userInfo: state.userInfo,
   guests: state.guests,
+  registry: state.userRegistry,
 })
 
 export default connect(
