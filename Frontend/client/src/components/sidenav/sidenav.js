@@ -81,6 +81,11 @@ class Navigation extends Component {
                     Guests
                   </Link>
                 </li>
+                <li className='listItem'>
+                  <Link to='/design' className='style-link'>
+                    Design
+                  </Link>
+                </li>
               </ul>
               <Button onClick={this.handleClick}>Sign Out</Button>
             </div>
