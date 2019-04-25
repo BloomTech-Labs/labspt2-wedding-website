@@ -39,13 +39,6 @@ class GuestList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-<<<<<<< HEAD
-      firstName: '',
-      lastName: '',
-      email: '',
-      userId: this.props.userInfo.id,
-      code: null,
-=======
       addGuest: {
         firstName: '',
         lastName: '',
@@ -53,7 +46,6 @@ class GuestList extends Component {
         userId: this.props.userInfo.id,
         code: null,
       },
->>>>>>> 69257408c187ddaa25ae072ab5f3ab053b83d872
     }
   }
 
@@ -125,19 +117,6 @@ class GuestList extends Component {
   addGuestHandler = e => {
     e.preventDefault()
     const guestCode = this.codeGenerator()
-<<<<<<< HEAD
-    this.state.code = guestCode
-    const userId = this.props.userInfo.id
-    console.log('add guest id', userId)
-    console.log('state', this.state)
-    this.props.addGuest(userId, this.state)
-    this.setState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      code: null,
-    })
-=======
     this.state.addGuest.code = guestCode
     const userId = this.props.userInfo.id
     console.log('add guest id', userId)
@@ -158,7 +137,6 @@ class GuestList extends Component {
   deleteHandler = (e, guestId) => {
     e.preventDefault()
     this.props.deleteGuest(this.props.userInfo.id, guestId)
->>>>>>> 69257408c187ddaa25ae072ab5f3ab053b83d872
   }
 
   render() {
