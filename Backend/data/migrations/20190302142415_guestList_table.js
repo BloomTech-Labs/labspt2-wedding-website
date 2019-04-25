@@ -16,6 +16,10 @@ exports.up = function(knex, Promise) {
     tbl.boolean('rsvpMaybe').defaultTo(false)
     // How do you know the couple
     tbl.string('rsvpComment')
+    // provided by guest
+    tbl.string('address')
+    //randomly generated, used for guest to be able to identified themselves
+    tbl.integer('code').notNullable()
   })
 }
 

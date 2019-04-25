@@ -7,6 +7,7 @@ import styled from 'styled-components'
 
 import Login from './login'
 import DemoCarousel from './Carousel'
+import Dashboard from '../pages/Dashboard'
 
 const LPStyle = styled.div`
   display: flex;
