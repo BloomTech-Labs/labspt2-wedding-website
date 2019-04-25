@@ -36,13 +36,13 @@ const ButtonDiv = styled.div`
 function LandingPage({ match }) {
   return (
     <LPStyle>
-      {/* <Route exact path='/' component={DemoCarousel} /> */}
-      <Route exact path={`${match.path}`} component={Dashboard} />
-      {/* <ButtonDiv>
+      <Route exact path='/' component={DemoCarousel} />
+      {/* <Route exact path={`${match.path}`} component={Dashboard} /> */}
+      <ButtonDiv>
         <Link to='/login' component={Login}>
           Get Started
         </Link>
-      </ButtonDiv> */}
+      </ButtonDiv>
     </LPStyle>
   )
 }

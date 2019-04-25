@@ -40,11 +40,18 @@ const BillingDiv = styled.div`
 `
 
 const BillingArea = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 400px;
-    height: 100%;
+    height: 50%;
+    align-items: top;
     background-color: white;  
     box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
     padding: 25px 0 50px 0;
+
+    @media only screen and (max-width: 1024px) and (min-width: 400px) {
+      height: 65%;
+    }
 `;
 
 const BillBox = styled.div`

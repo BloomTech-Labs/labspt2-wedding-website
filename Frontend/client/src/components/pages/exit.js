@@ -9,11 +9,22 @@ import styled from 'styled-components'
 const ExitPage = styled.div `
   display: flex;
   flex-direction: column;
+  height: 100vh;
   max-width: 1440px;
   min-width: 1024px;
   width: 100%;
   text-align: center;
   color: #ffffff;
+
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+  }
 `;
 
 

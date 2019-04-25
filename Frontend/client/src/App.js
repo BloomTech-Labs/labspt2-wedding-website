@@ -32,6 +32,8 @@ const Container = styled.div`
   display: flex;
   max-width: 1600px;
   margin: auto;
+  max-height: 100vh;
+  min-height: 100vh;
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
     display: flex;
     flex-direction: column;

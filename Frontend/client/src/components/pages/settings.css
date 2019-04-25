@@ -1,58 +1,62 @@
 .settingsPage {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 100vh;
-    width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100vh;
+  /* width: 100vw;
     max-width: 1800px;
-    min-width: 1025px;
-    margin: 0 auto;
-    justify-content: space-around;
-    border: 1px solid white;
-
-
-} 
+    min-width: 1025px; */
+  margin: 0 auto;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1280px;
+  min-width: 1024px;
+}
 
 .settingsBox {
-    display: flex;
-    flex-direction: column;
-    width: 450px;
-    background-color: #ffffff;
-    margin: 0 25px;
-    height: 300px;
-    padding: 10px 25px;
-    border-radius: 5%;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  background-color: #ffffff;
+  margin: 0 25px;
+  height: 300px;
+  padding: 10px 25px;
+  border-radius: 5%;
+  justify-content: center;
 }
 
 .rightBox {
-    display: flex;
-    width: 100%;
-    margin: 10px 0;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  margin: 10px 0;
+  align-items: center;
 }
 
 .saveButton {
-    width: 200px;
-    height: 100px;
-    border-radius: 10%;
-    font-size: 24px;
+  width: 200px;
+  height: 100px;
+  border-radius: 10%;
+  font-size: 24px;
 }
 
-
 @media only screen and (max-width: 1024px) {
-       .settingsPage {
-           flex-direction: column;
-           width: 100%;
-           align-items: center;
+  .settingsPage {
+    /* flex-direction: column;
+    width: 100%;
+    align-items: center; */
+    flex-direction: column;
+    width: 100%;
+    min-width: 350px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-       }
-
-       .settingsBox {
-            width: 100%;
-            max-width: 350px;
-            justify-content: center;
-            margin: 0;
-            height: 250px;
-       }
+  .settingsBox {
+    width: 100%;
+    max-width: 350px;
+    justify-content: center;
+    margin: 0;
+    height: 250px;
+  }
 }

@@ -22,9 +22,8 @@ const RSVPPage = styled.div`
 
     @media only screen and (max-width: 1024px) and (min-width: 400px) {
         flex-direction: column;
+        min-width: 500px;
         width: 100%;
-        min-width: 350px;
-        width: 50%;
         margin-left: auto;
         margin-right: auto;
       }
@@ -98,9 +97,14 @@ const Buttons = styled.div`
 const StyledLink = styled(Link)`
     text-transform: uppercase;
     text-decoration: none;
-    color: #010101;
+    color: #FFFFFF;
     margin: 0 5px;
     width: 200px;
+`;
+
+const H2 = styled.h2 `
+    font-size: 24px;
+    color: #ffffff;
 `;
 
 const buttonStyles = {
@@ -122,7 +126,7 @@ export default class RSVP extends Component {
           <Router>
             <Page>
                 <RSVPPage>
-                    <h2>RSVP Guest List</h2>
+                    <H2>RSVP Guest List</H2>
                     <RSVPForm>
                     <label for="rsvpForm">Guest Name</label>
                         <RSVPInput type="text" name="first" placeholder="First Name" />
