@@ -156,10 +156,7 @@ class Design extends Component {
     console.log('submit Fire')
     e.preventDefault()
     axios
-      .post(
-        `http://localhost:3700/customSite/${this.props.user.id}`,
-        this.state
-      )
+      .post(`${URL}/customSite/${this.props.user.id}`, this.state)
       .then(res => {
         console.log(res)
         this.setState({
