@@ -12,72 +12,67 @@ import styled from 'styled-components'
 Modal.setAppElement('#root')
 
 const DashContainer = styled.div`
-  max-width: 1080px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  background-color: #4c5d72;
+  // max-width: 80%;
+  // width: 95%;
+  // margin: 3% auto;
+  // border-radius: 8px;
+  // display: flex;
+  // background-color: white;
+  // overflow: auto
 `
+
 const Button = styled.button`
-  border-radius: 5%;
+  border-radius: 8px;
   color: white;
   border: none;
   outline: none;
   border-radius: 25px;
   padding: 15px 70px;
-  font-size: 0.8em;
+  font-size: 1em;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
+  margin: 3%;
 `
 
 const RegistryItem = styled.button`
-  border-radius: 5%;
   color: white;
   border: none;
   outline: none;
-  border-radius: 25px;
+  border-radius: 25px
   padding: 15px 70px;
   margin-right: 15px;
   font-size: 0.8em;
   font-weight: 500;
   background: goldenrod;
   cursor: pointer;
+  margin: 3%;
 `
 
 const ShareButton = styled.button`
-  border-radius: 5%;
+  border-radius: 25px;
   color: white;
   border: none;
   outline: none;
-  border-radius: 25px;
   padding: 15px 70px;
   font-size: 0.8em;
   font-weight: 500;
   background: #52c4b9;
   float: right;
-  margin-right: 5%;
+  margin: 3%;
 `
 
 const GLButton = styled.button`
-  border-radius: 5%;
+  border-radius: 25px;
   color: white;
   border: none;
   outline: none;
-  border-radius: 25px;
   padding: 15px 70px;
   font-size: 0.8em;
   font-weight: 500;
   background: #52c4b9;
-  margin-left: 5%;
+  margin: 3%;
 `
-
-// Unused
-// const SignOut = styled.div`
-//   display: flex;
-//   width: 100%;
-//   justify-content: flex-end;
-// `
 
 const HeadContainer = styled.div`
   display: flex;
@@ -100,6 +95,9 @@ const Head = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  background: white;
+  border-radius: 8px;
+  margin: 4% 2% 3% 2%;
 `;
 
 const DashPage = styled.div`
@@ -118,14 +116,12 @@ const Location = styled.div``
 const H1 = styled.h1`
   font-size: 2.5em;
   text-align: center;
-  color: white;
   margin-top: 5%;
 `
 
 const H2 = styled.h2`
   font-size: 2.5em;
   text-align: center;
-  color: white;
   margin-top: 12%;
 `
 const RegistryContainer = styled.div`
@@ -162,7 +158,6 @@ const Pie = styled.div`
   width: 25%;
 `
 
-//This is throwing an error, no return value
 class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -219,21 +214,19 @@ class Dashboard extends Component {
         <HeadContainer>
           <Head>
             <NameDate>
-              <Link to='/Design'>
-                <Button>Change Design</Button>
-              </Link>
-              {/* Will need to write code that auto populates name and date for wedding. */}
               <H1>
                 {this.props.userInfo.partnerName1} &amp;{' '}
                 {this.props.userInfo.partnerName2}'s Wedding
               </H1>
               <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
+              <Link to='/Design'>
+                <Button>Change Design</Button>
+              </Link>
             </NameDate>
             <Location>
               {/* This will need to share the link to the personal wedding web page */}
-              <ShareButton>Share</ShareButton>
-              {/* Will need to populate info from server */}
               <H2>{this.props.userInfo.venueLocation}</H2>
+              <ShareButton>Share</ShareButton>
             </Location>
           </Head>
 
