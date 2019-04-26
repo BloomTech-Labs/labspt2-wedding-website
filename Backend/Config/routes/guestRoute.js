@@ -83,7 +83,8 @@ addGuest = (req, res) => {
       .then(newGuest => {
         res.status(201).json(newGuest)
       })
-      .catch(() => {
+      .catch(err => {
+        console.log('add guest err', err)
         res.status(500).json({ message: 'Failed to add guest' })
       })
   }
