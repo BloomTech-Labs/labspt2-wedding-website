@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Link, NavLink } from 'react-router-dom'
 import SignUp from './SignUp/SignUp'
 import SignIn from './SignIn/SignIn'
+import logo from "../../Images/jobdLogo.png"
 
 // import './login.css'
 import styled from 'styled-components'
@@ -18,9 +19,18 @@ const LoginPage = styled.div`
 const Aside = styled.div`
   display: flex;
   width: 50%;
-  background-color: #66dac7;
+  background-color: white;
+  img{
+    width:90%;
+    height: 90%;
+    margin:auto;
+    @media(max-width: 800px){
+      display:none
+    }
+  }
   @media screen and (max-width: 1024) {
     width: 0%;
+    display: none;
   }
 `
 
@@ -60,7 +70,9 @@ function Login({ match }) {
   console.log('url', match.url)
   return (
     <LoginPage>
-      <Aside />
+      <Aside > <img src={logo} alt=""/>
+     
+      </Aside>
       <LoginForm>
         <PageSwitch>
           <NavLink to={`${match.url}`} className='PageSwitcher__Item'>
