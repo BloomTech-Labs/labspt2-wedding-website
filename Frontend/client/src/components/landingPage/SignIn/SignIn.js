@@ -108,7 +108,7 @@ class SignIn extends Component {
             <FormButton>Sign In</FormButton>
           </FormField>
         </form>
-        <a href='https://joinourbigday.herokuapp.com/auth/google'>
+        <a href='http://localhost:3700/auth/google'>
           <GoogleButton />
         </a>{' '}
         <br />
