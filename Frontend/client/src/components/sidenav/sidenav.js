@@ -42,11 +42,8 @@ class Navigation extends Component {
   render() {
     return (
       <div className='navPage'>
-        <h3 className='menuLogo'>
-          <Link to='/' className='styled-link'>
-            Home
-          </Link>
-        </h3>
+        <h3 className='menuLogo' />
+        {/* //Logo */}
         <div className='sideNav'>
           <div className='menu'>
             <div>
