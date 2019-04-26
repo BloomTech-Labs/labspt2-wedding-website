@@ -1,4 +1,4 @@
-/* .sideNav {
+.navPage {
     display: flex;
     flex-direction: column;
     padding: 0 15px;
@@ -58,13 +58,58 @@
     color: red;
 }
 
-.menu_logo {
-    text-indent: -9999999px;
-    display: inline-block;
-    height: 100%;
-    width: 92px;
-    background-size: cover 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0;
-} */
+.styled-link {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.styled-link:hover {
+    color: red;
+}
+
+/* Responsive Media Queries */
+
+@media only screen and (max-width: 1024px) and (min-width: 400px) {
+    .navPage {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .menuLogo {
+        text-align: center;
+        width: 100%;
+    }
+
+    .sideNav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu {
+        display: flex;
+        height: 100px;
+        width: 100%;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 0;
+
+    }
+
+    .menuList {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .listItem {
+        margin: 0 5px;
+        padding: 0;
+    }
+}

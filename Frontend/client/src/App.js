@@ -101,7 +101,7 @@ class App extends Component {
           <Router className='App'>
             <Container>
               <Navigation />
-             
+
               <Switch>
                 <Route exact path='/' component={DashBoard} />
                 <Route path='/settings' component={Settings} />
@@ -118,7 +118,6 @@ class App extends Component {
                 <Route path='/design1' component={WeddingPage1} />
                 <Route path='/design2' component={WeddingPage2} />
                 <Route path='/design3' component={WeddingPage3} />
-                <Route path='/weddingPhotos' component={WeddingPhotos}/>
               </Switch>
             </Container>
           </Router>
@@ -127,6 +126,7 @@ class App extends Component {
     }
 
     return (
+      // user Is not auth
       // needs nav bar for going b/t landing page and login component
       <Router className='App'>
         <div>
