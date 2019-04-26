@@ -83,6 +83,10 @@ img{
   width: 33%;
 }
 `
+const InfoDiv = styled.div`
+display:flex;
+
+`
 
 
 function LandingPage({ match }) {
