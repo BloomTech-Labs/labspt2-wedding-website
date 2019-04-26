@@ -2,6 +2,7 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import planning from '../../Images/beautiful-beverage-black-coffee-1410226.jpg'
+import rings from '../../Images/rings.jpg'
 
 import styled from 'styled-components'
 
@@ -16,6 +17,7 @@ const LPStyle = styled.div`
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
+  background-image: url(rings);
   @media screen and (max-width: 1024) {
     width: 1000px;
     margin: 0;
