@@ -16,11 +16,8 @@
     "prop-types": "^15.7.2",
     "query-string": "^6.4.0",
     "react": "^16.8.3",
-<<<<<<< HEAD
     "react-bootstrap": "^1.0.0-beta.8",
-=======
     "react-animate-on-scroll": "^2.1.5",
->>>>>>> 286cbb9440de37d18e68d539a5fe786b069ed7ce
     "react-button-component": "^1.0.0",
     "react-datepicker": "^2.2.0",
     "react-datetime": "^2.16.3",

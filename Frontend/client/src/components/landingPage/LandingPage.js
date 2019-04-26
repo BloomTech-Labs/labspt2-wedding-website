@@ -59,9 +59,29 @@ const ButtonDiv = styled.div`
   
 `
 
-const InfoDiv = styled.div`
+const InfoLeft = styled.div`
 display:flex;
-
+width 100%;
+margin: 0 auto;
+margin-bottom: 40px;
+background-color: white;
+img{
+  width: 33%;
+}
+`
+const InfoRight = styled.div`
+display:flex;
+justify-content: space-between;
+width 100%;
+margin: 0 auto;
+margin-bottom: 40px;
+background-color: white;
+div{
+  width:45%;
+}
+img{
+  width: 33%;
+}
 `
 
 
@@ -76,18 +96,19 @@ function LandingPage({ match }) {
         </Link>
       </ButtonDiv>
      </CaroDiv>
-     <CaroDiv>
+     <InfoLeft>
+        <img src={planning} alt='image'/>
+        <div></div>
+     </InfoLeft>
+     <InfoRight>
+        <div><p>af;ho'iare'ona'vr'oi'io'hoi</p></div>
+        <div><img src={planning} alt='image'/></div>
+     </InfoRight>
+     <InfoLeft>
         <div><img src={planning} alt='image'/></div>
         <div></div>
-     </CaroDiv>
-     <div>
+     </InfoLeft>
 
-
-     </div>
-     <div>
-
-
-     </div>
 
 
 
