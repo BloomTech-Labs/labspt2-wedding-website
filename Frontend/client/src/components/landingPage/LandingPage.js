@@ -55,37 +55,50 @@ const ButtonDiv = styled.div`
     text-decoration:none;
     align-content: center;
     margin: 0 auto;
+    font-size: 20px;
   }
   
 `
 
 const InfoLeft = styled.div`
 display:flex;
-width 100%;
+justify-content: space-around;
+width 85%;
 margin: 0 auto;
 margin-bottom: 40px;
 background-color: white;
+border-radius 60%;
+border: 3px solid #52C4B9;
+div{
+  width: 50%;
+  justify-self: center;
+  align-self: center;
+  p{
+    width: 80%;
+    margin-left: -60px;
+    margin-right: 40px
+  }
+}
 img{
-  width: 33%;
+  width: 75%;
+  border-radius:40%;
+  
+  margin-left:-2%;
 }
 `
 const InfoRight = styled.div`
 display:flex;
-justify-content: space-between;
 width 100%;
 margin: 0 auto;
 margin-bottom: 40px;
 background-color: white;
-div{
-  width:45%;
-}
+border-radius 60%;
+border: 3px solid #52C4B9;
 img{
   width: 33%;
+  border-radius:60%;
+  border: 3px solid #52C4B9;
 }
-`
-const InfoDiv = styled.div`
-display:flex;
-
 `
 
 
@@ -100,17 +113,22 @@ function LandingPage({ match }) {
         </Link>
       </ButtonDiv>
      </CaroDiv>
-     <InfoLeft>
-        <img src={planning} alt='image'/>
-        <div></div>
+     <InfoLeft className='topleft'>
+        <div><img src={planning} alt='image'/></div>
+        <div><p>ther is no text wihtin this div</p></div>
      </InfoLeft>
      <InfoRight>
-        <div><p>af;ho'iare'ona'vr'oi'io'hoi</p></div>
+        <div>
+          
+        </div>
         <div><img src={planning} alt='image'/></div>
      </InfoRight>
      <InfoLeft>
         <div><img src={planning} alt='image'/></div>
-        <div></div>
+        <div><p>My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go
+             someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch
+              in the kneecaps.
+               </p></div>
      </InfoLeft>
 
 
