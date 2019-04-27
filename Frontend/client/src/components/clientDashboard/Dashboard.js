@@ -12,13 +12,13 @@ import styled from 'styled-components'
 Modal.setAppElement('#root')
 
 const DashContainer = styled.div`
-  // max-width: 80%;
+  max-width: 80%;
   // width: 95%;
-  margin: 1% auto;
+  margin: 0 auto;
   // border-radius: 8px;
   display: flex;
   // background-color: white;
-  overflow: auto
+  // overflow: auto
 `
 
 const Button = styled.button`
@@ -97,7 +97,7 @@ const Head = styled.div`
   justify-content: space-evenly;
   background: white;
   border-radius: 8px;
-  margin: 4% 2% 3% 2%;
+  margin: 4% 0%;
 `;
 
 const DashPage = styled.div`
@@ -139,7 +139,7 @@ const GuestList = styled.div`
   border-radius: 8px;
   background: white;
   padding: 3%;
-  margin: 4% 2% 3% 2%;
+  margin: 3% 0%;
 `
 
 const H3 = styled.h3`
@@ -152,7 +152,7 @@ const RSVP = styled.div`
   border-radius: 8px;
   background: white;
   padding: 3%;
-  margin: 4% 2% 3% 2%;
+  margin: 3% 0%;
 `
 
 const Registry = styled.div`
@@ -160,7 +160,7 @@ const Registry = styled.div`
   border-radius: 8px;
   background: white;
   padding: 3%;
-  margin: 4% 2% 3% 2%;
+  margin: 3% 0%;
 `
 
 const Pie = styled.div`

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import './sidenav.css'
 
 // page imports
 import Pricing from '../pricing/Pricing'
@@ -14,23 +13,63 @@ import { withRouter } from 'react-router'
 
 import { connect } from 'react-redux'
 import { logout } from '../../actions'
+import Logo from '../../Images/logo.png'
 
 import styled from 'styled-components'
 
-const Button = styled.button`
+const NavPage = styled.div`
   display: flex;
-  border-radius: 5%;
+  margin: 3% auto;
+  width: 80%;
+  background: white;
+  border-radius: 8px;
+  justify-content: space-evenly;
+`
+
+const Img = styled.img`
+  width: 20%;
+  height: 24vh;
+  border-radius: 8px;
+`
+
+const SideNav = styled.div`
+  display: flex;
+`
+
+const Menu = styled.div`
+  display: flex;
+`
+
+const MenuWrapper = styled.div`
+  display: flex;
+`
+
+const MenuList = styled.ul`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`
+
+const Li = styled.a`
   color: black;
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 3%;
+`
+
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
   border: none;
   outline: none;
-  border-radius: 25px;
-  font-size: 0.8em;
   font-weight: 500;
   background: #52c4b9;
-  width: 70%;
-  align-self: center;
-  justify-content: center;
-  margin-bottom: 10px;
+  height: 68px;
 `
 
 class Navigation extends Component {
@@ -41,20 +80,19 @@ class Navigation extends Component {
 
   render() {
     return (
-      <div className='navPage'>
-        <h3 className='menuLogo' />
-        {/* //Logo */}
-        <div className='sideNav'>
-          <div className='menu'>
-            <div>
-              <ul className='menuList'>
-                <li className='listItem'>
-                  <Link to='/' className='style-link'>
-                    DASHBOARD
+      <NavPage>
+        <SideNav>
+          <Menu>
+            <MenuWrapper>
+              <Img src={Logo} alt="Logo" />
+              <MenuList>
+                <Li>
+                  <Link to='/'>
+                    Dashboard
                   </Link>
-                </li>
+                </Li>
                 <li className='listItem'>
-                  <Link to='/settings' className='style-link'>
+                  <Link to='/settings'>
                     Settings
                   </Link>
                 </li>
@@ -83,12 +121,14 @@ class Navigation extends Component {
                     Design
                   </Link>
                 </li>
-              </ul>
+              </MenuList>
+              <ButtonWrapper>
               <Button onClick={this.handleClick}>Sign Out</Button>
-            </div>
-          </div>
-        </div>
-      </div>
+              </ButtonWrapper>
+            </MenuWrapper>
+          </Menu>
+        </SideNav>
+      </NavPage>
     )
   }
 }

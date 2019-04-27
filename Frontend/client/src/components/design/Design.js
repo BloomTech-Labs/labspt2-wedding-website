@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+
+import 'simplebar/dist/simplebar.min.css';
+
 import styled from 'styled-components'
 
 import Background1 from '../design/media/background1.jpg'
@@ -12,12 +15,11 @@ const URL = 'https://joinourbigday.herokuapp.com'
 const DesignBody = styled.div`
   background: white;
   border-radius: 8px;
-  margin: 3%;
-  width: 100%;
+  margin: 3% auto;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
 `
 
 const TemplateWrapper = styled.div`
@@ -78,15 +80,15 @@ const InputWrapper = styled.div`
 `
 
 const Button = styled.button`
-border-radius: 25px;
-color: white;
-border: none;
-outline: none;
-padding: 15px 70px;
-font-size: 0.8em;
-font-weight: 500;
-background: #52c4b9;
-margin: 3%;
+  border-radius: 25px;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 15px 70px;
+  font-size: 0.8em;
+  font-weight: 500;
+  background: #52c4b9;
+  margin: 3%;
 `
 
 const Head = styled.div`

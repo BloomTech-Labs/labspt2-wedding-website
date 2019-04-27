@@ -7,6 +7,7 @@ import { fetchGuests, addGuest, deleteGuest } from '../../actions/'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import styled from 'styled-components'
+import { FaAutoprefixer } from 'react-icons/fa';
 
 const Button = styled.button`
   background-color: red;
@@ -27,11 +28,12 @@ const EditButton = styled.button`
 // `
 
 const AddContainer = styled.div`
-  margin-top: 60px;
+  margin: 3% auto;
   background-color: white;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 8px;
   border: 1px solid gray;
+  width: 80%;
 `
 // Update guestnot working
 
@@ -325,10 +327,12 @@ class GuestList extends Component {
             showPaginationBottom={false}
             style={{
               height: '400px',
-              borderRadius: '20px',
+              borderRadius: '8px',
               backgroundColor: 'white',
               marginTop: '30px',
               overflow: 'hidden',
+              margin: '0 auto',
+              width: '80%',
             }}
           />
         ) : null}
