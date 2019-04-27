@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 
-import Background1 from '../design/media/ScrapBookBackground.jpg'
-import Background2 from '../design/media/BackgroundDesign2.jpg'
-import Background3 from '../design/media/rainbowbackground.jpg'
+import Background1 from '../design/media/background1.jpg'
+import Background2 from '../design/media/background2.jpg'
+import Background3 from '../design/media/background3.jpg'
 
 const URL = 'https://joinourbigday.herokuapp.com'
 
 const DesignBody = styled.div`
   background: white;
   border-radius: 8px;
-  margin: 0% 3% 3% 3%;
+  margin: 3%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -44,8 +44,8 @@ const StoryWrapper = styled.div`
 const SampleWrapper1 = styled.div`
   background-image: url(${Background1});
   width: 65%;
-  height: 160px;
-  background-size: 100% 100%;
+  height: 260px;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   margin: 3%;
@@ -53,8 +53,8 @@ const SampleWrapper1 = styled.div`
 const SampleWrapper2 = styled.div`
   background-image: url(${Background2});
   width: 65%;
-  height: 160px;
-  background-size: 100% 100%;
+  height: 260px;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   margin: 3%;
@@ -62,8 +62,8 @@ const SampleWrapper2 = styled.div`
 const SampleWrapper3 = styled.div`
   background-image: url(${Background3});
   width: 65%;
-  height: 160px;
-  background-size: 100% 100%;
+  height: 260px;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   margin: 3%;
@@ -72,15 +72,21 @@ const SampleWrapper3 = styled.div`
 const InputWrapper = styled.div`
   margin: 3%;
   padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const Button = styled.button`
-  width: 30%;
-  height: 30px;
-  border-radius: 8px;
-  margin: 3% auto;
-  display: flex;
-  justify-content: center;
+border-radius: 25px;
+color: white;
+border: none;
+outline: none;
+padding: 15px 70px;
+font-size: 0.8em;
+font-weight: 500;
+background: #52c4b9;
+margin: 3%;
 `
 
 const Head = styled.div`
@@ -245,7 +251,7 @@ class Design extends Component {
           <form>
             <DesignInput
               type='number'
-              placeholder='1'
+              placeholder='#'
               name='siteDesign'
               min='1'
               max='3'
@@ -254,14 +260,13 @@ class Design extends Component {
             />
           </form>
         </TemplateWrapper>
-        <Button>Preview</Button>
         <InputWrapper>
           <H2>One last step and you are finished.</H2>
           <H2>Now tell us what you want your web site's address to be.</H2>
           <form>
             <URLInput
               type='text'
-              placeholder='Site Url'
+              placeholder='Example= johnandjanesmithwedding...'
               name='userUrl'
               value={this.state.userUrl}
               onChange={this.inputHandler}
@@ -270,8 +275,9 @@ class Design extends Component {
               If you are happy with everything you entered, just hit the apply
               button, and we'll take care fo the rest.
             </H2>
-            <Button onClick={this.handleSubmit}>Apply</Button>
           </form>
+          <Button onClick={this.handleSubmit}>Apply</Button>
+          <Button>Preview</Button>
         </InputWrapper>
       </DesignBody>
     )

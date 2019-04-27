@@ -106,10 +106,10 @@ class WeddingPage1 extends Component {
       <WP1Body>
         <div>
           <WhoWrapper>
-            <h1>
+            <H1>
               {this.props.userInfo.partnerName1} &amp;{' '}
               {this.props.userInfo.partnerName2}'s Wedding
-            </h1>
+            </H1>
           </WhoWrapper>
           <WhenWrapper>
             <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
@@ -123,9 +123,9 @@ class WeddingPage1 extends Component {
           </RSVPWrapper>
           <StoryWrapper>
             <H2>Our Story</H2>
-            <p>{this.props.siteInfo.story}</p>
+            <P>{this.props.siteInfo.story}</P>
             <H2>Proposal Story</H2>
-            <p>{this.props.siteInfo.proposalStory}</p>
+            <P>{this.props.siteInfo.proposalStory}</P>
           </StoryWrapper>
         </div>
       </WP1Body>

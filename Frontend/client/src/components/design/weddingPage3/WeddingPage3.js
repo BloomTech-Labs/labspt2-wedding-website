@@ -4,79 +4,87 @@ import moment from 'moment'
 
 import styled from 'styled-components'
 
-import background3 from '../media/rainbowbackground.jpg'
-import heartWP3 from '../media/heartWP3.jpg'
+import background from '../media/background3.jpg'
 
-const ContentWrapper = styled.div`
-  background-image: url(${background3});
-  width: 100%;
-  height: 250vh;
-  display: flex;
-  flex-direction: column;
+const WP1Body = styled.div`
   margin: 0 auto;
+  background-image: url(${background});
+  width: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
-`
-
-const WP3Body = styled.div`
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1080px;
-  background: #878d96;
 `
 
 const WhoWrapper = styled.div`
-  width: 100%;
+  width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  margin-top: 5%;
-  font-size: 5rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+  border-radius: 8px;
+  background: rgba(177, 221, 241, 0.5); 
 `
 
 const WhenWrapper = styled.div`
-  width: 100%;
+  width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  margin-top: 5%;
-  font-size: 5rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+  border-radius: 8px;
+  background: rgba(177, 221, 241, 0.5); 
 `
 
-const CoupleWrapper = styled.div`
+const RSVPWrapper = styled.div`
   display: flex;
-  width: 100%;
-  justify-content: center;
-  margin-top: 5%;
-  padding-bottom: 5%;
+  justify-content: space-evenly;
+  width: 80%;
 `
 
-const HeartWP3 = styled.img`
-  width: 20%;
-  height: 70vh;
+const Button = styled.button`
+  border-radius: 25px;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 15px 70px;
+  font-size: 0.8em;
+  font-weight: 500;
+  background: #52c4b9;
+  margin: 3%;
 `
 
 const StoryWrapper = styled.div`
+  width: 80%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: center;
-  padding-bottom: 3%
-  background: #878d96;
+  margin: 3%;
+  border-radius: 8px;
+  background: rgba(177, 221, 241, 0.5); 
 `
-const Story = styled.div``
 
-const RSVPWrapper = styled.div``
+const H1 = styled.h1`
+  font-size: 2em;
+  text-shadow: 0px 0px 0px #000000;
+`
 
-const Footer = styled.div`
-  background: black;
-  padding: 5%;
+const H2 = styled.h2`
+  font-size: 1.5em;
+  text-shadow: 0px 0px 0px #000000;
+`
+
+const P = styled.p`
+  font-size: 1em;
+  text-shadow: 0px 0px 0px #000000;
 `
 
 class WeddingPage3 extends Component {
@@ -92,43 +100,35 @@ class WeddingPage3 extends Component {
     this.setState({ value: event.target.value })
     event.preventDefault()
   }
-  //handleChange is for textarea input
 
   render() {
     return (
-      <ContentWrapper>
-        <RSVPWrapper>
-          <button>
-            {/* This will need to be linked to the answers page once it exists. */}
-            RSVP
-          </button>
-        </RSVPWrapper>
-        <WP3Body>
+      <WP1Body>
+        <div>
           <WhoWrapper>
-            <h1>
+            <H1>
               {this.props.userInfo.partnerName1} &amp;{' '}
               {this.props.userInfo.partnerName2}'s Wedding
-            </h1>
+            </H1>
           </WhoWrapper>
           <WhenWrapper>
-            <h1>{moment(this.props.userInfo.weddingDate).format('ll')}</h1>
-            <h2>{this.props.userInfo.venueLocation}</h2>
+            <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
+            <H2>{this.props.userInfo.venueLocation}</H2>
           </WhenWrapper>
-          <CoupleWrapper>
-            <HeartWP3 src={heartWP3} alt='A Heart' />
-          </CoupleWrapper>
+          <RSVPWrapper>
+            <Button>
+              {/* This will need to be linked to the answers page once it exists. */}
+              RSVP
+            </Button>
+          </RSVPWrapper>
           <StoryWrapper>
-            <Story>Our Story</Story>
+            <H2>Our Story</H2>
+            <P>{this.props.siteInfo.story}</P>
+            <H2>Proposal Story</H2>
+            <P>{this.props.siteInfo.proposalStory}</P>
           </StoryWrapper>
-          <StoryWrapper>
-            <Story>Our Story</Story>
-            <p>{this.props.siteInfo.story}</p>
-            <Story>Proposal Story</Story>
-            <p>{this.props.siteInfo.proposalStory}</p>
-          </StoryWrapper>
-        </WP3Body>
-        <Footer />
-      </ContentWrapper>
+        </div>
+      </WP1Body>
     )
   }
 }
