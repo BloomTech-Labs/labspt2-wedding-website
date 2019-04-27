@@ -69,7 +69,7 @@ const SettingsBox = styled.div`
   margin: 0 25px;
   height: 300px;
   padding: 10px 25px;
-  border-radius: 5%;
+  border-radius: 8px;
   justify-content: center;
 
   @media only screen and (max-width: 1024px) and (min-width: 400px) {
