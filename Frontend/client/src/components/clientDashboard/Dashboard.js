@@ -14,11 +14,11 @@ Modal.setAppElement('#root')
 const DashContainer = styled.div`
   // max-width: 80%;
   // width: 95%;
-  // margin: 3% auto;
+  margin: 1% auto;
   // border-radius: 8px;
-  // display: flex;
+  display: flex;
   // background-color: white;
-  // overflow: auto
+  overflow: auto
 `
 
 const Button = styled.button`
@@ -32,7 +32,7 @@ const Button = styled.button`
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
-  margin: 3%;
+  margin: 10% 3% 3% 3%;
 `
 
 const RegistryItem = styled.button`
@@ -79,21 +79,21 @@ const HeadContainer = styled.div`
   flex-direction: column;
   margin: 0 auto;
   width: 100%;
-  min-width: 1024px;
+  // min-width: 1024px;
 
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    flex-direction: column;
-    width: 100%;
-    min-width: 350px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  // @media only screen and (max-width: 1024px) and (min-width: 400px) {
+  //   flex-direction: column;
+  //   width: 100%;
+  //   min-width: 350px;
+  //   width: 50%;
+  //   margin-left: auto;
+  //   margin-right: auto;
+  // }
 `;
 
 const Head = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   background: white;
   border-radius: 8px;
@@ -109,9 +109,14 @@ const DashPage = styled.div`
 const NameDate = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `
 
-const Location = styled.div``
+const Location = styled.div`
+display: flex;
+align-items: center;
+flex-direction: column;
+`
 
 const H1 = styled.h1`
   font-size: 2.5em;
@@ -131,27 +136,31 @@ const RegistryContainer = styled.div`
 
 const GuestList = styled.div`
   margin-top: 5%;
-  border-top: 2px solid #707c8b;
+  border-radius: 8px;
+  background: white;
   padding: 3%;
+  margin: 4% 2% 3% 2%;
 `
 
 const H3 = styled.h3`
   font-size: 1.5em;
-  color: white;
   margin-bottom: 5%;
 `
 
 const RSVP = styled.div`
   margin-top: 5%;
-  border-top: 2px solid #707c8b;
+  border-radius: 8px;
+  background: white;
   padding: 3%;
-  display: flex;
-  justify-content: space-between;
+  margin: 4% 2% 3% 2%;
 `
 
 const Registry = styled.div`
-  border-top: 2px solid #707c8b;
+  margin-top: 5%;
+  border-radius: 8px;
+  background: white;
   padding: 3%;
+  margin: 4% 2% 3% 2%;
 `
 
 const Pie = styled.div`
@@ -218,14 +227,14 @@ class Dashboard extends Component {
                 {this.props.userInfo.partnerName1} &amp;{' '}
                 {this.props.userInfo.partnerName2}'s Wedding
               </H1>
-              <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
+              <H1>When: {moment(this.props.userInfo.weddingDate).format('ll')}</H1>
               <Link to='/Design'>
                 <Button>Change Design</Button>
               </Link>
             </NameDate>
             <Location>
               {/* This will need to share the link to the personal wedding web page */}
-              <H2>{this.props.userInfo.venueLocation}</H2>
+              <H2>Where: {this.props.userInfo.venueLocation}</H2>
               <ShareButton>Share</ShareButton>
             </Location>
           </Head>
