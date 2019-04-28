@@ -19,6 +19,9 @@ const DashContainer = styled.div`
   display: flex;
   // background-color: white;
   // overflow: auto
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    width: 99%;
+  }
 `
 
 const Button = styled.button`

@@ -24,12 +24,20 @@ const NavPage = styled.div`
   background: white;
   border-radius: 8px;
   justify-content: space-evenly;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    width: 99%;
+    margin: 1% auto;
+  }
 `
 
 const Img = styled.img`
   width: 20%;
   height: 24vh;
   border-radius: 8px;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    width: 20%;
+    height: 13vh;
+  }
 `
 
 const SideNav = styled.div`
@@ -50,10 +58,13 @@ const MenuList = styled.ul`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+    padding: 1%;
+  }
 `
 
 const Li = styled.a`
-  color: black;
+  margin: 2%;
 `
 
 const ButtonWrapper = styled.div`
@@ -92,36 +103,36 @@ class Navigation extends Component {
                     Dashboard
                   </Link>
                 </Li>
-                <li className='listItem'>
+                <Li className='listItem'>
                   <Link to='/settings'>
                     Settings
                   </Link>
-                </li>
-                <li className='listItem'>
+                </Li>
+                <Li className='listItem'>
                   <Link to='/pricing' className='style-link'>
                     Pricing
                   </Link>
-                </li>
-                <li className='listItem'>
+                </Li>
+                <Li className='listItem'>
                   <Link to='/billing' className='style-link'>
                     Billing
                   </Link>
-                </li>
-                <li className='listItem'>
+                </Li>
+                <Li className='listItem'>
                   <Link to='/rsvp' className='style-link'>
                     RSVP
                   </Link>
-                </li>
-                <li className='listItem'>
+                </Li>
+                <Li className='listItem'>
                   <Link to='/guests' className='style-link'>
                     Guests
                   </Link>
-                </li>
-                <li className='listItem'>
+                </Li>
+                <Li className='listItem'>
                   <Link to='/design' className='style-link'>
                     Design
                   </Link>
-                </li>
+                </Li>
               </MenuList>
               <ButtonWrapper>
               <Button onClick={this.handleClick}>Sign Out</Button>
