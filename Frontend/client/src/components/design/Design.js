@@ -18,6 +18,9 @@ const DesignBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 
 const TemplateWrapper = styled.div`
@@ -49,6 +52,9 @@ const SampleWrapper1 = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   margin: 3%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    height: 137px;
+  }
 `
 const SampleWrapper2 = styled.div`
   background-image: url(${Background2});
@@ -58,6 +64,9 @@ const SampleWrapper2 = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   margin: 3%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    height: 137px;
+  }
 `
 const SampleWrapper3 = styled.div`
   background-image: url(${Background3});
@@ -67,6 +76,9 @@ const SampleWrapper3 = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   margin: 3%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    height: 137px;
+  }
 `
 
 const InputWrapper = styled.div`
@@ -78,15 +90,29 @@ const InputWrapper = styled.div`
 `
 
 const Button = styled.button`
-  border-radius: 25px;
+  border-radius: 8px;
   color: white;
   border: none;
   outline: none;
-  padding: 15px 70px;
-  font-size: 0.8em;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
   font-weight: 500;
   background: #52c4b9;
-  margin: 3%;
+  cursor: pointer;
+  margin: 5% 3% 3% 3%;
+  width: 30.3%;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
 `
 
 const Head = styled.div`
