@@ -11,6 +11,9 @@ const RSVPWrapper = styled.div`
   background: white;
   border-radius: 8px;
   margin-top: 3%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 
 const Head = styled.div`

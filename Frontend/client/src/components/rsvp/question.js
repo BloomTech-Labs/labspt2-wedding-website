@@ -12,6 +12,37 @@ const AnswerWrapper = styled.div`
   text-align: center;
 `
 
+const ButtonWrapper =styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
+
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% 3% 3% 3%;
+  width: 30.3%;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 30%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+`
+
 class Question extends React.Component {
   constructor(props) {
     super(props)
@@ -104,9 +135,11 @@ class Question extends React.Component {
     return (
       <AnswerWrapper>
         <h3>Question: {this.props.questionInfo.Question_body}</h3>
-        <button onClick={this.deleteHandler}>Delete</button>
-        <button onClick={this.updateHandler}>update</button>
-        <button onClick={this.answersHandler}>See answers</button>
+        <ButtonWrapper>
+          <Button onClick={this.deleteHandler}>Delete</Button>
+          <Button onClick={this.updateHandler}>update</Button>
+          <Button onClick={this.answersHandler}>See answers</Button>
+        </ButtonWrapper>
         {this.state.answersTab ? (
           this.state.answers.length > 0 ? (
             this.state.answers.map(answer => {
