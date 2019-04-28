@@ -19,7 +19,7 @@ const DashContainer = styled.div`
   display: flex;
   // background-color: white;
   // overflow: auto
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
     width: 99%;
   }
 `
@@ -36,6 +36,9 @@ const Button = styled.button`
   background: #52c4b9;
   cursor: pointer;
   margin: 10% 3% 3% 3%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 100%;
+  }
 `
 
 const RegistryItem = styled.button`

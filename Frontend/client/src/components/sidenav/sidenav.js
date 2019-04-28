@@ -24,7 +24,7 @@ const NavPage = styled.div`
   background: white;
   border-radius: 8px;
   justify-content: space-evenly;
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
     width: 99%;
     margin: 1% auto;
   }
@@ -34,9 +34,14 @@ const Img = styled.img`
   width: 20%;
   height: 24vh;
   border-radius: 8px;
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+  @media only screen and (max-width: 600px) and (min-width: 300px) {
     width: 20%;
     height: 13vh;
+    margin: 1%;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 601px) {
+    width: 24%;
+    height: 20vh;
   }
 `
 
@@ -58,7 +63,7 @@ const MenuList = styled.ul`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
     padding: 1%;
   }
 `
