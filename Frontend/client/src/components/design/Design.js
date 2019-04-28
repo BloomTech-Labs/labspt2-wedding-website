@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-import 'simplebar/dist/simplebar.min.css';
-
 import styled from 'styled-components'
 
 import Background1 from '../design/media/background1.jpg'
