@@ -10,6 +10,7 @@ const RSVPWrapper = styled.div`
   margin: 0 auto;
   background: white;
   border-radius: 8px;
+  margin-top: 3%;
 `
 
 const Head = styled.div`

@@ -17,7 +17,7 @@ const RSVPPage = styled.div`
     width: 100%;
     max-width: 1280px;
     min-width: 1024px;
-    margin: 0 auto;
+    margin: 3% auto;
 `;
 
 const RSVPForm = styled.div`

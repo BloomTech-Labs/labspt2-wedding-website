@@ -26,11 +26,10 @@ const SettingsPage = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   height: 100vh;
-  padding-top: 60px;
   /* width: 100vw;
     max-width: 1800px;
     min-width: 1025px; */
-  margin: 0 auto;
+  margin: 3% auto;
   justify-content: space-around;
   width: 100%;
   max-width: 1280px;
