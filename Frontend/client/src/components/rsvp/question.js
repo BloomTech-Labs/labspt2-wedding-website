@@ -2,8 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteQuestion, editQuestion } from '../../actions'
 
+import styled from 'styled-components'
+
 import axios from 'axios'
 import Answer from './answer'
+
+const AnswerWrapper = styled.div`
+  margin: 3%;
+  text-align: center;
+`
 
 class Question extends React.Component {
   constructor(props) {
@@ -95,7 +102,7 @@ class Question extends React.Component {
 
   render() {
     return (
-      <div>
+      <AnswerWrapper>
         <h3>Question: {this.props.questionInfo.Question_body}</h3>
         <button onClick={this.deleteHandler}>Delete</button>
         <button onClick={this.updateHandler}>update</button>
@@ -130,7 +137,7 @@ class Question extends React.Component {
             <button onClick={this.submitUpdateHandler}>Update</button>
           </form>
         ) : null}
-      </div>
+      </AnswerWrapper>
     )
   }
 }
