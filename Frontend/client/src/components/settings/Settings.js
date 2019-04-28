@@ -13,74 +13,29 @@ import styled from 'styled-components'
 import 'react-datepicker/dist/react-datepicker.css'
 
 const SettingsPage = styled.div`
-  /* display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  min-width: 1025px;
-  justify-content: space-around;
-  height: 100vh;
-  max-height: 500px;
-  margin-top: 50px; */
-
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 100vh;
-  /* width: 100vw;
-    max-width: 1800px;
-    min-width: 1025px; */
-  margin: 3% auto;
-  justify-content: space-around;
+  flex-direction: column;
+  margin: 0 auto;
   width: 100%;
-  max-width: 1280px;
-  min-width: 1024px;
 
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    /* flex-direction: column;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
     width: 100%;
     min-width: 350px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto; */
-
-    /* flex-direction: column;
-    width: 100%;
-    align-items: center; */
-    flex-direction: column;
-    width: 100%;
-    min-width: 350px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
   }
 `
 
 const SettingsBox = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  width: 450px;
-  justify-content: center; */
-
   display: flex;
   flex-direction: column;
-  width: 450px;
   background-color: #ffffff;
-  margin: 0 25px;
   height: 300px;
   padding: 10px 25px;
   border-radius: 8px;
-  justify-content: center;
-
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    /* width: 100%;
-    max-width: 350px;
+  margin: 3% auto;
+  width: 80%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
     justify-content: center;
-    margin: 0; */
-
-    width: 100%;
-    max-width: 350px;
-    justify-content: center;
-    margin: 0;
     height: 250px;
   }
 `
@@ -150,11 +105,28 @@ const LeftInput = styled.input`
 `
 
 const Button = styled.button`
-  width: 50%;
-  margin: 0 auto;
-  height: 100px;
-  font-size: 24px;
-  text-transform: uppercase;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    margin: 3% auto;
+  }
 `
 
 const ButtonLink = styled(Link)`
