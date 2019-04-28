@@ -47,6 +47,7 @@ const MenuWrapper = styled.div`
 const MenuList = styled.ul`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
 `
