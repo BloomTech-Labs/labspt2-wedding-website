@@ -12,7 +12,7 @@ import styled from 'styled-components'
 Modal.setAppElement('#root')
 
 const DashContainer = styled.div`
-  max-width: 80%;
+  width: 80%;
   // width: 95%;
   margin: 0 auto;
   // border-radius: 8px;
