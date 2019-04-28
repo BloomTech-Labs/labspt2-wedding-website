@@ -57,3 +57,9 @@ table {
 .App {
 	height: 100vh;
 }
+
+a {
+    color: black !important;
+    text-decoration: none;
+    margin: 0 auto;
+}

@@ -25,7 +25,7 @@ const NavPage = styled.div`
   border-radius: 8px;
   justify-content: space-evenly;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
-    width: 99%;
+    width: 95%;
     margin: 1% auto;
   }
 `

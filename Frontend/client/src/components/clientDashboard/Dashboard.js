@@ -20,7 +20,7 @@ const DashContainer = styled.div`
   // background-color: white;
   // overflow: auto
   @media only screen and (max-width: 700px) and (min-width: 300px) {
-    width: 99%;
+    width: 95%;
   }
 `
 
@@ -35,9 +35,49 @@ const Button = styled.button`
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
+  margin: 5% 3% 3% 3%;
+  width: 30.3%;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+`
+
+const NaughtyButton = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 70px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
   margin: 10% 3% 3% 3%;
-  @media only screen and (max-width: 700px) and (min-width: 300px) {
-    width: 100%;
+  width: 100%;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 69%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    width: 74%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (min-width: 701px) {
+    width: 95%;
+    display: flex;
+    margin: 5% auto;
   }
 `
 
@@ -52,31 +92,6 @@ const RegistryItem = styled.button`
   font-weight: 500;
   background: goldenrod;
   cursor: pointer;
-  margin: 3%;
-`
-
-const ShareButton = styled.button`
-  border-radius: 25px;
-  color: white;
-  border: none;
-  outline: none;
-  padding: 15px 70px;
-  font-size: 0.8em;
-  font-weight: 500;
-  background: #52c4b9;
-  float: right;
-  margin: 3%;
-`
-
-const GLButton = styled.button`
-  border-radius: 25px;
-  color: white;
-  border: none;
-  outline: none;
-  padding: 15px 70px;
-  font-size: 0.8em;
-  font-weight: 500;
-  background: #52c4b9;
   margin: 3%;
 `
 
@@ -116,6 +131,9 @@ const NameDate = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    align-items: inherit;
+  }  
 `
 
 const Location = styled.div`
@@ -128,12 +146,18 @@ const H1 = styled.h1`
   font-size: 2.5em;
   text-align: center;
   margin-top: 5%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    font-size: 2em;
+  } 
 `
 
 const H2 = styled.h2`
   font-size: 2.5em;
   text-align: center;
   margin-top: 12%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    font-size: 2em;
+  } 
 `
 const RegistryContainer = styled.div`
   display: flex;
@@ -151,6 +175,7 @@ const GuestList = styled.div`
 const H3 = styled.h3`
   font-size: 1.5em;
   margin-bottom: 5%;
+  text-align: center;
 `
 
 const RSVP = styled.div`
@@ -171,6 +196,11 @@ const Registry = styled.div`
 
 const Pie = styled.div`
   width: 25%;
+`
+
+const P = styled.p`
+  text-align: center;
+  margin: 0 auto;
 `
 
 class Dashboard extends Component {
@@ -235,23 +265,23 @@ class Dashboard extends Component {
               </H1>
               <H1>When: {moment(this.props.userInfo.weddingDate).format('ll')}</H1>
               <Link to='/Design'>
-                <Button>Change Design</Button>
+                <NaughtyButton><P>Change Design</P></NaughtyButton>
               </Link>
             </NameDate>
             <Location>
               {/* This will need to share the link to the personal wedding web page */}
               <H2>Where: {this.props.userInfo.venueLocation}</H2>
-              <ShareButton>Share</ShareButton>
+              <Button><P>Share</P></Button>
             </Location>
           </Head>
 
           <GuestList>
             <H3>Guest List</H3>
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
-            <Button>Import CSV</Button>
+            <Button><P>Import CSV</P></Button>
             {/* Needs to route to guest list */}
             <Link to='/guests'>
-              <GLButton>Guest List</GLButton>
+              <Button><P>Guest List</P></Button>
             </Link>
           </GuestList>
           <RSVP>
@@ -279,7 +309,7 @@ class Dashboard extends Component {
               />
             </Pie>
             <Link to='RSVP'>
-              <Button>Edit Questions</Button>
+              <Button><P>Edit Questions</P></Button>
             </Link>
           </RSVP>
           <Registry>
@@ -303,7 +333,7 @@ class Dashboard extends Component {
                   <RegistryItem>No Registry Added yet</RegistryItem>
                 )
               ) : null}
-              <Button onClick={this.handleModal}>Add Registry</Button>
+              <Button onClick={this.handleModal}><P>Add Registry</P></Button>
             </RegistryContainer>
           </Registry>
           <Modal isOpen={this.state.modal}>
