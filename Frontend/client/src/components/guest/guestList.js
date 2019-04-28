@@ -34,6 +34,9 @@ const AddContainer = styled.div`
   border-radius: 8px;
   border: 1px solid gray;
   width: 80%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 // Update guestnot working
 
