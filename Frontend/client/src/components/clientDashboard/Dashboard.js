@@ -25,29 +25,28 @@ const DashContainer = styled.div`
 `
 
 const Button = styled.button`
-  border-radius: 8px;
-  color: white;
-  border: none;
-  outline: none;
-  border-radius: 25px;
-  padding: 15px 70px;
-  font-size: 1em;
-  font-weight: 500;
-  background: #52c4b9;
-  cursor: pointer;
-  margin: 5% 3% 3% 3%;
-  width: 30.3%;
-  justify-content: space-evenly;
-  @media only screen and (max-width: 500px) and (min-width: 300px) {
-    width: 60%;
-    display: flex;
-    margin: 3% auto;
-  }
-  @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
-    display: flex;
-    margin: 3% auto;
-  }
+border-radius: 8px;
+color: white;
+border: none;
+outline: none;
+border-radius: 25px;
+padding: 15px;
+font-size: 1em;
+font-weight: 500;
+background: #52c4b9;
+cursor: pointer;
+margin: 5% auto;
+width: 30.3%;
+display: flex;
+justify-content: space-evenly;
+@media only screen and (max-width: 500px) and (min-width: 300px) {
+  width: 60%;
+  margin: 3% auto;
+}
+@media only screen and (max-width: 700px) and (min-width: 501px) {
+  // width: 60%;
+  margin: 3% auto;
+}
 `
 
 const NaughtyButton = styled.button`
@@ -75,7 +74,7 @@ const NaughtyButton = styled.button`
     margin: 3% auto;
   }
   @media only screen and (min-width: 701px) {
-    width: 95%;
+    width: 69%;
     display: flex;
     margin: 5% auto;
   }
@@ -154,7 +153,7 @@ const H1 = styled.h1`
 const H2 = styled.h2`
   font-size: 2.5em;
   text-align: center;
-  margin-top: 12%;
+  margin: 3% 3% 5% 3%;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     font-size: 2em;
   } 
