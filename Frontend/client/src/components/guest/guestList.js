@@ -7,7 +7,7 @@ import { fetchGuests, addGuest, deleteGuest } from '../../actions/'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import styled from 'styled-components'
-import { FaAutoprefixer } from 'react-icons/fa';
+import { FaAutoprefixer } from 'react-icons/fa'
 
 const Button = styled.button`
   background-color: red;
@@ -70,7 +70,6 @@ class GuestList extends Component {
       user: value,
     })
   }
-
   codeGenerator = () => {
     console.log('generator fire')
     const length = 5
@@ -94,79 +93,6 @@ class GuestList extends Component {
     }
     return generate()
   }
-
-  codeGenerator = () => {
-    console.log('generator fire')
-    const length = 5
-    const timestamp = +new Date()
-
-    const getRandomInt = (min, max) => {
-      return Math.floor(Math.random() * (max - min + 1)) + min
-    }
-
-    const generate = () => {
-      var ts = timestamp.toString()
-      var parts = ts.split('').reverse()
-      var id = ''
-
-      for (var i = 0; i < length; ++i) {
-        var index = getRandomInt(0, parts.length - 1)
-        id += parts[index]
-      }
-
-      return Number(id)
-    }
-    return generate()
-  }
-
-  codeGenerator = () => {
-    console.log('generator fire')
-    const length = 5
-    const timestamp = +new Date()
-
-    const getRandomInt = (min, max) => {
-      return Math.floor(Math.random() * (max - min + 1)) + min
-    }
-
-    const generate = () => {
-      var ts = timestamp.toString()
-      var parts = ts.split('').reverse()
-      var id = ''
-
-      for (var i = 0; i < length; ++i) {
-        var index = getRandomInt(0, parts.length - 1)
-        id += parts[index]
-      }
-
-      return Number(id)
-    }
-    return generate()
-  }
-
-  codeGenerator = () => {
-    console.log('generator fire')
-    const length = 5
-    const timestamp = +new Date()
-
-    const getRandomInt = (min, max) => {
-      return Math.floor(Math.random() * (max - min + 1)) + min
-    }
-
-    const generate = () => {
-      var ts = timestamp.toString()
-      var parts = ts.split('').reverse()
-      var id = ''
-
-      for (var i = 0; i < length; ++i) {
-        var index = getRandomInt(0, parts.length - 1)
-        id += parts[index]
-      }
-
-      return Number(id)
-    }
-    return generate()
-  }
-  
 
   addGuestHandler = e => {
     e.preventDefault()
@@ -197,25 +123,23 @@ class GuestList extends Component {
     console.log('guests :', this.props.guests)
     const columns = [
       {
-        Header: 'First Name',
-        accessor: 'firstName',
+        Header: 'Name',
         width: 100,
         maxWidth: 100,
         minWidth: 100,
+        sortable: false,
+        filterable: false,
         style: {
           display: 'flex',
           justifyContent: 'center',
         },
-      },
-      {
-        Header: 'Last Name',
-        accessor: 'lastName',
-        width: 100,
-        maxWidth: 100,
-        minWidth: 100,
-        style: {
-          display: 'flex',
-          justifyContent: 'center',
+        Cell: props => {
+          let name = (
+            <p>
+              {props.original.firstName} {props.original.lastName}
+            </p>
+          )
+          return name
         },
       },
       {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
-const URL = 'https://joinourbigday.herokuapp.com'
+const URL = 'http://localhost:3700'
 class RsvpQuestion extends Component {
   constructor(props) {
     super(props)

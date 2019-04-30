@@ -8,6 +8,7 @@ module.exports = server => {
   server.post('/guest', addGuest)
   server.put('/guest/:id', editGuest)
   server.delete('/guest/:id', removeGuest)
+  server.post('/guest/:userId/email', emailGuests)
 }
 allGuest = (req, res) => {
   helper
@@ -120,5 +121,20 @@ removeGuest = (req, res) => {
     })
     .catch(err => {
       res.status(500).json({ message: 'Failed to delete guest' })
+    })
+}
+
+emailGuests = (req, res) => {
+  const { userId } = req.params
+  guestEmails = []
+  helper
+    .guestsByUserId(userId)
+    .then(guests => {
+      guests.map(guest => {
+        guestEmails.push(guest.email)
+      })
+    })
+    .catch(() => {
+      res.status(500).json({ message: 'Failed to get guests' })
     })
 }

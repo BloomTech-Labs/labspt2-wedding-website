@@ -3,7 +3,7 @@ import Axios from 'axios'
 
 import RsvpQuestion from './subModalComponents/rsvpQuestion'
 
-const URL = 'https://joinourbigday.herokuapp.com'
+const URL = 'http://localhost:3700'
 
 class Rsvp extends Component {
   constructor(props) {

@@ -6,6 +6,10 @@ import styled from 'styled-components'
 
 import background from '../media/background2.jpg'
 
+import Modal from 'react-modal'
+import RsvpModal from '../../modals/rsvp'
+Modal.setAppElement('#root')
+
 const WP1Body = styled.div`
   margin: 0 auto;
   background-image: url(${background});
@@ -25,7 +29,7 @@ const WhoWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5); 
+  background: rgba(177, 221, 241, 0.5);
 `
 
 const WhenWrapper = styled.div`
@@ -38,7 +42,7 @@ const WhenWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5); 
+  background: rgba(177, 221, 241, 0.5);
 `
 
 const RSVPWrapper = styled.div`
@@ -69,7 +73,7 @@ const StoryWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5); 
+  background: rgba(177, 221, 241, 0.5);
 `
 
 const H1 = styled.h1`
@@ -88,38 +92,43 @@ const P = styled.p`
 `
 
 class WeddingPage2 extends Component {
-  constructor() {
-    super()
-
-    this.state = {}
-
-    this.handleChange = this.handleChange.bind(this)
+  constructor(props) {
+    super(props)
+    this.state = {
+      modal: false,
+    }
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value })
-    event.preventDefault()
+  handleModal = () => {
+    this.setState({
+      modal: !this.state.modal,
+    })
   }
-
   render() {
     return (
       <WP1Body>
         <div>
           <WhoWrapper>
             <H1>
-              {this.props.userInfo.partnerName1} &amp;{' '}
-              {this.props.userInfo.partnerName2}'s Wedding
+              {this.props.siteInfo.partnerName1} &amp;{' '}
+              {this.props.siteInfo.partnerName2}'s Wedding
             </H1>
           </WhoWrapper>
           <WhenWrapper>
-            <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
-            <H2>{this.props.userInfo.venueLocation}</H2>
+            <H1>{moment(this.props.siteInfo.weddingDate).format('ll')}</H1>
+            <H2>{this.props.siteInfo.venueLocation}</H2>
           </WhenWrapper>
           <RSVPWrapper>
-            <Button>
+            <Button onClick={this.handleModal}>
               {/* This will need to be linked to the answers page once it exists. */}
               RSVP
             </Button>
+            <Modal isOpen={this.state.modal}>
+              <RsvpModal
+                user={this.props.siteInfo}
+                handleClose={this.handleModal}
+              />
+            </Modal>
           </RSVPWrapper>
           <StoryWrapper>
             <H2>Our Story</H2>

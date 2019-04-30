@@ -25,7 +25,7 @@ const WhoWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5); 
+  background: rgba(177, 221, 241, 0.5);
 `
 
 const WhenWrapper = styled.div`
@@ -38,7 +38,7 @@ const WhenWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5); 
+  background: rgba(177, 221, 241, 0.5);
 `
 
 const RSVPWrapper = styled.div`
@@ -69,7 +69,7 @@ const StoryWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5); 
+  background: rgba(177, 221, 241, 0.5);
 `
 
 const H1 = styled.h1`
@@ -107,13 +107,13 @@ class WeddingPage1 extends Component {
         <div>
           <WhoWrapper>
             <H1>
-              {this.props.userInfo.partnerName1} &amp;{' '}
-              {this.props.userInfo.partnerName2}'s Wedding
+              {this.props.siteInfo.partnerName1} &amp;{' '}
+              {this.props.siteInfo.partnerName2}'s Wedding
             </H1>
           </WhoWrapper>
           <WhenWrapper>
-            <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
-            <H2>{this.props.userInfo.venueLocation}</H2>
+            <H1>{moment(this.props.siteInfo.weddingDate).format('ll')}</H1>
+            <H2>{this.props.siteInfo.venueLocation}</H2>
           </WhenWrapper>
           <RSVPWrapper>
             <Button>
