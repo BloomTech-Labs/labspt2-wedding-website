@@ -43,7 +43,7 @@ module.exports = {
   },
 
   sendGuestEmail: (to, code, url) => {
-    console.log('email verification fired')
+    console.log('guest email fired')
     const hostUrl = process.env.HOST_URL
     const request = sg.emptyRequest({
       method: 'POST',
