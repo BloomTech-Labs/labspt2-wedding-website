@@ -2,6 +2,7 @@ const helper = require('../helpers/customSiteDb')
 
 module.exports = server => {
   server.get('/customSite/:siteUrl', siteByUrl)
+  server.get('/customSite/user/:userId', siteById)
   server.post('/customSite/:userId', addSiteInfo)
   server.put('/customSite/:userId', editSite)
   server.delete('/customSite/:userId', removeSiteInfo)
@@ -21,6 +22,18 @@ siteByUrl = (req, res) => {
     })
     .catch(err => {
       console.log(err)
+      res.status(500).json({ message: 'getting site info failed' })
+    })
+}
+
+siteById = (req, res) => {
+  const { userId } = req.params
+  helper
+    .siteByUserId(userId)
+    .then(site => {
+      res.status(200).json(site)
+    })
+    .catch(() => {
       res.status(500).json({ message: 'getting site info failed' })
     })
 }

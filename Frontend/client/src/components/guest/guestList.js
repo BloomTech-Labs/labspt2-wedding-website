@@ -8,6 +8,7 @@ import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import styled from 'styled-components'
 import { FaAutoprefixer } from 'react-icons/fa'
+import Axios from 'axios'
 
 const Button = styled.button`
   background-color: red;
@@ -117,6 +118,22 @@ class GuestList extends Component {
   deleteHandler = (e, guestId) => {
     e.preventDefault()
     this.props.deleteGuest(this.props.userInfo.id, guestId)
+  }
+
+  emailHandler = () => {
+    Axios.get(`http://localhost:3700/customSite/user/${this.props.userInfo.id}`)
+      .then(siteInfo => {
+        const userUrl = {
+          userUrl: siteInfo.data.userUrl,
+        }
+        Axios.post(
+          `http://localhost:3700/guest/${this.props.userInfo.id}/email`,
+          userUrl
+        )
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   render() {
@@ -241,6 +258,10 @@ class GuestList extends Component {
             />
             <button onClick={this.addGuestHandler}>Add guest</button>
           </form>
+        </AddContainer>
+        <AddContainer>
+          <h1>Send email</h1>
+          <button onClick={this.emailHandler}>send</button>
         </AddContainer>
         {this.props.guests ? (
           <ReactTable

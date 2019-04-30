@@ -1,4 +1,5 @@
 const helper = require('../helpers/guestDb')
+const { sendGuestEmail } = require('../helpers/email')
 
 module.exports = server => {
   server.get('/guest', allGuest)
@@ -126,15 +127,10 @@ removeGuest = (req, res) => {
 
 emailGuests = (req, res) => {
   const { userId } = req.params
-  guestEmails = []
-  helper
-    .guestsByUserId(userId)
-    .then(guests => {
-      guests.map(guest => {
-        guestEmails.push(guest.email)
-      })
+  const { userUrl } = req.body
+  helper.guestsByUserId(userId).then(guests => {
+    guests.map(guest => {
+      sendGuestEmail(guest.email, guest.code, userUrl)
     })
-    .catch(() => {
-      res.status(500).json({ message: 'Failed to get guests' })
-    })
+  })
 }
