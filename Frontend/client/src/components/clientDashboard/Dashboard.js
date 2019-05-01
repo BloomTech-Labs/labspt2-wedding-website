@@ -203,8 +203,10 @@ const modalStyle = {
     right: 'auto',
     bottom: 'auto',
     transform: 'translate(-50%, -50%)',
-    height: '300px',
+    height: '320px',
     borderRadius: '8px',
+    width: '400px',
+    padding: '0',
   },
 }
 
