@@ -13,9 +13,9 @@ Modal.setAppElement('#root')
 
 const DashContainer = styled.div`
   width: 80%;
-  // width: 95%;
+
   margin: 0 auto;
-  // border-radius: 8px;
+
   display: flex;
   // background-color: white;
   // overflow: auto
@@ -25,28 +25,28 @@ const DashContainer = styled.div`
 `
 
 const Button = styled.button`
-border-radius: 8px;
-color: white;
-border: none;
-outline: none;
-border-radius: 25px;
-padding: 15px;
-font-size: 1em;
-font-weight: 500;
-background: #52c4b9;
-cursor: pointer;
-margin: 5% auto;
-width: 30.3%;
-display: flex;
-justify-content: space-evenly;
-@media only screen and (max-width: 500px) and (min-width: 300px) {
-  width: 60%;
-  margin: 3% auto;
-}
-@media only screen and (max-width: 700px) and (min-width: 501px) {
-  // width: 60%;
-  margin: 3% auto;
-}
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    margin: 3% auto;
+  }
 `
 
 const NaughtyButton = styled.button`
@@ -109,7 +109,7 @@ const HeadContainer = styled.div`
   //   margin-left: auto;
   //   margin-right: auto;
   // }
-`;
+`
 
 const Head = styled.div`
   display: flex;
@@ -118,7 +118,7 @@ const Head = styled.div`
   background: white;
   border-radius: 8px;
   margin: 4% 0%;
-`;
+`
 
 const DashPage = styled.div`
   display: flex;
@@ -132,13 +132,13 @@ const NameDate = styled.div`
   align-items: center;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     align-items: inherit;
-  }  
+  }
 `
 
 const Location = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `
 
 const H1 = styled.h1`
@@ -147,7 +147,7 @@ const H1 = styled.h1`
   margin-top: 5%;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     font-size: 2em;
-  } 
+  }
 `
 
 const H2 = styled.h2`
@@ -156,7 +156,7 @@ const H2 = styled.h2`
   margin: 3% 3% 5% 3%;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     font-size: 2em;
-  } 
+  }
 `
 const RegistryContainer = styled.div`
   display: flex;
@@ -196,6 +196,17 @@ const Registry = styled.div`
 const Pie = styled.div`
   width: 25%;
 `
+const modalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    height: '300px',
+    borderRadius: '8px',
+  },
+}
 
 const P = styled.p`
   text-align: center;
@@ -262,25 +273,35 @@ class Dashboard extends Component {
                 {this.props.userInfo.partnerName1} &amp;{' '}
                 {this.props.userInfo.partnerName2}'s Wedding
               </H1>
-              <H1>When: {moment(this.props.userInfo.weddingDate).format('ll')}</H1>
+              <H1>
+                When: {moment(this.props.userInfo.weddingDate).format('ll')}
+              </H1>
               <Link to='/Design'>
-                <NaughtyButton><P>Change Design</P></NaughtyButton>
+                <NaughtyButton>
+                  <P>Change Design</P>
+                </NaughtyButton>
               </Link>
             </NameDate>
             <Location>
               {/* This will need to share the link to the personal wedding web page */}
               <H2>Where: {this.props.userInfo.venueLocation}</H2>
-              <Button><P>Share</P></Button>
+              <Button>
+                <P>Share</P>
+              </Button>
             </Location>
           </Head>
 
           <GuestList>
             <H3>Guest List</H3>
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
-            <Button><P>Import CSV</P></Button>
+            <Button>
+              <P>Import CSV</P>
+            </Button>
             {/* Needs to route to guest list */}
             <Link to='/guests'>
-              <Button><P>Guest List</P></Button>
+              <Button>
+                <P>Guest List</P>
+              </Button>
             </Link>
           </GuestList>
           <RSVP>
@@ -308,7 +329,9 @@ class Dashboard extends Component {
               />
             </Pie>
             <Link to='RSVP'>
-              <Button><P>Edit Questions</P></Button>
+              <Button>
+                <P>Edit Questions</P>
+              </Button>
             </Link>
           </RSVP>
           <Registry>
@@ -332,16 +355,18 @@ class Dashboard extends Component {
                   <RegistryItem>No Registry Added yet</RegistryItem>
                 )
               ) : null}
-              <Button onClick={this.handleModal}><P>Add Registry</P></Button>
+              <Button onClick={this.handleModal}>
+                <P>Add Registry</P>
+              </Button>
             </RegistryContainer>
           </Registry>
-          <Modal isOpen={this.state.modal}>
+          <Modal isOpen={this.state.modal} style={modalStyle}>
             <RegistryAddModal
               user={this.props.userInfo}
               handleClose={this.handleModal}
             />
           </Modal>
-          <Modal isOpen={this.state.regModal}>
+          <Modal isOpen={this.state.regModal} style={modalStyle}>
             <RegistryViewModal
               registry={registry[this.state.regModal - 1]}
               user={this.props.userInfo}

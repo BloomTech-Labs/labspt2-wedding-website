@@ -2,8 +2,31 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 
 import RsvpQuestion from './subModalComponents/rsvpQuestion'
+import styled from 'styled-components'
 
 const URL = 'http://localhost:3700'
+
+const MainCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+`
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+`
+
+const Body = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`
+
+const Input = styled.input``
+
+const Footer = styled.div``
 
 class Rsvp extends Component {
   constructor(props) {
@@ -90,22 +113,27 @@ class Rsvp extends Component {
   render() {
     if (this.state.codeStatus === null) {
       return (
-        <div>
-          <button onClick={() => this.props.handleClose()}>Close</button>
-          <form>
-            <label htmlFor='label'>Code</label>
-            <input
+        <MainCont>
+          <Header>
+            <button onClick={() => this.props.handleClose()}>Close</button>
+            <h2>RSVP</h2>
+          </Header>
+          <Body>
+            <h2>Code</h2>
+            <Input
               type='text'
               placeholder='Your code'
               name='code'
               value={this.state.code}
               onChange={this.inputHandler}
             />
-            <button onClick={e => this.verifyGuest(e, this.state.code)}>
-              Go
-            </button>
-          </form>
-        </div>
+            <Footer>
+              <button onClick={e => this.verifyGuest(e, this.state.code)}>
+                Go
+              </button>
+            </Footer>
+          </Body>
+        </MainCont>
       )
     } else {
       if (this.state.codeStatus) {
