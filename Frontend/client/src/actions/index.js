@@ -21,7 +21,7 @@ export const LOGOUT = 'LOGOUT'
 export const USER_FEED = 'USER_FEED'
 
 // needs to be stored on secret .env file for production
-const api = /*'https://joinourbigday.herokuapp.com'*/ 'http://localhost:3700'
+const api ='https://joinourbigday.herokuapp.com' /*'http://localhost:3700'*/
 
 //Login in / Registering
 export const loginRegister = creds => dispatch => {

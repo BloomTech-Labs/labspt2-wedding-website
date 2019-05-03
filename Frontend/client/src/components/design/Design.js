@@ -8,7 +8,7 @@ import Background1 from '../design/media/background1.jpg'
 import Background2 from '../design/media/background2.jpg'
 import Background3 from '../design/media/background3.jpg'
 
-const URL = 'http://localhost:3700'
+const URL = 'https://joinourbigday.herokuapp.com'
 
 const DesignBody = styled.div`
   background: white;
