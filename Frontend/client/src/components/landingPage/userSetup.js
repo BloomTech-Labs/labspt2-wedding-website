@@ -10,7 +10,7 @@ import GoogleSuggest from '../googleSuggest'
 
 const USBody = styled.div`
   display: flex;
-  flex direction: column;
+  flex-direction: column;
   border-radius: 8px;
   background: white;
   margin: 5% auto;
@@ -18,15 +18,15 @@ const USBody = styled.div`
 `
 
 const H1 = styled.h1`
-  margin 3%;
+  margin: 3%;
 `
 const Label = styled.label`
   font-size: 1.5em;
-  margin: 1%; 
+  margin: 1%;
 `
 
 const Input = styled.input`
-  padding: .5%;
+  padding: 0.5%;
   margin-left: 1%;
 `
 
@@ -83,10 +83,12 @@ class UserSetup extends Component {
     console.log('input handled')
   }
 
-  hadleChangeDate = date => {
+  handleChangeDate = date => {
+    console.log('datePicker', date)
     this.setState({
       userInfo: { ...this.state.userInfo, weddingDate: date },
     })
+    console.log('datePicker', date)
   }
 
   handleSubmit = e => {
@@ -131,7 +133,7 @@ class UserSetup extends Component {
       <USBody>
         <FormWrapper>
           <H1>User Setup</H1>
-            <Form>
+          <Form>
             {!this.props.userInfo.username ? (
               <FormWrapper>
                 <Label htmlFor=''>Username</Label>
@@ -178,7 +180,7 @@ class UserSetup extends Component {
               onChange={this.handleLocationChange.bind(this)}
               suggest={this.handleSelectSuggest.bind(this)}
               search={this.state.search}
-              value={this.state.userInfo.venueLocation} 
+              value={this.state.userInfo.venueLocation}
             />
             <Button onClick={this.handleSubmit}> Done </Button>
           </Form>

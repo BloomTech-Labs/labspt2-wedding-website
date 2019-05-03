@@ -162,7 +162,7 @@ class Settings extends Component {
     console.log('input handled')
   }
 
-  hadleChangeDate = date => {
+  handleChangeDate = date => {
     this.setState({
       userInfo: { ...this.state.userInfo, weddingDate: date },
     })
