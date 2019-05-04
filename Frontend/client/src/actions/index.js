@@ -19,6 +19,7 @@ export const DELETE = 'DELETE'
 export const ERROR = 'ERROR'
 export const LOGOUT = 'LOGOUT'
 export const USER_FEED = 'USER_FEED'
+export const GET_SITE = 'GET_SITE'
 
 // needs to be stored on secret .env file for production
 const api = /*'https://joinourbigday.herokuapp.com'*/ 'http://localhost:3700'
@@ -365,6 +366,64 @@ export const deleteRegistry = (userId, id) => dispatch => {
   axios
     .delete(`${api}/registry/${id}`)
     .then(() => fetchRegistry(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const fetchSite = userId => dispatch => {
+  console.log('userId :', userId)
+  axios
+    .get(`${api}/customSite/user/${userId}`)
+    .then(res => {
+      dispatch({
+        type: GET_SITE,
+        payload: res.data,
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const addSite = (userId, site) => dispatch => {
+  console.log('userId :', userId)
+  axios
+    .post(`${api}customSite/${userId}`, site)
+    .then(() => fetchSite(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+
+export const updateSite = (userId, updatedSite) => dispatch => {
+  console.log('userId :', userId)
+  dispatch({ type: UPDATING })
+  axios
+    .put(`${api}/customSite/${userId}`, updatedSite)
+    .then(() => fetchSite(userId)(dispatch))
+    .catch(err => {
+      dispatch({
+        type: ERROR,
+        payload: err,
+      })
+    })
+}
+export const deleteSite = userId => dispatch => {
+  console.log('userId :', userId)
+  dispatch({ type: DELETE })
+  axios
+    .delete(`${api}/customSite/${userId}`)
+    .then(() => fetchSite(userId)(dispatch))
     .catch(err => {
       dispatch({
         type: ERROR,
