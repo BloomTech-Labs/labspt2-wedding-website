@@ -49,37 +49,6 @@ const Button = styled.button`
   }
 `
 
-const NaughtyButton = styled.button`
-  border-radius: 8px;
-  color: white;
-  border: none;
-  outline: none;
-  border-radius: 25px;
-  padding: 15px 70px;
-  font-size: 1em;
-  font-weight: 500;
-  background: #52c4b9;
-  cursor: pointer;
-  margin: 10% 3% 3% 3%;
-  width: 100%;
-  justify-content: space-evenly;
-  @media only screen and (max-width: 500px) and (min-width: 300px) {
-    width: 69%;
-    display: flex;
-    margin: 3% auto;
-  }
-  @media only screen and (max-width: 700px) and (min-width: 501px) {
-    width: 74%;
-    display: flex;
-    margin: 3% auto;
-  }
-  @media only screen and (min-width: 701px) {
-    width: 69%;
-    display: flex;
-    margin: 5% auto;
-  }
-`
-
 const RegistryItem = styled.button`
   color: white;
   border: none;
@@ -278,10 +247,10 @@ class Dashboard extends Component {
               <H1>
                 When: {moment(this.props.userInfo.weddingDate).format('ll')}
               </H1>
-              <Link to='/Design'>
-                <NaughtyButton>
+              <Link to='/Design'style={{width: '100%'}}>
+                <Button>
                   <P>Change Design</P>
-                </NaughtyButton>
+                </Button>
               </Link>
             </NameDate>
             <Location>

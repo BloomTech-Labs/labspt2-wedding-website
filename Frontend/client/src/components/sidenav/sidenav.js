@@ -47,14 +47,17 @@ const Img = styled.img`
 
 const SideNav = styled.div`
   display: flex;
+  width: 100%;
 `
 
 const Menu = styled.div`
   display: flex;
+  width: 100%;
 `
 
 const MenuWrapper = styled.div`
   display: flex;
+  width: 100%;
 `
 
 const MenuList = styled.ul`
@@ -63,6 +66,7 @@ const MenuList = styled.ul`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  margin-bottom: 0;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     padding: 1%;
   }
@@ -76,17 +80,18 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin: 3%;
+  margin: 1.5%;
 `
 
 const Button = styled.button`
-  border-radius: 8px;
+  border-radius: 25px;
   color: white;
   border: none;
   outline: none;
   font-weight: 500;
   background: #52c4b9;
   height: 68px;
+  width: 90px;
 `
 
 class Navigation extends Component {
