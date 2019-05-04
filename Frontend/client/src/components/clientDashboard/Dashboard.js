@@ -84,7 +84,7 @@ const RegistryItem = styled.button`
   color: white;
   border: none;
   outline: none;
-  border-radius: 25px
+  border-radius: 25px;
   padding: 15px 70px;
   margin-right: 15px;
   font-size: 0.8em;
@@ -232,7 +232,7 @@ class Dashboard extends Component {
 
   handleRegModal = (e, id) => {
     e.preventDefault()
-    console.log('regmodal')
+    console.log('regmodalId', id)
     this.setState({
       regModal: id,
     })
@@ -340,23 +340,21 @@ class Dashboard extends Component {
             <H3>Registry</H3>
             {/* Amazon registry goes here. Need to figure out how */}
             <RegistryContainer>
-              {this.props.registry ? (
-                this.props.registry.length > 0 ? (
-                  this.props.registry.map(rItem => {
-                    registry.push(rItem)
-                    return (
-                      <div>
-                        <RegistryItem
-                          onClick={e => this.handleRegModal(e, rItem.id)}>
-                          {rItem.registryName}
-                        </RegistryItem>
-                      </div>
-                    )
-                  })
-                ) : (
-                  <RegistryItem>No Registry Added yet</RegistryItem>
-                )
-              ) : null}
+              {this.props.registry.length > 0 ? (
+                this.props.registry.map(rItem => {
+                  registry.push(rItem)
+                  return (
+                    <div>
+                      <RegistryItem
+                        onClick={e => this.handleRegModal(e, rItem.id)}>
+                        {rItem.registryName}
+                      </RegistryItem>
+                    </div>
+                  )
+                })
+              ) : (
+                <RegistryItem>No Registry Added yet</RegistryItem>
+              )}
               <Button onClick={this.handleModal}>
                 <P>Add Registry</P>
               </Button>
@@ -370,7 +368,7 @@ class Dashboard extends Component {
           </Modal>
           <Modal isOpen={this.state.regModal} style={modalStyle}>
             <RegistryViewModal
-              registry={registry[this.state.regModal - 1]}
+              registry={registry.find(r => r.id === this.state.regModal)}
               user={this.props.userInfo}
               handleClose={this.closeRegModal}
             />

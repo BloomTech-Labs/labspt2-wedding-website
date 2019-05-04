@@ -148,7 +148,7 @@ class Settings extends Component {
       currentPassword: '',
       search: '',
     }
-    this.hadleChangeDate = this.hadleChangeDate.bind(this)
+    this.handleChangeDate = this.handleChangeDate.bind(this)
   }
 
   inputHandler = e => {
