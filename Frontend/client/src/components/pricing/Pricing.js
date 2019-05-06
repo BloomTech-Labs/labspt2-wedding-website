@@ -1,39 +1,53 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import './pricing.css'
-import StripeBtn from '../Stripe/stripeBtn'
+// import './pricing.css'
+//import StripeBtn from '../Stripe/stripeBtn'
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  CardImageHeader,
+  CardText,
+  CardTitle,
+} from 'styled-card-component'
 
-const HRStyle = styled.hr`
-  width: 50%;
+import {
+  Googlecard,
+  Uploadcard,
+  Blogcard,
+  Registycard,
+  SetColor,
+} from './PremiumCardStyles'
+
+const Pricingheader = styled.div`
+  border: 10px solid red;
+  border-radius: 15px;
+  padding: 35px;
 `
 
-const PricingLogo = styled.h1`
-  text-align: center;
+const H1 = styled.h1`
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
 `
 
-const H2 = styled.h2`
-  text-align: center;
-`
-
-export default class Pricing extends Component {
+class Pricing extends Component {
   render() {
     return (
-      <div className='pricePage'>
-        <div className='priceArea'>
-          <PricingLogo>Go Premium</PricingLogo>
-          <HRStyle />
-          <div className='boxStyle'>
-            <ul>
-              <li className='liStyle'>Planning Dashboard</li>
-              <li className='liStyle'>Digital RSVPs</li>
-              <li className='liStyle'>Website Hosting</li>
-              <li className='liStyle'>Personal Wedding Website</li>
-            </ul>
+      <div class='card'>
+        <Pricingheader>
+          <H1>Why choose Premium?</H1>
+          <div class='container'>
+            <Googlecard>a</Googlecard>
+            <Blogcard>b</Blogcard>
+            <Blogcard>c</Blogcard>
+            <Registycard>d</Registycard>
           </div>
-          <HRStyle />
-          <StripeBtn />
-        </div>
+        </Pricingheader>
       </div>
     )
   }
 }
+
+export default Pricing
