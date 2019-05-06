@@ -20,6 +20,8 @@ import {
   SetColor,
 } from './PremiumCardStyles'
 
+import Example from './PremiumCard'
+
 const Pricingheader = styled.div`
   border: 10px solid red;
   border-radius: 15px;
@@ -35,14 +37,11 @@ const H1 = styled.h1`
 class Pricing extends Component {
   render() {
     return (
-      <div class='card'>
+      <div>
         <Pricingheader>
           <H1>Why choose Premium?</H1>
           <div class='container'>
-            <Googlecard>a</Googlecard>
-            <Blogcard>b</Blogcard>
-            <Blogcard>c</Blogcard>
-            <Registycard>d</Registycard>
+            <Example />
           </div>
         </Pricingheader>
       </div>
