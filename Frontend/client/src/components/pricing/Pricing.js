@@ -2,33 +2,23 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 // import './pricing.css'
 //import StripeBtn from '../Stripe/stripeBtn'
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  CardImageHeader,
-  CardText,
-  CardTitle,
-} from 'styled-card-component'
 
-import {
-  Googlecard,
-  Uploadcard,
-  Blogcard,
-  Registycard,
-  SetColor,
-} from './PremiumCardStyles'
-
-import Example from './PremiumCard'
+import PremiumCard from './PremiumCard'
+import PricingReviews from './PricingReviews'
 
 const Pricingheader = styled.div`
   border: 10px solid red;
   border-radius: 15px;
   padding: 35px;
+  background-color: #f8f8f8;
 `
 
 const H1 = styled.h1`
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+`
+const H2 = styled.h2`
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -40,9 +30,9 @@ class Pricing extends Component {
       <div>
         <Pricingheader>
           <H1>Why choose Premium?</H1>
-          <div class='container'>
-            <Example />
-          </div>
+          <PremiumCard />
+          <H2> Continue for free or subscribe to Join Our Big Day Premium.</H2>
+          <PricingReviews />
         </Pricingheader>
       </div>
     )

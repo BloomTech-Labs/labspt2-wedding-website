@@ -10,7 +10,7 @@ import {
 } from 'reactstrap'
 import googleAvatar from './PremiumMedia/googleAvatar.png'
 
-const Example = props => {
+const PremiumCard = props => {
   return (
     <Row>
       <Col sm='3'>
@@ -100,4 +100,4 @@ const Example = props => {
   )
 }
 
-export default Example
+export default PremiumCard
