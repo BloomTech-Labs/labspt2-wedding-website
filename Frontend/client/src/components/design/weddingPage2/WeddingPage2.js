@@ -19,7 +19,14 @@ const WP1Body = styled.div`
   background-size: cover;
 `
 
+const WPWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 const WhoWrapper = styled.div`
+  padding: 3%;
   width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -30,9 +37,11 @@ const WhoWrapper = styled.div`
   margin: 3%;
   border-radius: 8px;
   background: rgba(177, 221, 241, 0.5);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
 const WhenWrapper = styled.div`
+  padding: 3%;
   width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -43,6 +52,7 @@ const WhenWrapper = styled.div`
   margin: 3%;
   border-radius: 8px;
   background: rgba(177, 221, 241, 0.5);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
 const RSVPWrapper = styled.div`
@@ -52,18 +62,32 @@ const RSVPWrapper = styled.div`
 `
 
 const Button = styled.button`
-  border-radius: 25px;
   color: white;
   border: none;
   outline: none;
-  padding: 15px 70px;
-  font-size: 0.8em;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
   font-weight: 500;
   background: #52c4b9;
-  margin: 3%;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    margin: 3% auto;
+  }
 `
 
 const StoryWrapper = styled.div`
+  padding: 3%;
   width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -73,7 +97,8 @@ const StoryWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5);
+  background: rgba(177, 221, 241, 0.9);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
 const H1 = styled.h1`
@@ -84,6 +109,7 @@ const H1 = styled.h1`
 const H2 = styled.h2`
   font-size: 1.5em;
   text-shadow: 0px 0px 0px #000000;
+  margin: 1%;
 `
 
 const P = styled.p`
@@ -107,7 +133,7 @@ class WeddingPage2 extends Component {
   render() {
     return (
       <WP1Body>
-        <div>
+        <WPWrapper>
           <WhoWrapper>
             <H1>
               {this.props.siteInfo.partnerName1} &amp;{' '}
@@ -136,7 +162,7 @@ class WeddingPage2 extends Component {
             <H2>Proposal Story</H2>
             <P>{this.props.siteInfo.proposalStory}</P>
           </StoryWrapper>
-        </div>
+        </WPWrapper>
       </WP1Body>
     )
   }
