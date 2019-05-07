@@ -1,57 +1,125 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
+import { loginRegister } from '../../../actions/index'
+import styled from 'styled-components'
+import GoogleButton from 'react-google-button'
+
+const FormCenter = styled.div`
+  margin-bottom: 100px;
+`
+
+const FormField = styled.div`
+  margin-bottom: 40px;
+`
+
+const FormLabel = styled.div`
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  color: white;
+`
+
+const FormInput = styled.input`
+  width: 85%;
+  background-color: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  border-bottom: 1px solid #445366;
+  font-size: 1em;
+  font-weight: 300;
+  padding-bottom: 10px;
+  margin-top: 10px;
+`
+
+const FormButton = styled.button`
+  background-color: #52c4b9;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px 70px;
+  font-size: 0.8em;
+  font-weight: 500;
+`
 
 class SignIn extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            email: '',
-            password: ''
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: '',
+      password: '',
     }
 
-    handleChange(e) {
-        let target = e.target;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
-        let name = target.name;
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
-        this.setState({
-          [name]: value
-        });
-    }
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+  }
 
-    handleSubmit(e) {
-        e.preventDefault();
+  handleSubmit(e) {
+    e.preventDefault()
+    this.props.loginRegister(this.state)
+    this.setState({
+      username: '',
+      password: '',
+    })
+    setTimeout(() => {
+      this.props.history.push('/')
+    }, 500)
 
-        console.log('The form was submitted with the following data:');
-        console.log(this.state);
-    }
+    // need to implement nested routes so it can push to /dashboard, /profile, or something of that matter
+  }
 
-    render() {
-        return (
-        <div className="FormCenter">
-            <form className="FormFields" onSubmit={this.handleSubmit}>
-            <div className="FormField">
-                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
-              </div>
+  render() {
+    return (
+      <FormCenter>
+        <form onSubmit={this.handleSubmit}>
+          <FormField>
+            <FormLabel>Username</FormLabel>
+            <FormInput
+              // id='email'
+              className='FormField__Input'
+              placeholder='Enter your email'
+              name='username'
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </FormField>
 
-              <div className="FormField">
-                <label className="FormField__Label" htmlFor="password">Password</label>
-                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
-              </div>
+          <FormField>
+            <FormLabel htmlFor='password'>Password</FormLabel>
+            <FormInput
+              type='password'
+              id='password'
+              className='FormField__Input'
+              placeholder='Enter your password'
+              name='password'
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </FormField>
 
-              <div className="FormField">
-                  <button className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
-              </div>
-            </form>
-          </div>
-        );
-    }
+          <FormField>
+            <FormButton>Sign In</FormButton>
+          </FormField>
+        </form>
+        <a href='https://joinourbigday.herokuapp.com/auth/google'>
+          <GoogleButton />
+        </a>{' '}
+        <br />
+        {/* <a href='https://joinourbigday.herokuapp.com/auth/facebook'>facebook</a> */}
+      </FormCenter>
+    )
+  }
 }
+const mapStateToProps = state => {}
 
-export default SignIn;
+export default connect(
+  mapStateToProps,
+  { loginRegister }
+)(SignIn)

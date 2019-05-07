@@ -24,6 +24,12 @@ module.exports = {
     return db('customSite').insert(siteInfo)
   },
 
+  siteByUserId: userId => {
+    return db('customSite')
+      .where('userId', userId)
+      .first()
+  },
+
   editSiteInfo: (userId, siteInfo) => {
     return db('customSite')
       .where('userId', userId)

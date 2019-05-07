@@ -1,22 +1,40 @@
 import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import his from '../../Images/boutonniere.jpg'
+import her from '../../Images/beautiful-bouquet-bridal-313707.jpg'
+import together from '../../Images/partyTable.jpg'
+import arrow from '../../Images/arrowToCerm.jpg'
+import styled from 'styled-components'
+
+
 
 class DemoCarousel extends Component {
     render(){
         return (
-            <Carousel>
+            <Carousel 
+            autoPlay 
+            transitionTime='2000'
+             interval='8000' 
+             infiniteLoop={true}
+             showThumbs={false} 
+             showStatus={false}
+            > 
                 <div>
-                    <img src="https://i.pinimg.com/originals/9e/84/e0/9e84e075585f2bd99892ff4f1cfd9b77.jpg" alt="1" />
-                    <p className="legend">Image 1</p>
+                    <img src={his} alt="1" />
+                    <p className="legend">From his side,</p>
                 </div>
                 <div>
-                    <img src="https://www.freegreatpicture.com/files/147/18429-hd-color-background-wallpaper.jpg" alt="2"  />
-                    <p className="legend">Image 2</p>
+                    <img src={her} alt="2"  />
+                    <p className="legend">and Her side,</p>
                 </div>
                 <div>
-                    <img src="https://images.designtrends.com/wp-content/uploads/2016/04/02110027/Artistic-Spring-Wallpaper.jpg" alt="3" />
-                    <p className="legend">Image 3</p>
+                    <img src={arrow} alt="3"  />
+                    <p className="legend">getting everyone together</p>
+                </div>
+                <div>
+                    <img src={together} alt="4" />
+                    <p className="legend">It's what we do</p>
                 </div>                
             </Carousel>
         )
