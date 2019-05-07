@@ -131,7 +131,7 @@ googleCB = (req, res) => {
   const token = jwtHelper.generateToken(tokenUser)
   // redirects to account set up
   console.log('token :', token)
-  res.redirect('https://joinourbigday.herokuapp.com/?token=' + token)
+  res.redirect('http://localhost:3000/?token=' + token)
 }
 
 //------------------->Facebook Routes<--------------------------

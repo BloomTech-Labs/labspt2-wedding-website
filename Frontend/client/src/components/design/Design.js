@@ -10,7 +10,6 @@ import Background1 from '../design/media/background1.jpg'
 import Background2 from '../design/media/background2.jpg'
 import Background3 from '../design/media/background3.jpg'
 
-
 const DesignBody = styled.div`
   background: white;
   border-radius: 8px;
@@ -178,10 +177,13 @@ class Design extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      siteDesign: null,
-      userUrl: '',
-      story: '',
-      proposalStory: '',
+      site: {
+        siteDesign: null,
+        userUrl: '',
+        story: '',
+        proposalStory: '',
+      },
+      edit: false,
     }
   }
 
@@ -192,21 +194,36 @@ class Design extends Component {
   handleSubmit = e => {
     console.log('submit Fire')
     console.log(this.props.user.id)
-    e.preventDefault()
-    this.props.addSite(this.props.user.id, this.state)
+    this.props.addSite(this.props.user.id, this.state.site)
   }
 
   inputHandler = e => {
+    e.preventDefault()
+    const { site } = { ...this.state }
+    const currentState = site
+    const { name, value, type } = e.target
+    currentState[name] = type === 'number' ? parseInt(value) : value
     this.setState({
-      [e.target.name]:
-        e.target.type === 'number' ? parseInt(e.target.value) : e.target.value,
+      user: value,
     })
     console.log('input handled')
   }
 
-  render() {
+  handleDelete = e => {
+    e.preventDefault()
+    this.props.deleteSite(this.props.user.id)
+  }
+
+  handleEdit = () => {
+    this.setState({
+      edit: !this.state.edit,
+    })
     console.log(this.state)
-    if (this.props.customSite)
+  }
+
+  render() {
+    console.log('props', this.props)
+    if (!this.props.customSite) {
       return (
         <DesignBody>
           <Head>
@@ -301,6 +318,35 @@ class Design extends Component {
           </InputWrapper>
         </DesignBody>
       )
+    } else {
+      return (
+        // need to show site info here and give otions to update/ delete and preview
+        <DesignBody>
+          {!this.state.edit ? (
+            <StoryWrapper>
+              <H2>url</H2>
+              <H3>
+                https://joinourbigday.netlify.com/
+                {this.props.customSite.userUrl}
+              </H3>
+              <h2>Couple Story</h2>
+              <p>{this.props.customSite.story}</p>
+              <h2>Proposal Story</h2>
+              <p>{this.props.customSite.proposalStory}</p>
+              <h2>Site design Choosen</h2>
+              <p>{this.props.customSite.siteDesign}</p>
+              <button onClick={this.handleDelete}>Delete</button>
+              <button onClick={this.handleEdit}>Edit Page</button>
+            </StoryWrapper>
+          ) : (
+            <div>
+              <h2>Edit</h2>
+              <button onClick={this.handleEdit}>Back</button>
+            </div>
+          )}
+        </DesignBody>
+      )
+    }
   }
 }
 

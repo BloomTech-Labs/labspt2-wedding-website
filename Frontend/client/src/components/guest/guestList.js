@@ -121,13 +121,13 @@ class GuestList extends Component {
   }
 
   emailHandler = () => {
-    Axios.get(`https://joinourbigday.herokuapp.com/customSite/user/${this.props.userInfo.id}`)
+    Axios.get(`http://localhost:3700/customSite/user/${this.props.userInfo.id}`)
       .then(siteInfo => {
         const userUrl = {
           userUrl: siteInfo.data.userUrl,
         }
         Axios.post(
-          `https://joinourbigday.herokuapp.com/guest/${this.props.userInfo.id}/email`,
+          `http://localhost:3700/guest/${this.props.userInfo.id}/email`,
           userUrl
         )
       })
