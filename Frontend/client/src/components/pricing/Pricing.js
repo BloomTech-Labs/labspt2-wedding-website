@@ -5,9 +5,9 @@ import StripeBtn from '../Stripe/stripeBtn'
 
 import PremiumCard from './PremiumCard'
 import PricingReviews from './PricingReviews'
+import Jumbo from './PremiumJumbo'
 
 const Pricingheader = styled.div`
-  border: 10px solid red;
   border-radius: 15px;
   padding: 35px;
   background-color: #f8f8f8;
@@ -33,10 +33,14 @@ class Pricing extends Component {
     return (
       <div>
         <Pricingheader>
-          <H1>Why choose Premium?</H1>
+          <Jumbo />
           <PremiumCard />
           <H2> Continue for free or subscribe to Join Our Big Day Premium.</H2>
           <PricingReviews />
+          <H2>
+            Thousands of users made their big day that much bigger with Join Our
+            Big Day.{' '}
+          </H2>
           <StripeBtn />
         </Pricingheader>
       </div>

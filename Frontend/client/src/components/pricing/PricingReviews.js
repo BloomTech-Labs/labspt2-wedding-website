@@ -4,14 +4,7 @@ import { Media } from 'reactstrap'
 const PricingReviews = () => {
   return (
     <div>
-      <Media>
-        <Media left top href='#'>
-          <Media
-            object
-            data-src='holder.js/64x64'
-            alt='Generic placeholder image'
-          />
-        </Media>
+      <Media className='text-center'>
         <Media body>
           <Media heading>Mr.& Mrs. Tony Stank</Media>I reached out after
           noticing I made some mistakes with my dashboard. Less than 30 minutes
@@ -21,14 +14,7 @@ const PricingReviews = () => {
           service! Very willing to help, great service!
         </Media>
       </Media>
-      <Media className='mt-1'>
-        <Media left middle href='#'>
-          <Media
-            object
-            data-src='holder.js/64x64'
-            alt='Generic placeholder image'
-          />
-        </Media>
+      <Media className='text-center'>
         <Media body>
           <Media heading>Mr. & Mrs. Bruce Banner</Media>
           From start to finish, the customer service and usability was
@@ -37,14 +23,7 @@ const PricingReviews = () => {
           customer service. 10/10~!
         </Media>
       </Media>
-      <Media className='mt-1'>
-        <Media left bottom href='#'>
-          <Media
-            object
-            data-src='holder.js/64x64'
-            alt='Generic placeholder image'
-          />
-        </Media>
+      <Media className='text-center'>
         <Media body>
           <Media heading>Mr. & Mrs. Clint Barton</Media>
           An Excellent way for new couples to keep track of guest, everything is

@@ -8,7 +8,6 @@ import {
   Row,
   Col,
 } from 'reactstrap'
-import googleAvatar from './PremiumMedia/googleAvatar.png'
 
 const PremiumCard = props => {
   return (
@@ -19,13 +18,7 @@ const PremiumCard = props => {
           className='text-center'
           body
           inverse
-          style={{ backgroundColor: '#333', borderColor: '#333' }}>
-          <CardImg
-            top
-            width='100%'
-            src='./PremiumMedia/googleAvatar.png'
-            alt='Card image cap'
-          />
+          style={{ backgroundColor: '#6ba1cb', borderColor: '52c4b9' }}>
           <CardBody>
             <CardTitle tag='h3'>Google Maps</CardTitle>
             <CardText>
@@ -41,13 +34,7 @@ const PremiumCard = props => {
           className='text-center'
           body
           inverse
-          style={{ backgroundColor: '#333', borderColor: '#333' }}>
-          <CardImg
-            top
-            width='100%'
-            src='./PremiumMedia/googleAvatar.png'
-            alt='Card image cap'
-          />
+          style={{ backgroundColor: '#6ba1cb', borderColor: '52c4b9' }}>
           <CardBody>
             <CardTitle tag='h3'>Live upload</CardTitle>
             <CardText>
@@ -63,13 +50,7 @@ const PremiumCard = props => {
           className='text-center'
           body
           inverse
-          style={{ backgroundColor: '#333', borderColor: '#333' }}>
-          <CardImg
-            top
-            width='100%'
-            src='./PremiumMedia/googleAvatar.png'
-            alt='Card image cap'
-          />
+          style={{ backgroundColor: '#6ba1cb', borderColor: '52c4b9' }}>
           <CardBody>
             <CardTitle tag='h3'>Registry</CardTitle>
             <CardText>Have all of your registries in one place.</CardText>
@@ -83,13 +64,7 @@ const PremiumCard = props => {
           className='text-center'
           body
           inverse
-          style={{ backgroundColor: '#333', borderColor: '#333' }}>
-          <CardImg
-            top
-            width='100%'
-            src='./PremiumMedia/googleAvatar.png'
-            alt='Card image cap'
-          />
+          style={{ backgroundColor: '#6ba1cb', borderColor: '52c4b9' }}>
           <CardBody>
             <CardTitle tag='h3'>Blog Page</CardTitle>
             <CardText>Have all of your registries in one place.</CardText>
