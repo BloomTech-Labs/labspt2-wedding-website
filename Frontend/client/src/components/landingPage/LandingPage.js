@@ -28,7 +28,7 @@ const CaroDiv = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  img{
+  img {
     height: 60vh;
   }
 `
@@ -38,25 +38,24 @@ const ButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
   height: 60px;
-  margin-top:20px;
+  margin-top: 20px;
   width: 200px;
-  background-color:#52C4B9;
+  background-color: #52c4b9;
   border-radius: 30px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-  :hover{
+  :hover {
     transform: scale(1.1);
-    width:250px;
-    background-color:#2D4058;
-    box-shadow: 18px -3px 79px -10px rgba(96,219,217,0.63);
+    width: 250px;
+    background-color: #2d4058;
+    box-shadow: 18px -3px 79px -10px rgba(96, 219, 217, 0.63);
   }
-  p{
+  p {
     color: #ffff;
-    text-decoration:none;
+    text-decoration: none;
     align-content: center;
     margin: 0 auto;
   }
-  
 `
 
 const InfoLeft = styled.div`
@@ -84,38 +83,41 @@ img{
 }
 `
 const InfoDiv = styled.div`
-display:flex;
-
+  display: flex;
 `
-
 
 function LandingPage({ match }) {
   return (
     <LPStyle>
       <CaroDiv>
         <DemoCarousel />
-      <ButtonDiv>
-        <Link to='/login' component={Login} style={{ textDecoration: 'none' }}>
-          <p>Get Started</p>
-        </Link>
-      </ButtonDiv>
-     </CaroDiv>
-     <InfoLeft>
-        <img src={planning} alt='image'/>
-        <div></div>
-     </InfoLeft>
-     <InfoRight>
-        <div><p>af;ho'iare'ona'vr'oi'io'hoi</p></div>
-        <div><img src={planning} alt='image'/></div>
-     </InfoRight>
-     <InfoLeft>
-        <div><img src={planning} alt='image'/></div>
-        <div></div>
-     </InfoLeft>
-
-
-
-
+        <ButtonDiv>
+          <Link
+            to='/login'
+            component={Login}
+            style={{ textDecoration: 'none' }}>
+            <p>Get Started</p>
+          </Link>
+        </ButtonDiv>
+      </CaroDiv>
+      <InfoLeft>
+        <img src={planning} alt='image' />
+        <div />
+      </InfoLeft>
+      <InfoRight>
+        <div>
+          <p>af;ho'iare'ona'vr'oi'io'hoi</p>
+        </div>
+        <div>
+          <img src={planning} alt='image' />
+        </div>
+      </InfoRight>
+      <InfoLeft>
+        <div>
+          <img src={planning} alt='image' />
+        </div>
+        <div />
+      </InfoLeft>
     </LPStyle>
   )
 }
