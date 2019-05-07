@@ -1,6 +1,67 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { editRegistry, deleteRegistry } from '../../actions'
+
+import styled from 'styled-components'
+
+const MainCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+`
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  margin-bottom: 15px;
+`
+
+const Body = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 200px;
+`
+const Close = styled.button`
+  border: 0;
+  padding: 0;
+  font-weight: bold;
+  align-self: flex-start;
+  font-size: 20px;
+  cursor: pointer;
+`
+const Input = styled.input`
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+`
+
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    margin: 3% auto;
+  }
+`
+
 class AddRegistry extends Component {
   constructor(props) {
     super(props)
@@ -49,16 +110,23 @@ class AddRegistry extends Component {
   render() {
     console.log('registry', this.props)
     return (
-      <div>
-        <button onClick={() => this.props.handleClose()}>Close</button>
+      <MainCont>
+        <Close onClick={() => this.props.handleClose()}>X</Close>
         {!this.state.edit ? (
           <div>
-            <h2>Registry Name</h2>
-            <p>{this.state.registry.registryName}</p>
-            <h2>Registry Link</h2>
-            <p>{this.state.registry.registryUrl}</p>
-            <button onClick={this.handleEditState}>Edit</button>
-            <button onClick={this.handleDelete}>Delete</button>
+            <Header>
+              <h2>Registry</h2>
+            </Header>
+            <Body>
+              <h2>Registry Name</h2>
+              <p>{this.state.registry.registryName}</p>
+              <h2>Registry Link</h2>
+              <a target='_blank' href={this.state.registry.registryUrl}>
+                {this.state.registry.registryUrl}
+              </a>
+              <button onClick={this.handleEditState}>Edit</button>
+              <button onClick={this.handleDelete}>Delete</button>
+            </Body>
           </div>
         ) : (
           <form>
@@ -81,7 +149,7 @@ class AddRegistry extends Component {
             <button onClick={this.handleEdit}>Apply Changes</button>
           </form>
         )}
-      </div>
+      </MainCont>
     )
   }
 }

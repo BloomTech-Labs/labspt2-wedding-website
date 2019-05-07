@@ -148,7 +148,7 @@ class Settings extends Component {
       currentPassword: '',
       search: '',
     }
-    this.hadleChangeDate = this.hadleChangeDate.bind(this)
+    this.handleChangeDate = this.handleChangeDate.bind(this)
   }
 
   inputHandler = e => {
@@ -162,7 +162,7 @@ class Settings extends Component {
     console.log('input handled')
   }
 
-  hadleChangeDate = date => {
+  handleChangeDate = date => {
     this.setState({
       userInfo: { ...this.state.userInfo, weddingDate: date },
     })
