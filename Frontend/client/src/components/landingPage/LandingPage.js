@@ -19,13 +19,14 @@ const LPStyle = styled.div`
   margin-left: auto;
   margin-right: auto;
   background: white;
-  background-image: url('https://images.pexels.com/photos/1187079/pexels-photo-1187079.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-  background-size:cover;
+  background-image: url('https://images.pexels.com/photos/1820567/pexels-photo-1820567.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+  background-size:50% 100%;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   h1{
     @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
     font-family: 'Aguafina Script', cursive;
-    color:white;
+    color:#2D4058;
     margin: 30px auto;
     font-size: 80px
     text-shadow: 4px 4px 4px #52C4B9;
@@ -175,7 +176,7 @@ function LandingPage({ match }) {
         <div><img src={photo} alt='image'/></div>
         <div><p>We offer many other services with our Premium upgrade. Get more pages for a more personalized feel and your very own 
                 photo upload for your guests to post to one location. so you don't have to scour social media with hashtags to tread through 
-                the clutter of a hastags.
+                the clutter.
                </p></div>
      </InfoLeft>
 
