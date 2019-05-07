@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import { connect } from 'react-redux'
 import { fetchUser } from '../../actions'
+
 const StripeBtn = props => {
   const publishableKey = 'pk_test_hZ2cDD8WczHuPKhNyDhiIYsI'
 

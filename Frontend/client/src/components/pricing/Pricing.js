@@ -1,42 +1,51 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import './pricing.css'
+// import './pricing.css'
+import StripeBtn from '../Stripe/stripeBtn'
 
+import PremiumCard from './PremiumCard'
+import PricingReviews from './PricingReviews'
+import Jumbo from './PremiumJumbo'
 
-const HRStyle = styled.hr`
-    width: 50%;
-`;
-
-
-const PricingLogo = styled.h1`
-  text-align: center;
+const Pricingheader = styled.div`
+  border-radius: 15px;
+  padding: 35px;
+  background-color: #f8f8f8;
 `
 
-
+const H1 = styled.h1`
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+`
 const H2 = styled.h2`
-  text-align: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+`
+const StripeB = styled.button`
+  color: green;
 `
 
-export default class Pricing extends Component {
-    render() {
-        return (
-             <div className='pricePage'>
-             <div className='priceArea'>
-                 <PricingLogo>Pricing</PricingLogo>
-                 <HRStyle />
-                 <div className='boxStyle'>
-                    <ul>
-                        <li className='liStyle'>Planning Dashboard</li>
-                        <li className='liStyle'>Digital RSVPs</li>
-                        <li className='liStyle'>Free Website Hosting</li>
-                        <li className='liStyle'>Wedding Website</li>
-                    </ul>
-                 </div>
-                 <HRStyle />
-                 <H2>$0</H2>                 
-             </div>
-
-             </div>
-        );
-    }
+class Pricing extends Component {
+  render() {
+    return (
+      <div>
+        <Pricingheader>
+          <Jumbo />
+          <PremiumCard />
+          <H2> Continue for free or subscribe to Join Our Big Day Premium.</H2>
+          <PricingReviews />
+          <H2>
+            Thousands of users made their big day that much bigger with Join Our
+            Big Day.{' '}
+          </H2>
+          <StripeBtn />
+        </Pricingheader>
+      </div>
+    )
+  }
 }
+
+export default Pricing
