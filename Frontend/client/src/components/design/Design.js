@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { fetchSite, addSite, updateSite, deleteSite } from '../../actions/index'
 
 import styled from 'styled-components'
 
 import Background1 from '../design/media/background1.jpg'
 import Background2 from '../design/media/background2.jpg'
 import Background3 from '../design/media/background3.jpg'
-
-const URL = 'https://joinourbigday.herokuapp.com'
 
 const DesignBody = styled.div`
   background: white;
@@ -184,23 +184,15 @@ class Design extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.fetchSite(this.props.user.id)
+  }
+
   handleSubmit = e => {
     console.log('submit Fire')
+    console.log(this.props.user.id)
     e.preventDefault()
-    axios
-      .post(`${URL}/customSite/${this.props.user.id}`, this.state)
-      .then(res => {
-        console.log(res)
-        this.setState({
-          siteDesign: null,
-          userUrl: '',
-          story: '',
-          proposalStory: '',
-        })
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    this.props.addSite(this.props.user.id, this.state)
   }
 
   inputHandler = e => {
@@ -213,124 +205,109 @@ class Design extends Component {
 
   render() {
     console.log(this.state)
-    return (
-      <DesignBody>
-        <Head>
-          <H1>
-            Here you can create your own personal web page for your wedding.
-          </H1>
-        </Head>
-        <StoryWrapper>
-          <H2>
-            First, help everyone celebrate your big day with you, by telling us
-            how you met.
-          </H2>
-          <H3>
-            You can come back here to change, edit, or update your story at any
-            time.
-          </H3>
-          <form>
-            <Story
-              type='text'
-              placeholder='Couple Story'
-              name='story'
-              value={this.state.story}
-              onChange={this.inputHandler}
-              wrap='soft'
-            />
-            <H2>Now tell us about the proposal.</H2>
-            <Story
-              type='text'
-              placeholder='Proposal Story'
-              name='proposalStory'
-              value={this.state.proposalStory}
-              onChange={this.inputHandler}
-            />
-          </form>
-        </StoryWrapper>
-        <TemplateWrapper>
-          <div>
+    if (this.props.customSite)
+      return (
+        <DesignBody>
+          <Head>
+            <H1>
+              Here you can create your own personal web page for your wedding.
+            </H1>
+          </Head>
+          <StoryWrapper>
             <H2>
-              Select your background by entering the corresponding number in the
-              space below the samples
+              First, help everyone celebrate your big day with you, by telling
+              us how you met.
             </H2>
-          </div>
-          <SW>
-            <P>1</P>
-            <SampleWrapper1>
-              <Link to='/design1' />
-            </SampleWrapper1>
-          </SW>
-          <SW>
-            <P>2</P>
-            <SampleWrapper2>
-              <Link to='/design2' />
-            </SampleWrapper2>
-          </SW>
-          <SW>
-            <P>3</P>
-            <SampleWrapper3>
-              <Link to='/design3' />
-            </SampleWrapper3>
-          </SW>
-          <H3>Enter your selection here</H3>
-          <form>
-            <DesignInput
-              type='number'
-              placeholder='#'
-              name='siteDesign'
-              min='1'
-              max='3'
-              value={this.state.siteDesign}
-              onChange={this.inputHandler}
-            />
-          </form>
-        </TemplateWrapper>
-        <InputWrapper>
-          <H2>One last step and you are finished.</H2>
-          <H2>Now tell us what you want your web site's address to be.</H2>
-          <form>
-            <URLInput
-              type='text'
-              placeholder='Example= johnandjanesmithwedding...'
-              name='userUrl'
-              value={this.state.userUrl}
-              onChange={this.inputHandler}
-            />
-            <H2>
-              If you are happy with everything you entered, just hit the apply
-              button, and we'll take care fo the rest.
-            </H2>
-          </form>
-          <Button onClick={this.handleSubmit}>Apply</Button>
-          <Button>Preview</Button>
-        </InputWrapper>
-      </DesignBody>
-    )
+            <H3>
+              You can come back here to change, edit, or update your story at
+              any time.
+            </H3>
+            <form>
+              <Story
+                type='text'
+                placeholder='Couple Story'
+                name='story'
+                value={this.state.story}
+                onChange={this.inputHandler}
+                wrap='soft'
+              />
+              <H2>Now tell us about the proposal.</H2>
+              <Story
+                type='text'
+                placeholder='Proposal Story'
+                name='proposalStory'
+                value={this.state.proposalStory}
+                onChange={this.inputHandler}
+              />
+            </form>
+          </StoryWrapper>
+          <TemplateWrapper>
+            <div>
+              <H2>
+                Select your background by entering the corresponding number in
+                the space below the samples
+              </H2>
+            </div>
+            <SW>
+              <P>1</P>
+              <SampleWrapper1>
+                <Link to='/design1' />
+              </SampleWrapper1>
+            </SW>
+            <SW>
+              <P>2</P>
+              <SampleWrapper2>
+                <Link to='/design2' />
+              </SampleWrapper2>
+            </SW>
+            <SW>
+              <P>3</P>
+              <SampleWrapper3>
+                <Link to='/design3' />
+              </SampleWrapper3>
+            </SW>
+            <H3>Enter your selection here</H3>
+            <form>
+              <DesignInput
+                type='number'
+                placeholder='#'
+                name='siteDesign'
+                min='1'
+                max='3'
+                value={this.state.siteDesign}
+                onChange={this.inputHandler}
+              />
+            </form>
+          </TemplateWrapper>
+          <InputWrapper>
+            <H2>One last step and you are finished.</H2>
+            <H2>Now tell us what you want your web site's address to be.</H2>
+            <form>
+              <URLInput
+                type='text'
+                placeholder='Example= johnandjanesmithwedding...'
+                name='userUrl'
+                value={this.state.userUrl}
+                onChange={this.inputHandler}
+              />
+              <H2>
+                If you are happy with everything you entered, just hit the apply
+                button, and we'll take care fo the rest.
+              </H2>
+            </form>
+            <Button onClick={this.handleSubmit}>Apply</Button>
+            <Button>Preview</Button>
+          </InputWrapper>
+        </DesignBody>
+      )
   }
 }
 
-export default Design
+const mapStateToProps = state => ({
+  customSite: state.customSite,
+})
 
-// import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
-
-// import Sidenav from '../sidenav/sidenav'
-
-// export default class Design extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <div>
-//           <Link to='/design1'>Design 1</Link>
-//         </div>
-//         <div>
-//           <Link to='/design2'>Design 2</Link>
-//         </div>
-//         <div>
-//           <Link to='/design3'>Design 3</Link>
-//         </div>
-//       </div>
-//     )
-//   }
-// }
+export default connect(
+  mapStateToProps,
+  { fetchSite, addSite, updateSite, deleteSite }
+)(Design)

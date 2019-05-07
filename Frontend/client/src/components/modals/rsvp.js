@@ -4,7 +4,7 @@ import Axios from 'axios'
 import RsvpQuestion from './subModalComponents/rsvpQuestion'
 import styled from 'styled-components'
 
-const URL = 'https://joinourbigday.herokuapp.com'
+const URL = 'http://localhost:3700'
 
 const MainCont = styled.div`
   display: flex;

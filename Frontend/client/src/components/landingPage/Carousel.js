@@ -5,9 +5,6 @@ import his from '../../Images/boutonniere.jpg'
 import her from '../../Images/beautiful-bouquet-bridal-313707.jpg'
 import together from '../../Images/partyTable.jpg'
 import arrow from '../../Images/arrowToCerm.jpg'
-import styled from 'styled-components'
-
-
 
 class DemoCarousel extends Component {
     render(){
