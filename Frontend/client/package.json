@@ -47,6 +47,7 @@
     "redux-persist": "^5.10.0",
     "redux-persist-transform-encrypt": "^2.0.1",
     "redux-thunk": "^2.3.0",
+    "styled-card-component": "^3.0.1",
     "styled-components": "^4.2.0"
   },
   "scripts": {

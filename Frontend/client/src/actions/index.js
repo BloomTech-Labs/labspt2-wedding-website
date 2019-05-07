@@ -393,10 +393,14 @@ export const fetchSite = userId => dispatch => {
 }
 
 export const addSite = (userId, site) => dispatch => {
+  console.log('add site fire')
   console.log('userId :', userId)
   axios
-    .post(`${api}customSite/${userId}`, site)
-    .then(() => fetchSite(userId)(dispatch))
+    .post(`${api}/customSite/${userId}`, site)
+    .then(() => {
+      console.log('then fire')
+      // fetchSite(userId)(dispatch)
+    })
     .catch(err => {
       dispatch({
         type: ERROR,
