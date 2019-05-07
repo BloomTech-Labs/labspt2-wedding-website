@@ -88,6 +88,13 @@ const InputWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `
+const ButtonWrapper = styled.div`
+  margin: 3%;
+  padding: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`
 
 const Button = styled.button`
   border-radius: 8px;
@@ -329,19 +336,21 @@ class Design extends Component {
                 https://joinourbigday.netlify.com/
                 {this.props.customSite.userUrl}
               </H3>
-              <h2>Couple Story</h2>
-              <p>{this.props.customSite.story}</p>
-              <h2>Proposal Story</h2>
-              <p>{this.props.customSite.proposalStory}</p>
-              <h2>Site design Choosen</h2>
-              <p>{this.props.customSite.siteDesign}</p>
-              <button onClick={this.handleDelete}>Delete</button>
-              <button onClick={this.handleEdit}>Edit Page</button>
+              <H2>Couple Story</H2>
+              <H3>{this.props.customSite.story}</H3>
+              <H2>Proposal Story</H2>
+              <H3>{this.props.customSite.proposalStory}</H3>
+              <H2>Site design Choosen</H2>
+              <H3>{this.props.customSite.siteDesign}</H3>
+              <ButtonWrapper>
+                <Button onClick={this.handleDelete}>Delete</Button>
+                <Button onClick={this.handleEdit}>Edit Page</Button>
+              </ButtonWrapper>
             </StoryWrapper>
           ) : (
             <div>
-              <h2>Edit</h2>
-              <button onClick={this.handleEdit}>Back</button>
+              <H2>Edit</H2>
+              <Button onClick={this.handleEdit}>Back</Button>
             </div>
           )}
         </DesignBody>
