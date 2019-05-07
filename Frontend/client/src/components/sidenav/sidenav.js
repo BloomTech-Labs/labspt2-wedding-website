@@ -106,28 +106,20 @@ class Navigation extends Component {
         <SideNav>
           <Menu>
             <MenuWrapper>
-              <Img src={Logo} alt="Logo" />
+              <Img src={Logo} alt='Logo' />
               <MenuList>
                 <Li>
-                  <Link to='/'>
-                    Dashboard
-                  </Link>
+                  <Link to='/'>Dashboard</Link>
                 </Li>
                 <Li className='listItem'>
-                  <Link to='/settings'>
-                    Settings
-                  </Link>
+                  <Link to='/settings'>Settings</Link>
                 </Li>
                 <Li className='listItem'>
                   <Link to='/pricing' className='style-link'>
-                    Pricing
+                    Premium
                   </Link>
                 </Li>
-                <Li className='listItem'>
-                  <Link to='/billing' className='style-link'>
-                    Billing
-                  </Link>
-                </Li>
+
                 <Li className='listItem'>
                   <Link to='/rsvp' className='style-link'>
                     RSVP
@@ -145,7 +137,7 @@ class Navigation extends Component {
                 </Li>
               </MenuList>
               <ButtonWrapper>
-              <Button onClick={this.handleClick}>Sign Out</Button>
+                <Button onClick={this.handleClick}>Sign Out</Button>
               </ButtonWrapper>
             </MenuWrapper>
           </Menu>
