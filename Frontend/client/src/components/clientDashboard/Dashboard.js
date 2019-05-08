@@ -247,7 +247,7 @@ class Dashboard extends Component {
               <H1>
                 When: {moment(this.props.userInfo.weddingDate).format('ll')}
               </H1>
-              <Link to='/Design'style={{width: '100%'}}>
+              <Link to='/Design' style={{ width: '100%' }}>
                 <Button>
                   <P>Change Design</P>
                 </Button>
@@ -309,18 +309,22 @@ class Dashboard extends Component {
             <H3>Registry</H3>
             {/* Amazon registry goes here. Need to figure out how */}
             <RegistryContainer>
-              {this.props.registry.length > 0 ? (
-                this.props.registry.map(rItem => {
-                  registry.push(rItem)
-                  return (
-                    <div>
-                      <RegistryItem
-                        onClick={e => this.handleRegModal(e, rItem.id)}>
-                        {rItem.registryName}
-                      </RegistryItem>
-                    </div>
-                  )
-                })
+              {this.props.registry ? (
+                this.props.registry.length > 0 ? (
+                  this.props.registry.map(rItem => {
+                    registry.push(rItem)
+                    return (
+                      <div>
+                        <RegistryItem
+                          onClick={e => this.handleRegModal(e, rItem.id)}>
+                          {rItem.registryName}
+                        </RegistryItem>
+                      </div>
+                    )
+                  })
+                ) : (
+                  <RegistryItem>No Registry Added yet</RegistryItem>
+                )
               ) : (
                 <RegistryItem>No Registry Added yet</RegistryItem>
               )}
