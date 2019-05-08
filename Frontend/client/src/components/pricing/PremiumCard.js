@@ -10,6 +10,9 @@ const PCWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    flex-direction: column;
+  }
 `
 
 const CardWrapper = styled.div`
@@ -19,6 +22,11 @@ const CardWrapper = styled.div`
   border: 2px solid #c7c9bd;
   border-radius: 8px;
   margin: 1%;
+  background-color: #f6f9e5;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 100%;
+    margin: 2% auto;
+  }
 `
 
 const CardBody = styled.div`
@@ -26,7 +34,6 @@ const CardBody = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: justified;
-  background-color: #f6f9e5
 `
 
 const CardTitle = styled.h3`

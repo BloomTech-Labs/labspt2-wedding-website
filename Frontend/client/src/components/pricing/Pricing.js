@@ -8,11 +8,17 @@ import PricingReviews from './PricingReviews'
 import Jumbo from './PremiumJumbo'
 
 const Pricingheader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 8px;
   padding: 35px;
   background-color: #f8f8f8;
   width: 80%;
   margin: 3% auto;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 
 const H1 = styled.h1`
@@ -25,6 +31,7 @@ const H2 = styled.h2`
   display: flex;
   justify-content: center;
   padding: 20px;
+  text-align: center;
 `
 const StripeB = styled.button`
   color: green;
