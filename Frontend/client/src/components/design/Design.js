@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { fetchSite, addSite, updateSite, deleteSite } from '../../actions/index'
+import EditSite from './editDesign'
 
 import styled from 'styled-components'
 
@@ -215,6 +216,17 @@ class Design extends Component {
     })
     console.log('input handled')
   }
+  EditInputHandler = e => {
+    e.preventDefault()
+    const { editSite } = { ...this.state }
+    const currentState = editSite
+    const { name, value, type } = e.target
+    currentState[name] = type === 'number' ? parseInt(value) : value
+    this.setState({
+      user: value,
+    })
+    console.log('input handled')
+  }
 
   handleDelete = e => {
     e.preventDefault()
@@ -226,6 +238,11 @@ class Design extends Component {
       edit: !this.state.edit,
     })
     console.log(this.state)
+  }
+
+  handleUpdate = e => {
+    e.preventDefault()
+    this.props.updateSite(this.props.user.id)
   }
 
   render() {
@@ -252,7 +269,7 @@ class Design extends Component {
                 type='text'
                 placeholder='Couple Story'
                 name='story'
-                value={this.state.story}
+                value={this.state.site.story}
                 onChange={this.inputHandler}
                 wrap='soft'
               />
@@ -261,7 +278,7 @@ class Design extends Component {
                 type='text'
                 placeholder='Proposal Story'
                 name='proposalStory'
-                value={this.state.proposalStory}
+                value={this.state.site.proposalStory}
                 onChange={this.inputHandler}
               />
             </form>
@@ -299,7 +316,7 @@ class Design extends Component {
                 name='siteDesign'
                 min='1'
                 max='3'
-                value={this.state.siteDesign}
+                value={this.state.site.siteDesign}
                 onChange={this.inputHandler}
               />
             </form>
@@ -312,7 +329,7 @@ class Design extends Component {
                 type='text'
                 placeholder='Example= johnandjanesmithwedding...'
                 name='userUrl'
-                value={this.state.userUrl}
+                value={this.state.site.userUrl}
                 onChange={this.inputHandler}
               />
               <H2>
@@ -331,6 +348,9 @@ class Design extends Component {
         <DesignBody>
           {!this.state.edit ? (
             <StoryWrapper>
+              <Head>
+                <H1>Your Wedding Site</H1>
+              </Head>
               <H2>url</H2>
               <H3>
                 https://joinourbigday.netlify.com/
@@ -348,10 +368,12 @@ class Design extends Component {
               </ButtonWrapper>
             </StoryWrapper>
           ) : (
-            <div>
-              <H2>Edit</H2>
-              <Button onClick={this.handleEdit}>Back</Button>
-            </div>
+            <EditSite
+              customSite={this.props.customSite}
+              back={this.handleEdit}
+              update={this.handleUpdate}
+              id={this.props.user.id}
+            />
           )}
         </DesignBody>
       )
