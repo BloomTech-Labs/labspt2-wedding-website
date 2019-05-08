@@ -8,9 +8,11 @@ import PricingReviews from './PricingReviews'
 import Jumbo from './PremiumJumbo'
 
 const Pricingheader = styled.div`
-  border-radius: 15px;
+  border-radius: 8px;
   padding: 35px;
   background-color: #f8f8f8;
+  width: 80%;
+  margin: 3% auto;
 `
 
 const H1 = styled.h1`
