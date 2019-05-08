@@ -38,7 +38,7 @@ const H2 = styled.h2`
 `
 
 const Input = styled.input`
-  padding: .5%;
+  padding: 0.5%;
 `
 
 const Button = styled.button`
@@ -69,7 +69,8 @@ class QuestionList extends Component {
 
   inputHandler = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.type === 'number' ? parseInt(e.target.value) : e.target.value,
     })
     console.log('input handled')
   }

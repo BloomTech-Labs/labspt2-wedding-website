@@ -93,6 +93,7 @@ export default (state = initialState, action) => {
         updating: false,
       }
     case GET_SITE:
+      console.log('get site action', action.payload)
       return {
         ...state,
         customSite: action.payload,

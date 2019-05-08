@@ -22,7 +22,7 @@ export const USER_FEED = 'USER_FEED'
 export const GET_SITE = 'GET_SITE'
 
 // needs to be stored on secret .env file for production
-const api = 'https://joinourbigday.herokuapp.com' /*'http://localhost:3700'*/
+const api = 'https://joinourbigday.herokuapp.com' /* 'http://localhost:3700'*/
 
 //Login in / Registering
 export const loginRegister = creds => dispatch => {
@@ -379,10 +379,18 @@ export const fetchSite = userId => dispatch => {
   axios
     .get(`${api}/customSite/user/${userId}`)
     .then(res => {
-      dispatch({
-        type: GET_SITE,
-        payload: res.data,
-      })
+      console.log('site', res.data)
+      if (res.data.siteDesign) {
+        dispatch({
+          type: GET_SITE,
+          payload: res.data,
+        })
+      } else {
+        dispatch({
+          type: GET_SITE,
+          payload: null,
+        })
+      }
     })
     .catch(err => {
       dispatch({
@@ -399,7 +407,7 @@ export const addSite = (userId, site) => dispatch => {
     .post(`${api}/customSite/${userId}`, site)
     .then(() => {
       console.log('then fire')
-      // fetchSite(userId)(dispatch)
+      fetchSite(userId)(dispatch)
     })
     .catch(err => {
       dispatch({

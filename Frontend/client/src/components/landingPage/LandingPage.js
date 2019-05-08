@@ -2,20 +2,44 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import planning from '../../Images/beautiful-beverage-black-coffee-1410226.jpg'
+import rings from '../../Images/band-blur-close-up-265730.jpg'
+import photo from '../../Images/camera-contemporary-flash-134469.jpg'
 
 import styled from 'styled-components'
 
 import Login from './login'
 import DemoCarousel from './Carousel'
-import Dashboard from '../pages/Dashboard'
+
 
 const LPStyle = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1800px;
   margin-left: auto;
   margin-right: auto;
+  background: white;
+  background-image: url('https://images.pexels.com/photos/1820567/pexels-photo-1820567.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+  background-size:50% 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  h1{
+    @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
+    font-family: 'Aguafina Script', cursive;
+    color:#2D4058;
+    margin: 30px auto;
+    font-size: 80px
+    text-shadow: 4px 4px 4px #52C4B9;
+
+  }
+  .divider{
+    height:8px;
+    width:80%;
+    border-top: 1px solid #52C4B9;
+    border-bottom: 3px solid #52C4B9;
+    margin: 10px auto;
+
+  }
   @media screen and (max-width: 1024) {
     width: 1000px;
     margin: 0;
@@ -23,13 +47,13 @@ const LPStyle = styled.div`
 `
 const CaroDiv = styled.div`
   margin: 30px auto;
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  img {
-    height: 60vh;
+  img{
+    height: 65vh;
   }
 `
 
@@ -38,86 +62,127 @@ const ButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
   height: 60px;
-  margin-top: 20px;
+  margin-top:125px;
+  margin-bottom: 200px;
   width: 200px;
-  background-color: #52c4b9;
+  background-color:#52C4B9;
   border-radius: 30px;
-  transition: all 0.2s ease-in-out;
+  transition: all .2s ease-in-out;
 
-  :hover {
+  :hover{
     transform: scale(1.1);
-    width: 250px;
-    background-color: #2d4058;
-    box-shadow: 18px -3px 79px -10px rgba(96, 219, 217, 0.63);
+    width:250px;
+    background-color:#2D4058;
+    box-shadow: 18px -3px 79px -10px rgba(96,219,217,0.63);
   }
-  p {
+  p{
     color: #ffff;
-    text-decoration: none;
+    text-decoration:none;
     align-content: center;
     margin: 0 auto;
+    font-size: 20px;
   }
+  
 `
 
 const InfoLeft = styled.div`
 display:flex;
-width 100%;
-margin: 0 auto;
-margin-bottom: 40px;
+justify-content: space-around;
+width 90%;
+margin: 85px auto;
 background-color: white;
+border-radius:20%;
+border: 3px solid #52C4B9;
+div{
+  width: 50%;
+  justify-self: center;
+  align-self: center;
+  p{
+    @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    width: 80%;
+    margin-left: -60px;
+    margin-right: 40px
+  }
+}
 img{
-  width: 33%;
+  width: 55%;
+  border-radius:40%;
+  padding: 6px;
+  margin-left: 15%;
 }
 `
 const InfoRight = styled.div`
 display:flex;
-justify-content: space-between;
-width 100%;
-margin: 0 auto;
-margin-bottom: 40px;
+justify-content: space-around;
+width 90%;
+margin: 85px auto;
 background-color: white;
+border-radius:20%;
+border: 3px solid #52C4B9;
 div{
-  width:45%;
+  width: 50%;
+  justify-self: center;
+  align-self: center;
+
+  p{
+    @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+    font-family: 'Playfair Display', serif;
+    width: 80%;
+    margin-left:32%;
+    text-align: right;
+
+  }
 }
 img{
-  width: 33%;
+  width: 50%;
+  border-radius:40%;
+  margin-left: 28%;
+  padding: 6px;
+
 }
 `
-const InfoDiv = styled.div`
-  display: flex;
-`
+
+
 
 function LandingPage({ match }) {
   return (
     <LPStyle>
+      <h1>Join Our Big Day</h1>
       <CaroDiv>
         <DemoCarousel />
-        <ButtonDiv>
-          <Link
-            to='/login'
-            component={Login}
-            style={{ textDecoration: 'none' }}>
-            <p>Get Started</p>
-          </Link>
-        </ButtonDiv>
-      </CaroDiv>
-      <InfoLeft>
-        <img src={planning} alt='image' />
-        <div />
-      </InfoLeft>
-      <InfoRight>
+      <ButtonDiv>
+        <Link to='/login' component={Login} style={{ textDecoration: 'none' }}>
+          <p>Get Started</p>
+        </Link>
+      </ButtonDiv>
+     </CaroDiv>
+     <div className="divider"></div>
+     <InfoLeft className='topleft'>
+        <div><img src={planning} alt='image'/></div>
+        <div><p>We know wedding planning is stressful. At JoinOurBigDay our aim is to remove some of that stress.
+          Create a personal page for your wedding where you can send friends and family to RSVP as well as provide date and time information.</p></div>
+     </InfoLeft>
+     <div className="divider"></div>
+     <InfoRight>
         <div>
-          <p>af;ho'iare'ona'vr'oi'io'hoi</p>
+          <p>there is text in thqrvjoefniu ;or f;quhrfpiuqh rfpqw pfu9h qpwuh vu9qh pcoquv rl hq blciausdjgkf kjalgc ivapiyvwvhk;ajsdg;ufgdkh >.;TA UT;EFUG ;wg97 g;uewg;iugfg is tag</p>
         </div>
-        <div>
-          <img src={planning} alt='image' />
-        </div>
-      </InfoRight>
-      <InfoLeft>
-        <div>
-          <img src={planning} alt='image' />
-        </div>
-        <div />
-      </InfoLeft>
+        <div><img src={rings} alt='image'/></div>
+     </InfoRight>
+     <div className="divider"></div>
+     <InfoLeft>
+        <div><img src={photo} alt='image'/></div>
+        <div><p>We offer many other services with our Premium upgrade. Get more pages for a more personalized feel and your very own 
+                photo upload for your guests to post to one location. so you don't have to scour social media with hashtags to tread through 
+                the clutter.
+               </p></div>
+     </InfoLeft>
+
+
+
+
     </LPStyle>
   )
 }

@@ -12,7 +12,7 @@ const AnswerWrapper = styled.div`
   text-align: center;
 `
 
-const ButtonWrapper =styled.div`
+const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
 `
@@ -59,7 +59,7 @@ class Question extends React.Component {
   //axios call on CDM by typing a new question
 
   // componentDidMount() {
-  //   const api = 'http://localhost:3700'
+  //   const api = 'https://joinourbigday.herokuapp.com'
   //   const questionId = this.props.questionInfo.id
   //   axios
   //     .get(`${api}/rsvp/answer/${questionId}`)
@@ -103,7 +103,7 @@ class Question extends React.Component {
   }
   answersHandler = () => {
     console.log('GET ANSERS fired')
-    const api = 'http://localhost:3700'
+    const api = 'https://joinourbigday.herokuapp.com'
     const questionId = this.props.questionInfo.id
     axios
       .get(`${api}/rsvp/answer/${questionId}`)

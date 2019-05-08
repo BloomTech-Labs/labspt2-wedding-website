@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { fetchSite, addSite, updateSite, deleteSite } from '../../actions/index'
+import EditSite from './editDesign'
 
 import styled from 'styled-components'
 
@@ -87,6 +88,13 @@ const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+const ButtonWrapper = styled.div`
+  margin: 3%;
+  padding: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `
 
 const Button = styled.button`
@@ -177,10 +185,13 @@ class Design extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      siteDesign: null,
-      userUrl: '',
-      story: '',
-      proposalStory: '',
+      site: {
+        siteDesign: null,
+        userUrl: '',
+        story: '',
+        proposalStory: '',
+      },
+      edit: false,
     }
   }
 
@@ -191,21 +202,52 @@ class Design extends Component {
   handleSubmit = e => {
     console.log('submit Fire')
     console.log(this.props.user.id)
-    e.preventDefault()
-    this.props.addSite(this.props.user.id, this.state)
+    this.props.addSite(this.props.user.id, this.state.site)
   }
 
   inputHandler = e => {
+    e.preventDefault()
+    const { site } = { ...this.state }
+    const currentState = site
+    const { name, value, type } = e.target
+    currentState[name] = type === 'number' ? parseInt(value) : value
     this.setState({
-      [e.target.name]:
-        e.target.type === 'number' ? parseInt(e.target.value) : e.target.value,
+      user: value,
+    })
+    console.log('input handled')
+  }
+  EditInputHandler = e => {
+    e.preventDefault()
+    const { editSite } = { ...this.state }
+    const currentState = editSite
+    const { name, value, type } = e.target
+    currentState[name] = type === 'number' ? parseInt(value) : value
+    this.setState({
+      user: value,
     })
     console.log('input handled')
   }
 
-  render() {
+  handleDelete = e => {
+    e.preventDefault()
+    this.props.deleteSite(this.props.user.id)
+  }
+
+  handleEdit = () => {
+    this.setState({
+      edit: !this.state.edit,
+    })
     console.log(this.state)
-    if (this.props.customSite)
+  }
+
+  handleUpdate = e => {
+    e.preventDefault()
+    this.props.updateSite(this.props.user.id)
+  }
+
+  render() {
+    console.log('props', this.props)
+    if (!this.props.customSite) {
       return (
         <DesignBody>
           <Head>
@@ -227,7 +269,7 @@ class Design extends Component {
                 type='text'
                 placeholder='Couple Story'
                 name='story'
-                value={this.state.story}
+                value={this.state.site.story}
                 onChange={this.inputHandler}
                 wrap='soft'
               />
@@ -236,7 +278,7 @@ class Design extends Component {
                 type='text'
                 placeholder='Proposal Story'
                 name='proposalStory'
-                value={this.state.proposalStory}
+                value={this.state.site.proposalStory}
                 onChange={this.inputHandler}
               />
             </form>
@@ -274,7 +316,7 @@ class Design extends Component {
                 name='siteDesign'
                 min='1'
                 max='3'
-                value={this.state.siteDesign}
+                value={this.state.site.siteDesign}
                 onChange={this.inputHandler}
               />
             </form>
@@ -287,7 +329,7 @@ class Design extends Component {
                 type='text'
                 placeholder='Example= johnandjanesmithwedding...'
                 name='userUrl'
-                value={this.state.userUrl}
+                value={this.state.site.userUrl}
                 onChange={this.inputHandler}
               />
               <H2>
@@ -300,6 +342,42 @@ class Design extends Component {
           </InputWrapper>
         </DesignBody>
       )
+    } else {
+      return (
+        // need to show site info here and give otions to update/ delete and preview
+        <DesignBody>
+          {!this.state.edit ? (
+            <StoryWrapper>
+              <Head>
+                <H1>Your Wedding Site</H1>
+              </Head>
+              <H2>url</H2>
+              <H3>
+                https://joinourbigday.netlify.com/
+                {this.props.customSite.userUrl}
+              </H3>
+              <H2>Couple Story</H2>
+              <H3>{this.props.customSite.story}</H3>
+              <H2>Proposal Story</H2>
+              <H3>{this.props.customSite.proposalStory}</H3>
+              <H2>Site design Choosen</H2>
+              <H3>{this.props.customSite.siteDesign}</H3>
+              <ButtonWrapper>
+                <Button onClick={this.handleDelete}>Delete</Button>
+                <Button onClick={this.handleEdit}>Edit Page</Button>
+              </ButtonWrapper>
+            </StoryWrapper>
+          ) : (
+            <EditSite
+              customSite={this.props.customSite}
+              back={this.handleEdit}
+              update={this.handleUpdate}
+              id={this.props.user.id}
+            />
+          )}
+        </DesignBody>
+      )
+    }
   }
 }
 
