@@ -32,7 +32,7 @@ const WhoWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5);
+  background: rgba(177, 221, 241, 0.9);
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
@@ -47,7 +47,7 @@ const WhenWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5);
+  background: rgba(177, 221, 241, 0.9);
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 

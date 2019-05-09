@@ -13,7 +13,7 @@ const Pricingheader = styled.div`
   align-items: center;
   border-radius: 8px;
   padding: 35px;
-  background-color: #f8f8f8;
+  background: rgba(255, 255, 255, 0.9);
   width: 80%;
   margin: 3% auto;
   @media only screen and (max-width: 700px) and (min-width: 300px) {

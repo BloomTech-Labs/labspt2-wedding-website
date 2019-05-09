@@ -8,7 +8,7 @@ import styled from 'styled-components'
 const RSVPWrapper = styled.div`
   width: 80%;
   margin: 0 auto;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   margin-top: 3%;
   @media only screen and (max-width: 700px) and (min-width: 300px) {

@@ -30,7 +30,7 @@ const EditButton = styled.button`
 
 const AddContainer = styled.div`
   margin: 3% auto;
-  background-color: white;
+  background: rgba(255, 255, 255, 0.9);
   padding: 10px;
   border-radius: 8px;
   border: 1px solid gray;

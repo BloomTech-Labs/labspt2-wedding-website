@@ -13,7 +13,6 @@ const RSVPPage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    ${'' /* height: 100%; */}
     width: 100%;
     max-width: 1280px;
     min-width: 1024px;
@@ -30,7 +29,7 @@ const RSVPForm = styled.div`
     align-items: center;
     justify-content: center;
     opacity: 1;
-    background-color: white;
+    background: rgba(255, 255, 255, 0.9);
 `;
 
 

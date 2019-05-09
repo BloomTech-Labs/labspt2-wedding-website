@@ -27,7 +27,7 @@ const SettingsPage = styled.div`
 const SettingsBox = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.9);
   height: 300px;
   padding: 10px 25px;
   border-radius: 8px;

@@ -13,12 +13,8 @@ Modal.setAppElement('#root')
 
 const DashContainer = styled.div`
   width: 80%;
-
   margin: 0 auto;
-
   display: flex;
-  // background-color: white;
-  // overflow: auto
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     width: 95%;
   }
@@ -79,23 +75,13 @@ const HeadContainer = styled.div`
   flex-direction: column;
   margin: 0 auto;
   width: 100%;
-  // min-width: 1024px;
-
-  // @media only screen and (max-width: 1024px) and (min-width: 400px) {
-  //   flex-direction: column;
-  //   width: 100%;
-  //   min-width: 350px;
-  //   width: 50%;
-  //   margin-left: auto;
-  //   margin-right: auto;
-  // }
 `
 
 const Head = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   margin: 4% 0%;
 `
@@ -149,7 +135,7 @@ const RegistryContainer = styled.div`
 const GuestList = styled.div`
   margin-top: 5%;
   border-radius: 8px;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   padding: 3%;
   margin: 3% 0%;
 `
@@ -163,7 +149,7 @@ const H3 = styled.h3`
 const RSVP = styled.div`
   margin-top: 5%;
   border-radius: 8px;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   padding: 3%;
   margin: 3% 0%;
 `
@@ -171,7 +157,7 @@ const RSVP = styled.div`
 const Registry = styled.div`
   margin-top: 5%;
   border-radius: 8px;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   padding: 3%;
   margin: 3% 0%;
 `

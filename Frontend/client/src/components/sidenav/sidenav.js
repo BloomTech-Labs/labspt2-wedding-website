@@ -23,7 +23,7 @@ const NavPage = styled.div`
   display: flex;
   margin: 3% auto;
   width: 80%;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   justify-content: space-evenly;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
@@ -34,7 +34,7 @@ const NavPage = styled.div`
 
 const Img = styled.img`
   width: 20%;
-  border-radius: 8px;
+  border-radius: 50%;
   @media only screen and (max-width: 600px) and (min-width: 300px) {
     width: 30%;
     margin: 1%;
@@ -92,7 +92,7 @@ const Button = styled.button`
   font-size: x-large;
   background: #52c4b9;
   height: 80px;
-  width: 130px;
+ width: 130px;
 `
 
 const ImgMenu = styled.img`
