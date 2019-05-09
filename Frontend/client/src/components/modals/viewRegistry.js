@@ -129,7 +129,7 @@ class AddRegistry extends Component {
             </Body>
           </div>
         ) : (
-          <form>
+          <MainCont>
             <label htmlFor='link'>Registry Link</label>
             <input
               type='text'
@@ -139,15 +139,15 @@ class AddRegistry extends Component {
               onChange={this.inputHandler}
             />
             <label htmlFor='name'>Display Name</label>
-            <input
+            <Input
               type='text'
               name='registryName'
               value={this.state.registry.registryName}
               placeholder='Display Name'
               onChange={this.inputHandler}
             />
-            <button onClick={this.handleEdit}>Apply Changes</button>
-          </form>
+            <Button onClick={this.handleEdit}>Apply Changes</Button>
+          </MainCont>
         )}
       </MainCont>
     )
