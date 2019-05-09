@@ -50,17 +50,28 @@ const Button = styled.button`
 `
 
 const RegistryItem = styled.button`
+  border-radius: 8px;
   color: white;
   border: none;
   outline: none;
   border-radius: 25px;
-  padding: 15px 70px;
-  margin-right: 15px;
-  font-size: 0.8em;
+  padding: 15px;
+  font-size: 1em;
   font-weight: 500;
   background: goldenrod;
   cursor: pointer;
-  margin: 3%;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    margin: 3% auto;
+  }
 `
 
 const HeadContainer = styled.div`
@@ -130,6 +141,9 @@ const H2 = styled.h2`
 const RegistryContainer = styled.div`
   display: flex;
   flex-direction: row;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    flex-direction: column;
+  }
 `
 
 const GuestList = styled.div`
