@@ -73,6 +73,7 @@ const MenuList = styled.ul`
 
 const Li = styled.a`
   margin: 2%;
+  font-size: 1rem;
 `
 
 const ButtonWrapper = styled.div`
@@ -88,9 +89,10 @@ const Button = styled.button`
   border: none;
   outline: none;
   font-weight: 500;
+  font-size: x-large;
   background: #52c4b9;
-  height: 68px;
-  width: 90px;
+  height: 80px;
+  width: 130px;
 `
 
 const ImgMenu = styled.img`
