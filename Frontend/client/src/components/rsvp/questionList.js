@@ -39,6 +39,10 @@ const H2 = styled.h2`
 
 const Input = styled.input`
   padding: 0.5%;
+  width: 60%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 90%;
+  }
 `
 
 const Button = styled.button`
@@ -46,11 +50,25 @@ const Button = styled.button`
   color: white;
   border: none;
   outline: none;
-  padding: 15px 70px;
+  border-radius: 25px;
+  padding: 15px;
   font-size: 1em;
   font-weight: 500;
   background: #52c4b9;
-  margin: 3%;
+  cursor: pointer;
+  margin: 5% 3% 3% 3%;
+  width: 30.3%;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
 `
 
 class QuestionList extends Component {

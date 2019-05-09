@@ -8,13 +8,17 @@ import axios from 'axios'
 import Answer from './answer'
 
 const AnswerWrapper = styled.div`
-  margin: 3%;
   text-align: center;
+  width: 100%;
 `
 
 const ButtonWrapper =styled.div`
   display: flex;
   justify-content: space-evenly;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `
 
 const Button = styled.button`
@@ -32,12 +36,12 @@ const Button = styled.button`
   width: 30.3%;
   justify-content: space-evenly;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
-    width: 30%;
+    width: 60%;
     display: flex;
     margin: 3% auto;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
+    width: 60%;
     display: flex;
     margin: 3% auto;
   }
@@ -137,8 +141,8 @@ class Question extends React.Component {
         <h3>Question: {this.props.questionInfo.Question_body}</h3>
         <ButtonWrapper>
           <Button onClick={this.deleteHandler}>Delete</Button>
-          <Button onClick={this.updateHandler}>update</Button>
-          <Button onClick={this.answersHandler}>See answers</Button>
+          <Button onClick={this.updateHandler}>Update</Button>
+          <Button onClick={this.answersHandler}>See Answers</Button>
         </ButtonWrapper>
         {this.state.answersTab ? (
           this.state.answers.length > 0 ? (
@@ -167,7 +171,7 @@ class Question extends React.Component {
               value={this.state.question.Question_body}
               onChange={this.inputHandler}
             />
-            <button onClick={this.submitUpdateHandler}>Update</button>
+            <Button onClick={this.submitUpdateHandler}>Update</Button>
           </form>
         ) : null}
       </AnswerWrapper>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Button from 'react-button-component'
+// import Button from 'react-button-component'
 import ScrollAnimation from 'react-animate-on-scroll';
 import {
     BrowserRouter as Router,
@@ -92,6 +92,32 @@ const H2 = styled.h2 `
     color: #ffffff;
 `;
 
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% 3% 3% 3%;
+  width: 30.3%;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+`
+
 const buttonStyles = {
     width: '200px', 
     border: '1px solid black', 
@@ -147,8 +173,8 @@ export default class RSVP extends Component {
                     </RSVPForm>
                     <ButtonArea>
                         <Buttons>
-                            <Button style={buttonStyles}>Add Question</Button>
-                            <Button style={buttonStyles}>Save</Button>
+                            <Button>Add Question</Button>
+                            <Button>Save</Button>
                         </Buttons>
                         <RSVPLink>
                             <StyledLink to="/guestlist">Full Guest List</StyledLink>
