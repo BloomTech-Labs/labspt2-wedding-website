@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 import background from '../media/background2.jpg'
 
+import CountDown from '../CountDown';
 import Modal from 'react-modal'
 import RsvpModal from '../../modals/rsvp'
 Modal.setAppElement('#root')
@@ -142,6 +143,7 @@ class WeddingPage2 extends Component {
           </WhoWrapper>
           <WhenWrapper>
             <H1>{moment(this.props.siteInfo.weddingDate).format('ll')}</H1>
+            <CountDown />
             <H2>{this.props.siteInfo.venueLocation}</H2>
           </WhenWrapper>
           <RSVPWrapper>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
+import './countDown.css'
+
 
 class CountDown extends Component {
     constructor(props) {
@@ -83,14 +85,14 @@ class CountDown extends Component {
         <div className="Countdown">
           <span className="Countdown-col">
             <span className="Countdown-col-element">
-                <strong>{this.addLeadingZeros(countDown.days)}</strong>
+                <strong className='bold'>{this.addLeadingZeros(countDown.days)}</strong>
                 <span>{countDown.days === 1 ? 'Day' : 'Days'}</span>
             </span>
           </span>
   
           <span className="Countdown-col">
             <span className="Countdown-col-element">
-              <strong>{this.addLeadingZeros(countDown.hours)}</strong>
+              <strong className='bold'>{this.addLeadingZeros(countDown.hours)}</strong>
               <span>Hours</span>
             </span>
           </span>
@@ -98,14 +100,14 @@ class CountDown extends Component {
   
           <span className="Countdown-col">
             <span className="Countdown-col-element">
-              <strong>{this.addLeadingZeros(countDown.min)}</strong>
+              <strong className='bold'>{this.addLeadingZeros(countDown.min)}</strong>
               <span>Min</span>
             </span>
           </span>
   
           <span className="Countdown-col">
             <span className="Countdown-col-element">
-              <strong>{this.addLeadingZeros(countDown.sec)}</strong>
+              <strong className='bold'>{this.addLeadingZeros(countDown.sec)}</strong>
               <span>Sec</span>
             </span>
           </span>

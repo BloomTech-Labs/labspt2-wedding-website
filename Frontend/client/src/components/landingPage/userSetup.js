@@ -12,9 +12,12 @@ const USBody = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   margin: 5% auto;
   width: 80%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 
 const H1 = styled.h1`
@@ -28,20 +31,35 @@ const Label = styled.label`
 const Input = styled.input`
   padding: 0.5%;
   margin-left: 1%;
+  width: 100%;
+`
+
+/*for some reason this element is not staying in step with the others. This sizing seems to fix the problem*/
+const Input1 = styled.input`
+  padding: 0.5%;
+  margin-left: 1%;
+  width: 167%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 104%;
+  }
 `
 
 const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 90%;
 `
 
 const Button = styled.button`
@@ -137,7 +155,7 @@ class UserSetup extends Component {
             {!this.props.userInfo.username ? (
               <FormWrapper>
                 <Label htmlFor=''>Username</Label>
-                <Input
+                <Input1
                   type='text'
                   placeholder='Create a username'
                   name='username'
@@ -176,7 +194,7 @@ class UserSetup extends Component {
               onChange={this.inputHandler}
             />
             <Label htmlFor=''>Venue Location</Label>
-            <GoogleSuggest
+            <GoogleSuggest 
               onChange={this.handleLocationChange.bind(this)}
               suggest={this.handleSelectSuggest.bind(this)}
               search={this.state.search}

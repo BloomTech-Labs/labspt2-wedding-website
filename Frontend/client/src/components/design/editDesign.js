@@ -92,6 +92,9 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    flex-direction: column;
+  }
 `
 
 const Button = styled.button`
@@ -128,6 +131,7 @@ const Head = styled.div`
 const H1 = styled.h1`
   font-size: 2rem;
   text-align: center;
+  margin: 0 auto;
 `
 
 const H2 = styled.h2`

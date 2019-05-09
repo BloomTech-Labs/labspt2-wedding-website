@@ -74,6 +74,7 @@ const MenuList = styled.ul`
 const Li = styled.a`
   margin: 2%;
   font-size: 1rem;
+  text-shadow: 1px 1px 1px #000000
 `
 
 const ButtonWrapper = styled.div`
