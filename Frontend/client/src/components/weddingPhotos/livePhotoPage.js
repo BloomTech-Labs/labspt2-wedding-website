@@ -1,38 +1,45 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { fetchPhotoFeed, }  from '../../actions'
+import  React, { Component } from 'react';
 import { Input, Label } from 'reactstrap'
 import { Modal, FormGroup, Button, FormText } from 'react-bootstrap'
 import logo from '../../Images/jobdLogo.png'
 import styled from 'styled-components'
 import PhotoCard from '../weddingPhotos/photoCard';
+import axios from 'axios';
 
 
 const Image = styled.img `
 width: 100%
 `
-class WeddingPhotos extends React.Component {
+class WeddingPhotos extends Component {
     constructor(props){
       super(props);
       this.state ={
-        photoCards: this.props.photoCards,
-        userInfo: this.props.userInfo,
+        photoCards: [],
+        userInfo: [],
         show: false,
         caption: '',
         source: logo
       }
-       this.handleShow = e =>{
+    }
+      componentWillMount=()=>{
+        axios.get(`http://localhost:3700/users/1/live-photos`)
+          .then(res=>{
+            this.setState({photoCards: res.data})
+          })
+  
+      }
+      handleShow = e =>{
         this.setState({show: true})
       }
-      this.handleClose = e =>{
+      handleClose = e =>{
         this.setState({show: false, source: ''})
       }
-      this.fileChange = e =>{
+      fileChange = e =>{
        console.log(e.target.files)
-        this.setState({source: URL.createObjectURL(e.target.files[0])})
+       this.setState({source: URL.createObjectURL(e.target.files[0])})
       }
     
-    }
+    
     render() {
       console.log('userInfo',this.props.userInfo)
       return (
@@ -71,12 +78,6 @@ class WeddingPhotos extends React.Component {
     }
   }
 
-  const mapStateToProps = state =>({
-   photoCards: state.photoCards,
-   userInfo: state.userInfo
-  })
 
-  export  default connect(
-    mapStateToProps, 
-    { fetchPhotoFeed }
-  )(WeddingPhotos)
+
+  export  default WeddingPhotos;
