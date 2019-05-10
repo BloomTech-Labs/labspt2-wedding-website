@@ -23,15 +23,6 @@ const LPStyle = styled.div`
   background-size:50% 100%;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  h1{
-    @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
-    font-family: 'Aguafina Script', cursive;
-    color:#2D4058;
-    margin: 30px auto;
-    font-size: 80px
-    text-shadow: 4px 4px 4px #52C4B9;
-
-  }
   .divider{
     height:8px;
     width:80%;
@@ -144,12 +135,95 @@ img{
 }
 `
 
+const H1 = styled.h1`
+  @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
+  font-family: 'Aguafina Script', cursive;
+  color:#52C4B9;
+  margin: 10% 3% 3% 0%;
+  font-size: 80px
+  text-shadow: 4px 4px 4px #2D4058;
+`
+const H2 = styled.h1`
+  @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
+  font-family: 'Aguafina Script', cursive;
+  color:#52C4B9;
+  margin: 10% 3% 3% 0%;
+  font-size: 80px
+  text-shadow: 4px 4px 4px #2D4058;
+  @media only screen and (max-width: 750px) and (min-width: 300px) {
+    text-shadow: 4px 4px 4px #52C4B9;
+    color:#2D4058;
+  }
+`
 
+const H3 = styled.h1`
+  @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
+  font-family: 'Aguafina Script', cursive;
+  color:#2D4058;
+  margin: 10% 3% 3% 0%;
+  font-size: 80px
+  text-shadow: 4px 4px 4px #52C4B9;
+  @media only screen and (max-width: 750px) and (min-width: 300px) {
+    text-shadow: 4px 4px 4px #2D4058;
+    color:#52C4B9;
+  }
+`
+
+const H4 = styled.h1`
+  @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
+  font-family: 'Aguafina Script', cursive;
+  color:#2D4058;
+  margin: 10% 3% 3% 0%;
+  font-size: 80px
+  text-shadow: 4px 4px 4px #52C4B9;
+`
+
+const JOW = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+`
+
+const BDW = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+`
+
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 40%;
+  margin: 0 auto;
+  @media only screen and (max-width: 1100px) and (min-width: 300px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 900px) and (min-width: 300px) {
+    width: 60%;
+  }
+  @media only screen and (max-width: 750px) and (min-width: 551px) {
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+  }
+  @media only screen and (max-width: 550px) and (min-width: 300px) {
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+  }
+`
 
 function LandingPage({ match }) {
   return (
     <LPStyle>
-      <h1>Join Our Big Day</h1>
+      <TitleWrapper>
+        <JOW>
+          <H1>Join</H1> <H2>Our</H2>
+        </JOW>
+        <BDW>
+           <H3>Big</H3> <H4>Day</H4>
+        </BDW>   
+      </TitleWrapper>
       <CaroDiv>
         <DemoCarousel />
       <ButtonDiv>
