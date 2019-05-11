@@ -9,6 +9,8 @@ import Modal from 'react-modal'
 import RegistryAddModal from '../modals/addRegistry'
 import RegistryViewModal from '../modals/viewRegistry'
 import styled from 'styled-components'
+
+import VenueSearch from '../venueSearch'
 Modal.setAppElement('#root')
 
 const DashContainer = styled.div`
@@ -333,6 +335,7 @@ class Dashboard extends Component {
               </Button>
             </RegistryContainer>
           </Registry>
+          <VenueSearch />
           <Modal isOpen={this.state.modal} style={modalStyle}>
             <RegistryAddModal
               user={this.props.userInfo}
