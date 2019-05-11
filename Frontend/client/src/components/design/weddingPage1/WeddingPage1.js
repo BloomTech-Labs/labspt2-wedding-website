@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
+import CountDown from '../CountDown';
+
 import styled from 'styled-components'
 
 import background from '../media/background1.jpg'
@@ -139,6 +141,7 @@ class WeddingPage1 extends Component {
           </WhoWrapper>
           <WhenWrapper>
             <H1>{moment(this.props.siteInfo.weddingDate).format('ll')}</H1>
+            <CountDown />
             <H2>{this.props.siteInfo.venueLocation}</H2>
           </WhenWrapper>
           <RSVPWrapper>

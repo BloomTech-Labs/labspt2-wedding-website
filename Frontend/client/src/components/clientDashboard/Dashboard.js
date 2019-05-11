@@ -5,6 +5,7 @@ import moment from 'moment'
 
 import PieChart from 'react-minimal-pie-chart'
 import Modal from 'react-modal'
+import CountDown from '../design/CountDown';
 
 import RegistryAddModal from '../modals/addRegistry'
 import RegistryViewModal from '../modals/viewRegistry'
@@ -249,6 +250,9 @@ class Dashboard extends Component {
               <H1>
                 When: {moment(this.props.userInfo.weddingDate).format('ll')}
               </H1>
+              <div>
+                <CountDown />
+              </div>
               <Link to='/Design' style={{ width: '100%' }}>
                 <Button>
                   <P>Change Design</P>
