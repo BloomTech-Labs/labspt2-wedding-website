@@ -25,6 +25,7 @@ const upload = multer({
     metadata: (req, file, cb) => {
       const { id } = req.params
       //using id to be able to grab all images for a specific user page by custom field-name.
+      console.log(file)
       cb(null, {
         fieldName: `user${id}`
       })

@@ -12,6 +12,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email.com',
           userId: 1,
           rsvp: true,
+          code:1234
         },
         {
           id: 2,
@@ -20,6 +21,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email1.com',
           userId: 1,
           rsvpMaybe: true,
+          code:1234
         },
         {
           id: 3,
@@ -28,6 +30,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email2.com',
           userId: 2,
           rsvp: false,
+          code:1234
         },
         {
           id: 4,
@@ -36,6 +39,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email3.com',
           userId: 2,
           rsvp: true,
+          code:1234
         },
         {
           id: 5,
@@ -44,6 +48,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email4.com',
           userId: 3,
           rsvpMaybe: true,
+          code:1234
         },
         {
           id: 6,
@@ -52,6 +57,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email5.com',
           userId: 3,
           rsvp: true,
+          code:1234
         },
         {
           id: 7,
@@ -60,6 +66,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email6.com',
           userId: 4,
           rsvpMaybe: true,
+          code:1234
         },
         {
           id: 8,
@@ -68,6 +75,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email7.com',
           userId: 4,
           rsvp: true,
+          code:1234
         },
         {
           id: 9,
@@ -76,6 +84,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email8.com',
           userId: 5,
           rsvpMaybe: true,
+          code:1234
         },
         {
           id: 10,
@@ -84,6 +93,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email9.com',
           userId: 5,
           rsvp: true,
+          code:1234
         },
         {
           id: 11,
@@ -92,6 +102,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email10.com',
           userId: 6,
           rsvpMaybe: true,
+          code:1234
         },
         {
           id: 12,
@@ -100,6 +111,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email11.com',
           userId: 6,
           rsvp: true,
+          code:1234
         },
         {
           id: 13,
@@ -108,6 +120,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email12.com',
           userId: 6,
           rsvpMaybe: true,
+          code:1234
         },
         {
           id: 14,
@@ -116,6 +129,7 @@ exports.seed = function(knex, Promise) {
           email: 'guest@email13.com',
           userId: 6,
           rsvp: true,
+          code:1234
         },
       ])
     })
