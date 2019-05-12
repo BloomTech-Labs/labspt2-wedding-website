@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
 
 import MenuBTN from './hamburger.png';
 
@@ -175,31 +175,31 @@ class Navigation extends Component {
                 ? (
                 <PopMenuList>
                 <Li>
-                  <Link to='/'>Dashboard</Link>
+                  <NavLink exact path to='/' activeStyle={{ textDecoration: 'underline' }}>Dashboard</NavLink>
                 </Li>
                 <Li className='listItem'>
-                  <Link to='/settings'>Settings</Link>
+                  <NavLink to='/settings' activeStyle={{ textDecoration: 'underline' }}>Settings</NavLink>
                 </Li>
                 <Li className='listItem'>
-                  <Link to='/pricing' className='style-link'>
+                  <NavLink to='/pricing' activeStyle={{ textDecoration: 'underline' }}>
                     Premium
-                  </Link>
+                  </NavLink>
                 </Li>
 
                 <Li className='listItem'>
-                  <Link to='/rsvp' className='style-link'>
+                  <NavLink to='/rsvp' activeStyle={{ textDecoration: 'underline' }}>
                     RSVP
-                  </Link>
+                  </NavLink>
                 </Li>
                 <Li className='listItem'>
-                  <Link to='/guests' className='style-link'>
+                  <NavLink to='/guests' activeStyle={{ textDecoration: 'underline' }}>
                     Guests
-                  </Link>
+                  </NavLink>
                 </Li>
                 <Li className='listItem'>
-                  <Link to='/design' className='style-link'>
+                  <NavLink to='/design' activeStyle={{ textDecoration: 'underline' }}>
                     Design
-                  </Link>
+                  </NavLink>
                 </Li>
               </PopMenuList>
                 )
@@ -209,31 +209,31 @@ class Navigation extends Component {
               }
               <MenuList>
                 <Li>
-                  <Link to='/'>Dashboard</Link>
+                  <NavLink exact path to='/' activeStyle={{ textDecoration: 'underline' }}>Dashboard</NavLink>
                 </Li>
                 <Li className='listItem'>
-                  <Link to='/settings'>Settings</Link>
+                  <NavLink to='/settings' activeStyle={{ textDecoration: 'underline' }}>Settings</NavLink>
                 </Li>
                 <Li className='listItem'>
-                  <Link to='/pricing' className='style-link'>
+                  <NavLink to='/pricing' activeStyle={{ textDecoration: 'underline' }}>
                     Premium
-                  </Link>
+                  </NavLink>
                 </Li>
 
                 <Li className='listItem'>
-                  <Link to='/rsvp' className='style-link'>
+                  <NavLink to='/rsvp' activeStyle={{ textDecoration: 'underline' }}>
                     RSVP
-                  </Link>
+                  </NavLink>
                 </Li>
                 <Li className='listItem'>
-                  <Link to='/guests' className='style-link'>
+                  <NavLink to='/guests' activeStyle={{ textDecoration: 'underline' }}>
                     Guests
-                  </Link>
+                  </NavLink>
                 </Li>
                 <Li className='listItem'>
-                  <Link to='/design' className='style-link'>
+                  <NavLink to='/design' activeStyle={{ textDecoration: 'underline' }}>
                     Design
-                  </Link>
+                  </NavLink>
                 </Li>
               </MenuList>
               <ButtonWrapper>
