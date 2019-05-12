@@ -11,7 +11,6 @@ module.exports = server => {
 addImage = (req, res) => {
   const userId = req.params.id
   singleUpload(req, res, err => {
-    console.log(req.file.fieldname)
     const { name, caption } = req.body
     if (err) {
       res.status(422).send({
