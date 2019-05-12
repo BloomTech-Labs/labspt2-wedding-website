@@ -1,8 +1,22 @@
 // Imports
 import React, { Component } from 'react'
+import styled from 'styled-components';
 
 // Import React Scrit Libraray to load Google object
 import Script from 'react-load-script'
+
+const InputWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+`
+
+const Input = styled.input`
+  width: 80%;
+  padding: .5%;
+`
 
 class Search extends Component {
   // Define Constructor
@@ -53,14 +67,14 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
+      <InputWrap>
         <Script
           url='https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfBhKctGiH0CzM2oygDTaRcqpkHxqzpw&libraries=places'
           onLoad={this.handleScriptLoad}
         />
-        <input
+        <Input
           id='autocomplete'
-          placeholder=''
+          placeholder='Enter Your Venue Address Here...'
           value={this.state.query}
           onChange={this.handleInputChange}
           style={{
@@ -68,7 +82,7 @@ class Search extends Component {
             maxWidth: 800,
           }}
         />
-      </div>
+      </InputWrap>
     )
   }
 }
