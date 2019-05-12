@@ -21,7 +21,7 @@ const upload = multer({
       filesize: 50,
     },
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: 'bucket-owner-full-control',
+    acl: 'public-read',
     metadata: (req, file, cb) => {
       const { id } = req.params
       //using id to be able to grab all images for a specific user page by custom field-name.

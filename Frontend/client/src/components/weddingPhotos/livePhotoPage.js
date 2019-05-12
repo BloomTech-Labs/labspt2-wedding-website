@@ -22,6 +22,7 @@ class WeddingPhotos extends Component {
       }
     }
       componentWillMount=()=>{
+        
         axios.get(`http://localhost:3700/users/1/live-photos`)
           .then(res=>{
             this.setState({photoCards: res.data})
