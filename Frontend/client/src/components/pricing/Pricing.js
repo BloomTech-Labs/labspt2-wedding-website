@@ -32,6 +32,10 @@ const H2 = styled.h2`
   justify-content: center;
   padding: 20px;
   text-align: center;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-bottom: 7px double;
+  margin-bottom: 3%;
 `
 const StripeB = styled.button`
   color: green;

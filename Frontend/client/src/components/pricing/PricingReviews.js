@@ -11,9 +11,16 @@ const Img = styled.img`
   margin: 3% 0%;
 `
 
+const PRWrapper = styled.div`
+  margin-top: 3%;
+  border-top: 7px double black;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+`
+
 const PricingReviews = () => {
   return (
-    <div>
+    <PRWrapper>
       <Media className='text-center'>
         <Media body>
           <Img src={Wedd1} alt="Two Stark Llammas" />
@@ -45,7 +52,7 @@ const PricingReviews = () => {
           guest to keep up with your progress of your wedding plans also.
         </Media>
       </Media>
-    </div>
+    </PRWrapper>
   )
 }
 

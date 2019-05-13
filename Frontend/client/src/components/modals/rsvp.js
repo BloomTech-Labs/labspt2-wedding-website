@@ -7,21 +7,53 @@ import styled from 'styled-components'
 const URL = 'http://localhost:3700'
 
 const MainCont = styled.div`
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  margin: 3% auto;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  align-items: center;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 
 const Header = styled.div`
   display: flex;
   justify-content: space-around;
-  font-size: 20px;
+  font-size: 1.5rem;
 `
 
 const Body = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+`
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 1rem;
+  }
 `
 
 const Input = styled.input``
@@ -115,7 +147,7 @@ class Rsvp extends Component {
       return (
         <MainCont>
           <Header>
-            <button onClick={() => this.props.handleClose()}>Close</button>
+            <Button onClick={() => this.props.handleClose()}>Close</Button>
             <h2>RSVP</h2>
           </Header>
           <Body>
@@ -128,9 +160,9 @@ class Rsvp extends Component {
               onChange={this.inputHandler}
             />
             <Footer>
-              <button onClick={e => this.verifyGuest(e, this.state.code)}>
+              <Button onClick={e => this.verifyGuest(e, this.state.code)}>
                 Go
-              </button>
+              </Button>
             </Footer>
           </Body>
         </MainCont>

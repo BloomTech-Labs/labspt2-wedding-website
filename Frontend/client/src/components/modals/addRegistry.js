@@ -44,7 +44,7 @@ const Button = styled.button`
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
@@ -55,10 +55,11 @@ const Button = styled.button`
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
 `
 
