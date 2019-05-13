@@ -380,29 +380,6 @@ class GuestList extends Component {
           <h1>Send Email</h1>
           <Button onClick={this.emailHandler}>Send</Button>
         </AddContainer>
-        <TableWrapper>
-          {this.props.guests ? (
-            <ReactTable
-              columns={columns}
-              data={this.props.guests}
-              filterable
-              defaultPageSize={10}
-              pageSizeOptions={[5, 10, 20]}
-              noDataText={'Loading Guests'}
-              showPaginationTop
-              showPaginationBottom={false}
-              style={{
-                height: '400px',
-                borderRadius: '8px',
-                backgroundColor: 'white',
-                marginTop: '30px',
-                overflow: 'hidden',
-                margin: '3% auto',
-                width: '100%',
-              }}
-            />
-          ) : null}
-        </TableWrapper>
       </PageWrap>
     )
   }
