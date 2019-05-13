@@ -260,8 +260,10 @@ class Dashboard extends Component {
             </NameDate>
             <Location>
               <H2>Where: {this.props.userInfo.venueLocation}</H2>
-              <VenueSearch /> 
-              <NavLink to='/Design' style={{ textDecoration: 'none', width: '100%'}}>
+              <VenueSearch />
+              <NavLink
+                to='/Design'
+                style={{ textDecoration: 'none', width: '100%' }}>
                 <Button>
                   <P>Change Design</P>
                 </Button>
@@ -273,19 +275,16 @@ class Dashboard extends Component {
           {/* <GuestList>
             <H3>Guest List</H3>
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
-<<<<<<< HEAD
-=======
-            {/* <Button>
+          {/* <Button>
               <P>Import CSV</P>
             </Button>
->>>>>>> 5c983a31afab3082ffefab59d11b7bd5c43172f7
             {/* Needs to route to guest list */}
-            {/* <NavLink to='/guests' style={{ textDecoration: 'none' }}>
+          {/* <NavLink to='/guests' style={{ textDecoration: 'none' }}>
               <Button>
                 <P>View My Guest List</P>
               </Button>
             </NavLink>
-          </GuestList> */} 
+          </GuestList> */}
           <RSVP>
             <H3>RSVP</H3>
             <Pie>
