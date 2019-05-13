@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
-import CountDown from '../CountDown';
+import CountDown from '../CountDown'
 
 import styled from 'styled-components'
 
@@ -35,7 +35,7 @@ const WhoWrapper = styled.div`
   margin: 3%;
   border-radius: 8px;
   background: rgba(177, 221, 241, 0.9);
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 `
 
 const WhenWrapper = styled.div`
@@ -50,7 +50,7 @@ const WhenWrapper = styled.div`
   margin: 3%;
   border-radius: 8px;
   background: rgba(177, 221, 241, 0.9);
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 `
 
 const RSVPWrapper = styled.div`
@@ -73,7 +73,7 @@ const Button = styled.button`
   width: 30.3%;
   display: flex;
   justify-content: space-evenly;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
@@ -96,7 +96,7 @@ const StoryWrapper = styled.div`
   margin: 3%;
   border-radius: 8px;
   background: rgba(177, 221, 241, 0.9);
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 `
 
 const H1 = styled.h1`
@@ -141,7 +141,7 @@ class WeddingPage1 extends Component {
           </WhoWrapper>
           <WhenWrapper>
             <H1>{moment(this.props.siteInfo.weddingDate).format('ll')}</H1>
-            <CountDown />
+            <CountDown siteInfo={this.props.siteInfo} />
             <H2>{this.props.siteInfo.venueLocation}</H2>
           </WhenWrapper>
           <RSVPWrapper>
