@@ -5,9 +5,16 @@ import { editRegistry, deleteRegistry } from '../../actions'
 import styled from 'styled-components'
 
 const MainCont = styled.div`
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  margin: 3% auto;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  align-items: center;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 
 const Header = styled.div`
@@ -45,7 +52,7 @@ const Button = styled.button`
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
@@ -56,10 +63,11 @@ const Button = styled.button`
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
 `
 const Footer = styled.div`

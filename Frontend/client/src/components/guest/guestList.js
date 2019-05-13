@@ -22,22 +22,47 @@ const Button = styled.button`
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
-  margin: 5% 3% 3% 3%;
+  margin: 5% auto;
   width: 30.3%;
+  display: flex;
   justify-content: space-evenly;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
-    display: flex;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
-    display: flex;
     margin: 3% auto;
+    font-size: 1rem;
+  }
+`
+const Button2 = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 0.5rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 0.5rem;
   }
 `
 
@@ -281,13 +306,13 @@ class GuestList extends Component {
           console.log('props', props)
           return (
             <ButtonTable>
-              <Button
+              <Button2
                 onClick={e => {
                   this.deleteHandler(e, props.original.id)
                 }}>
                 Delete
-              </Button>
-              <Button>Edit</Button>
+              </Button2>
+              <Button2>Edit</Button2>
             </ButtonTable>
           )
         },
@@ -355,6 +380,29 @@ class GuestList extends Component {
           <h1>Send Email</h1>
           <Button onClick={this.emailHandler}>Send</Button>
         </AddContainer>
+        <TableWrapper>
+          {this.props.guests ? (
+            <ReactTable
+              columns={columns}
+              data={this.props.guests}
+              filterable
+              defaultPageSize={10}
+              pageSizeOptions={[5, 10, 20]}
+              noDataText={'Loading Guests'}
+              showPaginationTop
+              showPaginationBottom={false}
+              style={{
+                height: '400px',
+                borderRadius: '8px',
+                backgroundColor: 'white',
+                marginTop: '30px',
+                overflow: 'hidden',
+                margin: '3% auto',
+                width: '100%',
+              }}
+            />
+          ) : null}
+        </TableWrapper>
       </PageWrap>
     )
   }

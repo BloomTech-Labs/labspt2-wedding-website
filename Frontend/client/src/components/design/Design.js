@@ -107,22 +107,22 @@ const Button = styled.button`
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
-  margin: 5% 3% 3% 3%;
+  margin: 5% auto;
   width: 30.3%;
+  display: flex;
   justify-content: space-evenly;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
-    display: flex;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
-    display: flex;
     margin: 3% auto;
+    font-size: 1rem;
   }
 `
 
@@ -145,7 +145,7 @@ const H2 = styled.h2`
 
 const H3 = styled.h3`
   font-size: 1rem;
-  margin: 0% 3% 3% 3%;
+  margin: 3%;
   text-align: center;
 `
 
@@ -355,16 +355,16 @@ class Design extends Component {
               <Head>
                 <H1>Your Wedding Site</H1>
               </Head>
-              <H2>url</H2>
-              <H3>
+              <H2>URL</H2>
+              <H2>
                 https://joinourbigday.netlify.com/
                 {this.props.customSite.userUrl}
-              </H3>
+              </H2>
               <H2>Couple Story</H2>
               <H3>{this.props.customSite.story}</H3>
               <H2>Proposal Story</H2>
               <H3>{this.props.customSite.proposalStory}</H3>
-              <H2>Site design Choosen</H2>
+              <H2>Site design Chosen</H2>
               <H3>{this.props.customSite.siteDesign}</H3>
               <ButtonWrapper>
                 <Button onClick={this.handleDelete}>Delete</Button>

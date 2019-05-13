@@ -5,7 +5,7 @@ import moment from 'moment'
 
 import PieChart from 'react-minimal-pie-chart'
 import Modal from 'react-modal'
-import CountDown from '../design/CountDown';
+import CountDown from '../design/CountDown'
 
 import RegistryAddModal from '../modals/addRegistry'
 import RegistryViewModal from '../modals/viewRegistry'
@@ -44,7 +44,6 @@ const Button = styled.button`
     font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
     margin: 3% auto;
     font-size: 1rem;
   }
@@ -65,6 +64,7 @@ const RegistryItem = styled.button`
   width: 30.3%;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
@@ -260,8 +260,10 @@ class Dashboard extends Component {
             </NameDate>
             <Location>
               <H2>Where: {this.props.userInfo.venueLocation}</H2>
-              <VenueSearch /> 
-              <NavLink to='/Design' style={{ textDecoration: 'none', width: '100%'}}>
+              <VenueSearch />
+              <NavLink
+                to='/Design'
+                style={{ textDecoration: 'none', width: '100%' }}>
                 <Button>
                   <P>Change Design</P>
                 </Button>
@@ -273,16 +275,16 @@ class Dashboard extends Component {
           {/* <GuestList>
             <H3>Guest List</H3>
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
-            {/* <Button>
+          {/* <Button>
               <P>Import CSV</P>
             </Button>
             {/* Needs to route to guest list */}
-            {/* <NavLink to='/guests' style={{ textDecoration: 'none' }}>
+          {/* <NavLink to='/guests' style={{ textDecoration: 'none' }}>
               <Button>
-                <P>Guest List</P>
+                <P>View My Guest List</P>
               </Button>
             </NavLink>
-          </GuestList> */} 
+          </GuestList> */}
           <RSVP>
             <H3>RSVP</H3>
             <Pie>
@@ -331,7 +333,7 @@ class Dashboard extends Component {
                   <RegistryItem>No Registry Added yet</RegistryItem>
                 )
               ) : (
-                <RegistryItem>No Registry Added yet</RegistryItem>
+                <RegistryItem>No Registry Added Yet</RegistryItem>
               )}
               <Button onClick={this.handleModal}>
                 <P>Add Registry</P>

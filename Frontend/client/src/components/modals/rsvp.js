@@ -7,16 +7,31 @@ import styled from 'styled-components'
 const URL = 'http://localhost:3700'
 
 const MainCont = styled.div`
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  margin: 3% auto;
+  width: 80%;
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   padding: 10px;
+=======
+  align-items: center;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
+>>>>>>> 38f54c73f86709a0ef229f2f66d3aed0fca14164
 `
 
 const Header = styled.div`
   display: flex;
   justify-content: space-around;
+<<<<<<< HEAD
   font-size: 20px;
   margin-bottom: 15px;
+=======
+  font-size: 1.5rem;
+>>>>>>> 38f54c73f86709a0ef229f2f66d3aed0fca14164
 `
 
 const Body = styled.form`
@@ -38,6 +53,31 @@ const Input = styled.input`
   margin-left: auto;
   margin-right: auto;
   width: 80%;
+`
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 1rem;
+  }
 `
 
 const Button = styled.button`
@@ -158,6 +198,10 @@ class Rsvp extends Component {
         <MainCont>
           <Close onClick={() => this.props.handleClose()}>X</Close>
           <Header>
+<<<<<<< HEAD
+=======
+            <Button onClick={() => this.props.handleClose()}>Close</Button>
+>>>>>>> 38f54c73f86709a0ef229f2f66d3aed0fca14164
             <h2>RSVP</h2>
           </Header>
           <Body>
@@ -169,6 +213,14 @@ class Rsvp extends Component {
               value={this.state.code}
               onChange={this.inputHandler}
             />
+<<<<<<< HEAD
+=======
+            <Footer>
+              <Button onClick={e => this.verifyGuest(e, this.state.code)}>
+                Go
+              </Button>
+            </Footer>
+>>>>>>> 38f54c73f86709a0ef229f2f66d3aed0fca14164
           </Body>
           <Footer>
             <Button onClick={e => this.verifyGuest(e, this.state.code)}>
