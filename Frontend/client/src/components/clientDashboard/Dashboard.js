@@ -5,7 +5,7 @@ import moment from 'moment'
 
 import PieChart from 'react-minimal-pie-chart'
 import Modal from 'react-modal'
-import CountDown from '../design/CountDown';
+import CountDown from '../design/CountDown'
 
 import RegistryAddModal from '../modals/addRegistry'
 import RegistryViewModal from '../modals/viewRegistry'
@@ -271,13 +271,10 @@ class Dashboard extends Component {
           <GuestList>
             <H3>Guest List</H3>
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
-            <Button>
-              <P>Import CSV</P>
-            </Button>
             {/* Needs to route to guest list */}
             <Link to='/guests'>
               <Button>
-                <P>Guest List</P>
+                <P>View My Guest List</P>
               </Button>
             </Link>
           </GuestList>
@@ -332,7 +329,7 @@ class Dashboard extends Component {
                   <RegistryItem>No Registry Added yet</RegistryItem>
                 )
               ) : (
-                <RegistryItem>No Registry Added yet</RegistryItem>
+                <RegistryItem>No Registry Added Yet</RegistryItem>
               )}
               <Button onClick={this.handleModal}>
                 <P>Add Registry</P>

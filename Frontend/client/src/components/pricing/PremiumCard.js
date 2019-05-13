@@ -1,10 +1,10 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import BlogAV from './PremiumMedia/blogAvatar.png';
-import GoogleAV from './PremiumMedia/googleAvatar.png';
-import REGAV from './PremiumMedia/registryAvatar.png';
-import UploadAV from './PremiumMedia/uploadAvatar.png';
+import BlogAV from './PremiumMedia/blogAvatar.png'
+import GoogleAV from './PremiumMedia/googleAvatar.png'
+import REGAV from './PremiumMedia/registryAvatar.png'
+import UploadAV from './PremiumMedia/uploadAvatar.png'
 
 const PCWrapper = styled.div`
   display: flex;
@@ -50,44 +50,46 @@ const Img = styled.img`
   margin-top: 3%;
 `
 
-
 const PremiumCard = props => {
   return (
     <PCWrapper>
       <CardWrapper>
-          <CardBody>
-            <Img src={GoogleAV} alt="Google Logo" />
-            <CardTitle>Google Maps</CardTitle>
-            <CardText>
-              Easily have guest navigate to your venue at the press of a button.
-            </CardText>
-          </CardBody>
+        <CardBody>
+          <Img src={GoogleAV} alt='Google Logo' />
+          <CardTitle>Google Maps</CardTitle>
+          <CardText>
+            Easily have guests navigate to your venue at the press of a button.
+          </CardText>
+        </CardBody>
       </CardWrapper>
 
       <CardWrapper>
-          <CardBody>
-            <Img src={UploadAV} alt="Cloud Logo" />
-            <CardTitle>Live upload</CardTitle>
-            <CardText>
-              Every photo. One place. No more searching hastags.
-            </CardText>
-          </CardBody>
+        <CardBody>
+          <Img src={UploadAV} alt='Cloud Logo' />
+          <CardTitle>Live upload</CardTitle>
+          <CardText>
+            Every photo. One place. No more searching hastags.
+          </CardText>
+        </CardBody>
       </CardWrapper>
 
       <CardWrapper>
-          <CardBody>
-            <Img src={REGAV} alt="Registry Logo" />
-            <CardTitle>Registry</CardTitle>
-            <CardText>Have all of your registries in one place.</CardText>
-          </CardBody>
+        <CardBody>
+          <Img src={REGAV} alt='Registry Logo' />
+          <CardTitle>Registry</CardTitle>
+          <CardText>Have all of your registries in one place.</CardText>
+        </CardBody>
       </CardWrapper>
 
       <CardWrapper>
-          <CardBody>
-            <Img src={BlogAV} alt="Blog Logo" />
-            <CardTitle>Blog Page</CardTitle>
-            <CardText>Have all of your registries in one place.</CardText>
-          </CardBody>
+        <CardBody>
+          <Img src={BlogAV} alt='Blog Logo' />
+          <CardTitle>Blog Page</CardTitle>
+          <CardText>
+            Share a little more with your guests. Add a blog page and share the
+            little things.
+          </CardText>
+        </CardBody>
       </CardWrapper>
     </PCWrapper>
   )

@@ -98,8 +98,7 @@ const ButtonTable = styled.div`
   width: 100%;
 `
 
-const P = styled.p`
-`
+const P = styled.p``
 
 // Update guestnot working
 
@@ -301,31 +300,31 @@ class GuestList extends Component {
             <h1>New Guest?</h1>
           </H1Wrap>
           <FormButWrap>
-          <Form>
-            {/* inputs not updating state need help */}
-            <Input
-              type='text'
-              placeholder='First Name'
-              name='firstName'
-              value={this.state.addGuest.firstName}
-              onChange={this.inputHandler}
-            />
-            <Input
-              type='text'
-              placeholder='Last Name'
-              name='lastName'
-              value={this.state.addGuest.lastName}
-              onChange={this.inputHandler}
-            />
-            <Input
-              type='text'
-              placeholder='email'
-              name='email'
-              value={this.state.addGuest.email}
-              onChange={this.inputHandler}
-            />
-          </Form>
-          <Button onClick={this.addGuestHandler}>Add guest</Button>
+            <Form>
+              {/* inputs not updating state need help */}
+              <Input
+                type='text'
+                placeholder='First Name'
+                name='firstName'
+                value={this.state.addGuest.firstName}
+                onChange={this.inputHandler}
+              />
+              <Input
+                type='text'
+                placeholder='Last Name'
+                name='lastName'
+                value={this.state.addGuest.lastName}
+                onChange={this.inputHandler}
+              />
+              <Input
+                type='text'
+                placeholder='email'
+                name='email'
+                value={this.state.addGuest.email}
+                onChange={this.inputHandler}
+              />
+            </Form>
+            <Button onClick={this.addGuestHandler}>Add Guest</Button>
           </FormButWrap>
         </AddContainer>
         <AddContainer>
@@ -333,29 +332,29 @@ class GuestList extends Component {
           <Button onClick={this.emailHandler}>Send</Button>
         </AddContainer>
         <TableWrapper>
-        {this.props.guests ? (
-          <ReactTable
-            columns={columns}
-            data={this.props.guests}
-            filterable
-            defaultPageSize={10}
-            pageSizeOptions={[5, 10, 20]}
-            noDataText={'Loading Guests'}
-            showPaginationTop
-            showPaginationBottom={false}
-            style={{
-              height: '400px',
-              borderRadius: '8px',
-              backgroundColor: 'white',
-              marginTop: '30px',
-              overflow: 'hidden',
-              margin: '3% auto',
-              width: '100%',
-            }}
-          />
-        ) : null} 
+          {this.props.guests ? (
+            <ReactTable
+              columns={columns}
+              data={this.props.guests}
+              filterable
+              defaultPageSize={10}
+              pageSizeOptions={[5, 10, 20]}
+              noDataText={'Loading Guests'}
+              showPaginationTop
+              showPaginationBottom={false}
+              style={{
+                height: '400px',
+                borderRadius: '8px',
+                backgroundColor: 'white',
+                marginTop: '30px',
+                overflow: 'hidden',
+                margin: '3% auto',
+                width: '100%',
+              }}
+            />
+          ) : null}
         </TableWrapper>
-    </PageWrap>
+      </PageWrap>
     )
   }
 }
