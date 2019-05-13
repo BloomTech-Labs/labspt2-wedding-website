@@ -75,6 +75,7 @@ const Footer = styled.div`
 class Rsvp extends Component {
   constructor(props) {
     super(props)
+    this.rsvpQ = React.createRef()
     this.state = {
       guest: null,
       rsvp: null,
@@ -129,6 +130,7 @@ class Rsvp extends Component {
 
   handleRsvp = e => {
     e.preventDefault()
+    this.rsvpQ.current.submitAnswer()
     const rsvp = {
       rsvp: null,
       rsvpMaybe: false,
@@ -220,6 +222,7 @@ class Rsvp extends Component {
                       <RsvpQuestion
                         question={question}
                         guestId={this.state.guest.id}
+                        ref={this.rsvpQ}
                       />
                     )
                   })
