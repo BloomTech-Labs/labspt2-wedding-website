@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
+import background from '../media/background1.jpg'
 
 import CountDown from '../CountDown'
 
 import styled from 'styled-components'
 
-import background from '../media/background1.jpg'
+import Modal from 'react-modal'
+import RsvpModal from '../../modals/rsvp'
+Modal.setAppElement('#root')
 
 const WP1Body = styled.div`
   margin: 0 auto;
@@ -115,20 +118,33 @@ const P = styled.p`
   text-shadow: 0px 0px 0px #000000;
 `
 
+const modalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    height: '450px',
+    borderRadius: '8px',
+    width: '400px',
+    padding: '0',
+  },
+}
+
 class WeddingPage1 extends Component {
-  constructor() {
-    super()
-
-    this.state = {}
-
-    this.handleChange = this.handleChange.bind(this)
+  constructor(props) {
+    super(props)
+    this.state = {
+      modal: false,
+    }
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value })
-    event.preventDefault()
+  handleModal = () => {
+    this.setState({
+      modal: !this.state.modal,
+    })
   }
-
   render() {
     return (
       <WP1Body>
@@ -145,10 +161,16 @@ class WeddingPage1 extends Component {
             <H2>{this.props.siteInfo.venueLocation}</H2>
           </WhenWrapper>
           <RSVPWrapper>
-            <Button>
+            <Button onClick={this.handleModal}>
               {/* This will need to be linked to the answers page once it exists. */}
               RSVP
             </Button>
+            <Modal isOpen={this.state.modal} style={modalStyle}>
+              <RsvpModal
+                user={this.props.siteInfo}
+                handleClose={this.handleModal}
+              />
+            </Modal>
           </RSVPWrapper>
           <StoryWrapper>
             <H2>Our Story</H2>

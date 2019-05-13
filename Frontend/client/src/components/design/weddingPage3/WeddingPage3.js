@@ -117,6 +117,20 @@ const P = styled.p`
   text-shadow: 0px 0px 0px #000000;
 `
 
+const modalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    height: '450px',
+    borderRadius: '8px',
+    width: '400px',
+    padding: '0',
+  },
+}
+
 class WeddingPage3 extends Component {
   constructor(props) {
     super(props)
@@ -150,7 +164,7 @@ class WeddingPage3 extends Component {
               {/* This will need to be linked to the answers page once it exists. */}
               RSVP
             </Button>
-            <Modal isOpen={this.state.modal}>
+            <Modal isOpen={this.state.modal} style={modalStyle}>
               <RsvpModal
                 user={this.props.siteInfo}
                 handleClose={this.handleModal}
@@ -168,7 +182,6 @@ class WeddingPage3 extends Component {
     )
   }
 }
-
 const mapStateToProps = state => ({
   userInfo: state.userInfo,
   guests: state.guests,
