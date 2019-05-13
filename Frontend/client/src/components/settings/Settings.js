@@ -79,22 +79,24 @@ const Input = styled.input`
 
 const InputBox = styled.input`
   width: 100%;
-  height: 28px;
-  border-radius: 4px;
+  height: 30px;
+  border-radius: 8px;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255,255,255,0.3);
+  -webkit-transition: 0.3s all;
   transition: 0.3s all;
-  margin: 10px 0;
+  padding: 1%;
 `
 
 const LeftInput = styled.input`
   width: 50%;
-  height: 28px;
-  border-radius: 4px;
+  height: 30px;
+  border-radius: 8px;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255,255,255,0.3);
+  -webkit-transition: 0.3s all;
   transition: 0.3s all;
-  margin: 10px 0;
+  padding: 1%;
 `
 
 const Button = styled.button`
@@ -104,7 +106,7 @@ const Button = styled.button`
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
@@ -115,10 +117,11 @@ const Button = styled.button`
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
 `
 
@@ -278,7 +281,7 @@ class Settings extends Component {
             </Box>
             <DateBox>
               <Label for='calander'>Wedding Date</Label>
-              <DatePicker
+              <DatePicker style={{ borderRadius: '8px' }}
                 selected={this.state.userInfo.weddingDate}
                 onChange={this.handleChangeDate} //only when value has changed
               />

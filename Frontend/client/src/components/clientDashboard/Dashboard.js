@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
@@ -30,7 +30,7 @@ const Button = styled.button`
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
@@ -41,10 +41,11 @@ const Button = styled.button`
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
 `
 
@@ -55,7 +56,7 @@ const RegistryItem = styled.button`
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: goldenrod;
   cursor: pointer;
@@ -63,13 +64,16 @@ const RegistryItem = styled.button`
   width: 30.3%;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
     // width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
 `
 
@@ -135,13 +139,13 @@ const RegistryContainer = styled.div`
   }
 `
 
-const GuestList = styled.div`
-  margin-top: 5%;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 3%;
-  margin: 3% 0%;
-`
+// const GuestList = styled.div`
+//   margin-top: 5%;
+//   border-radius: 8px;
+//   background: rgba(255, 255, 255, 0.9);
+//   padding: 3%;
+//   margin: 3% 0%;
+// `
 
 const H3 = styled.h3`
   font-size: 1.5em;
@@ -253,36 +257,37 @@ class Dashboard extends Component {
               <div>
                 <CountDown />
               </div>
-              <Link to='/Design' style={{ width: '100%' }}>
+            </NameDate>
+            <Location>
+              <H2>Where: {this.props.userInfo.venueLocation}</H2>
+              <VenueSearch /> 
+              <NavLink to='/Design' style={{ textDecoration: 'none', width: '100%'}}>
                 <Button>
                   <P>Change Design</P>
                 </Button>
-              </Link>
-            </NameDate>
-            <Location>
-              {/* This will need to share the link to the personal wedding web page */}
-              <H2>Where: {this.props.userInfo.venueLocation}</H2>
-              <Button>
-                <P>Share</P>
-              </Button>
+              </NavLink>
             </Location>
           </Head>
 
-          <GuestList>
+          {/* This doesn't appear to be needed. User can simply nav to the guest list.*/}
+          {/* <GuestList>
             <H3>Guest List</H3>
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
+<<<<<<< HEAD
+=======
+            {/* <Button>
+              <P>Import CSV</P>
+            </Button>
+>>>>>>> 5c983a31afab3082ffefab59d11b7bd5c43172f7
             {/* Needs to route to guest list */}
-            <Link to='/guests'>
+            {/* <NavLink to='/guests' style={{ textDecoration: 'none' }}>
               <Button>
                 <P>View My Guest List</P>
               </Button>
-            </Link>
-          </GuestList>
+            </NavLink>
+          </GuestList> */} 
           <RSVP>
             <H3>RSVP</H3>
-            {/* Some pie chart plug in I'll have to talk to Marguel about goes here*/}
-            {/* Needs to rout to RSVP page */}
-
             <Pie>
               <PieChart
                 data={[
@@ -302,11 +307,11 @@ class Dashboard extends Component {
                 reveal
               />
             </Pie>
-            <Link to='RSVP'>
+            <NavLink to='RSVP' style={{ textDecoration: 'none' }}>
               <Button>
                 <P>Edit Questions</P>
               </Button>
-            </Link>
+            </NavLink>
           </RSVP>
           <Registry>
             <H3>Registry</H3>
@@ -336,7 +341,6 @@ class Dashboard extends Component {
               </Button>
             </RegistryContainer>
           </Registry>
-          <VenueSearch />
           <Modal isOpen={this.state.modal} style={modalStyle}>
             <RegistryAddModal
               user={this.props.userInfo}

@@ -28,23 +28,27 @@ const Button = styled.button`
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
-  margin: 5% 3% 3% 3%;
+  margin: 5% auto;
   width: 30.3%;
+  display: flex;
   justify-content: space-evenly;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
-    display: flex;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    width: 60%;
-    display: flex;
     margin: 3% auto;
+    font-size: 1rem;
   }
+`
+
+const H3 = styled.h3`
+  color: red;
 `
 
 class Question extends React.Component {
@@ -157,7 +161,7 @@ class Question extends React.Component {
             })
           ) : (
             <div>
-              <h3>No Answers yet</h3>
+              <H3>No Answers yet</H3>
             </div>
           )
         ) : null}

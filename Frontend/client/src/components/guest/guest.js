@@ -71,7 +71,7 @@ class Guest extends React.Component {
         <p>guestId: {guestInfo.id}</p>
         {rsvp}
         <button onClick={this.deleteHandler}>Delete</button>
-        <button onClick={this.updateHandler}>update</button>
+        <button onClick={this.updateHandler}>Update</button>
         {this.state.updating ? (
           <form>
             {/* inputs not updating state need help */}

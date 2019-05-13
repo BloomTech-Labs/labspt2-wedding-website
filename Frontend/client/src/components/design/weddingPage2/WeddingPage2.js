@@ -63,12 +63,13 @@ const RSVPWrapper = styled.div`
 `
 
 const Button = styled.button`
+  border-radius: 8px;
   color: white;
   border: none;
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
@@ -76,14 +77,14 @@ const Button = styled.button`
   width: 30.3%;
   display: flex;
   justify-content: space-evenly;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
 `
 
