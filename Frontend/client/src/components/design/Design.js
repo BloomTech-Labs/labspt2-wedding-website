@@ -367,8 +367,8 @@ class Design extends Component {
               <H2>Site design Chosen</H2>
               <H3>{this.props.customSite.siteDesign}</H3>
               <ButtonWrapper>
-                <Button onClick={this.handleDelete}>Delete</Button>
                 <Button onClick={this.handleEdit}>Edit Page</Button>
+                <Button onClick={this.handleDelete}>Delete</Button>
               </ButtonWrapper>
             </StoryWrapper>
           ) : (

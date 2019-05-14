@@ -1,9 +1,10 @@
 // Imports
 import React, { Component } from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 // Import React Scrit Libraray to load Google object
 import Script from 'react-load-script'
+import linkFunction from './LinkFunction'
 
 const InputWrap = styled.div`
   width: 100%;
@@ -15,7 +16,7 @@ const InputWrap = styled.div`
 
 const Input = styled.input`
   width: 80%;
-  padding: .5%;
+  padding: 0.5%;
 `
 
 class Search extends Component {
@@ -25,11 +26,8 @@ class Search extends Component {
 
     // Declare State
     this.state = {
-      city: '',
       query: '',
-      address: null,
-      lat: null,
-      lng: null,
+      url: '',
     }
   }
 
@@ -51,16 +49,16 @@ class Search extends Component {
     let addressObject = this.autocomplete.getPlace()
     console.log(addressObject)
     let address = addressObject.address_components
+    const lat = addressObject.geometry.location.lat()
+    const lng = addressObject.geometry.location.lng()
+    const place_id = addressObject.place_id
 
     // Check if address is valid
     if (address) {
       // Set State
       this.setState({
-        city: address[0].long_name,
         query: addressObject.name,
-        address: addressObject.formatted_address,
-        lat: addressObject.geometry.location.lat(),
-        lng: addressObject.geometry.location.lng(),
+        url: linkFunction(lat, lng, place_id),
       })
     }
   }

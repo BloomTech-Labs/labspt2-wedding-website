@@ -166,13 +166,13 @@ class GuestList extends Component {
         Cell: props => {
           return (
             <div>
+              <EditButton>Edit</EditButton>
               <Button
                 onClick={() => {
                   this.deleteRow(props.original.id)
                 }}>
                 Delete
               </Button>
-              <EditButton>Edit</EditButton>
             </div>
           )
         },
