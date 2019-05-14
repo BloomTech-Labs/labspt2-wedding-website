@@ -307,13 +307,13 @@ class GuestList extends Component {
           console.log('props', props)
           return (
             <ButtonTable>
+              <Button2>Edit</Button2>
               <Button2
                 onClick={e => {
                   this.deleteHandler(e, props.original.id)
                 }}>
                 Delete
               </Button2>
-              <Button2>Edit</Button2>
             </ButtonTable>
           )
         },

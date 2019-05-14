@@ -144,9 +144,9 @@ class Question extends React.Component {
       <AnswerWrapper>
         <h3>Question: {this.props.questionInfo.Question_body}</h3>
         <ButtonWrapper>
-          <Button onClick={this.deleteHandler}>Delete</Button>
-          <Button onClick={this.updateHandler}>Update</Button>
           <Button onClick={this.answersHandler}>See Answers</Button>
+          <Button onClick={this.updateHandler}>Update</Button>
+          <Button onClick={this.deleteHandler}>Delete</Button>
         </ButtonWrapper>
         {this.state.answersTab ? (
           this.state.answers.length > 0 ? (
