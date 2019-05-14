@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 import background from '../media/ScrapBookBackground.jpg'
 import bells from '../media/bells.png'
+import PhotoButton from '../../weddingPhotos/photoButton'
 
 const WP1Body = styled.div`
   margin: 0 auto;
@@ -105,6 +106,7 @@ class WeddingPage1 extends Component {
             <Bell1 src={bells} alt="It's some bells" />
             <Bell2 src={bells} alt="It's some more bells" />
           </BellWrapper>
+          <PhotoButton />
           <WhoWrapper>
             <h1>
               {this.props.userInfo.partnerName1} &amp;{' '}

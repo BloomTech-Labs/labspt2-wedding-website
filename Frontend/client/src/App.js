@@ -118,7 +118,7 @@ class App extends Component {
                 <Route path='/design1' component={WeddingPage1} />
                 <Route path='/design2' component={WeddingPage2} />
                 <Route path='/design3' component={WeddingPage3} />
-                <Route path='/weddingPhotos' component={WeddingPhotos}/>
+                <Route path='/:customSiteweddingPhotos' component={WeddingPhotos}/>
               </Switch>
             </Container>
           </Router>

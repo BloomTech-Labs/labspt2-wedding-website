@@ -5,6 +5,7 @@ import logo from '../../Images/jobdLogo.png'
 import styled from 'styled-components'
 import PhotoCard from '../weddingPhotos/photoCard';
 import axios from 'axios';
+import PhotoButton from './photoButton'
 
 
 const Image = styled.img `
@@ -48,6 +49,7 @@ class WeddingPhotos extends Component {
       return (
         <div>
           <Button onClick={this.handleShow}>Add a photo</Button>
+          <PhotoButton />
           
          <div>
           <Modal show={this.state.show} >
