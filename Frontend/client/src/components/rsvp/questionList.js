@@ -120,7 +120,7 @@ class QuestionList extends Component {
         </div>
         <Form>
           {/* inputs not updating state need help */}
-          <H2>Add a new question to your rsvp questionare</H2>
+          <H2>Add a new question to your rsvp questionnaire</H2>
           <Input
             type='text'
             placeholder='Create a new question'

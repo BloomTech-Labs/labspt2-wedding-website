@@ -51,8 +51,8 @@ class Pricing extends Component {
           <H2> Continue for free or subscribe to Join Our Big Day Premium.</H2>
           <PricingReviews />
           <H2>
-            Thousands of users made their big day that much bigger with Join Our
-            Big Day.{' '}
+            Thousands of users have made their big day that much bigger with
+            Join Our Big Day.{' '}
           </H2>
           <StripeBtn />
         </Pricingheader>

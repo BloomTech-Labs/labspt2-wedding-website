@@ -96,7 +96,7 @@ class Guest extends React.Component {
               value={this.state.guest.email}
               onChange={this.inputHandler}
             />
-            <button onClick={this.submitUpdateHandler}>Update guest</button>
+            <button onClick={this.submitUpdateHandler}>Update Guest</button>
           </form>
         ) : null}
       </div>
