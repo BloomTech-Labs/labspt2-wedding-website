@@ -61,7 +61,7 @@ const RegistryItem = styled.button`
   background: goldenrod;
   cursor: pointer;
   margin: 5% auto;
-  width: 30.3%;
+  width: px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -71,7 +71,7 @@ const RegistryItem = styled.button`
     font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
+    width: 60%;
     margin: 3% auto;
     font-size: 1rem;
   }
@@ -133,7 +133,6 @@ const H2 = styled.h2`
 `
 const RegistryContainer = styled.div`
   display: flex;
-  flex-direction: row;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     flex-direction: column;
   }

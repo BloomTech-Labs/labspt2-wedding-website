@@ -31,6 +31,7 @@ const NavPage = styled.div`
   background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   justify-content: space-evenly;
+  flex-direction: column;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     width: 95%;
     margin: 1% auto;
@@ -118,7 +119,8 @@ const Phonediv = styled.div`
 
 const PopMenuList = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 `
 
 const Mbutton = styled.button`
@@ -175,55 +177,7 @@ class Navigation extends Component {
                 <Mbutton onClick={this.showMenu}>
                   <ImgMenu src={MenuBTN} alt='Menu Button' />
                 </Mbutton>
-                {this.state.showMenu ? (
-                  <PopMenuList>
-                    <Li>
-                      <NavLink
-                        exact
-                        path
-                        to='/'
-                        activeStyle={{ textDecoration: 'underline' }}>
-                        Dashboard
-                      </NavLink>
-                    </Li>
-                    <Li className='listItem'>
-                      <NavLink
-                        to='/settings'
-                        activeStyle={{ textDecoration: 'underline' }}>
-                        Settings
-                      </NavLink>
-                    </Li>
-                    <Li className='listItem'>
-                      <NavLink
-                        to='/pricing'
-                        activeStyle={{ textDecoration: 'underline' }}>
-                        Premium
-                      </NavLink>
-                    </Li>
 
-                    <Li className='listItem'>
-                      <NavLink
-                        to='/rsvp'
-                        activeStyle={{ textDecoration: 'underline' }}>
-                        RSVP
-                      </NavLink>
-                    </Li>
-                    <Li className='listItem'>
-                      <NavLink
-                        to='/guests'
-                        activeStyle={{ textDecoration: 'underline' }}>
-                        Guests
-                      </NavLink>
-                    </Li>
-                    <Li className='listItem'>
-                      <NavLink
-                        to='/design'
-                        activeStyle={{ textDecoration: 'underline' }}>
-                        Design
-                      </NavLink>
-                    </Li>
-                  </PopMenuList>
-                ) : null}
                 <MenuList>
                   <Li>
                     <NavLink
@@ -278,6 +232,53 @@ class Navigation extends Component {
             </MenuWrapper>
           </Menu>
         </SideNav>
+        {this.state.showMenu ? (
+          <PopMenuList>
+            <Li>
+              <NavLink
+                exact
+                path
+                to='/'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Dashboard
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/settings'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Settings
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/pricing'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Premium
+              </NavLink>
+            </Li>
+
+            <Li className='listItem'>
+              <NavLink to='/rsvp' activeStyle={{ textDecoration: 'underline' }}>
+                RSVP
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/guests'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Guests
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/design'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Design
+              </NavLink>
+            </Li>
+          </PopMenuList>
+        ) : null}
       </NavPage>
     )
   }
