@@ -267,7 +267,9 @@ class Dashboard extends Component {
               </div>
             </NameDate>
             <Location>
-              <H2>Where: {this.props.userInfo.venueLocation}</H2>
+              
+                <H2>Where: <a target='_blank' href={this.props.userInfo.addressUrl}>{this.props.userInfo.venueLocation}</a></H2>
+              
               <VenueSearch />
               <NavLink
                 to='/Design'
