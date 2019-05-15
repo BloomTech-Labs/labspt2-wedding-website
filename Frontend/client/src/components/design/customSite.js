@@ -111,10 +111,58 @@ class CustomSite extends Component {
           )
         }
         if (this.state.site.siteDesign === 2) {
-          return <WeddingPage2 siteInfo={this.state.site} />
+          return (
+            <div>
+              <Router>
+                <Switch>
+                  {/* <WeddingPage1 siteInfo={this.state.site} /> */}
+
+                  <Route
+                    exact
+                    path={`/${this.props.match.params.customSite}`}
+                    render={props => (
+                      <WeddingPage2 {...props} siteInfo={this.state.site} />
+                    )}
+                  />
+                  <Route
+                    path={`/${
+                      this.props.match.params.customSite
+                    }/wedding-photos`}
+                    render={props => (
+                      <LivePhotoPage {...props} info={this.state.site} />
+                    )}
+                  />
+                </Switch>
+              </Router>
+            </div>
+          )
         }
         if (this.state.site.siteDesign === 3) {
-          return <WeddingPage3 siteInfo={this.state.site} />
+          return (
+            <div>
+              <Router>
+                <Switch>
+                  {/* <WeddingPage1 siteInfo={this.state.site} /> */}
+
+                  <Route
+                    exact
+                    path={`/${this.props.match.params.customSite}`}
+                    render={props => (
+                      <WeddingPage3 {...props} siteInfo={this.state.site} />
+                    )}
+                  />
+                  <Route
+                    path={`/${
+                      this.props.match.params.customSite
+                    }/wedding-photos`}
+                    render={props => (
+                      <LivePhotoPage {...props} info={this.state.site} />
+                    )}
+                  />
+                </Switch>
+              </Router>
+            </div>
+          )
         }
       }
     }
