@@ -267,10 +267,12 @@ class Dashboard extends Component {
               </div>
             </NameDate>
             <Location>
-              
-                <H2>Where: <a target='_blank' href={this.props.userInfo.addressUrl}>{this.props.userInfo.venueLocation}</a></H2>
-              
-              <VenueSearch />
+              <H2>
+                Where:{' '}
+                <a target='_blank' href={this.props.userInfo.addressUrl}>
+                  {this.props.userInfo.venueLocation}
+                </a>
+              </H2>
               <NavLink
                 to='/Design'
                 style={{ textDecoration: 'none', width: '100%' }}>
@@ -298,7 +300,7 @@ class Dashboard extends Component {
           <RSVP>
             <H3>RSVP</H3>
             <Pie>
-              {rsvpYes && rsvpMaybe && rsvpNo === 0 ? (
+              {(rsvpYes && rsvpMaybe && rsvpNo) === 0 ? (
                 <div>
                   <H3>No guests have RSVP yet</H3>
                 </div>
