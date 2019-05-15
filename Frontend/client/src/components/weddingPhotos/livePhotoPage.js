@@ -20,7 +20,7 @@ class WeddingPhotos extends Component {
         show: false,
         caption: '',
         source: logo,
-        image: [],
+        file: [],
         userName: ''
       }
     }
@@ -29,9 +29,9 @@ class WeddingPhotos extends Component {
       }
 
       setCardData = () =>{
-        axios.get(`http://localhost:3700/users/1/live-photos`)
+        axios.get(`http://localhost:3700/users/2/live-photos`)
         .then(res=>{
-          this.setState({photoCards: res.data})
+          this.setState({photoCards: res.data.reverse() })
         })
       }
 
@@ -39,14 +39,16 @@ class WeddingPhotos extends Component {
         this.setState({show: true})
       }
       handleClose = e =>{
-        this.setState({show: false, source: ''})
+        this.setState({
+          show: false,
+          caption: '',
+          source: logo,
+          file: [],
+          userName: ''});
       }
       fileChange = e =>{
        let image = e.target.files[0];
-        let form = new FormData();
-        form.append('image', image);
-        console.log(form);
-       this.setState({source: URL.createObjectURL(e.target.files[0]), image:form})
+       this.setState({source: URL.createObjectURL(e.target.files[0]), file:image})
       }
       inputHandler = e =>{
         e.preventDefault();
@@ -55,15 +57,25 @@ class WeddingPhotos extends Component {
 
       addPhoto = (e) =>{
         e.preventDefault();
-        const body = {
-          image: this.state.image,
-          caption: this.state.caption,
-          name: this.state.userName
+        let form = new FormData();
+        form.append('image', this.state.file);
+        form.set('name', this.state.userName);
+        form.set('caption', this.state.caption);
+        let config = {
+          headers: {'Content-Type': 'multipart/form-data' }
         }
-        axios.post(`http://localhost:3700/users/1/live-upload`, body )
+        
+        axios.post(`http://localhost:3700/users/2/live-upload`, form, config  )
           .then(  (res) =>{
-            console.log(res.data);
+           this.setCardData();
           })
+          setTimeout(() => {
+            this.handleClose();
+        
+          }, 1500)
+          
+          
+            
       }
 
 
