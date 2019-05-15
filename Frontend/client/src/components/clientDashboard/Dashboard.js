@@ -61,7 +61,7 @@ const RegistryItem = styled.button`
   background: goldenrod;
   cursor: pointer;
   margin: 5% auto;
-  width: 30.3%;
+  width: px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -71,7 +71,7 @@ const RegistryItem = styled.button`
     font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
+    width: 60%;
     margin: 3% auto;
     font-size: 1rem;
   }
@@ -133,7 +133,6 @@ const H2 = styled.h2`
 `
 const RegistryContainer = styled.div`
   display: flex;
-  flex-direction: row;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     flex-direction: column;
   }
@@ -149,7 +148,7 @@ const RegistryContainer = styled.div`
 
 const H3 = styled.h3`
   font-size: 1.5em;
-  margin-bottom: 5%;
+  margin: 5% auto;
   text-align: center;
 `
 
@@ -159,6 +158,9 @@ const RSVP = styled.div`
   background: rgba(255, 255, 255, 0.9);
   padding: 3%;
   margin: 3% 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 const Registry = styled.div`
@@ -170,8 +172,21 @@ const Registry = styled.div`
 `
 
 const Pie = styled.div`
-  width: 25%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  border: 1px solid black;
 `
+
+const WompWomp = styled.div`
+  width: 100%;
+  display: flex;
+  justify-contnet: space-evenly;
+  align-items: center;
+`
+
 const modalStyle = {
   content: {
     top: '50%',
@@ -259,8 +274,12 @@ class Dashboard extends Component {
               </div>
             </NameDate>
             <Location>
-              <H2>Where: {this.props.userInfo.venueLocation}</H2>
-              <VenueSearch />
+              <H2>
+                Where:{' '}
+                <a target='_blank' href={this.props.userInfo.addressUrl}>
+                  {this.props.userInfo.venueLocation}
+                </a>
+              </H2>
               <NavLink
                 to='/Design'
                 style={{ textDecoration: 'none', width: '100%' }}>
@@ -288,25 +307,37 @@ class Dashboard extends Component {
           <RSVP>
             <H3>RSVP</H3>
             <Pie>
-              <PieChart
-                data={[
-                  { title: 'yes', value: rsvpYes, color: '#E38627' },
-                  { title: 'no', value: rsvpNo, color: '#C13C37' },
-                  { title: 'maybe', value: rsvpMaybe, color: '#6A2135' },
-                  { title: 'maybe', value: rsvpNoA, color: '#668B8B' },
-                ]}
-                label
-                labelStyle={{
-                  fontSize: '12px',
-                  fontFamily: 'sans-serif',
-                }}
-                radius={42}
-                labelPosition={120}
-                animate
-                reveal
-              />
+              {(rsvpYes && rsvpMaybe && rsvpNo) === 0 ? (
+                <WompWomp>
+                  <H3>No guests have RSVP yet</H3>
+                </WompWomp>
+              ) : (
+                <PieChart
+                  data={[
+                    { title: 'Yes', value: rsvpYes, color: '#E38627' },
+                    { title: 'No', value: rsvpNo, color: '#C13C37' },
+                    { title: 'Maybe', value: rsvpMaybe, color: '#6A2135' },
+                  ]}
+                  label={({ data, dataIndex }) =>
+                    // console.log('piechart DATA', data)
+                    `${data[dataIndex].title}: ${data[dataIndex].value}`
+                  }
+                  labelPosition={120}
+                  cx={60}
+                  labelStyle={{
+                    fontSize: '.5rem',
+                    fontFamily: 'sans-serif',
+                    fill: '#121212',
+                  }}
+                  radius={30}
+                  animate
+                  reveal
+                />
+              )}
             </Pie>
-            <NavLink to='RSVP' style={{ textDecoration: 'none' }}>
+            <NavLink
+              to='RSVP'
+              style={{ textDecoration: 'none', width: '100%' }}>
               <Button>
                 <P>Edit Questions</P>
               </Button>

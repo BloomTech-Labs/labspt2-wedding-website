@@ -58,11 +58,11 @@ const Button2 = styled.button`
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
-    font-size: .5rem;
+    font-size: 0.5rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
     margin: 3% auto;
-    font-size: .5rem;
+    font-size: 0.5rem;
   }
 `
 
@@ -349,13 +349,10 @@ class GuestList extends Component {
                 onChange={this.inputHandler}
               />
             </Form>
-            <Button onClick={this.addGuestHandler}>Add Guest</Button>
+            <Button onClick={this.addGuestHandler}>Add guest</Button>
           </FormButWrap>
         </AddContainer>
-        <AddContainer>
-          <h1>Send Email</h1>
-          <Button onClick={this.emailHandler}>Send</Button>
-        </AddContainer>
+
         <TableWrapper>
           {this.props.guests ? (
             <ReactTable
@@ -379,6 +376,10 @@ class GuestList extends Component {
             />
           ) : null}
         </TableWrapper>
+        <AddContainer>
+          <h1>Send Email</h1>
+          <Button onClick={this.emailHandler}>Send</Button>
+        </AddContainer>
       </PageWrap>
     )
   }

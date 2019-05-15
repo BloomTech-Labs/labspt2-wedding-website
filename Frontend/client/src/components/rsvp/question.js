@@ -12,7 +12,7 @@ const AnswerWrapper = styled.div`
   width: 100%;
 `
 
-const ButtonWrapper =styled.div`
+const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
@@ -111,7 +111,7 @@ class Question extends React.Component {
   }
   answersHandler = () => {
     console.log('GET ANSERS fired')
-    const api = 'https://joinourbigday.herokuapp.com'
+    const api = 'http://localhost:3700'
     const questionId = this.props.questionInfo.id
     axios
       .get(`${api}/rsvp/answer/${questionId}`)

@@ -4,7 +4,7 @@ import moment from 'moment'
 
 import styled from 'styled-components'
 
-import CountDown from '../CountDown';
+import CountDown from '../CountDown'
 import background from '../media/background3.jpg'
 import Modal from 'react-modal'
 import RsvpModal from '../../modals/rsvp'
@@ -37,7 +37,7 @@ const WhoWrapper = styled.div`
   margin: 3%;
   border-radius: 8px;
   background: rgba(177, 221, 241, 0.9);
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 `
 
 const WhenWrapper = styled.div`
@@ -52,7 +52,7 @@ const WhenWrapper = styled.div`
   margin: 3%;
   border-radius: 8px;
   background: rgba(177, 221, 241, 0.9);
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 `
 
 const RSVPWrapper = styled.div`
@@ -99,7 +99,7 @@ const StoryWrapper = styled.div`
   margin: 3%;
   border-radius: 8px;
   background: rgba(177, 221, 241, 0.9);
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 `
 
 const H1 = styled.h1`
@@ -117,6 +117,20 @@ const P = styled.p`
   font-size: 1em;
   text-shadow: 0px 0px 0px #000000;
 `
+
+const modalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    height: '450px',
+    borderRadius: '8px',
+    width: '400px',
+    padding: '0',
+  },
+}
 
 class WeddingPage3 extends Component {
   constructor(props) {
@@ -143,7 +157,7 @@ class WeddingPage3 extends Component {
           </WhoWrapper>
           <WhenWrapper>
             <H1>{moment(this.props.siteInfo.weddingDate).format('ll')}</H1>
-            <CountDown />
+            <CountDown siteInfo={this.props.siteInfo} />
             <H2>{this.props.siteInfo.venueLocation}</H2>
           </WhenWrapper>
           <RSVPWrapper>
@@ -151,7 +165,7 @@ class WeddingPage3 extends Component {
               {/* This will need to be linked to the answers page once it exists. */}
               RSVP
             </Button>
-            <Modal isOpen={this.state.modal}>
+            <Modal isOpen={this.state.modal} style={modalStyle}>
               <RsvpModal
                 user={this.props.siteInfo}
                 handleClose={this.handleModal}
@@ -169,7 +183,6 @@ class WeddingPage3 extends Component {
     )
   }
 }
-
 const mapStateToProps = state => ({
   userInfo: state.userInfo,
   guests: state.guests,

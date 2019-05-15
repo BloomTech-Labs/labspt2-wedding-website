@@ -15,7 +15,8 @@ module.exports = {
           'weddingDate',
           'weddingParty',
           'venueLocation',
-          'isPremium'
+          'isPremium',
+          'addressUrl'
         )
     }
     return db('users').select('id', 'username', 'email')
@@ -36,7 +37,7 @@ module.exports = {
       .where('id', id)
       .del()
   },
-  getUserPhotos: (id) =>{
+  getUserPhotos: id => {
     return db('userPhotos').where('userId', id)
-  }
+  },
 }

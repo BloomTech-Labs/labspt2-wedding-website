@@ -47,7 +47,7 @@ class Search extends Component {
     console.log(e)
     // Extract City From Address Object
     let addressObject = this.autocomplete.getPlace()
-    console.log(addressObject)
+    console.log('addres', addressObject)
     let address = addressObject.address_components
     const lat = addressObject.geometry.location.lat()
     const lng = addressObject.geometry.location.lng()

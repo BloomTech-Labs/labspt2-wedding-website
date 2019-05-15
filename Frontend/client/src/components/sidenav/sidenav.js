@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink,
+  Switch,
+} from 'react-router-dom'
 
-import MenuBTN from './hamburger.png';
+import MenuBTN from './hamburger.png'
 
 // page imports
 import Pricing from '../pricing/Pricing'
@@ -26,6 +31,7 @@ const NavPage = styled.div`
   background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   justify-content: space-evenly;
+  flex-direction: column;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     width: 95%;
     margin: 1% auto;
@@ -74,7 +80,7 @@ const MenuList = styled.ul`
 const Li = styled.a`
   margin: 2%;
   font-size: 1rem;
-  text-shadow: 1px 1px 1px #000000
+  text-shadow: 1px 1px 1px #000000;
 `
 
 const ButtonWrapper = styled.div`
@@ -93,7 +99,7 @@ const Button = styled.button`
   font-size: x-large;
   background: #52c4b9;
   height: 80px;
- width: 130px;
+  width: 130px;
 `
 
 const ImgMenu = styled.img`
@@ -113,11 +119,12 @@ const Phonediv = styled.div`
 
 const PopMenuList = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 `
 
 const Mbutton = styled.button`
-  Border: 0;
+  border: 0;
   padding: 0;
   border-radius: 50%;
   width: 12%;
@@ -130,28 +137,28 @@ const Mbutton = styled.button`
 
 class Navigation extends Component {
   constructor() {
-    super();
+    super()
 
-    this.state ={
+    this.state = {
       showMenu: false,
     }
 
-    this.showMenu = this.showMenu.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
+    this.showMenu = this.showMenu.bind(this)
+    this.closeMenu = this.closeMenu.bind(this)
   }
 
   showMenu(event) {
-    event.preventDefault();
-    
+    event.preventDefault()
+
     this.setState({ showMenu: true }, () => {
-      document.addEventListener('click', this.closeMenu);
-    });
+      document.addEventListener('click', this.closeMenu)
+    })
   }
-  
+
   closeMenu() {
     this.setState({ showMenu: false }, () => {
-      document.removeEventListener('click', this.closeMenu);
-    });
+      document.removeEventListener('click', this.closeMenu)
+    })
   }
 
   handleClick = () => {
@@ -166,83 +173,112 @@ class Navigation extends Component {
           <Menu>
             <MenuWrapper>
               <Phonediv>
-              <Img src={Logo} alt='Logo' />
-              <Mbutton onClick={this.showMenu}>
-              <ImgMenu src={MenuBTN} alt="Menu Button" />
-              </Mbutton>
-              {
-                this.state.showMenu
-                ? (
-                <PopMenuList>
-                <Li>
-                  <NavLink exact path to='/' activeStyle={{ textDecoration: 'underline' }}>Dashboard</NavLink>
-                </Li>
-                <Li className='listItem'>
-                  <NavLink to='/settings' activeStyle={{ textDecoration: 'underline' }}>Settings</NavLink>
-                </Li>
-                <Li className='listItem'>
-                  <NavLink to='/pricing' activeStyle={{ textDecoration: 'underline' }}>
-                    Premium
-                  </NavLink>
-                </Li>
+                <Img src={Logo} alt='Logo' />
+                <Mbutton onClick={this.showMenu}>
+                  <ImgMenu src={MenuBTN} alt='Menu Button' />
+                </Mbutton>
 
-                <Li className='listItem'>
-                  <NavLink to='/rsvp' activeStyle={{ textDecoration: 'underline' }}>
-                    RSVP
-                  </NavLink>
-                </Li>
-                <Li className='listItem'>
-                  <NavLink to='/guests' activeStyle={{ textDecoration: 'underline' }}>
-                    Guests
-                  </NavLink>
-                </Li>
-                <Li className='listItem'>
-                  <NavLink to='/design' activeStyle={{ textDecoration: 'underline' }}>
-                    Design
-                  </NavLink>
-                </Li>
-              </PopMenuList>
-                )
-                : (
-                  null
-                )
-              }
-              <MenuList>
-                <Li>
-                  <NavLink exact path to='/' activeStyle={{ textDecoration: 'underline' }}>Dashboard</NavLink>
-                </Li>
-                <Li className='listItem'>
-                  <NavLink to='/settings' activeStyle={{ textDecoration: 'underline' }}>Settings</NavLink>
-                </Li>
-                <Li className='listItem'>
-                  <NavLink to='/pricing' activeStyle={{ textDecoration: 'underline' }}>
-                    Premium
-                  </NavLink>
-                </Li>
+                <MenuList>
+                  <Li>
+                    <NavLink
+                      exact
+                      path
+                      to='/'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Dashboard
+                    </NavLink>
+                  </Li>
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/settings'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Settings
+                    </NavLink>
+                  </Li>
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/pricing'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Premium
+                    </NavLink>
+                  </Li>
 
-                <Li className='listItem'>
-                  <NavLink to='/rsvp' activeStyle={{ textDecoration: 'underline' }}>
-                    RSVP
-                  </NavLink>
-                </Li>
-                <Li className='listItem'>
-                  <NavLink to='/guests' activeStyle={{ textDecoration: 'underline' }}>
-                    Guests
-                  </NavLink>
-                </Li>
-                <Li className='listItem'>
-                  <NavLink to='/design' activeStyle={{ textDecoration: 'underline' }}>
-                    Design
-                  </NavLink>
-                </Li>
-              </MenuList>
-              <ButtonWrapper>
-                <Button onClick={this.handleClick}>Sign Out</Button>
-              </ButtonWrapper>
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/rsvp'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      RSVP
+                    </NavLink>
+                  </Li>
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/guests'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Guests
+                    </NavLink>
+                  </Li>
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/design'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Design
+                    </NavLink>
+                  </Li>
+                </MenuList>
+                <ButtonWrapper>
+                  <Button onClick={this.handleClick}>Sign Out</Button>
+                </ButtonWrapper>
               </Phonediv>
             </MenuWrapper>
           </Menu>
         </SideNav>
+        {this.state.showMenu ? (
+          <PopMenuList>
+            <Li>
+              <NavLink
+                exact
+                path
+                to='/'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Dashboard
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/settings'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Settings
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/pricing'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Premium
+              </NavLink>
+            </Li>
+
+            <Li className='listItem'>
+              <NavLink to='/rsvp' activeStyle={{ textDecoration: 'underline' }}>
+                RSVP
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/guests'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Guests
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/design'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Design
+              </NavLink>
+            </Li>
+          </PopMenuList>
+        ) : null}
       </NavPage>
     )
   }

@@ -7,6 +7,7 @@ import styled from 'styled-components'
 const MainCont = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 10px;
 `
 
@@ -49,7 +50,7 @@ const Button = styled.button`
   background: #52c4b9;
   cursor: pointer;
   margin: 5% auto;
-  width: 30.3%;
+  width: 40%;
   display: flex;
   justify-content: space-evenly;
   @media only screen and (max-width: 500px) and (min-width: 300px) {

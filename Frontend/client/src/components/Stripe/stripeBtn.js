@@ -19,12 +19,11 @@ const StripeBtn = props => {
     }
 
     axios
-      .post('https://joinourbigday.herokuapp.com/stripe', stripeInfo)
+      .post('http://localhost:3700/stripe', stripeInfo)
       .then(response => {
         console.log(response)
         props.fetchUser(props.userInfo.id)
         alert('Payment Success')
-        this.props.history.push('/')
       })
       .catch(error => {
         console.log('Payment Error: ', error)

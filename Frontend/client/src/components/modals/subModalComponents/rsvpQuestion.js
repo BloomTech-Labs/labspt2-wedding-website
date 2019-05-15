@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Wrapper = styled.div`
   background: rgba(255, 255, 255, 0.9);
@@ -12,12 +12,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
-  width: 95%;
+    width: 95%;
   }
 `
 const Sub = styled.div`
   display: flex;
-  justify-content; space-evenly;
+  justify-content: space-evenly;
   align-items: center;
 `
 
@@ -47,7 +47,7 @@ const Button = styled.button`
   }
 `
 
-const URL = 'https://joinourbigday.herokuapp.com'
+const URL = 'http://localhost:3700'
 
 class RsvpQuestion extends Component {
   constructor(props) {
@@ -66,8 +66,7 @@ class RsvpQuestion extends Component {
     })
   }
 
-  submitAnswer = e => {
-    e.preventDefault()
+  submitAnswer = () => {
     console.log(this.state)
     Axios.post(`${URL}/rsvp/answers`, this.state)
       .then(res => {
@@ -92,7 +91,6 @@ class RsvpQuestion extends Component {
               value={this.state.answer_body}
               onChange={this.inputHandler}
             />
-            <Button onClick={e => this.submitAnswer(e)}>Submit Answer</Button>
           </form>
         </Sub>
       </Wrapper>

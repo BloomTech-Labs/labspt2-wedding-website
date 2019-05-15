@@ -27,9 +27,18 @@ const Header = styled.div`
 const Body = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 200px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 `
+
+const H3 = styled.h3`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+`
+
 const Close = styled.button`
   border: 0;
   padding: 0;
@@ -56,7 +65,7 @@ const Button = styled.button`
   background: #52c4b9;
   cursor: pointer;
   margin: 5% auto;
-  width: 30.3%;
+  width: 60%;
   display: flex;
   justify-content: space-evenly;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
@@ -68,6 +77,11 @@ const Button = styled.button`
     margin: 3% auto;
     font-size: 1rem;
   }
+`
+const Footer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `
 
 class AddRegistry extends Component {
@@ -118,46 +132,57 @@ class AddRegistry extends Component {
   render() {
     console.log('registry', this.props)
     return (
-      <MainCont>
-        <Close onClick={() => this.props.handleClose()}>X</Close>
+      <div>
         {!this.state.edit ? (
-          <div>
+          <MainCont>
+            <Close onClick={() => this.props.handleClose()}>X</Close>
             <Header>
               <h2>Registry</h2>
             </Header>
             <Body>
-              <h2>Registry Name</h2>
-              <p>{this.state.registry.registryName}</p>
-              <h2>Registry Link</h2>
-              <a target='_blank' href={this.state.registry.registryUrl}>
-                {this.state.registry.registryUrl}
-              </a>
-              <button onClick={this.handleEditState}>Edit</button>
-              <button onClick={this.handleDelete}>Delete</button>
+              <h3>Registry: {this.state.registry.registryName}</h3>
+              <H3>
+                Registry Link:{' '}
+                <a target='_blank' href={this.state.registry.registryUrl}>
+                  {this.state.registry.registryUrl}
+                </a>
+              </H3>
             </Body>
-          </div>
+            <Footer>
+              <Button onClick={this.handleEditState}>Edit</Button>
+              <Button onClick={this.handleDelete}>Delete</Button>
+            </Footer>
+          </MainCont>
         ) : (
           <MainCont>
-            <label htmlFor='link'>Registry Link</label>
-            <input
-              type='text'
-              name='registryUrl'
-              value={this.state.registry.registryUrl}
-              placeholder='Add a Registry'
-              onChange={this.inputHandler}
-            />
-            <label htmlFor='name'>Display Name</label>
-            <Input
-              type='text'
-              name='registryName'
-              value={this.state.registry.registryName}
-              placeholder='Display Name'
-              onChange={this.inputHandler}
-            />
-            <Button onClick={this.handleEdit}>Apply Changes</Button>
+            <Close onClick={() => this.props.handleClose()}>X</Close>
+            <Header>
+              <h2>Edit Registry</h2>
+            </Header>
+            <Body>
+              <label htmlFor='link'>Registry Link</label>
+              <Input
+                type='text'
+                name='registryUrl'
+                value={this.state.registry.registryUrl}
+                placeholder='Add a Registry'
+                onChange={this.inputHandler}
+              />
+              <label htmlFor='name'>Display Name</label>
+              <Input
+                type='text'
+                name='registryName'
+                value={this.state.registry.registryName}
+                placeholder='Display Name'
+                onChange={this.inputHandler}
+              />
+            </Body>
+            <Footer>
+              <Button onClick={this.handleEdit}>Apply Changes</Button>
+            </Footer>
           </MainCont>
         )}
-      </MainCont>
+      </div>
     )
   }
 }

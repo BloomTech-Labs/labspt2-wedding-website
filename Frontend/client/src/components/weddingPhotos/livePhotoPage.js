@@ -1,43 +1,58 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { fetchPhotoFeed, }  from '../../actions'
+import  React, { Component } from 'react';
 import { Input, Label } from 'reactstrap'
 import { Modal, FormGroup, Button, FormText } from 'react-bootstrap'
 import logo from '../../Images/jobdLogo.png'
 import styled from 'styled-components'
 import PhotoCard from '../weddingPhotos/photoCard';
+import axios from 'axios';
+import PhotoButton from './photoButton'
 
 
 const Image = styled.img `
 width: 100%
 `
-class WeddingPhotos extends React.Component {
+class WeddingPhotos extends Component {
     constructor(props){
       super(props);
       this.state ={
-        photoCards: this.props.photoCards,
-        userInfo: this.props.userInfo,
+        photoCards: [],
+        userInfo: [],
         show: false,
         caption: '',
-        source: logo
+        source: logo,
       }
-       this.handleShow = e =>{
+    }
+      componentWillMount=()=>{
+        
+        axios.get(`http://localhost:3700/users/1/live-photos`)
+          .then(res=>{
+            this.setState({photoCards: res.data})
+          })
+  
+      }
+      handleShow = e =>{
         this.setState({show: true})
       }
-      this.handleClose = e =>{
+      handleClose = e =>{
         this.setState({show: false, source: ''})
       }
-      this.fileChange = e =>{
+      fileChange = e =>{
        console.log(e.target.files)
-        this.setState({source: URL.createObjectURL(e.target.files[0])})
+       this.setState({source: URL.createObjectURL(e.target.files[0])})
       }
+      addPhoto = () =>{
+        axios.post()
+      }
+
+
     
-    }
+    
     render() {
       console.log('userInfo',this.props.userInfo)
       return (
         <div>
           <Button onClick={this.handleShow}>Add a photo</Button>
+          <PhotoButton />
           
          <div>
           <Modal show={this.state.show} >
@@ -58,25 +73,20 @@ class WeddingPhotos extends React.Component {
               </FormGroup>
             </Modal.Body>
             <Modal.Footer>
+              <button onClick={()=>{console.log("submit")}}>Add Photo</button>
               <button onClick={this.handleClose}>close</button>
             </Modal.Footer>
           </Modal>
           </div>
           <h1>Live Wedding Photos</h1>
-          {/* {this.photoCards.map(img =>
+          {this.state.photoCards.map(img =>
           <PhotoCard key={img.imgURL} info={img}/>
-            )} */}
+            )}
         </div>
         );
     }
   }
 
-  const mapStateToProps = state =>({
-   photoCards: state.photoCards,
-   userInfo: state.userInfo
-  })
 
-  export  default connect(
-    mapStateToProps, 
-    { fetchPhotoFeed }
-  )(WeddingPhotos)
+
+  export  default WeddingPhotos;
