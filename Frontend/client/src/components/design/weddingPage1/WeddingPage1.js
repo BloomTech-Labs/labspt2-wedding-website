@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import background from '../media/background1.jpg'
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import LivePhotoPage from '../../weddingPhotos/livePhotoPage'
+import PhotoButton from '../../weddingPhotos/photoButton'
 import CountDown from '../CountDown'
 
 import styled from 'styled-components'
@@ -147,6 +149,7 @@ class WeddingPage1 extends Component {
     })
   }
   render() {
+    console.log('match', this.props.match)
     return (
       <WP1Body>
         <WPWrapper>
@@ -179,6 +182,15 @@ class WeddingPage1 extends Component {
             <H2>Proposal Story</H2>
             <P>{this.props.siteInfo.proposalStory}</P>
           </StoryWrapper>
+          <Link to={`${this.props.match.path}/wedding-photos`}>
+            <PhotoButton />
+          </Link>
+          <div>
+            <Route
+              path={`${this.props.match.path}/wedding-photos`}
+              component={LivePhotoPage}
+            />
+          </div>
         </WPWrapper>
       </WP1Body>
     )

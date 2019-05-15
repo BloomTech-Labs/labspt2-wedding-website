@@ -9,6 +9,7 @@ import { setUser, fetchGuests } from './actions'
 import queryString from 'query-string'
 import jwt_decode from 'jwt-decode'
 
+import LivePhotoPage from './components/weddingPhotos/livePhotoPage'
 import LandingPage from './components/landingPage/LandingPage'
 import Login from './components/landingPage/login'
 import DashBoard from './components/clientDashboard/Dashboard'
@@ -103,7 +104,7 @@ class App extends Component {
           <Router className='App'>
             <Container>
               <Navigation />
-             
+
               <Switch>
                 <Route exact path='/' component={DashBoard} />
                 <Route path='/settings' component={Settings} />
@@ -120,7 +121,7 @@ class App extends Component {
                 <Route path='/design1' component={WeddingPage1} />
                 <Route path='/design2' component={WeddingPage2} />
                 <Route path='/design3' component={WeddingPage3} />
-                <Route path='/weddingPhotos' component={WeddingPhotos}/>
+                <Route path='/weddingPhotos' component={WeddingPhotos} />
               </Switch>
             </Container>
           </Router>
@@ -136,8 +137,12 @@ class App extends Component {
             <Route exact path='/' component={LandingPage} />
             {/* login Should have singup first */}
             <Route path='/login' component={Login} />
-            <Route path='/weddingPhotos' component={WeddingPhotos}/> 
+            <Route path='/weddingPhotos' component={WeddingPhotos} />
             <Route path='/:customSite' component={CustomSite} />
+            <Route
+              path={`/:customSite/wedding-photos`}
+              component={LivePhotoPage}
+            />
           </Switch>
         </div>
       </Router>
