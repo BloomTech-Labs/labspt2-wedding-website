@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
+import LivePhotoPage from '../../weddingPhotos/livePhotoPage'
+import PhotoButton from '../../weddingPhotos/photoButton'
 
 import background from '../media/background2.jpg'
 
@@ -179,6 +181,15 @@ class WeddingPage2 extends Component {
             <H2>Proposal Story</H2>
             <P>{this.props.siteInfo.proposalStory}</P>
           </StoryWrapper>
+          <Link to={`${this.props.match.path}/wedding-photos`}>
+            <PhotoButton />
+          </Link>
+          <div>
+            <Route
+              path={`${this.props.match.path}/wedding-photos`}
+              component={LivePhotoPage}
+            />
+          </div>
         </WPWrapper>
       </WP1Body>
     )
