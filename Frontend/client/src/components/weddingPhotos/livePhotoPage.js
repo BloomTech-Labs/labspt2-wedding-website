@@ -40,6 +40,9 @@ class WeddingPhotos extends Component {
        console.log(e.target.files)
        this.setState({source: URL.createObjectURL(e.target.files[0])})
       }
+      addPhoto = () =>{
+        axios.post()
+      }
 
 
     
@@ -70,7 +73,7 @@ class WeddingPhotos extends Component {
               </FormGroup>
             </Modal.Body>
             <Modal.Footer>
-              <button>Add Photo</button>
+              <button onClick={()=>{console.log("submit")}}>Add Photo</button>
               <button onClick={this.handleClose}>close</button>
             </Modal.Footer>
           </Modal>
