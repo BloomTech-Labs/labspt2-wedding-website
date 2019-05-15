@@ -31,6 +31,14 @@ const Body = styled.form`
   align-content: center;
   align-items: center;
 `
+
+const H3 = styled.h3`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+`
+
 const Close = styled.button`
   border: 0;
   padding: 0;
@@ -57,7 +65,11 @@ const Button = styled.button`
   background: #52c4b9;
   cursor: pointer;
   margin: 5% auto;
+<<<<<<< HEAD
+  width: 60%;
+=======
   width: 40%;
+>>>>>>> 8b1fe05995b7fd578fe503c8f3a65f139c1781b0
   display: flex;
   justify-content: space-evenly;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
@@ -72,7 +84,8 @@ const Button = styled.button`
 `
 const Footer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 100%;
 `
 
 class AddRegistry extends Component {
@@ -132,12 +145,12 @@ class AddRegistry extends Component {
             </Header>
             <Body>
               <h3>Registry: {this.state.registry.registryName}</h3>
-              <h3>
+              <H3>
                 Registry Link:{' '}
                 <a target='_blank' href={this.state.registry.registryUrl}>
                   {this.state.registry.registryUrl}
                 </a>
-              </h3>
+              </H3>
             </Body>
             <Footer>
               <Button onClick={this.handleEditState}>Edit</Button>

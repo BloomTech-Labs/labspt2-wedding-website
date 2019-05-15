@@ -133,6 +133,7 @@ const H2 = styled.h2`
 `
 const RegistryContainer = styled.div`
   display: flex;
+  align-items: center;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     flex-direction: column;
   }
@@ -148,7 +149,7 @@ const RegistryContainer = styled.div`
 
 const H3 = styled.h3`
   font-size: 1.5em;
-  margin-bottom: 5%;
+  margin: 5% auto;
   text-align: center;
 `
 
@@ -178,6 +179,13 @@ const Pie = styled.div`
   align-self: center;
   justify-self: center;
   border: 1px solid black;
+`
+
+const WompWomp = styled.div`
+  width: 100%;
+  display: flex;
+  justify-contnet: space-evenly;
+  align-items: center;
 `
 
 const modalStyle = {
@@ -301,9 +309,9 @@ class Dashboard extends Component {
             <H3>RSVP</H3>
             <Pie>
               {(rsvpYes && rsvpMaybe && rsvpNo) === 0 ? (
-                <div>
+                <WompWomp>
                   <H3>No guests have RSVP yet</H3>
-                </div>
+                </WompWomp>
               ) : (
                 <PieChart
                   data={[
@@ -345,7 +353,7 @@ class Dashboard extends Component {
                   this.props.registry.map(rItem => {
                     registry.push(rItem)
                     return (
-                      <div>
+                      <div style={{width: '40%', margin: '0 auto'}}>
                         <RegistryItem
                           onClick={e => this.handleRegModal(e, rItem.id)}>
                           {rItem.registryName}
