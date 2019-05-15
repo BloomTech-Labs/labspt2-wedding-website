@@ -20,35 +20,68 @@ class WeddingPhotos extends Component {
         show: false,
         caption: '',
         source: logo,
+        file: [],
+        userName: ''
       }
     }
       componentWillMount=()=>{
-        
-        axios.get(`http://localhost:3700/users/1/live-photos`)
-          .then(res=>{
-            this.setState({photoCards: res.data})
-          })
-  
+        this.setCardData();
       }
+
+      setCardData = () =>{
+        axios.get(`http://localhost:3700/users/2/live-photos`)
+        .then(res=>{
+          this.setState({photoCards: res.data.reverse() })
+        })
+      }
+
       handleShow = e =>{
         this.setState({show: true})
       }
       handleClose = e =>{
-        this.setState({show: false, source: ''})
+        this.setState({
+          show: false,
+          caption: '',
+          source: logo,
+          file: [],
+          userName: ''});
       }
       fileChange = e =>{
-       console.log(e.target.files)
-       this.setState({source: URL.createObjectURL(e.target.files[0])})
+       let image = e.target.files[0];
+       this.setState({source: URL.createObjectURL(e.target.files[0]), file:image})
       }
-      addPhoto = () =>{
-        axios.post()
+      inputHandler = e =>{
+        e.preventDefault();
+        this.setState({ [e.target.name]:e.target.value})
+      }
+
+      addPhoto = (e) =>{
+        e.preventDefault();
+        let form = new FormData();
+        form.append('image', this.state.file);
+        form.set('name', this.state.userName);
+        form.set('caption', this.state.caption);
+        let config = {
+          headers: {'Content-Type': 'multipart/form-data' }
+        }
+        
+        axios.post(`http://localhost:3700/users/2/live-upload`, form, config  )
+          .then(  (res) =>{
+           this.setCardData();
+          })
+          setTimeout(() => {
+            this.handleClose();
+        
+          }, 1500)
+          
+          
+            
       }
 
 
     
     
     render() {
-      console.log('userInfo',this.props.userInfo)
       return (
         <div>
           <Button onClick={this.handleShow}>Add a photo</Button>
@@ -68,12 +101,14 @@ class WeddingPhotos extends Component {
                 <FormText/> 
               </FormGroup>
               <FormGroup>
+                <Label>Your name</Label>
+                <Input type="text" name="userName" value={this.state.userName}  id="captionInput" onChange={this.inputHandler}/>
                 <Label>Caption</Label>
-                <Input type="text" name="caption" id="captionInput" />
+                <Input type="text" name="caption" value={this.state.caption}  id="captionInput" onChange={this.inputHandler}/>
               </FormGroup>
             </Modal.Body>
             <Modal.Footer>
-              <button onClick={()=>{console.log("submit")}}>Add Photo</button>
+              <button onClick={this.addPhoto}>Add Photo</button>
               <button onClick={this.handleClose}>close</button>
             </Modal.Footer>
           </Modal>
