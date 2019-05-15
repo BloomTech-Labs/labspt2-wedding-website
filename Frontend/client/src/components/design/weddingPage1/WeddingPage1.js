@@ -4,85 +4,114 @@ import moment from 'moment'
 
 import styled from 'styled-components'
 
-import background from '../media/ScrapBookBackground.jpg'
-import bells from '../media/bells.png'
-import PhotoButton from '../../weddingPhotos/photoButton'
+import background from '../media/background1.jpg'
 
 const WP1Body = styled.div`
   margin: 0 auto;
   background-image: url(${background});
   width: 100%;
-  max-width: 1080px;
-  height: 232.5vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
 `
 
-const BellWrapper = styled.div`
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+const WPWrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 5%;
-`
-
-const Bell1 = styled.img`
-  width: 30%;
-  height: 7vh;
-`
-
-const Bell2 = styled.img`
-  width: 30%;
-  height: 7vh;
+  flex-direction: column;
+  align-items: center;
 `
 
 const WhoWrapper = styled.div`
-  width: 100%;
+  padding: 3%;
+  width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  margin-top: 5%;
-  font-size: 5rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+  border-radius: 8px;
+  background: rgba(177, 221, 241, 0.5);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
 const WhenWrapper = styled.div`
-  width: 100%;
+  padding: 3%;
+  width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  margin-top: 5%;
-  font-size: 5rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+  border-radius: 8px;
+  background: rgba(177, 221, 241, 0.5);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
-const PrettyWCWrapper = styled.div`
+const RSVPWrapper = styled.div`
   display: flex;
-  width: 100%;
-  justify-content: center;
-  margin-top: 5%;
+  justify-content: space-evenly;
+  width: 80%;
+`
+
+const Button = styled.button`
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    margin: 3% auto;
+  }
 `
 
 const StoryWrapper = styled.div`
+  padding: 3%;
+  width: 80%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  justify-content: center;
-  padding: 5%;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  background: rgb(157, 242, 188);
-  opacity: 0.8;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+  border-radius: 8px;
+  background: rgba(177, 221, 241, 0.9);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
-const Story = styled.h1``
+const H1 = styled.h1`
+  font-size: 2em;
+  text-shadow: 0px 0px 0px #000000;
+`
 
-const RSVPWrapper = styled.div``
+const H2 = styled.h2`
+  font-size: 1.5em;
+  text-shadow: 0px 0px 0px #000000;
+  margin: 1%;
+`
+
+const P = styled.p`
+  font-size: 1em;
+  text-shadow: 0px 0px 0px #000000;
+`
 
 class WeddingPage1 extends Component {
   constructor() {
@@ -101,39 +130,30 @@ class WeddingPage1 extends Component {
   render() {
     return (
       <WP1Body>
-        <div>
-          <BellWrapper>
-            <Bell1 src={bells} alt="It's some bells" />
-            <Bell2 src={bells} alt="It's some more bells" />
-          </BellWrapper>
-          <PhotoButton />
+        <WPWrapper>
           <WhoWrapper>
-            <h1>
-              {this.props.userInfo.partnerName1} &amp;{' '}
-              {this.props.userInfo.partnerName2}'s Wedding
-            </h1>
+            <H1>
+              {this.props.siteInfo.partnerName1} &amp;{' '}
+              {this.props.siteInfo.partnerName2}'s Wedding
+            </H1>
           </WhoWrapper>
           <WhenWrapper>
-            <h1>{moment(this.props.userInfo.weddingDate).format('ll')}</h1>
-            <h2>{this.props.userInfo.venueLocation}</h2>
+            <H1>{moment(this.props.siteInfo.weddingDate).format('ll')}</H1>
+            <H2>{this.props.siteInfo.venueLocation}</H2>
           </WhenWrapper>
           <RSVPWrapper>
-            <button>
+            <Button>
               {/* This will need to be linked to the answers page once it exists. */}
               RSVP
-            </button>
+            </Button>
           </RSVPWrapper>
-          <PrettyWCWrapper />
           <StoryWrapper>
-            <Story>Our Story</Story>
+            <H2>Our Story</H2>
+            <P>{this.props.siteInfo.story}</P>
+            <H2>Proposal Story</H2>
+            <P>{this.props.siteInfo.proposalStory}</P>
           </StoryWrapper>
-          <StoryWrapper>
-            <Story>Our Story</Story>
-            <p>{this.props.siteInfo.story}</p>
-            <Story>Proposal Story</Story>
-            <p>{this.props.siteInfo.proposalStory}</p>
-          </StoryWrapper>
-        </div>
+        </WPWrapper>
       </WP1Body>
     )
   }

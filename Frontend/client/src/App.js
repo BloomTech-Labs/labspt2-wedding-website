@@ -134,7 +134,7 @@ class App extends Component {
             <Route exact path='/' component={LandingPage} />
             {/* login Should have singup first */}
             <Route path='/login' component={Login} />
-            <Route path='/weddingPhotos' component={WeddingPhotos}/> 
+            <Route path='/wedding-photos' component={WeddingPhotos}/> 
             <Route path='/:customSite' component={CustomSite} />
           </Switch>
         </div>
@@ -143,7 +143,7 @@ class App extends Component {
   }
 }
 
-// withRouter allows us to acces react-router props in the whole component
+// withRouter allows us to access react-router props in the whole component
 // used it to be able to do a history.push to remove the token from the url
 const mapStateToProps = state => ({
   userInfo: state.userInfo,

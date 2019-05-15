@@ -11,7 +11,7 @@ module.exports = server => {
 addImage = (req, res) => {
   const userId = req.params.id
   singleUpload(req, res, err => {
-    console.log(req.file)
+    console.log('file: ',req.file);
     const { name, caption } = req.body
     if (err) {
       res.status(422).send({
@@ -24,7 +24,7 @@ addImage = (req, res) => {
       })
     }
     const img = req.file.location
-    console.log(img)
+    console.log('newData: ', img)
     const newImage = {
       user_id: userId,
       imgUrl: img,
@@ -59,8 +59,8 @@ GetLivePhotos = (req, res) => {
 addUserImage = (req, res) => {
   const userId = req.params.id
   singleUpload(req, res, err => {
+    console.log('inside single')
     const { photoName } = req.body
-    console.log(photoName)
     if (err) {
       res.status(422).send({
         errors: [
@@ -72,7 +72,7 @@ addUserImage = (req, res) => {
       })
     }
     const image = req.file.location
-    
+    console.log(image)
     const newImage = {
       imgUrl: image,
       photoName,

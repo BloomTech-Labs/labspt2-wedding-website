@@ -1,23 +1,26 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+
 import styled from 'styled-components'
 
-import Background1 from '../design/media/ScrapBookBackground.jpg'
-import Background2 from '../design/media/BackgroundDesign2.jpg'
-import Background3 from '../design/media/rainbowbackground.jpg'
+import Background1 from '../design/media/background1.jpg'
+import Background2 from '../design/media/background2.jpg'
+import Background3 from '../design/media/background3.jpg'
 
-const URL = 'https://joinourbigday.herokuapp.com'
+const URL = 'http://localhost:3700'
 
 const DesignBody = styled.div`
   background: white;
   border-radius: 8px;
-  margin: 0% 3% 3% 3%;
-  width: 100%;
+  margin: 3% auto;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 
 const TemplateWrapper = styled.div`
@@ -44,43 +47,72 @@ const StoryWrapper = styled.div`
 const SampleWrapper1 = styled.div`
   background-image: url(${Background1});
   width: 65%;
-  height: 160px;
-  background-size: 100% 100%;
+  height: 260px;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   margin: 3%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    height: 137px;
+  }
 `
 const SampleWrapper2 = styled.div`
   background-image: url(${Background2});
   width: 65%;
-  height: 160px;
-  background-size: 100% 100%;
+  height: 260px;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   margin: 3%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    height: 137px;
+  }
 `
 const SampleWrapper3 = styled.div`
   background-image: url(${Background3});
   width: 65%;
-  height: 160px;
-  background-size: 100% 100%;
+  height: 260px;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   margin: 3%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    height: 137px;
+  }
 `
 
 const InputWrapper = styled.div`
   margin: 3%;
   padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const Button = styled.button`
-  width: 30%;
-  height: 30px;
   border-radius: 8px;
-  margin: 3% auto;
-  display: flex;
-  justify-content: center;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% 3% 3% 3%;
+  width: 30.3%;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
 `
 
 const Head = styled.div`
@@ -245,7 +277,7 @@ class Design extends Component {
           <form>
             <DesignInput
               type='number'
-              placeholder='1'
+              placeholder='#'
               name='siteDesign'
               min='1'
               max='3'
@@ -254,14 +286,13 @@ class Design extends Component {
             />
           </form>
         </TemplateWrapper>
-        <Button>Preview</Button>
         <InputWrapper>
           <H2>One last step and you are finished.</H2>
           <H2>Now tell us what you want your web site's address to be.</H2>
           <form>
             <URLInput
               type='text'
-              placeholder='Site Url'
+              placeholder='Example= johnandjanesmithwedding...'
               name='userUrl'
               value={this.state.userUrl}
               onChange={this.inputHandler}
@@ -270,8 +301,9 @@ class Design extends Component {
               If you are happy with everything you entered, just hit the apply
               button, and we'll take care fo the rest.
             </H2>
-            <Button onClick={this.handleSubmit}>Apply</Button>
           </form>
+          <Button onClick={this.handleSubmit}>Apply</Button>
+          <Button>Preview</Button>
         </InputWrapper>
       </DesignBody>
     )

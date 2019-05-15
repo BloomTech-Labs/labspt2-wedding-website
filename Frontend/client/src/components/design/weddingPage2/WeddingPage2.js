@@ -4,12 +4,7 @@ import moment from 'moment'
 
 import styled from 'styled-components'
 
-import arrow from '../media/arrow.png'
-import BackgroundDesign2 from '../media/BackgroundDesign2.jpg'
-import camper from '../media/camper.jpg'
-import girl from '../media/girlwithglasses.jpg'
-import heartArrow from '../media/heartArrow.png'
-import love from '../media/love.jpg'
+import background from '../media/background2.jpg'
 
 import Modal from 'react-modal'
 import RsvpModal from '../../modals/rsvp'
@@ -17,115 +12,110 @@ Modal.setAppElement('#root')
 
 const WP1Body = styled.div`
   margin: 0 auto;
-  background-image: url(${BackgroundDesign2});
+  background-image: url(${background});
   width: 100%;
-  max-width: 1080px;
-  height: 232.5vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
 `
 
-const HeaderWrapper = styled.div`
-  background: rgb(158, 143, 110);
-  width: 70%;
-  margin: 0 auto;
-  -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
+const WPWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const WhoWrapper = styled.div`
-  width: 100%;
+  padding: 3%;
+  width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  margin-top: 5%;
-  font-size: 5rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+  border-radius: 8px;
+  background: rgba(177, 221, 241, 0.5);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
 const WhenWrapper = styled.div`
-  width: 100%;
+  padding: 3%;
+  width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  margin-top: 5%;
-  font-size: 5rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+  border-radius: 8px;
+  background: rgba(177, 221, 241, 0.5);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
-const Camper = styled.img`
-  width: 10%;
-  height: 13vh;
-  margin: 4% 0% 0% 37%;
-  position: absolute;
-  -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -ms-transform: rotate(-20deg); /* IE 9 */
-  -webkit-transform: rotate(-20deg); /* Safari 3-8 */
-  transform: rotate(-20deg);
-  border: 1px solid black;
-`
-
-const Girl = styled.img`
-  width: 12%;
-  height: 17vh;
-  margin: 30% 3%;
-  position: absolute;
-  -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
-  border: 1px solid black;
-`
-
-const NavAndCoupleWrapper = styled.div`
+const RSVPWrapper = styled.div`
   display: flex;
+  justify-content: space-evenly;
+  width: 80%;
 `
 
-const PrettyWCWrapper = styled.div`
+const Button = styled.button`
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
   display: flex;
-  width: 60%;
-  justify-content: center;
-  margin: 20% 0% 5% 0%;
+  justify-content: space-evenly;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    margin: 3% auto;
+  }
 `
 
-const Arrow = styled.img`
-  width: 33%;
-  height: 13vh;
+const StoryWrapper = styled.div`
+  padding: 3%;
+  width: 80%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3%;
+  border-radius: 8px;
+  background: rgba(177, 221, 241, 0.9);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 
-const Heart = styled.img`
-  width: 30%;
-  margin: 5%;
-  -ms-transform: rotate(-20deg); /* IE 9 */
-  -webkit-transform: rotate(-20deg); /* Safari 3-8 */
-  transform: rotate(-20deg);
+const H1 = styled.h1`
+  font-size: 2em;
+  text-shadow: 0px 0px 0px #000000;
 `
 
-const Love = styled.img`
-  width: 25%;
-  margin: 3% 3% 3% 21%;
-  -ms-transform: rotate(20deg); /* IE 9 */
-  -webkit-transform: rotate(20deg); /* Safari 3-8 */
-  transform: rotate(20deg);
-  -webkit-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
-  box-shadow: 17px 25px 11px -5px rgba(0, 0, 0, 1);
+const H2 = styled.h2`
+  font-size: 1.5em;
+  text-shadow: 0px 0px 0px #000000;
+  margin: 1%;
 `
 
-const StoryWrapper = styled.div``
-
-const Story = styled.h1``
-
-const RSVPWrapper = styled.div``
+const P = styled.p`
+  font-size: 1em;
+  text-shadow: 0px 0px 0px #000000;
+`
 
 class WeddingPage2 extends Component {
   constructor(props) {
@@ -133,66 +123,46 @@ class WeddingPage2 extends Component {
     this.state = {
       modal: false,
     }
-
-    this.handleChange = this.handleChange.bind(this)
   }
-
-  handleChange(event) {
-    this.setState({ value: event.target.value })
-    event.preventDefault()
-  }
-  //handleChange is for textarea input
 
   handleModal = () => {
     this.setState({
       modal: !this.state.modal,
     })
   }
-
   render() {
     return (
       <WP1Body>
-        <div>
-          <HeaderWrapper>
-            <WhoWrapper>
-              <h1>
-                {this.props.siteInfo.partnerName1} &amp;{' '}
-                {this.props.siteInfo.partnerName2}'s Wedding
-              </h1>
-            </WhoWrapper>
-            <WhenWrapper>
-              <h1>{moment(this.props.siteInfo.weddingDate).format('LL')}</h1>
-              <h2>{this.props.siteInfo.venueLocation}</h2>
-            </WhenWrapper>
-          </HeaderWrapper>
-          <NavAndCoupleWrapper>
-            <RSVPWrapper>
-              <button onClick={this.handleModal}>
-                {/* This will need to be linked to the answers page once it exists. */}
-                RSVP
-              </button>
-            </RSVPWrapper>
+        <WPWrapper>
+          <WhoWrapper>
+            <H1>
+              {this.props.siteInfo.partnerName1} &amp;{' '}
+              {this.props.siteInfo.partnerName2}'s Wedding
+            </H1>
+          </WhoWrapper>
+          <WhenWrapper>
+            <H1>{moment(this.props.siteInfo.weddingDate).format('ll')}</H1>
+            <H2>{this.props.siteInfo.venueLocation}</H2>
+          </WhenWrapper>
+          <RSVPWrapper>
+            <Button onClick={this.handleModal}>
+              {/* This will need to be linked to the answers page once it exists. */}
+              RSVP
+            </Button>
             <Modal isOpen={this.state.modal}>
               <RsvpModal
                 user={this.props.siteInfo}
                 handleClose={this.handleModal}
               />
             </Modal>
-            <Girl src={girl} alt='A Woman With Glasses' />
-            <Camper src={camper} alt='Happy Camper' />
-            <PrettyWCWrapper />
-          </NavAndCoupleWrapper>
+          </RSVPWrapper>
           <StoryWrapper>
-            <Arrow src={arrow} alt='Arrow' />
-            <Story>Our Story</Story>
-            <p>{this.props.siteInfo.story}</p>
-            <Story>Proposal Story</Story>
-            <p>{this.props.siteInfo.proposalStory}</p>
-            <Arrow src={arrow} alt='Arrow' />
+            <H2>Our Story</H2>
+            <P>{this.props.siteInfo.story}</P>
+            <H2>Proposal Story</H2>
+            <P>{this.props.siteInfo.proposalStory}</P>
           </StoryWrapper>
-          <Heart src={heartArrow} alt='A heart with an arrow through it' />
-          <Love src={love} alt='Do what you love what you do' />
-        </div>
+        </WPWrapper>
       </WP1Body>
     )
   }
