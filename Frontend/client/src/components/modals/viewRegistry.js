@@ -65,7 +65,11 @@ const Button = styled.button`
   background: #52c4b9;
   cursor: pointer;
   margin: 5% auto;
+<<<<<<< HEAD
   width: 60%;
+=======
+  width: 40%;
+>>>>>>> 8b1fe05995b7fd578fe503c8f3a65f139c1781b0
   display: flex;
   justify-content: space-evenly;
   @media only screen and (max-width: 500px) and (min-width: 300px) {

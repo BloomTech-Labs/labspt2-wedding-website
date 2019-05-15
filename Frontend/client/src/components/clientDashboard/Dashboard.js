@@ -133,6 +133,7 @@ const H2 = styled.h2`
 `
 const RegistryContainer = styled.div`
   display: flex;
+  align-items: center;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     flex-direction: column;
   }
@@ -352,7 +353,7 @@ class Dashboard extends Component {
                   this.props.registry.map(rItem => {
                     registry.push(rItem)
                     return (
-                      <div>
+                      <div style={{width: '40%', margin: '0 auto'}}>
                         <RegistryItem
                           onClick={e => this.handleRegModal(e, rItem.id)}>
                           {rItem.registryName}
