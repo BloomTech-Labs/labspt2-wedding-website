@@ -101,6 +101,7 @@ editGuest = (req, res) => {
       res.json(number)
     })
     .catch(err => {
+      console.log(err)
       res.status(500).json({
         message: 'Failed to edit guest',
       })

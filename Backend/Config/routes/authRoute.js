@@ -127,6 +127,7 @@ googleCB = (req, res) => {
     weddingParty: user.weddingParty,
     venueLocation: user.venueLocation,
     isPremium: user.isPremium,
+    addressUrl: user.addressUrl,
   }
   const token = jwtHelper.generateToken(tokenUser)
   // redirects to account set up
