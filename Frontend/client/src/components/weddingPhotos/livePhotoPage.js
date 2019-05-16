@@ -7,6 +7,31 @@ import PhotoCard from '../weddingPhotos/photoCard'
 import axios from 'axios'
 import PhotoButton from './photoButton'
 
+const Wrapper = styled.div`
+  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+  background-image: linear-gradient(
+    to right top,
+    #4ccdc1,
+    #40c6ca,
+    #3fbecf,
+    #49b6d2,
+    #57add1,
+    #599cbf,
+    #5a8bad,
+    #587b9a,
+    #496077,
+    #394656,
+    #282e37,
+    #17181a
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Source Sans Pro', sans-serif .photos {
+    padding-top: 60px;
+    overflow: scroll;
+  }
+`
+
 const Image = styled.img`
   width: 100%;
 `
@@ -29,11 +54,7 @@ class WeddingPhotos extends Component {
 
   setCardData = () => {
     axios
-      .get(
-        `https://joinourbigday.herokuapp.com/users/${
-          this.props.info.id
-        }/live-photos`
-      )
+      .get(`http://localhost:3700/users/${this.props.info.id}/live-photos`)
       .then(res => {
         this.setState({ photoCards: res.data.reverse() })
       })
@@ -75,9 +96,7 @@ class WeddingPhotos extends Component {
 
     axios
       .post(
-        `https://joinourbigday.herokuapp.com/users/${
-          this.props.info.id
-        }/live-upload`,
+        `http://localhost:3700/users/${this.props.info.id}/live-upload`,
         form,
         config
       )
@@ -91,10 +110,15 @@ class WeddingPhotos extends Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={this.handleShow}>Add a photo</Button>
-        <PhotoButton />
-
+      <Wrapper>
+        <Header className='header'>
+          <div>
+            <h1>Live Wedding Photos</h1>
+          </div>
+          <div>
+            <Button onClick={this.handleShow}>Add a photo</Button>
+          </div>
+        </Header>
         <div>
           <Modal show={this.state.show}>
             <Modal.Header>
@@ -134,16 +158,21 @@ class WeddingPhotos extends Component {
               </FormGroup>
             </Modal.Body>
             <Modal.Footer>
-              <button onClick={this.addPhoto}>Add Photo</button>
-              <button onClick={this.handleClose}>close</button>
+              <button className='buttons' onClick={this.addPhoto}>
+                Add Photo
+              </button>
+              <button className='buttons' onClick={this.handleClose}>
+                close
+              </button>
             </Modal.Footer>
           </Modal>
         </div>
-        <h1>Live Wedding Photos</h1>
-        {this.state.photoCards.map(img => (
-          <PhotoCard key={img.imgURL} info={img} />
-        ))}
-      </div>
+        <div className='photos'>
+          {this.state.photoCards.map(img => (
+            <PhotoCard key={img.imgURL} info={img} />
+          ))}
+        </div>
+      </Wrapper>
     )
   }
 }
