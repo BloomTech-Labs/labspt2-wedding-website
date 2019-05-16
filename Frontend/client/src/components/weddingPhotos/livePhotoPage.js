@@ -32,6 +32,14 @@ const Header = styled.div`
   display: flex;
   align-content: center;
   justify-content: space-around;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 100%;
+    height: 50px;
+   h1{
+     font-size:1.5rem;
+     margin: 10% auto;
+   }
+  }
 
   button{
     margin-top: 7px
@@ -53,9 +61,10 @@ const Header = styled.div`
 
     }
     @media only screen and (max-width: 500px) and (min-width: 300px) {
-      width: 60%;
-      margin: 3% auto;
-      font-size: 1rem;
+      width: 100%;
+      margin: 10% auto;
+      margin-right: 25px;
+      font-size: 0.9rem;
     }
     @media only screen and (max-width: 700px) and (min-width: 501px) {
       margin: 3% auto;
