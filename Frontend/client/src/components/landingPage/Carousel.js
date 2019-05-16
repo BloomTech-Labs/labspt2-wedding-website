@@ -7,11 +7,21 @@ import together from '../../Images/partyTable.jpg'
 import arrow from '../../Images/arrowToCerm.jpg'
 import styled from 'styled-components'
 
+const P = styled.p`
+  font-size: 2rem;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  color: white;
+`
 
+const Div = styled.div`
+  max-width: 900px;
+`
 
 class DemoCarousel extends Component {
     render(){
         return (
+            <Div>
             <Carousel 
             autoPlay 
             transitionTime='2000'
@@ -22,21 +32,22 @@ class DemoCarousel extends Component {
             > 
                 <div>
                     <img src={his} alt="1" />
-                    <p className="legend">From his side,</p>
+                    <P>From his side,</P>
                 </div>
                 <div>
                     <img src={her} alt="2"  />
-                    <p className="legend">and Her side,</p>
+                    <P>to her side,</P>
                 </div>
                 <div>
                     <img src={arrow} alt="3"  />
-                    <p className="legend">getting everyone together</p>
+                    <P>getting everyone together.</P>
                 </div>
                 <div>
                     <img src={together} alt="4" />
-                    <p className="legend">It's what we do</p>
+                    <P>It's what we do.</P>
                 </div>                
             </Carousel>
+            </Div>
         )
     }
 };

@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink,
+  Switch,
+} from 'react-router-dom'
+
+import MenuBTN from './hamburger.png'
 
 // page imports
 import Pricing from '../pricing/Pricing'
@@ -21,9 +28,10 @@ const NavPage = styled.div`
   display: flex;
   margin: 3% auto;
   width: 80%;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   justify-content: space-evenly;
+  flex-direction: column;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
     width: 95%;
     margin: 1% auto;
@@ -32,16 +40,13 @@ const NavPage = styled.div`
 
 const Img = styled.img`
   width: 20%;
-  height: 24vh;
-  border-radius: 8px;
+  border-radius: 50%;
   @media only screen and (max-width: 600px) and (min-width: 300px) {
-    width: 20%;
-    height: 13vh;
+    width: 30%;
     margin: 1%;
   }
   @media only screen and (max-width: 700px) and (min-width: 601px) {
     width: 24%;
-    height: 20vh;
   }
 `
 
@@ -68,12 +73,14 @@ const MenuList = styled.ul`
   align-items: center;
   margin-bottom: 0;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
-    padding: 1%;
+    display: none;
   }
 `
 
 const Li = styled.a`
   margin: 2%;
+  font-size: 1rem;
+  text-shadow: 1px 1px 1px #000000;
 `
 
 const ButtonWrapper = styled.div`
@@ -89,12 +96,71 @@ const Button = styled.button`
   border: none;
   outline: none;
   font-weight: 500;
+  font-size: x-large;
   background: #52c4b9;
-  height: 68px;
-  width: 90px;
+  height: 80px;
+  width: 130px;
+`
+
+const ImgMenu = styled.img`
+  width: 90%;
+  height: 50px;
+  @media only screen and (min-width: 700px) {
+    display: none;
+  }
+`
+
+const Phonediv = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+`
+
+const PopMenuList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`
+
+const Mbutton = styled.button`
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  width: 12%;
+  height: auto;
+  background: none;
+  @media only screen and (min-width: 700px) {
+    display: none;
+  }
 `
 
 class Navigation extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      showMenu: false,
+    }
+
+    this.showMenu = this.showMenu.bind(this)
+    this.closeMenu = this.closeMenu.bind(this)
+  }
+
+  showMenu(event) {
+    event.preventDefault()
+
+    this.setState({ showMenu: true }, () => {
+      document.addEventListener('click', this.closeMenu)
+    })
+  }
+
+  closeMenu() {
+    this.setState({ showMenu: false }, () => {
+      document.removeEventListener('click', this.closeMenu)
+    })
+  }
+
   handleClick = () => {
     this.props.logout()
     this.props.history.push('/')
@@ -106,42 +172,113 @@ class Navigation extends Component {
         <SideNav>
           <Menu>
             <MenuWrapper>
-              <Img src={Logo} alt='Logo' />
-              <MenuList>
-                <Li>
-                  <Link to='/'>Dashboard</Link>
-                </Li>
-                <Li className='listItem'>
-                  <Link to='/settings'>Settings</Link>
-                </Li>
-                <Li className='listItem'>
-                  <Link to='/pricing' className='style-link'>
-                    Premium
-                  </Link>
-                </Li>
+              <Phonediv>
+                <Img src={Logo} alt='Logo' />
+                <Mbutton onClick={this.showMenu}>
+                  <ImgMenu src={MenuBTN} alt='Menu Button' />
+                </Mbutton>
 
-                <Li className='listItem'>
-                  <Link to='/rsvp' className='style-link'>
-                    RSVP
-                  </Link>
-                </Li>
-                <Li className='listItem'>
-                  <Link to='/guests' className='style-link'>
-                    Guests
-                  </Link>
-                </Li>
-                <Li className='listItem'>
-                  <Link to='/design' className='style-link'>
-                    Design
-                  </Link>
-                </Li>
-              </MenuList>
-              <ButtonWrapper>
-                <Button onClick={this.handleClick}>Sign Out</Button>
-              </ButtonWrapper>
+                <MenuList>
+                  <Li>
+                    <NavLink
+                      exact
+                      path
+                      to='/'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Dashboard
+                    </NavLink>
+                  </Li>
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/settings'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Settings
+                    </NavLink>
+                  </Li>
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/pricing'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Premium
+                    </NavLink>
+                  </Li>
+
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/rsvp'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      RSVP
+                    </NavLink>
+                  </Li>
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/guests'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Guests
+                    </NavLink>
+                  </Li>
+                  <Li className='listItem'>
+                    <NavLink
+                      to='/design'
+                      activeStyle={{ textDecoration: 'underline' }}>
+                      Design
+                    </NavLink>
+                  </Li>
+                </MenuList>
+                <ButtonWrapper>
+                  <Button onClick={this.handleClick}>Sign Out</Button>
+                </ButtonWrapper>
+              </Phonediv>
             </MenuWrapper>
           </Menu>
         </SideNav>
+        {this.state.showMenu ? (
+          <PopMenuList>
+            <Li>
+              <NavLink
+                exact
+                path
+                to='/'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Dashboard
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/settings'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Settings
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/pricing'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Premium
+              </NavLink>
+            </Li>
+
+            <Li className='listItem'>
+              <NavLink to='/rsvp' activeStyle={{ textDecoration: 'underline' }}>
+                RSVP
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/guests'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Guests
+              </NavLink>
+            </Li>
+            <Li className='listItem'>
+              <NavLink
+                to='/design'
+                activeStyle={{ textDecoration: 'underline' }}>
+                Design
+              </NavLink>
+            </Li>
+          </PopMenuList>
+        ) : null}
       </NavPage>
     )
   }

@@ -8,9 +8,17 @@ import PricingReviews from './PricingReviews'
 import Jumbo from './PremiumJumbo'
 
 const Pricingheader = styled.div`
-  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
   padding: 35px;
-  background-color: #f8f8f8;
+  background: rgba(255, 255, 255, 0.9);
+  width: 80%;
+  margin: 3% auto;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
 
 const H1 = styled.h1`
@@ -23,6 +31,11 @@ const H2 = styled.h2`
   display: flex;
   justify-content: center;
   padding: 20px;
+  text-align: center;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-bottom: 7px double;
+  margin-bottom: 3%;
 `
 const StripeB = styled.button`
   color: green;
@@ -38,8 +51,8 @@ class Pricing extends Component {
           <H2> Continue for free or subscribe to Join Our Big Day Premium.</H2>
           <PricingReviews />
           <H2>
-            Thousands of users made their big day that much bigger with Join Our
-            Big Day.{' '}
+            Thousands of users have made their big day that much bigger with
+            Join Our Big Day.{' '}
           </H2>
           <StripeBtn />
         </Pricingheader>

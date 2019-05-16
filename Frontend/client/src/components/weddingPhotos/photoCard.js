@@ -1,4 +1,4 @@
-import React,{ Component } from 'react'
+import React from 'react'
 
 
 const PhotoCard = props =>{
@@ -9,8 +9,6 @@ const PhotoCard = props =>{
                 <h4>Posted by:{name} </h4>
                 </div>
                     <img src={imgURL} alt={`image uploaded by ${name}`} />
-                
-
         </div>
     )
 }

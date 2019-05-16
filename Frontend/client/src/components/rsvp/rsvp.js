@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Button from 'react-button-component'
+// import Button from 'react-button-component'
 import ScrollAnimation from 'react-animate-on-scroll';
 import {
     BrowserRouter as Router,
@@ -13,7 +13,6 @@ const RSVPPage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    ${'' /* height: 100%; */}
     width: 100%;
     max-width: 1280px;
     min-width: 1024px;
@@ -30,7 +29,7 @@ const RSVPForm = styled.div`
     align-items: center;
     justify-content: center;
     opacity: 1;
-    background-color: white;
+    background: rgba(255, 255, 255, 0.9);
 `;
 
 
@@ -93,6 +92,32 @@ const H2 = styled.h2 `
     color: #ffffff;
 `;
 
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% 3% 3% 3%;
+  width: 30.3%;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+`
+
 const buttonStyles = {
     width: '200px', 
     border: '1px solid black', 
@@ -148,8 +173,8 @@ export default class RSVP extends Component {
                     </RSVPForm>
                     <ButtonArea>
                         <Buttons>
-                            <Button style={buttonStyles}>Add Question</Button>
-                            <Button style={buttonStyles}>Save</Button>
+                            <Button>Add Question</Button>
+                            <Button>Save</Button>
                         </Buttons>
                         <RSVPLink>
                             <StyledLink to="/guestlist">Full Guest List</StyledLink>

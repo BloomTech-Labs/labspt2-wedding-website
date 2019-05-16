@@ -1,6 +1,54 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
-const URL = 'https://joinourbigday.herokuapp.com'
+
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  margin: 3% auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
+`
+const Sub = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`
+
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+`
+
+const URL = 'http://localhost:3700'
+
 class RsvpQuestion extends Component {
   constructor(props) {
     super(props)
@@ -18,8 +66,7 @@ class RsvpQuestion extends Component {
     })
   }
 
-  submitAnswer = e => {
-    e.preventDefault()
+  submitAnswer = () => {
     console.log(this.state)
     Axios.post(`${URL}/rsvp/answers`, this.state)
       .then(res => {
@@ -32,8 +79,8 @@ class RsvpQuestion extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <Wrapper>
+        <Sub>
           <h2>Question: {this.props.question.Question_body}</h2>
           <label htmlFor='label'>Answer the Question</label>
           <form>
@@ -44,10 +91,9 @@ class RsvpQuestion extends Component {
               value={this.state.answer_body}
               onChange={this.inputHandler}
             />
-            <button onClick={e => this.submitAnswer(e)}>Submit Answer</button>
           </form>
-        </div>
-      </div>
+        </Sub>
+      </Wrapper>
     )
   }
 }

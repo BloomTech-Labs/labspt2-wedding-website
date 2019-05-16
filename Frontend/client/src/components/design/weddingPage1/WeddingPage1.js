@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
+import background from '../media/background1.jpg'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import LivePhotoPage from '../../weddingPhotos/livePhotoPage'
+import PhotoButton from '../../weddingPhotos/photoButton'
+import CountDown from '../CountDown'
 
 import styled from 'styled-components'
 
-import background from '../media/background1.jpg'
+import Modal from 'react-modal'
+import RsvpModal from '../../modals/rsvp'
+Modal.setAppElement('#root')
 
 const WP1Body = styled.div`
   margin: 0 auto;
@@ -32,7 +39,7 @@ const WhoWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5);
+  background: rgba(177, 221, 241, 0.9);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 `
 
@@ -47,7 +54,7 @@ const WhenWrapper = styled.div`
   align-items: center;
   margin: 3%;
   border-radius: 8px;
-  background: rgba(177, 221, 241, 0.5);
+  background: rgba(177, 221, 241, 0.9);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 `
 
@@ -58,12 +65,13 @@ const RSVPWrapper = styled.div`
 `
 
 const Button = styled.button`
+  border-radius: 8px;
   color: white;
   border: none;
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
@@ -71,14 +79,14 @@ const Button = styled.button`
   width: 30.3%;
   display: flex;
   justify-content: space-evenly;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
 `
 
@@ -113,21 +121,35 @@ const P = styled.p`
   text-shadow: 0px 0px 0px #000000;
 `
 
+const modalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    height: '450px',
+    borderRadius: '8px',
+    width: '400px',
+    padding: '0',
+  },
+}
+
 class WeddingPage1 extends Component {
-  constructor() {
-    super()
-
-    this.state = {}
-
-    this.handleChange = this.handleChange.bind(this)
+  constructor(props) {
+    super(props)
+    this.state = {
+      modal: false,
+    }
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value })
-    event.preventDefault()
+  handleModal = () => {
+    this.setState({
+      modal: !this.state.modal,
+    })
   }
-
   render() {
+    console.log('match', this.props.match)
     return (
       <WP1Body>
         <WPWrapper>
@@ -139,6 +161,7 @@ class WeddingPage1 extends Component {
           </WhoWrapper>
           <WhenWrapper>
             <H1>{moment(this.props.siteInfo.weddingDate).format('ll')}</H1>
+            <CountDown siteInfo={this.props.siteInfo} />
             <H2>{this.props.siteInfo.venueLocation}</H2>
           </WhenWrapper>
           <RSVPWrapper>
@@ -146,7 +169,7 @@ class WeddingPage1 extends Component {
               {/* This will need to be linked to the answers page once it exists. */}
               RSVP
             </Button>
-            <Modal isOpen={this.state.modal}>
+            <Modal isOpen={this.state.modal} style={modalStyle}>
               <RsvpModal
                 user={this.props.siteInfo}
                 handleClose={this.handleModal}
@@ -159,6 +182,15 @@ class WeddingPage1 extends Component {
             <H2>Proposal Story</H2>
             <P>{this.props.siteInfo.proposalStory}</P>
           </StoryWrapper>
+          <Link to={`${this.props.match.path}/wedding-photos`}>
+            <PhotoButton />
+          </Link>
+          <div>
+            <Route
+              path={`${this.props.match.path}/wedding-photos`}
+              component={LivePhotoPage}
+            />
+          </div>
         </WPWrapper>
       </WP1Body>
     )

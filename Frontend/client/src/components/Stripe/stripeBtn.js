@@ -9,6 +9,7 @@ const StripeBtn = props => {
   const publishableKey = 'pk_test_hZ2cDD8WczHuPKhNyDhiIYsI'
 
   const onToken = token => {
+    console.log(token)
     const stripeInfo = {
       tokenBody: {
         amount: 999,
@@ -18,7 +19,7 @@ const StripeBtn = props => {
     }
 
     axios
-      .post('https://joinourbigday.herokuapp.com', stripeInfo)
+      .post('http://localhost:3700/stripe', stripeInfo)
       .then(response => {
         console.log(response)
         props.fetchUser(props.userInfo.id)

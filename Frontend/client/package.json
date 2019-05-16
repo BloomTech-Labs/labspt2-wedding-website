@@ -30,6 +30,7 @@
     "react-google-maps-loader": "^4.2.5",
     "react-google-places-suggest": "^3.7.1",
     "react-icons": "^3.5.0",
+    "react-load-script": "^0.0.6",
     "react-minimal-pie-chart": "^3.5.0",
     "react-modal": "^3.8.1",
     "react-pie-chart": "^0.0.3",
