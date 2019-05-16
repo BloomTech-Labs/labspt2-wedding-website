@@ -169,7 +169,7 @@ class WeddingPhotos extends Component {
         </div>
         <div className='photos'>
           {this.state.photoCards.map(img => (
-            <PhotoCard key={img.imgURL} info={img} />
+            <PhotoCard key={img.imgUrl} info={img} />
           ))}
         </div>
       </Wrapper>

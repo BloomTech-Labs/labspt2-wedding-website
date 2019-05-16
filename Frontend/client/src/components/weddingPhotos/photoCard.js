@@ -23,14 +23,14 @@ const Body = styled.div`
 `
 
 const PhotoCard = props => {
-  const { caption, imgURL, name } = props.info
+  const { caption, imgUrl, name } = props.info
   return (
     <>
       <Card className='card'>
         {/* <div className="card-header">
                         <h4>{name}</h4> 
            </div> */}
-        <img src={imgURL} alt='user posted photo' className='card-img-top' />
+        <img src={imgUrl} alt='user posted photo' className='card-img-top' />
         <Body className='card-body '>
           <h5 className='card-title'>Posted by:{name}</h5>
           <p>"{caption}"</p>
