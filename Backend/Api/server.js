@@ -26,7 +26,7 @@ auth(passport)
 server.use(
   express.json(),
   logger('dev'),
-  cors(),
+  cors({ origin: 'https://joinourbigday.netlify.com/' }),
   helmet(),
   passport.initialize()
 )
