@@ -26,7 +26,6 @@ const GuestPage = styled.div`
   min-width: 1024px;
   width: 100%;
   height: 70vh;
-  margin: 0 40px;
   justify-content: center;
   flex-direction: column;
   background-color: white;
@@ -167,13 +166,13 @@ class GuestList extends Component {
         Cell: props => {
           return (
             <div>
+              <EditButton>Edit</EditButton>
               <Button
                 onClick={() => {
                   this.deleteRow(props.original.id)
                 }}>
                 Delete
               </Button>
-              <EditButton>Edit</EditButton>
             </div>
           )
         },

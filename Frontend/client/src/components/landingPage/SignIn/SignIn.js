@@ -4,10 +4,13 @@ import { loginRegister } from '../../../actions/index'
 import styled from 'styled-components'
 import GoogleButton from 'react-google-button'
 
-
-
 const FormCenter = styled.div`
   margin-bottom: 100px;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 `
 
 const FormField = styled.div`
@@ -35,15 +38,35 @@ const FormInput = styled.input`
 `
 
 const FormButton = styled.button`
-  background-color: #52c4b9;
+  border-radius: 8px;
   color: white;
   border: none;
   outline: none;
   border-radius: 25px;
-  padding: 15px 70px;
-  font-size: 0.8em;
-   font-weight: 500;
-` 
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% 3% 3% 3%;
+  width: 30.3%;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    display: flex;
+    margin: 3% auto;
+  }
+`
+
+const P = styled.p`
+  color: white;
+  font-size: 1.5rem;
+`
 
 class SignIn extends Component {
   constructor(props) {
@@ -82,7 +105,7 @@ class SignIn extends Component {
       <FormCenter>
         <form onSubmit={this.handleSubmit}>
           <FormField>
-            <FormLabel>Username</FormLabel>
+            <FormLabel><P>Username</P></FormLabel>
             <FormInput
               // id='email'
               className='FormField__Input'
@@ -94,7 +117,7 @@ class SignIn extends Component {
           </FormField>
 
           <FormField>
-            <FormLabel htmlFor='password'>Password</FormLabel>
+            <FormLabel htmlFor='password'><P>Password</P></FormLabel>
             <FormInput
               type='password'
               id='password'
@@ -110,7 +133,10 @@ class SignIn extends Component {
             <FormButton>Sign In</FormButton>
           </FormField>
         </form>
-        <a href='https://joinourbigday.herokuapp.com/auth/google'><GoogleButton/></a> <br/>
+        <a href='http://localhost:3700/auth/google'>
+          <GoogleButton />
+        </a>{' '}
+        <br />
         {/* <a href='https://joinourbigday.herokuapp.com/auth/facebook'>facebook</a> */}
       </FormCenter>
     )

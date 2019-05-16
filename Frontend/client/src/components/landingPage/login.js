@@ -14,6 +14,10 @@ const LoginPage = styled.div`
   margin-right: auto;
   display: flex;
   color: white;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const Aside = styled.div`
@@ -28,8 +32,7 @@ const Aside = styled.div`
       display:none
     }
   }
-  @media screen and (max-width: 1024) {
-    width: 0%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
     display: none;
   }
 `
@@ -57,12 +60,15 @@ const FormTitle = styled.div`
 `
 
 const StyledLink = styled(Link)`
-  color: #707c8b;
+  color: white;
   text-decoration: none;
   display: inline-block;
-  font-size: 1.7em;
+  font-size: 1.5rem;
   margin: 0 10px;
   padding-bottom: 5px;
+  :hover {
+    color: wheat;
+  }
 `
 
 function Login({ match }) {
@@ -74,7 +80,7 @@ function Login({ match }) {
      
       </Aside>
       <LoginForm>
-        <PageSwitch>
+        {/* <PageSwitch>
           <NavLink to={`${match.url}`} className='PageSwitcher__Item'>
             Sign In
           </NavLink>
@@ -83,7 +89,7 @@ function Login({ match }) {
             className='PageSwitcher__Item PageSwitcher__Item--Active'>
             Sign Up
           </Link>
-        </PageSwitch>
+        </PageSwitch> */}
 
         <FormTitle>
           <StyledLink to={`${match.url}`}>Sign In</StyledLink> or{' '}

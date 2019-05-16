@@ -10,12 +10,13 @@ import {
   GET_GUESTS,
   // GET_GUEST,
   GET_QS,
+  GET_SITE,
   UPDATING,
   GET_REGISTRY,
   // DELETE,
   ERROR,
   LOGOUT,
-  USER_FEED
+  USER_FEED,
 } from '../actions/index'
 
 const initialState = {
@@ -32,6 +33,7 @@ const initialState = {
   userQuestions: null,
   userRegistry: null,
   //answers
+  customSite: null,
 }
 
 export default (state = initialState, action) => {
@@ -90,13 +92,22 @@ export default (state = initialState, action) => {
         fetching: false,
         updating: false,
       }
+    case GET_SITE:
+      console.log('get site action', action.payload)
+      return {
+        ...state,
+        customSite: action.payload,
+        fetching: false,
+        updating: false,
+      }
+
     case UPDATING:
       // return { ...state, guests: action.payload, fetching: false }
       return { ...state, fetching: false, updating: true }
     case ERROR:
       return { ...state, updating: true }
     case USER_FEED:
-      return {...state, photoCards: action.payload, fetching: false }
+      return { ...state, photoCards: action.payload, fetching: false }
     default:
       return state
   }

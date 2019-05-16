@@ -2,8 +2,54 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteQuestion, editQuestion } from '../../actions'
 
+import styled from 'styled-components'
+
 import axios from 'axios'
 import Answer from './answer'
+
+const AnswerWrapper = styled.div`
+  text-align: center;
+  width: 100%;
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    flex-direction: column;
+    width: 100%;
+  }
+`
+
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+`
+
+const H3 = styled.h3`
+  color: red;
+`
 
 class Question extends React.Component {
   constructor(props) {
@@ -95,11 +141,13 @@ class Question extends React.Component {
 
   render() {
     return (
-      <div>
+      <AnswerWrapper>
         <h3>Question: {this.props.questionInfo.Question_body}</h3>
-        <button onClick={this.deleteHandler}>Delete</button>
-        <button onClick={this.updateHandler}>update</button>
-        <button onClick={this.answersHandler}>See answers</button>
+        <ButtonWrapper>
+          <Button onClick={this.answersHandler}>See Answers</Button>
+          <Button onClick={this.updateHandler}>Update</Button>
+          <Button onClick={this.deleteHandler}>Delete</Button>
+        </ButtonWrapper>
         {this.state.answersTab ? (
           this.state.answers.length > 0 ? (
             this.state.answers.map(answer => {
@@ -113,7 +161,7 @@ class Question extends React.Component {
             })
           ) : (
             <div>
-              <h3>No Answers yet</h3>
+              <H3>No Answers yet</H3>
             </div>
           )
         ) : null}
@@ -127,10 +175,10 @@ class Question extends React.Component {
               value={this.state.question.Question_body}
               onChange={this.inputHandler}
             />
-            <button onClick={this.submitUpdateHandler}>Update</button>
+            <Button onClick={this.submitUpdateHandler}>Update</Button>
           </form>
         ) : null}
-      </div>
+      </AnswerWrapper>
     )
   }
 }

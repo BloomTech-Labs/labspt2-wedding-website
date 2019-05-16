@@ -15,6 +15,7 @@ module.exports = {
       weddingDate: user.weddingDate,
       weddingParty: user.weddingParty,
       venueLocation: user.venueLocation,
+      addressUrl: user.addressUrl,
       isPremium: user.isPremium,
     }
     const secret = process.env.JWT_SECRET
