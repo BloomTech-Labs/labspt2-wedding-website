@@ -53,6 +53,12 @@ const Button = styled.button`
   margin: 3%;
 `
 
+const Div = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 class QuestionList extends Component {
   constructor(props) {
     super(props)
@@ -92,14 +98,14 @@ class QuestionList extends Component {
         <Head>
           <H1>RSVP Questionnaire</H1>
         </Head>
-        <div>
+        <Div>
           {this.props.loading ? <h1>Loading Note List</h1> : null}
           {this.props.questions
             ? this.props.questions.map(question => {
                 return <Question key={Math.random()} questionInfo={question} />
               })
             : null}
-        </div>
+        </Div>
         <Form>
           {/* inputs not updating state need help */}
           <H2>Add a new question to your rsvp questionare</H2>
