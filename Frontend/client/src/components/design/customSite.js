@@ -9,6 +9,7 @@ import WeddingPage3 from './weddingPage3/WeddingPage3'
 
 const URL = 'http://localhost:3700'
 
+
 class CustomSite extends Component {
   constructor(props) {
     super(props)
@@ -21,6 +22,7 @@ class CustomSite extends Component {
       // userId: '',
       site: null,
     }
+    
   }
 
   //backend get : {url}/customSite/:siteUrl (this.props.match.params.customSite)

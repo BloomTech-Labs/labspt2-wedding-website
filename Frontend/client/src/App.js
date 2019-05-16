@@ -139,10 +139,6 @@ class App extends Component {
             <Route path='/login' component={Login} />
             <Route path='/weddingPhotos' component={WeddingPhotos} />
             <Route path='/:customSite' component={CustomSite} />
-            <Route
-              path={`/:customSite/wedding-photos`}
-              component={LivePhotoPage}
-            />
           </Switch>
         </div>
       </Router>
