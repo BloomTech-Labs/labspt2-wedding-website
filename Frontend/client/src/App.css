@@ -49,8 +49,10 @@ table {
 }
 /* Set every element's box-sizing to border-box */
 
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 
