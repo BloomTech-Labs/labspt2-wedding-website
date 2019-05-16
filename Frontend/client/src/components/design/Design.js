@@ -159,6 +159,7 @@ const Story = styled.textarea`
   overflow: auto;
   margin: 0 auto;
   display: flex;
+  padding: 1%;
 `
 
 const P = styled.p`
@@ -176,6 +177,7 @@ const SW = styled.div`
 const DesignInput = styled.input`
   height: 30px;
   width: 100%;
+  padding: .5%;
 `
 
 const URLInput = styled.input`
