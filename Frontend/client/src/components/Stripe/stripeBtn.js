@@ -9,6 +9,7 @@ const StripeBtn = props => {
   const publishableKey = 'pk_test_hZ2cDD8WczHuPKhNyDhiIYsI'
 
   const onToken = token => {
+    console.log(token)
     const stripeInfo = {
       tokenBody: {
         amount: 999,

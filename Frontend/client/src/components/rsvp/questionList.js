@@ -8,7 +8,7 @@ import styled from 'styled-components'
 const RSVPWrapper = styled.div`
   width: 80%;
   margin: 0 auto;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   margin-top: 3%;
   @media only screen and (max-width: 700px) and (min-width: 300px) {
@@ -39,6 +39,10 @@ const H2 = styled.h2`
 
 const Input = styled.input`
   padding: 0.5%;
+  width: 60%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 90%;
+  }
 `
 
 const Button = styled.button`
@@ -46,11 +50,25 @@ const Button = styled.button`
   color: white;
   border: none;
   outline: none;
-  padding: 15px 70px;
-  font-size: 1em;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
-  margin: 3%;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 1rem;
+  }
 `
 
 const Div = styled.div`
@@ -108,7 +126,7 @@ class QuestionList extends Component {
         </Div>
         <Form>
           {/* inputs not updating state need help */}
-          <H2>Add a new question to your rsvp questionare</H2>
+          <H2>Add a new question to your rsvp questionnaire</H2>
           <Input
             type='text'
             placeholder='Create a new question'

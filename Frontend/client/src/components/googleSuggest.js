@@ -2,7 +2,18 @@ import React from 'react'
 import ReactGoogleMapLoader from 'react-google-maps-loader'
 import ReactGooglePlacesSuggest from 'react-google-places-suggest'
 
+import styled from 'styled-components';
+
+const Input = styled.input`
+  width: 100%;
+`
+
+const VenWrapper = styled.div`
+  width: 100%;
+`
+
 const API_KEY = 'AIzaSyCQM9M4GcHOPSAAR6CX_msHP75_9FWawVc'
+
 class GoogleSuggest extends React.Component {
   constructor(props) {
     super(props)
@@ -31,12 +42,12 @@ class GoogleSuggest extends React.Component {
         }}
         render={googleMaps =>
           googleMaps && (
-            <div>
+            <VenWrapper>
               <ReactGooglePlacesSuggest
                 autocompletionRequest={{ input: this.props.search }}
                 googleMaps={googleMaps}
                 onSelectSuggest={this.handleSelectSuggest}>
-                <input
+                <Input
                   type='text'
                   name=''
                   value={this.props.value}
@@ -44,7 +55,7 @@ class GoogleSuggest extends React.Component {
                   onChange={this.handleInputChange}
                 />
               </ReactGooglePlacesSuggest>
-            </div>
+            </VenWrapper>
           )
         }
       />

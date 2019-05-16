@@ -10,27 +10,68 @@ import styled from 'styled-components'
 import { FaAutoprefixer } from 'react-icons/fa'
 import Axios from 'axios'
 
-const Button = styled.button`
-  background-color: red;
-  color: #fefefe;
+const PageWrap = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
-const EditButton = styled.button`
-  background-color: blue;
-  color: #fefefe;
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 1rem;
+  }
 `
-// const TableContainer = styled.div`
-//   margin-left: 50px;
-//   margin-top: 30px;
-//   background-color: white;
-//   border: 2px solid black;
-//   max-height: 800px;
-//   border-radius: 20px;
-// `
+const Button2 = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 0.5rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 0.5rem;
+  }
+`
 
 const AddContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 3% auto;
-  background-color: white;
+  background: rgba(255, 255, 255, 0.9);
   padding: 10px;
   border-radius: 8px;
   border: 1px solid gray;
@@ -39,6 +80,51 @@ const AddContainer = styled.div`
     width: 95%;
   }
 `
+
+const H1Wrap = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const Form = styled.form`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
+
+const FormButWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+`
+
+const Input = styled.input`
+  margin: 3%;
+  width: 30%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
+`
+
+const TableWrapper = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
+`
+
+const ButtonTable = styled.div`
+  width: 100%;
+`
+
+const P = styled.p``
+
 // Update guestnot working
 
 class GuestList extends Component {
@@ -147,20 +233,21 @@ class GuestList extends Component {
     const columns = [
       {
         Header: 'Name',
-        width: 100,
-        maxWidth: 100,
+        width: 300,
+        maxWidth: 300,
         minWidth: 100,
         sortable: false,
         filterable: false,
         style: {
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
         },
         Cell: props => {
           let name = (
-            <p>
+            <P>
               {props.original.firstName} {props.original.lastName}
-            </p>
+            </P>
           )
           return name
         },
@@ -168,38 +255,41 @@ class GuestList extends Component {
       {
         Header: 'Email',
         accessor: 'email',
-        width: 200,
-        maxWidth: 200,
+        width: 300,
+        maxWidth: 300,
         minWidth: 100,
         sortable: false,
         filterable: false,
         style: {
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: '1%',
         },
       },
       {
         Header: 'RSVP',
-        width: 100,
-        maxWidth: 100,
+        width: 300,
+        maxWidth: 300,
         minWidth: 100,
         sortable: false,
         filterable: false,
         style: {
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
         },
         Cell: props => {
-          let rsvp = <p>Pending</p>
+          let rsvp = <P>Pending</P>
           if (props.original.rsvp !== null) {
             if (props.original.rsvp === 1) {
-              rsvp = <p>Attending</p>
+              rsvp = <P>Attending</P>
             } else {
-              rsvp = <p>Not Attending</p>
+              rsvp = <P>Not Attending</P>
             }
           } else {
             if (props.original.rsvpMaybe) {
-              rsvp = <p>Maybe</p>
+              rsvp = <P>Maybe</P>
             }
           }
           return rsvp
@@ -207,90 +297,96 @@ class GuestList extends Component {
       },
       {
         Header: 'Actions',
-        width: 100,
-        maxWidth: 100,
+        width: 300,
+        maxWidth: 300,
         minWidth: 100,
         sortable: false,
         filterable: false,
         style: {
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: '1%',
         },
         Cell: props => {
           console.log('props', props)
           return (
-            <div>
-              <Button
+            <ButtonTable>
+              <Button2>Edit</Button2>
+              <Button2
                 onClick={e => {
                   this.deleteHandler(e, props.original.id)
                 }}>
                 Delete
-              </Button>
-              <EditButton>Edit</EditButton>
-            </div>
+              </Button2>
+            </ButtonTable>
           )
         },
       },
     ]
     return (
-      <div>
+      <PageWrap>
         <AddContainer>
-          <div>
+          <H1Wrap>
             <h1>New Guest?</h1>
-          </div>
+          </H1Wrap>
+          <FormButWrap>
+            <Form>
+              {/* inputs not updating state need help */}
+              <Input
+                type='text'
+                placeholder='First Name'
+                name='firstName'
+                value={this.state.addGuest.firstName}
+                onChange={this.inputHandler}
+              />
+              <Input
+                type='text'
+                placeholder='Last Name'
+                name='lastName'
+                value={this.state.addGuest.lastName}
+                onChange={this.inputHandler}
+              />
+              <Input
+                type='text'
+                placeholder='email'
+                name='email'
+                value={this.state.addGuest.email}
+                onChange={this.inputHandler}
+              />
+            </Form>
+            <Button onClick={this.addGuestHandler}>Add guest</Button>
+          </FormButWrap>
+        </AddContainer>
 
-          <form>
-            {/* inputs not updating state need help */}
-            <input
-              type='text'
-              placeholder='First Name'
-              name='firstName'
-              value={this.state.addGuest.firstName}
-              onChange={this.inputHandler}
+        <TableWrapper>
+          {this.props.guests ? (
+            <ReactTable
+              columns={columns}
+              data={this.props.guests}
+              filterable
+              defaultPageSize={10}
+              pageSizeOptions={[5, 10, 20]}
+              noDataText={'Loading Guests'}
+              showPaginationTop
+              showPaginationBottom={false}
+              style={{
+                height: '400px',
+                borderRadius: '8px',
+                backgroundColor: 'white',
+                marginTop: '30px',
+                overflow: 'hidden',
+                margin: '3% auto',
+                width: '100%',
+              }}
             />
-            <input
-              type='text'
-              placeholder='Last Name'
-              name='lastName'
-              value={this.state.addGuest.lastName}
-              onChange={this.inputHandler}
-            />
-            <input
-              type='text'
-              placeholder='email'
-              name='email'
-              value={this.state.addGuest.email}
-              onChange={this.inputHandler}
-            />
-            <button onClick={this.addGuestHandler}>Add guest</button>
-          </form>
-        </AddContainer>
+          ) : null}
+        </TableWrapper>
         <AddContainer>
-          <h1>Send email</h1>
-          <button onClick={this.emailHandler}>send</button>
+          <h1>Send Email</h1>
+          <Button onClick={this.emailHandler}>Send</Button>
         </AddContainer>
-        {this.props.guests ? (
-          <ReactTable
-            columns={columns}
-            data={this.props.guests}
-            filterable
-            defaultPageSize={10}
-            pageSizeOptions={[5, 10, 20]}
-            noDataText={'Loading Guests'}
-            showPaginationTop
-            showPaginationBottom={false}
-            style={{
-              height: '400px',
-              borderRadius: '8px',
-              backgroundColor: 'white',
-              marginTop: '30px',
-              overflow: 'hidden',
-              margin: '0 auto',
-              width: '80%',
-            }}
-          />
-        ) : null}
-      </div>
+      </PageWrap>
     )
   }
 }

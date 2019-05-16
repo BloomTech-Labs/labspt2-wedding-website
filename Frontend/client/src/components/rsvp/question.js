@@ -8,13 +8,17 @@ import axios from 'axios'
 import Answer from './answer'
 
 const AnswerWrapper = styled.div`
-  margin: 3%;
   text-align: center;
+  width: 100%;
 `
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `
 
 const Button = styled.button`
@@ -24,23 +28,27 @@ const Button = styled.button`
   outline: none;
   border-radius: 25px;
   padding: 15px;
-  font-size: 1em;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
-  margin: 5% 3% 3% 3%;
+  margin: 5% auto;
   width: 30.3%;
+  display: flex;
   justify-content: space-evenly;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
-    width: 30%;
-    display: flex;
+    width: 60%;
     margin: 3% auto;
+    font-size: 1rem;
   }
   @media only screen and (max-width: 700px) and (min-width: 501px) {
-    // width: 60%;
-    display: flex;
     margin: 3% auto;
+    font-size: 1rem;
   }
+`
+
+const H3 = styled.h3`
+  color: red;
 `
 
 class Question extends React.Component {
@@ -59,7 +67,7 @@ class Question extends React.Component {
   //axios call on CDM by typing a new question
 
   // componentDidMount() {
-  //   const api = 'https://joinourbigday.herokuapp.com'
+  //   const api = 'http://localhost:3700'
   //   const questionId = this.props.questionInfo.id
   //   axios
   //     .get(`${api}/rsvp/answer/${questionId}`)
@@ -136,9 +144,9 @@ class Question extends React.Component {
       <AnswerWrapper>
         <h3>Question: {this.props.questionInfo.Question_body}</h3>
         <ButtonWrapper>
+          <Button onClick={this.answersHandler}>See Answers</Button>
+          <Button onClick={this.updateHandler}>Update</Button>
           <Button onClick={this.deleteHandler}>Delete</Button>
-          <Button onClick={this.updateHandler}>update</Button>
-          <Button onClick={this.answersHandler}>See answers</Button>
         </ButtonWrapper>
         {this.state.answersTab ? (
           this.state.answers.length > 0 ? (
@@ -153,7 +161,7 @@ class Question extends React.Component {
             })
           ) : (
             <div>
-              <h3>No Answers yet</h3>
+              <H3>No Answers yet</H3>
             </div>
           )
         ) : null}
@@ -167,7 +175,7 @@ class Question extends React.Component {
               value={this.state.question.Question_body}
               onChange={this.inputHandler}
             />
-            <button onClick={this.submitUpdateHandler}>Update</button>
+            <Button onClick={this.submitUpdateHandler}>Update</Button>
           </form>
         ) : null}
       </AnswerWrapper>

@@ -7,30 +7,75 @@ import styled from 'styled-components'
 const URL = 'https://joinourbigday.herokuapp.com'
 
 const MainCont = styled.div`
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  margin: 3% auto;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  padding: 10px;
 `
 
 const Header = styled.div`
   display: flex;
   justify-content: space-around;
-  font-size: 20px;
+  font-size: 1.5rem;
 `
 
 const Body = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+`
+const Close = styled.button`
+  border: 0;
+  padding: 0;
+  font-weight: bold;
+  align-self: flex-start;
+  font-size: 20px;
+  cursor: pointer;
+`
+const Input = styled.input`
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 `
 
-const Input = styled.input``
-
-const Footer = styled.div``
+const Button = styled.button`
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1em;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    // width: 60%;
+    margin: 3% auto;
+  }
+`
+const Footer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
 
 class Rsvp extends Component {
   constructor(props) {
     super(props)
+    this.rsvpQ = React.createRef()
     this.state = {
       guest: null,
       rsvp: null,
@@ -85,6 +130,7 @@ class Rsvp extends Component {
 
   handleRsvp = e => {
     e.preventDefault()
+    this.rsvpQ.current.submitAnswer()
     const rsvp = {
       rsvp: null,
       rsvpMaybe: false,
@@ -108,14 +154,15 @@ class Rsvp extends Component {
       .catch(err => {
         console.log('handle rsvp err', err)
       })
+    this.props.handleClose()
   }
 
   render() {
     if (this.state.codeStatus === null) {
       return (
         <MainCont>
+          <Close onClick={() => this.props.handleClose()}>X</Close>
           <Header>
-            <button onClick={() => this.props.handleClose()}>Close</button>
             <h2>RSVP</h2>
           </Header>
           <Body>
@@ -127,68 +174,76 @@ class Rsvp extends Component {
               value={this.state.code}
               onChange={this.inputHandler}
             />
-            <Footer>
-              <button onClick={e => this.verifyGuest(e, this.state.code)}>
-                Go
-              </button>
-            </Footer>
           </Body>
+          <Footer>
+            <Button onClick={e => this.verifyGuest(e, this.state.code)}>
+              Go
+            </Button>
+          </Footer>
         </MainCont>
       )
     } else {
       if (this.state.codeStatus) {
         return (
-          <div>
-            <button onClick={() => this.props.handleClose()}>Close</button>
-            <div>
+          <MainCont>
+            <Close onClick={() => this.props.handleClose()}>X</Close>
+            <Header>
+              <h2>RSVP</h2>
+            </Header>
+            <Body>
               <h2>
-                name: {this.state.guest.firstName} {this.state.guest.lastName}
+                Name: {this.state.guest.firstName} {this.state.guest.lastName}
               </h2>
-              <form>
-                <label>Will you be able to attend?</label>
-                <select value={this.state.value} onChange={this.handleChange}>
-                  <option value='yes'>Yes</option>
-                  <option value='no'>No</option>
-                  <option value='maybe'>Maybe</option>
-                </select>
-                <label htmlFor='label'>Address</label>
-                <input
-                  type='text'
-                  placeholder='Your Address'
-                  name='address'
-                  value={this.state.address}
-                  onChange={this.inputHandler}
-                />
-                <label htmlFor='label'>Want to share a comment?</label>
-                <input
-                  type='text'
-                  placeholder='Comment'
-                  name='rsvpComment'
-                  value={this.state.rsvpComment}
-                  onChange={this.inputHandler}
-                />
-                <button onClick={e => this.handleRsvp(e)}>Submit Rsvp</button>
-              </form>
+              <label>Will you be able to attend?</label>
+              <select value={this.state.value} onChange={this.handleChange}>
+                <option value='yes'>Yes</option>
+                <option value='no'>No</option>
+                <option value='maybe'>Maybe</option>
+              </select>
+              <label htmlFor='label'>Address</label>
+              <input
+                type='text'
+                placeholder='Your Address'
+                name='address'
+                value={this.state.address}
+                onChange={this.inputHandler}
+              />
+              <label htmlFor='label'>Want to share a comment?</label>
+              <input
+                type='text'
+                placeholder='Comment'
+                name='rsvpComment'
+                value={this.state.rsvpComment}
+                onChange={this.inputHandler}
+              />
               {this.state.questions
                 ? this.state.questions.map(question => {
                     return (
                       <RsvpQuestion
                         question={question}
                         guestId={this.state.guest.id}
+                        ref={this.rsvpQ}
                       />
                     )
                   })
                 : null}
-            </div>
-          </div>
+            </Body>
+            <Footer>
+              <Button onClick={e => this.handleRsvp(e)}>Submit Rsvp</Button>
+            </Footer>
+          </MainCont>
         )
       } else {
         return (
-          <div>
-            <button onClick={() => this.props.handleClose()}>Close</button>
-            <div>Code not found try Again</div>
-            <button onClick={this.handleTryA}>Try Again</button>
-          </div>
+          <MainCont>
+            <Close onClick={() => this.props.handleClose()}>X</Close>
+            <Body>
+              <h3>Code not found try Again</h3>
+            </Body>
+            <Footer>
+              <Button onClick={this.handleTryA}>Try Again</Button>
+            </Footer>
+          </MainCont>
         )
       }
     }
