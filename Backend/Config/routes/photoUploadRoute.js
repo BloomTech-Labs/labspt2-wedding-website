@@ -25,7 +25,7 @@ addImage = (req, res) => {
     const img = req.file.location
     const newImage = {
       user_id: userId,
-      imgURL: img,
+      imgUrl: img,
       name,
       caption,
     }
