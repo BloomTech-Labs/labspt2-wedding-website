@@ -5,7 +5,7 @@ import logo from '../../Images/jobdLogo.png'
 import styled from 'styled-components'
 import PhotoCard from '../weddingPhotos/photoCard'
 import axios from 'axios'
-import PhotoButton from './photoButton'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
@@ -26,15 +26,76 @@ const Wrapper = styled.div`
   );
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'Source Sans Pro', sans-serif .photos {
+  font-family: 'Source Sans Pro', sans-serif;
+  height: 100vh;
+  .photos {
     padding-top: 60px;
     overflow: scroll;
+  }
+  .error {
+    color: white;
+    margin: 60px 4%;
   }
 `
 
 const Image = styled.img`
   width: 100%;
 `
+
+const Header = styled.div`
+  position: fixed;
+  z-index: 1;
+  width:100%;
+  background-color: rgb(255, 255, 255, 0.7);
+  top: 0;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 100%;
+    height: 50px;
+   h1{
+     font-size:1.5rem;
+     margin: 10% auto;
+   }
+  }
+
+  button{
+    margin-top: 7px
+    border-radius: 8px;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    background: #52c4b9;
+    display: flex;
+    justify-content: space-evenly;
+    transition: 0.5s ease;
+    &:hover{
+      color:#52c4b9;
+      background: white;
+      border: 1px solid #52c4b9;
+      
+
+    }
+    @media only screen and (max-width: 500px) and (min-width: 300px) {
+      width: 100%;
+      margin: 10% auto;
+      margin-right: 25px;
+      font-size: 0.9rem;
+    }
+    @media only screen and (max-width: 700px) and (min-width: 501px) {
+      margin: 3% auto;
+      font-size: 1rem;
+    }
+  }
+`
+const Footer = styled.div`
+  position: fixed;
+  bottom: 0;
+`
+
 class WeddingPhotos extends Component {
   constructor(props) {
     super(props)
@@ -168,10 +229,21 @@ class WeddingPhotos extends Component {
           </Modal>
         </div>
         <div className='photos'>
-          {this.state.photoCards.map(img => (
-            <PhotoCard key={img.imgUrl} info={img} />
-          ))}
+          {this.state.photoCards.length ? (
+            this.state.photoCards.map(img => (
+              <PhotoCard key={img.imgUrl} info={img} />
+            ))
+          ) : (
+            <h1 className='error'>
+              No Photos yet... <br /> Be the First to upload!
+            </h1>
+          )}
         </div>
+        <Footer>
+          <Link to={`${this.props.match.path}`}>
+            <p> Back </p>
+          </Link>
+        </Footer>
       </Wrapper>
     )
   }
