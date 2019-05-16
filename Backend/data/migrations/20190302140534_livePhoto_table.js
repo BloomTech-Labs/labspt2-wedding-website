@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('livePhotos', tbl => {
     tbl.increments()
     tbl
-      .string('imgURL')
+      .string('imgUrl')
       .notNullable()
       .unique()
     tbl.string('name').notNullable()
