@@ -9,14 +9,14 @@ const stripeChargeCallback = res => (stripeErr, stripeRes) => {
 }
 
 const paymentApi = app => {
-  app.get('/', (req, res) => {
+  app.get('/stripe', (req, res) => {
     res.send({
       message: 'Ayeeeeeee Stripe checkout what up girl.',
       timestamp: new Date().toISOString(),
     })
   })
 
-  app.post('/', (req, res) => {
+  app.post('/stripe', (req, res) => {
     const body = {
       source: req.body.token.id,
       amount: req.body.amount,

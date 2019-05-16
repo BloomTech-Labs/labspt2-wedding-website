@@ -1,106 +1,97 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
 import PieChart from 'react-minimal-pie-chart'
 import Modal from 'react-modal'
+import CountDown from '../design/CountDown'
 
 import RegistryAddModal from '../modals/addRegistry'
 import RegistryViewModal from '../modals/viewRegistry'
 import styled from 'styled-components'
+
+import VenueSearch from '../venueSearch'
 Modal.setAppElement('#root')
 
 const DashContainer = styled.div`
-  max-width: 1080px;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
-  background-color: #4c5d72;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
+  }
 `
+
 const Button = styled.button`
-  border-radius: 5%;
+  border-radius: 8px;
   color: white;
   border: none;
   outline: none;
   border-radius: 25px;
-  padding: 15px 70px;
-  font-size: 0.8em;
+  padding: 15px;
+  font-size: 1.5rem;
   font-weight: 500;
   background: #52c4b9;
   cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 1rem;
+  }
 `
 
 const RegistryItem = styled.button`
-  border-radius: 5%;
+  border-radius: 8px;
   color: white;
   border: none;
   outline: none;
   border-radius: 25px;
-  padding: 15px 70px;
-  margin-right: 15px;
-  font-size: 0.8em;
+  padding: 15px;
+  font-size: 1.5rem;
   font-weight: 500;
   background: goldenrod;
   cursor: pointer;
+  margin: 5% auto;
+  width: px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
 `
-
-const ShareButton = styled.button`
-  border-radius: 5%;
-  color: white;
-  border: none;
-  outline: none;
-  border-radius: 25px;
-  padding: 15px 70px;
-  font-size: 0.8em;
-  font-weight: 500;
-  background: #52c4b9;
-  float: right;
-  margin-right: 5%;
-`
-
-const GLButton = styled.button`
-  border-radius: 5%;
-  color: white;
-  border: none;
-  outline: none;
-  border-radius: 25px;
-  padding: 15px 70px;
-  font-size: 0.8em;
-  font-weight: 500;
-  background: #52c4b9;
-  margin-left: 5%;
-`
-
-// Unused
-// const SignOut = styled.div`
-//   display: flex;
-//   width: 100%;
-//   justify-content: flex-end;
-// `
 
 const HeadContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   width: 100%;
-  min-width: 1024px;
-
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    flex-direction: column;
-    width: 100%;
-    min-width: 350px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-`;
+`
 
 const Head = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
-`;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  margin: 4% 0%;
+`
 
 const DashPage = styled.div`
   display: flex;
@@ -111,58 +102,111 @@ const DashPage = styled.div`
 const NameDate = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    align-items: inherit;
+  }
 `
 
-const Location = styled.div``
+const Location = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`
 
 const H1 = styled.h1`
   font-size: 2.5em;
   text-align: center;
-  color: white;
   margin-top: 5%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    font-size: 2em;
+  }
 `
 
 const H2 = styled.h2`
   font-size: 2.5em;
   text-align: center;
-  color: white;
-  margin-top: 12%;
+  margin: 3% 3% 5% 3%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    font-size: 2em;
+  }
 `
 const RegistryContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    flex-direction: column;
+  }
 `
 
-const GuestList = styled.div`
-  margin-top: 5%;
-  border-top: 2px solid #707c8b;
-  padding: 3%;
-`
+// const GuestList = styled.div`
+//   margin-top: 5%;
+//   border-radius: 8px;
+//   background: rgba(255, 255, 255, 0.9);
+//   padding: 3%;
+//   margin: 3% 0%;
+// `
 
 const H3 = styled.h3`
   font-size: 1.5em;
-  color: white;
-  margin-bottom: 5%;
+  margin: 5% auto;
+  text-align: center;
 `
 
 const RSVP = styled.div`
   margin-top: 5%;
-  border-top: 2px solid #707c8b;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
   padding: 3%;
+  margin: 3% 0%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
 `
 
 const Registry = styled.div`
-  border-top: 2px solid #707c8b;
+  margin-top: 5%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
   padding: 3%;
+  margin: 3% 0%;
 `
 
 const Pie = styled.div`
-  width: 25%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  border: 1px solid black;
 `
 
-//This is throwing an error, no return value
+const WompWomp = styled.div`
+  width: 100%;
+  display: flex;
+  justify-contnet: space-evenly;
+  align-items: center;
+`
+
+const modalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    height: '320px',
+    borderRadius: '8px',
+    width: '400px',
+    padding: '0',
+  },
+}
+
+const P = styled.p`
+  text-align: center;
+  margin: 0 auto;
+`
+
 class Dashboard extends Component {
   constructor(props) {
     super(props)
@@ -180,7 +224,7 @@ class Dashboard extends Component {
 
   handleRegModal = (e, id) => {
     e.preventDefault()
-    console.log('regmodal')
+    console.log('regmodalId', id)
     this.setState({
       regModal: id,
     })
@@ -219,60 +263,86 @@ class Dashboard extends Component {
         <HeadContainer>
           <Head>
             <NameDate>
-              <Link to='/Design'>
-                <Button>Change Design</Button>
-              </Link>
-              {/* Will need to write code that auto populates name and date for wedding. */}
               <H1>
                 {this.props.userInfo.partnerName1} &amp;{' '}
                 {this.props.userInfo.partnerName2}'s Wedding
               </H1>
-              <H1>{moment(this.props.userInfo.weddingDate).format('ll')}</H1>
+              <H1>
+                When: {moment(this.props.userInfo.weddingDate).format('ll')}
+              </H1>
+              <div>
+                <CountDown />
+              </div>
             </NameDate>
             <Location>
-              {/* This will need to share the link to the personal wedding web page */}
-              <ShareButton>Share</ShareButton>
-              {/* Will need to populate info from server */}
-              <H2>{this.props.userInfo.venueLocation}</H2>
+              <H2>
+                Where:{' '}
+                <a target='_blank' href={this.props.userInfo.addressUrl}>
+                  {this.props.userInfo.venueLocation}
+                </a>
+              </H2>
+              <NavLink
+                to='/Design'
+                style={{ textDecoration: 'none', width: '100%' }}>
+                <Button>
+                  <P>Change Design</P>
+                </Button>
+              </NavLink>
             </Location>
           </Head>
 
-          <GuestList>
+          {/* This doesn't appear to be needed. User can simply nav to the guest list.*/}
+          {/* <GuestList>
             <H3>Guest List</H3>
             {/* Need to figure out how to import a CSV to the server, then how to give user that option. */}
-            <Button>Import CSV</Button>
+          {/* <Button>
+              <P>Import CSV</P>
+            </Button>
             {/* Needs to route to guest list */}
-            <Link to='/guests'>
-              <GLButton>Guest List</GLButton>
-            </Link>
-          </GuestList>
+          {/* <NavLink to='/guests' style={{ textDecoration: 'none' }}>
+              <Button>
+                <P>View My Guest List</P>
+              </Button>
+            </NavLink>
+          </GuestList> */}
           <RSVP>
             <H3>RSVP</H3>
-            {/* Some pie chart plug in I'll have to talk to Marguel about goes here*/}
-            {/* Needs to rout to RSVP page */}
-
             <Pie>
-              <PieChart
-                data={[
-                  { title: 'yes', value: rsvpYes, color: '#E38627' },
-                  { title: 'no', value: rsvpNo, color: '#C13C37' },
-                  { title: 'maybe', value: rsvpMaybe, color: '#6A2135' },
-                  { title: 'maybe', value: rsvpNoA, color: '#668B8B' },
-                ]}
-                label
-                labelStyle={{
-                  fontSize: '12px',
-                  fontFamily: 'sans-serif',
-                }}
-                radius={42}
-                labelPosition={120}
-                animate
-                reveal
-              />
+              {(rsvpYes && rsvpMaybe && rsvpNo) === 0 ? (
+                <WompWomp>
+                  <H3>No guests have RSVP yet</H3>
+                </WompWomp>
+              ) : (
+                <PieChart
+                  data={[
+                    { title: 'Yes', value: rsvpYes, color: '#E38627' },
+                    { title: 'No', value: rsvpNo, color: '#C13C37' },
+                    { title: 'Maybe', value: rsvpMaybe, color: '#6A2135' },
+                  ]}
+                  label={({ data, dataIndex }) =>
+                    // console.log('piechart DATA', data)
+                    `${data[dataIndex].title}: ${data[dataIndex].value}`
+                  }
+                  labelPosition={120}
+                  cx={60}
+                  labelStyle={{
+                    fontSize: '.5rem',
+                    fontFamily: 'sans-serif',
+                    fill: '#121212',
+                  }}
+                  radius={30}
+                  animate
+                  reveal
+                />
+              )}
             </Pie>
-            <Link to='RSVP'>
-              <Button>Edit Questions</Button>
-            </Link>
+            <NavLink
+              to='RSVP'
+              style={{ textDecoration: 'none', width: '100%' }}>
+              <Button>
+                <P>Edit Questions</P>
+              </Button>
+            </NavLink>
           </RSVP>
           <Registry>
             <H3>Registry</H3>
@@ -283,7 +353,7 @@ class Dashboard extends Component {
                   this.props.registry.map(rItem => {
                     registry.push(rItem)
                     return (
-                      <div>
+                      <div style={{width: '40%', margin: '0 auto'}}>
                         <RegistryItem
                           onClick={e => this.handleRegModal(e, rItem.id)}>
                           {rItem.registryName}
@@ -294,19 +364,23 @@ class Dashboard extends Component {
                 ) : (
                   <RegistryItem>No Registry Added yet</RegistryItem>
                 )
-              ) : null}
-              <Button onClick={this.handleModal}>Add Registry</Button>
+              ) : (
+                <RegistryItem>No Registry Added Yet</RegistryItem>
+              )}
+              <Button onClick={this.handleModal}>
+                <P>Add Registry</P>
+              </Button>
             </RegistryContainer>
           </Registry>
-          <Modal isOpen={this.state.modal}>
+          <Modal isOpen={this.state.modal} style={modalStyle}>
             <RegistryAddModal
               user={this.props.userInfo}
               handleClose={this.handleModal}
             />
           </Modal>
-          <Modal isOpen={this.state.regModal}>
+          <Modal isOpen={this.state.regModal} style={modalStyle}>
             <RegistryViewModal
-              registry={registry[this.state.regModal - 1]}
+              registry={registry.find(r => r.id === this.state.regModal)}
               user={this.props.userInfo}
               handleClose={this.closeRegModal}
             />

@@ -22,6 +22,7 @@ background-image: linear-gradient(to right top, #4ccdc1, #40c6ca, #3fbecf, #49b6
 const Image = styled.img `
   width: 100%
 `
+<<<<<<< HEAD
 
 const Header = styled.div`
   position: fixed;
@@ -65,6 +66,8 @@ const Header = styled.div`
 `
 
 
+=======
+>>>>>>> 465e5003898735c1ccbdb99ea57153342234ae1c
 class WeddingPhotos extends Component {
     constructor(props){
       super(props);
@@ -74,6 +77,7 @@ class WeddingPhotos extends Component {
         show: false,
         caption: '',
         source: logo,
+<<<<<<< HEAD
         file: [],
         userName: ''
       }
@@ -89,10 +93,23 @@ class WeddingPhotos extends Component {
         })
       }
 
+=======
+      }
+    }
+      componentWillMount=()=>{
+        
+        axios.get(`http://localhost:3700/users/1/live-photos`)
+          .then(res=>{
+            this.setState({photoCards: res.data})
+          })
+  
+      }
+>>>>>>> 465e5003898735c1ccbdb99ea57153342234ae1c
       handleShow = e =>{
         this.setState({show: true})
       }
       handleClose = e =>{
+<<<<<<< HEAD
         this.setState({
           show: false,
           caption: '',
@@ -131,12 +148,24 @@ class WeddingPhotos extends Component {
           
             
       }
+=======
+        this.setState({show: false, source: ''})
+      }
+      fileChange = e =>{
+       console.log(e.target.files)
+       this.setState({source: URL.createObjectURL(e.target.files[0])})
+      }
+      addPhoto = () =>{
+        axios.post()
+      }
+>>>>>>> 465e5003898735c1ccbdb99ea57153342234ae1c
 
 
     
     
     render() {
       return (
+<<<<<<< HEAD
         <Wrapper>
           <Header className="header">
            <div>
@@ -148,6 +177,13 @@ class WeddingPhotos extends Component {
             
           </Header>
          <div >
+=======
+        <div>
+          <Button onClick={this.handleShow}>Add a photo</Button>
+          <PhotoButton />
+          
+         <div>
+>>>>>>> 465e5003898735c1ccbdb99ea57153342234ae1c
           <Modal show={this.state.show} >
             <Modal.Header  >
               <h4>Add a Memory for the newlyweds</h4>
@@ -168,6 +204,7 @@ class WeddingPhotos extends Component {
               </FormGroup>
             </Modal.Body>
             <Modal.Footer>
+<<<<<<< HEAD
               <button className='buttons' onClick={this.addPhoto}>Add Photo</button>
               <button className='buttons' onClick={this.handleClose}>close</button>
             </Modal.Footer>
@@ -179,6 +216,18 @@ class WeddingPhotos extends Component {
                  )}
             </div>
         </Wrapper>
+=======
+              <button onClick={()=>{console.log("submit")}}>Add Photo</button>
+              <button onClick={this.handleClose}>close</button>
+            </Modal.Footer>
+          </Modal>
+          </div>
+          <h1>Live Wedding Photos</h1>
+          {this.state.photoCards.map(img =>
+          <PhotoCard key={img.imgURL} info={img}/>
+            )}
+        </div>
+>>>>>>> 465e5003898735c1ccbdb99ea57153342234ae1c
         );
     }
   }

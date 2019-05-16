@@ -52,6 +52,10 @@ const FormButton = styled.button`
   font-weight: 500;
 `
 
+const P = styled.p`
+  font-size 1.5rem;
+`
+
 class SignUp extends Component {
   constructor(props) {
     super(props)
@@ -100,7 +104,7 @@ class SignUp extends Component {
       <FormCenter>
         <form onSubmit={this.handleSubmit}>
           <FormField>
-            <FormLabel htmlFor='username'>Username</FormLabel>
+            <FormLabel htmlFor='username'><P>Username</P></FormLabel>
             <FormInput
               type='text'
               // id='email'
@@ -112,7 +116,7 @@ class SignUp extends Component {
             />
           </FormField>
           <FormField>
-            <FormLabel htmlFor='email'>E-mail</FormLabel>
+            <FormLabel htmlFor='email'><P>E-mail</P></FormLabel>
             <FormInput
               type='text'
               id='email'

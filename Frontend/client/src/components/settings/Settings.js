@@ -13,91 +13,35 @@ import styled from 'styled-components'
 import 'react-datepicker/dist/react-datepicker.css'
 
 const SettingsPage = styled.div`
-  /* display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  min-width: 1025px;
-  justify-content: space-around;
-  height: 100vh;
-  max-height: 500px;
-  margin-top: 50px; */
-
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 100vh;
-  padding-top: 60px;
-  /* width: 100vw;
-    max-width: 1800px;
-    min-width: 1025px; */
+  flex-direction: column;
   margin: 0 auto;
-  justify-content: space-around;
   width: 100%;
-  max-width: 1280px;
-  min-width: 1024px;
-
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    /* flex-direction: column;
-    width: 100%;
-    min-width: 350px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto; */
-
-    /* flex-direction: column;
-    width: 100%;
-    align-items: center; */
-    flex-direction: column;
-    width: 100%;
-    min-width: 350px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-  }
 `
 
 const SettingsBox = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  width: 450px;
-  justify-content: center; */
-
   display: flex;
   flex-direction: column;
-  width: 450px;
-  background-color: #ffffff;
-  margin: 0 25px;
-  height: 300px;
+  background: rgba(255, 255, 255, 0.9);
   padding: 10px 25px;
-  border-radius: 5%;
-  justify-content: center;
-
-  @media only screen and (max-width: 1024px) and (min-width: 400px) {
-    /* width: 100%;
-    max-width: 350px;
+  border-radius: 8px;
+  margin: 3% auto;
+  width: 80%;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
     justify-content: center;
-    margin: 0; */
-
-    width: 100%;
-    max-width: 350px;
-    justify-content: center;
-    margin: 0;
     height: 250px;
   }
 `
 
 const Box = styled.div`
   display: flex;
-  margin: 10px 0;
   justify-content: space-between;
   align-items: center;
-
-  @media only screen and (max-width: 1024px) and (min-width: 600px) {
-    min-width: 500px;
-  }
-
-  @media screen and (max-width: 599px) {
-    max-width: 400px;
+  width: 40%;
+  margin: 3% auto;
+  @media only screen and (max-width: 700px) and (min-width: 300px) {
+    width: 95%;
   }
 `
 
@@ -122,40 +66,82 @@ const RightBox = styled.div`
 const SpecialBox = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 10px;
-  width: 100%;
+  width: 150px;
+  height: 10px;
+  margin: 0 auto;
+`
 
-  @media only screen and (max-width: 1024px) and (min-width: 600px) {
-    min-width: 500px;
-  }
+const Input = styled.input`
+  margin-bottom: 6%;
 `
 
 const InputBox = styled.input`
   width: 100%;
-  height: 28px;
-  border-radius: 4px;
+  height: 30px;
+  border-radius: 8px;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255,255,255,0.3);
+  -webkit-transition: 0.3s all;
   transition: 0.3s all;
-  margin: 10px 0;
+  padding: 1%;
 `
 
 const LeftInput = styled.input`
   width: 50%;
-  height: 28px;
-  border-radius: 4px;
+  height: 30px;
+  border-radius: 8px;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255,255,255,0.3);
+  -webkit-transition: 0.3s all;
   transition: 0.3s all;
-  margin: 10px 0;
+  padding: 1%;
 `
 
 const Button = styled.button`
-  width: 50%;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background: #52c4b9;
+  cursor: pointer;
+  margin: 5% auto;
+  width: 30.3%;
+  display: flex;
+  justify-content: space-evenly;
+  @media only screen and (max-width: 500px) and (min-width: 300px) {
+    width: 60%;
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+  @media only screen and (max-width: 700px) and (min-width: 501px) {
+    margin: 3% auto;
+    font-size: 1rem;
+  }
+`
+
+const IconBox = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 60px;
+  height: 30px;
+`
+
+const DateBox = styled.div`
   margin: 0 auto;
-  height: 100px;
-  font-size: 24px;
-  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`
+
+const Label = styled.label`
+  margin-right: 3%;
 `
 
 const ButtonLink = styled(Link)`
@@ -177,7 +163,7 @@ class Settings extends Component {
       currentPassword: '',
       search: '',
     }
-    this.hadleChangeDate = this.hadleChangeDate.bind(this)
+    this.handleChangeDate = this.handleChangeDate.bind(this)
   }
 
   inputHandler = e => {
@@ -191,7 +177,7 @@ class Settings extends Component {
     console.log('input handled')
   }
 
-  hadleChangeDate = date => {
+  handleChangeDate = date => {
     this.setState({
       userInfo: { ...this.state.userInfo, weddingDate: date },
     })
@@ -238,9 +224,9 @@ class Settings extends Component {
               />
             </Box>
             <SpecialBox>
-              <input type='checkbox' name='emails?' value='false' />
+              <Input type='checkbox' name='emails?' value='false' />
               <label for='checkbox'>Emails?</label>
-              <input type='checkbox' name='texts?' value='false' />
+              <Input type='checkbox' name='texts?' value='false' />
               <label for='checkbox'>Texts?</label>
             </SpecialBox>
             <Box>
@@ -265,7 +251,7 @@ class Settings extends Component {
             </Box>
           </SettingsBox>
           <SettingsBox>
-            <RightBox>
+            <Box>
               <InputBox
                 type='text'
                 name='partnerName1'
@@ -274,10 +260,12 @@ class Settings extends Component {
                 onChange={this.inputHandler}
                 style={{ borderBottom: '1px solid black', width: '90%' }}
               />{' '}
+              <IconBox>
               <FaEdit />
               <FaTrash />
-            </RightBox>
-            <RightBox>
+              </IconBox>
+            </Box>
+            <Box>
               <InputBox
                 type='text'
                 name='partnerName2'
@@ -286,26 +274,30 @@ class Settings extends Component {
                 onChange={this.inputHandler}
                 style={{ borderBottom: '1px solid black', width: '90%' }}
               />{' '}
+              <IconBox>
               <FaEdit />
               <FaTrash />
-            </RightBox>
-            <SpecialBox>
-              <label for='calander'>Wedding Date</label>
-              <DatePicker
+              </IconBox>
+            </Box>
+            <DateBox>
+              <Label for='calander'>Wedding Date</Label>
+              <DatePicker style={{ borderRadius: '8px' }}
                 selected={this.state.userInfo.weddingDate}
                 onChange={this.handleChangeDate} //only when value has changed
               />
-            </SpecialBox>
-            <RightBox>
+            </DateBox>
+            <Box>
               <GoogleSuggest
                 onChange={this.handleLocationChange.bind(this)}
                 suggest={this.handleSelectSuggest.bind(this)}
                 search={this.state.search}
                 value={this.state.userInfo.venueLocation}
               />
+              <IconBox>
               <FaEdit />
               <FaTrash />
-            </RightBox>
+              </IconBox>
+            </Box>
           </SettingsBox>
           <RightBox>
             <Button onClick={this.handleSave}>Save</Button>
