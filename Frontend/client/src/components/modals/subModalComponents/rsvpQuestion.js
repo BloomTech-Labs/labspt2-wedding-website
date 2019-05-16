@@ -47,7 +47,7 @@ const Button = styled.button`
   }
 `
 
-const URL = 'http://localhost:3700'
+const URL = 'https://joinourbigday.herokuapp.com'
 
 class RsvpQuestion extends Component {
   constructor(props) {

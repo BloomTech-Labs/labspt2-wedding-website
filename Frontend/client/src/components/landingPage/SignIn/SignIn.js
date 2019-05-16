@@ -105,7 +105,9 @@ class SignIn extends Component {
       <FormCenter>
         <form onSubmit={this.handleSubmit}>
           <FormField>
-            <FormLabel><P>Username</P></FormLabel>
+            <FormLabel>
+              <P>Username</P>
+            </FormLabel>
             <FormInput
               // id='email'
               className='FormField__Input'
@@ -117,7 +119,9 @@ class SignIn extends Component {
           </FormField>
 
           <FormField>
-            <FormLabel htmlFor='password'><P>Password</P></FormLabel>
+            <FormLabel htmlFor='password'>
+              <P>Password</P>
+            </FormLabel>
             <FormInput
               type='password'
               id='password'
@@ -133,7 +137,7 @@ class SignIn extends Component {
             <FormButton>Sign In</FormButton>
           </FormField>
         </form>
-        <a href='http://localhost:3700/auth/google'>
+        <a href='https://joinourbigday.herokuapp.com/auth/google'>
           <GoogleButton />
         </a>{' '}
         <br />

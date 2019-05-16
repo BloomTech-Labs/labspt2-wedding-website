@@ -19,7 +19,7 @@ const StripeBtn = props => {
     }
 
     axios
-      .post('http://localhost:3700/stripe', stripeInfo)
+      .post('https://joinourbigday.herokuapp.com', stripeInfo)
       .then(response => {
         console.log(response)
         props.fetchUser(props.userInfo.id)

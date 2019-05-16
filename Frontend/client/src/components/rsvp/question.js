@@ -111,7 +111,7 @@ class Question extends React.Component {
   }
   answersHandler = () => {
     console.log('GET ANSERS fired')
-    const api = 'http://localhost:3700'
+    const api = 'https://joinourbigday.herokuapp.com'
     const questionId = this.props.questionInfo.id
     axios
       .get(`${api}/rsvp/answer/${questionId}`)

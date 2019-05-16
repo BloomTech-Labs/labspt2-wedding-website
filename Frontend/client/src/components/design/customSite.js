@@ -7,8 +7,7 @@ import WeddingPage1 from './weddingPage1/WeddingPage1'
 import WeddingPage2 from './weddingPage2/WeddingPage2'
 import WeddingPage3 from './weddingPage3/WeddingPage3'
 
-const URL = 'http://localhost:3700'
-
+const URL = 'https://joinourbigday.herokuapp.com'
 
 class CustomSite extends Component {
   constructor(props) {
@@ -22,7 +21,6 @@ class CustomSite extends Component {
       // userId: '',
       site: null,
     }
-    
   }
 
   //backend get : {url}/customSite/:siteUrl (this.props.match.params.customSite)
