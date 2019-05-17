@@ -73,8 +73,10 @@ module.exports = {
     return new Promise(function(resolve, reject) {
       sg.API(request, function(error, response) {
         if (error) {
+          console.log('sendgird err', error)
           return reject(error)
         } else {
+          console.log('sendgird res', response)
           return resolve(response)
         }
       })
