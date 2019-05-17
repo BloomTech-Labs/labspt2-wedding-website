@@ -115,7 +115,11 @@ class WeddingPhotos extends Component {
 
   setCardData = () => {
     axios
-      .get(`http://localhost:3700/users/${this.props.info.id}/live-photos`)
+      .get(
+        `https://joinourbigday.herokuapp.com/users/${
+          this.props.info.userId
+        }/live-photos`
+      )
       .then(res => {
         this.setState({ photoCards: res.data.reverse() })
       })
@@ -157,7 +161,9 @@ class WeddingPhotos extends Component {
 
     axios
       .post(
-        `http://localhost:3700/users/${this.props.info.id}/live-upload`,
+        `https://joinourbigday.herokuapp.com/users/${
+          this.props.info.userId
+        }/live-upload`,
         form,
         config
       )
