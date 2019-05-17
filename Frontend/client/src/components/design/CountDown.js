@@ -15,7 +15,7 @@ class CountDown extends Component {
       hours: 0,
       min: 0,
       sec: 0,
-      isActive: false,
+      isActive: true,
     }
   }
 
@@ -104,16 +104,19 @@ class CountDown extends Component {
           </span>
         ) : null}
 
-        <span className='Countdown-col'>
+          {this.state.years > 0 ? (
+          <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
           <span className='Countdown-col-element'>
             <strong className='bold'>
               {this.addLeadingZeros(countDown.days)}
             </strong>
             <span>{countDown.days === 1 ? 'Day' : 'Days'}</span>
           </span>
-        </span>
+        </span> 
+      ) : null}  
 
-        <span className='Countdown-col'>
+          {this.state.years > 0 ? (
+          <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
           <span className='Countdown-col-element'>
             <strong className='bold'>
               {this.addLeadingZeros(countDown.hours)}
@@ -121,8 +124,10 @@ class CountDown extends Component {
             <span>Hours</span>
           </span>
         </span>
+      ) : null}  
 
-        <span className='Countdown-col'>
+          {this.state.years > 0 ? (
+          <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
           <span className='Countdown-col-element'>
             <strong className='bold'>
               {this.addLeadingZeros(countDown.min)}
@@ -130,6 +135,7 @@ class CountDown extends Component {
             <span>Min</span>
           </span>
         </span>
+      ) : null}  
 
         {/* <span className='Countdown-col'>
           <span className='Countdown-col-element'>
