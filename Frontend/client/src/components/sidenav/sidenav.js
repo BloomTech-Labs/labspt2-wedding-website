@@ -121,6 +121,9 @@ const PopMenuList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  @media only screen and (min-width: 700px) {
+    display: none;
+  }
 `
 
 const Mbutton = styled.button`
