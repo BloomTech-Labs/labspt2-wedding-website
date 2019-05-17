@@ -110,6 +110,7 @@ class WeddingPhotos extends Component {
     }
   }
   componentWillMount = () => {
+    console.log('userId', this.props.info.id)
     this.setCardData()
   }
 
