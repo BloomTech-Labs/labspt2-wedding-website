@@ -45,13 +45,6 @@ const Box = styled.div`
   }
 `
 
-const BoxArea = styled.div`
-  background-color: #ffffff;
-  padding: 20px;
-  box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-`
-
 const RightBox = styled.div`
   display: flex;
   width: 100%;
@@ -144,9 +137,6 @@ const Label = styled.label`
   margin-right: 3%;
 `
 
-const ButtonLink = styled(Link)`
-  text-decoration: none;
-`
 
 class Settings extends Component {
   constructor(props) {

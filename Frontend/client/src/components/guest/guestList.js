@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// seems that is not needed with the table
-import Guest from './guest'
 import { fetchGuests, addGuest, deleteGuest } from '../../actions/'
 
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import styled from 'styled-components'
-import { FaAutoprefixer } from 'react-icons/fa'
 import Axios from 'axios'
 
 const PageWrap = styled.div`

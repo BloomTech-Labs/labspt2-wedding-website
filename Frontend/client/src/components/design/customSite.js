@@ -58,7 +58,7 @@ class CustomSite extends Component {
         this.setState({ site: res.data[0], loading: false })
       })
       .catch(error => {
-        throw 'There was a problem processing your request. Please try again.'
+        status(500).send('There was a problem processing your request. Please try again.')
       })
   }
 
