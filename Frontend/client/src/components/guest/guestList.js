@@ -7,6 +7,12 @@ import 'react-table/react-table.css'
 import styled from 'styled-components'
 import Axios from 'axios'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt  } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faTrashAlt)
+
 const PageWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -235,6 +241,7 @@ class GuestList extends Component {
         minWidth: 100,
         sortable: false,
         filterable: false,
+        resizable: false,
         style: {
           display: 'flex',
           justifyContent: 'center',
@@ -257,6 +264,7 @@ class GuestList extends Component {
         minWidth: 100,
         sortable: false,
         filterable: false,
+        resizable: false,
         style: {
           display: 'flex',
           justifyContent: 'center',
@@ -271,6 +279,7 @@ class GuestList extends Component {
         minWidth: 100,
         sortable: false,
         filterable: false,
+        resizable:false,
         style: {
           display: 'flex',
           justifyContent: 'center',
@@ -299,6 +308,7 @@ class GuestList extends Component {
         minWidth: 100,
         sortable: false,
         filterable: false,
+        resizable: false,
         style: {
           display: 'flex',
           justifyContent: 'center',
@@ -314,7 +324,7 @@ class GuestList extends Component {
                 onClick={e => {
                   this.deleteHandler(e, props.original.id)
                 }}>
-                Delete
+                <FontAwesomeIcon icon={(faTrashAlt)}/>
               </Button2>
             </ButtonTable>
           )
