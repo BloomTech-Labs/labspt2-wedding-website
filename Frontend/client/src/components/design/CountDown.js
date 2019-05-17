@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import moment from 'moment'
 
 import './countDown.css'
 
@@ -104,7 +103,7 @@ class CountDown extends Component {
           </span>
         ) : null}
 
-          {this.state.years > 0 ? (
+          {this.state.days > 0 ? (
           <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
           <span className='Countdown-col-element'>
             <strong className='bold'>
@@ -115,7 +114,7 @@ class CountDown extends Component {
         </span> 
       ) : null}  
 
-          {this.state.years > 0 ? (
+          {this.state.hours > 0 ? (
           <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
           <span className='Countdown-col-element'>
             <strong className='bold'>
@@ -126,7 +125,7 @@ class CountDown extends Component {
         </span>
       ) : null}  
 
-          {this.state.years > 0 ? (
+          {this.state.min > 0 ? (
           <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
           <span className='Countdown-col-element'>
             <strong className='bold'>
