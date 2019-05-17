@@ -10,6 +10,7 @@ module.exports = server => {
 
 addImage = (req, res) => {
   const userId = req.params.id
+  console.log('userid', userId)
   singleUpload(req, res, err => {
     const { name, caption } = req.body
     if (err) {
