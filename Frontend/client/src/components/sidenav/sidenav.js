@@ -1,21 +1,9 @@
 import React, { Component } from 'react'
 import {
-  BrowserRouter as Router,
-  Route,
   NavLink,
-  Switch,
 } from 'react-router-dom'
 
 import MenuBTN from './hamburger.png'
-
-// page imports
-import Pricing from '../pricing/Pricing'
-import RSVP from '../rsvp/rsvp'
-import Billing from '../pages/billing'
-import Settings from '../pages/settings'
-import Home from '../pages/Home'
-import GuestList from '../rsvp/GuestList'
-import Exit from '../pages/exit'
 import { withRouter } from 'react-router'
 
 import { connect } from 'react-redux'

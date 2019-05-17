@@ -37,6 +37,7 @@
   .PageSwitcher__Item--Active {
     background-color: #5ED0C0;
     color: white;
+    text-decoration: underline;
   }
   
   .PageSwitcher__Item:first-child {

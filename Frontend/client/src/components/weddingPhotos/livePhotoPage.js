@@ -45,7 +45,7 @@ const Image = styled.img`
 const Header = styled.div`
   position: fixed;
   z-index: 1;
-  width:100%;
+  width: 100%;
   background-color: rgb(255, 255, 255, 0.7);
   top: 0;
   display: flex;
@@ -54,14 +54,14 @@ const Header = styled.div`
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 100%;
     height: 50px;
-   h1{
-     font-size:1.5rem;
-     margin: 10% auto;
-   }
+    h1 {
+      font-size: 1.5rem;
+      margin: 10% auto;
+    }
   }
 
-  button{
-    margin-top: 7px
+  button {
+    margin-top: 7px;
     border-radius: 8px;
     color: white;
     border: none;
@@ -72,12 +72,10 @@ const Header = styled.div`
     display: flex;
     justify-content: space-evenly;
     transition: 0.5s ease;
-    &:hover{
-      color:#52c4b9;
+    &:hover {
+      color: #52c4b9;
       background: white;
       border: 1px solid #52c4b9;
-      
-
     }
     @media only screen and (max-width: 500px) and (min-width: 300px) {
       width: 100%;
@@ -115,7 +113,11 @@ class WeddingPhotos extends Component {
 
   setCardData = () => {
     axios
-      .get(`http://localhost:3700/users/${this.props.info.id}/live-photos`)
+      .get(
+        `https://joinourbigday.herokuapp.com/users/${
+          this.props.info.userId
+        }/live-photos`
+      )
       .then(res => {
         this.setState({ photoCards: res.data.reverse() })
       })
@@ -157,7 +159,9 @@ class WeddingPhotos extends Component {
 
     axios
       .post(
-        `http://localhost:3700/users/${this.props.info.id}/live-upload`,
+        `https://joinourbigday.herokuapp.com/users/${
+          this.props.info.userId
+        }/live-upload`,
         form,
         config
       )
@@ -240,7 +244,7 @@ class WeddingPhotos extends Component {
           )}
         </div>
         <Footer>
-          <Link to={`${this.props.match.path}`}>
+          <Link to={`/${this.props.match.path}`}>
             <p> Back </p>
           </Link>
         </Footer>

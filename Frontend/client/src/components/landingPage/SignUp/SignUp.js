@@ -104,19 +104,23 @@ class SignUp extends Component {
       <FormCenter>
         <form onSubmit={this.handleSubmit}>
           <FormField>
-            <FormLabel htmlFor='username'><P>Username</P></FormLabel>
+            <FormLabel htmlFor='username'>
+              <P>Username</P>
+            </FormLabel>
             <FormInput
               type='text'
               // id='email'
               className='FormField__Input'
-              placeholder='Enter your Username'
+              placeholder='min 6 characters'
               name='username'
               value={this.state.username}
               onChange={this.handleChange}
             />
           </FormField>
           <FormField>
-            <FormLabel htmlFor='email'><P>E-mail</P></FormLabel>
+            <FormLabel htmlFor='email'>
+              <P>E-mail</P>
+            </FormLabel>
             <FormInput
               type='text'
               id='email'
@@ -133,7 +137,7 @@ class SignUp extends Component {
               type='password'
               id='password'
               className='FormField__Input'
-              placeholder='Enter your password'
+              placeholder='min 6 characters + number'
               name='password'
               value={this.state.password}
               onChange={this.handleChange}
