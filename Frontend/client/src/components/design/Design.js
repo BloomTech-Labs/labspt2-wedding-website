@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 import { connect } from 'react-redux'
 import { fetchSite, addSite, updateSite, deleteSite } from '../../actions/index'
 import EditSite from './editDesign'
