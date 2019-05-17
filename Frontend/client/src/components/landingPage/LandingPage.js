@@ -232,20 +232,17 @@ function LandingPage({ match }) {
         </Link>
       </ButtonDiv>
      </CaroDiv>
-     <div className="divider"></div>
      <InfoLeft className='topleft'>
         <div><img src={planning} alt='image'/></div>
         <div><p>We know wedding planning is stressful. At JoinOurBigDay our aim is to remove some of that stress.
           Create a personal page for your wedding where you can send friends and family to RSVP as well as provide date and time information.</p></div>
      </InfoLeft>
-     <div className="divider"></div>
      <InfoRight>
         <div>
           <p>there is text in thqrvjoefniu ;or f;quhrfpiuqh rfpqw pfu9h qpwuh vu9qh pcoquv rl hq blciausdjgkf kjalgc ivapiyvwvhk;ajsdg;ufgdkh >.;TA UT;EFUG ;wg97 g;uewg;iugfg is tag</p>
         </div>
         <div><img src={rings} alt='image'/></div>
      </InfoRight>
-     <div className="divider"></div>
      <InfoLeft>
         <div><img src={photo} alt='image'/></div>
         <div><p>We offer many other services with our Premium upgrade. Get more pages for a more personalized feel and your very own 
