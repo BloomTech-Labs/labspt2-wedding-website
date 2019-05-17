@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import moment from 'moment'
+import moment from 'moment'
 
 import './countDown.css'
 
@@ -10,10 +10,12 @@ class CountDown extends Component {
     super(props)
 
     this.state = {
+      years: 0,
       days: 0,
       hours: 0,
       min: 0,
       sec: 0,
+      isActive: true,
     }
   }
 
@@ -68,6 +70,7 @@ class CountDown extends Component {
       timeLeft.min = Math.floor(diff / 60)
       diff -= timeLeft.min * 60
     }
+
     timeLeft.sec = diff
 
     return timeLeft
@@ -90,25 +93,30 @@ class CountDown extends Component {
 
     return (
       <div className='Countdown'>
-        <span className='Countdown-col'>
-          <span className='Countdown-col-element'>
-            <strong className='bold'>
-              {this.addLeadingZeros(countDown.years)}
-            </strong>
-            <span>{countDown.years === 1 ? 'Year' : 'Years'}</span>
+        {this.state.years > 0 ? (
+          <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
+            <span className='Countdown-col-element'>
+              <strong className='bold'>
+                {this.addLeadingZeros(countDown.years)}
+              </strong>
+              <span>{countDown.years === 1 ? 'Year' : 'Years'}</span>
+            </span>
           </span>
-        </span>
+        ) : null}
 
-        <span className='Countdown-col'>
+          {this.state.years > 0 ? (
+          <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
           <span className='Countdown-col-element'>
             <strong className='bold'>
               {this.addLeadingZeros(countDown.days)}
             </strong>
             <span>{countDown.days === 1 ? 'Day' : 'Days'}</span>
           </span>
-        </span>
+        </span> 
+      ) : null}  
 
-        <span className='Countdown-col'>
+          {this.state.years > 0 ? (
+          <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
           <span className='Countdown-col-element'>
             <strong className='bold'>
               {this.addLeadingZeros(countDown.hours)}
@@ -116,8 +124,10 @@ class CountDown extends Component {
             <span>Hours</span>
           </span>
         </span>
+      ) : null}  
 
-        <span className='Countdown-col'>
+          {this.state.years > 0 ? (
+          <span className={this.state.isActive ? 'Countdown-col' : 'blank'}>
           <span className='Countdown-col-element'>
             <strong className='bold'>
               {this.addLeadingZeros(countDown.min)}
@@ -125,15 +135,16 @@ class CountDown extends Component {
             <span>Min</span>
           </span>
         </span>
+      ) : null}  
 
-        <span className='Countdown-col'>
+        {/* <span className='Countdown-col'>
           <span className='Countdown-col-element'>
             <strong className='bold'>
               {this.addLeadingZeros(countDown.sec)}
             </strong>
             <span>Sec</span>
           </span>
-        </span>
+        </span> */}
       </div>
     )
   }
