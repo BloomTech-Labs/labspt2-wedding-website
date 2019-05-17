@@ -110,7 +110,6 @@ class WeddingPhotos extends Component {
     }
   }
   componentWillMount = () => {
-    console.log('userId', this.props.info)
     this.setCardData()
   }
 
@@ -118,7 +117,7 @@ class WeddingPhotos extends Component {
     axios
       .get(
         `https://joinourbigday.herokuapp.com/users/${
-          this.props.info.id
+          this.props.info.userId
         }/live-photos`
       )
       .then(res => {
@@ -163,7 +162,7 @@ class WeddingPhotos extends Component {
     axios
       .post(
         `https://joinourbigday.herokuapp.com/users/${
-          this.props.info.id
+          this.props.info.userId
         }/live-upload`,
         form,
         config
