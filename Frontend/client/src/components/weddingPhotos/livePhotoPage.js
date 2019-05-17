@@ -244,7 +244,7 @@ class WeddingPhotos extends Component {
           )}
         </div>
         <Footer>
-          <Link to={`/${this.props.info.siteUrl}`}>
+          <Link to={`/${this.props.info.userUrl}`}>
             <p> Back </p>
           </Link>
         </Footer>

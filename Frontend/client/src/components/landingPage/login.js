@@ -92,8 +92,8 @@ function Login({ match }) {
         </PageSwitch> */}
 
         <FormTitle>
-          <NavLink activeStyle={{ textDecoration: 'underline' }} exact path to={`${match.url}`}>Sign In</NavLink> or{' '}
-          <NavLink activeStyle={{ textDecoration: 'underline' }} to={`${match.url}/signup`}>Sign Up</NavLink>
+          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} exact path to={`${match.url}`}>Sign In</NavLink> or{' '}
+          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} to={`${match.url}/signup`}>Sign Up</NavLink>
         </FormTitle>
 
         <Route path={`${match.path}/signup`} component={SignUp} />
