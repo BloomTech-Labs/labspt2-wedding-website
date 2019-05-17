@@ -177,7 +177,7 @@ const SW = styled.div`
 const DesignInput = styled.input`
   height: 30px;
   width: 100%;
-  padding: .5%;
+  padding: 0.5%;
 `
 
 const URLInput = styled.input`
@@ -344,7 +344,9 @@ class Design extends Component {
               </H2>
             </form>
             <Button onClick={this.handleSubmit}>Apply</Button>
-            <Button>Preview</Button>
+            <Link to={`/${this.props.customSite.userUrl}`}>
+              <Button>Preview</Button>
+            </Link>
           </InputWrapper>
         </DesignBody>
       )
