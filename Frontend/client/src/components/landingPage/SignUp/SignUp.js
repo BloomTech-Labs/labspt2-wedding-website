@@ -53,7 +53,7 @@ const FormButton = styled.button`
 `
 
 const P = styled.p`
-  font-size 1.5rem;
+  font-size: 1.5rem;
 `
 
 class SignUp extends Component {

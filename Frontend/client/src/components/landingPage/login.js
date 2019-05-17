@@ -54,22 +54,14 @@ const PageSwitch = styled.div`
 `
 
 const FormTitle = styled.div`
-  color: #707c8b;
+  // color: #707c8b;
   font-weight: 300;
   margin-bottom: 50px;
 `
 
-// const StyledLink = styled(Link)`
-//   color: white;
-//   text-decoration: none;
-//   display: inline-block;
-//   font-size: 1.5rem;
-//   margin: 0 10px;
-//   padding-bottom: 5px;
-//   :hover {
-//     color: wheat;
-//   }
-// `
+const P = styled.p`
+  color: white;
+`
 
 function Login({ match }) {
   console.log('path', match.path)
@@ -92,8 +84,8 @@ function Login({ match }) {
         </PageSwitch> */}
 
         <FormTitle>
-          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} exact path to={`${match.url}`}>Sign In</NavLink> or{' '}
-          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} to={`${match.url}/signup`}>Sign Up</NavLink>
+          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} exact path to={`${match.url}`}><P>Sign In</P></NavLink> or{' '}
+          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} to={`${match.url}/signup`}><P>Sign Up</P></NavLink>
         </FormTitle>
 
         <Route path={`${match.path}/signup`} component={SignUp} />
