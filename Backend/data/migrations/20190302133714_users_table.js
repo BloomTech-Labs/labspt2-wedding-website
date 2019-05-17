@@ -11,10 +11,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', tbl => {
     tbl.increments()
     tbl.string('socialId').unique()
-    tbl
-      .string('email')
-      .notNullable()
-      .unique()
+    tbl.string('email').notNullable()
     tbl.string('username').unique()
     tbl.string('partnerName1')
     tbl.string('partnerName2')
