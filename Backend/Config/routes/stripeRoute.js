@@ -29,9 +29,10 @@ stripeHome = (req, res) => {
   userId = req.body.userId
   console.log('STRIPE endpoint body :', body)
   console.log('STRIPE userId :', userId)
-  stripe.charges
-    .create(body, stripeChargeCallback(res))
-    .catch(err => res.status(500).send(err))
+  stripe.charges.create(body, stripeChargeCallback(res)).catch(err => {
+    console.log('stripe err', stripe)
+    res.status(500).send(err)
+  })
   //userdata boolean true when charge hits
 }
 stripeTest = (req, res) => {
