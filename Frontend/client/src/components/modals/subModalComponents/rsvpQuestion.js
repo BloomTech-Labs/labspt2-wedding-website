@@ -82,7 +82,6 @@ class RsvpQuestion extends Component {
       <Wrapper>
         <Sub>
           <h2>Question: {this.props.question.Question_body}</h2>
-          <label htmlFor='label'>Answer the Question</label>
           <form>
             <input
               type='text'
