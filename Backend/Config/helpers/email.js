@@ -76,7 +76,7 @@ module.exports = {
           console.log('sendgird err', error)
           return reject(error)
         } else {
-          console.log('sendgird res', response)
+          console.log('sendgird res', response.body.errors)
           return resolve(response)
         }
       })
