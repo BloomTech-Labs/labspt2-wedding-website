@@ -10,10 +10,12 @@ class CountDown extends Component {
     super(props)
 
     this.state = {
+      years: 0,
       days: 0,
       hours: 0,
       min: 0,
       sec: 0,
+      isActive: false,
     }
   }
 
@@ -68,6 +70,9 @@ class CountDown extends Component {
       timeLeft.min = Math.floor(diff / 60)
       diff -= timeLeft.min * 60
     }
+    if (this.state.years < 0) {
+      this.setState({ isActive: !this.state.isActive })
+    }
     timeLeft.sec = diff
 
     return timeLeft
@@ -90,7 +95,7 @@ class CountDown extends Component {
 
     return (
       <div className='Countdown'>
-        <span className='Countdown-col'>
+        <span className={(this.state.isActive) ? 'Countdown-col' : 'blank'}> 
           <span className='Countdown-col-element'>
             <strong className='bold'>
               {this.addLeadingZeros(countDown.years)}
@@ -126,14 +131,14 @@ class CountDown extends Component {
           </span>
         </span>
 
-        <span className='Countdown-col'>
+        {/* <span className='Countdown-col'>
           <span className='Countdown-col-element'>
             <strong className='bold'>
               {this.addLeadingZeros(countDown.sec)}
             </strong>
             <span>Sec</span>
           </span>
-        </span>
+        </span> */}
       </div>
     )
   }
