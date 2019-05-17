@@ -137,7 +137,7 @@ class SignUp extends Component {
               type='password'
               id='password'
               className='FormField__Input'
-              placeholder='min 6 characters + number'
+              placeholder='Enter your password'
               name='password'
               value={this.state.password}
               onChange={this.handleChange}
