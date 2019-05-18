@@ -57,6 +57,7 @@ const FormTitle = styled.div`
   // color: #707c8b;
   font-weight: 300;
   margin-bottom: 50px;
+  display: flex;
 `
 
 const P = styled.p`
@@ -84,7 +85,7 @@ function Login({ match }) {
         </PageSwitch> */}
 
         <FormTitle>
-          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} exact path to={`${match.url}`}><P>Sign In</P></NavLink> or{' '}
+          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} exact path to={`${match.url}`}><P>Sign In</P></NavLink>{' '}
           <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} to={`${match.url}/signup`}><P>Sign Up</P></NavLink>
         </FormTitle>
 
