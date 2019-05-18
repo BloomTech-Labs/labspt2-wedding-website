@@ -68,6 +68,10 @@ const P = styled.p`
   font-size: 1.5rem;
 `
 
+const Err = styled.div`
+  color: red;
+`
+
 class SignIn extends Component {
   constructor(props) {
     super(props)
