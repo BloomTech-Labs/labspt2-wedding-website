@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Join Our Big Day
 
-## Available Scripts
+![Free_Sample_By_Wix](https://user-images.githubusercontent.com/33911508/57972476-ccb8df80-7960-11e9-979a-7dfc53b13652.jpeg)
 
-In the project directory, you can run:
+Join Our Big Day is an application that solves the problems of managing wedding guests by allowing users to interactively manage and view their guests lists, RSVPs, have access to live upload of photos from all attendees, and use google maps for effortless navigation to get your family and friends where you need them when you need them. We are here to help you get hitched without a hitch.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Team](#team)
+- [Motivation](#Motivation)
+- [Deployment](#Deployment)
+- [Features](#Features)
+- [Built With](#built-with)
+- [API](#API)
+- [Contributing](#Contributing)
+- [Acknowledgments](#Acknowledgments)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+## Team
+|   [**Marguel Gutierrez**](https://www.linkedin.com/in/marguelgtz/)  |   [**Chris Roth**](https://www.linkedin.com/in/the-roth/)   |    [**James Hutton**](https://www.linkedin.com/in/james-hutton-87a82b183/)    |   [**Joseph Mercado**](https://www.linkedin.com/in/joseph-mercado-804b7816b/)  |   [**Megan Fontenot**](https://www.linkedin.com/in/megan-fontenot-983394152/)  |
+|:----------------:|:----------------:|:---------------:|:---------------:|:---------------:|
+| [<img src="https://avatars1.githubusercontent.com/u/17017482?s=400&v=4" width="80">](https://github.com/marguelgtz) | [<img src="https://avatars2.githubusercontent.com/u/41457543?s=400&v=4" width="80">](https://github.com/TexaCaliCoder)  | [<img src="https://avatars1.githubusercontent.com/u/41313527?s=400&v=4" width="80">](https://github.com/FreeKeyBoy) | [<img src="https://avatars1.githubusercontent.com/u/28128103?s=400&v=4" width="80">](https://github.com/jryel1970) | [<img src="https://avatars3.githubusercontent.com/u/33911508?s=460&v=4" width="80">](https://github.com/meganfontenot)  
+| [<img src="https://github.com/favicon.ico" width="15"> Github](https://github.com/Marguelgtz)  |  [<img src="https://github.com/favicon.ico" width="15"> Github](https://github.com/TexaCaliCoder) | [<img src="https://github.com/favicon.ico" width="15"> Github](https://github.com/FreeKeyBoy)  | [<img src="https://github.com/favicon.ico" width="15"> Github](https://github.com/jryel1970) | [<img src="https://github.com/favicon.ico" width="15"> Github](https://github.com/meganfontenot)  
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> LinkedIn](https://www.linkedin.com/in/marguelgtz/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> LinkedIn](https://www.linkedin.com/in/the-roth/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> LinkedIn](https://www.linkedin.com/in/james-hutton-87a82b183/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> LinkedIn](https://www.linkedin.com/in/joseph-mercado-804b7816b/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> LinkedIn](https://www.linkedin.com/in/megan-fontenot-983394152/) |
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Motivitation 
 
-### `npm run build`
+Join Our Big Day is an application that solves the problems of managing wedding guests by allowing users to interactively manage and view their guests lists, RSVPs, have access to live upload of photos from all attendees, and use google maps for effortless navigation to get your family and friends where you need them when you need them. We are here to help you get hitched without a hitch.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Find us deployed at:
+- [FrontEnd](https://joinourbigday.netlify.com/)
+- [BackEnd](https://joinourbigday.herokuapp.com/)
 
-### `npm run eject`
+### Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Landing Page - description of the site 
+- Settings can be altered after launch of personal page, inclueding venue locations, wedding date, RSVP questions
+- Premium accounts available with payment through stripe
+- RSVP page allows clients to quickly manage their guest and make custom a RSVP questionnaire to find out relevant information 
+- Guest Page for clients to add, edit, and remove guests
+- Design page allows clients to add custom stories of how the couple met and pick a background for their wedding page.
+- Live upload allows clients and attendees alike to upload photos 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Built With
 
-## Learn More
+- Core: React with Redux
+- Style: Styled Components
+- Netlify
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Stripe: Payments
+- AWS Photobucket: Live Photo Feed
+- Google Places/Maps: Venue Navigation
+- Google OAuth: Account Authentication 
 
-### Code Splitting
+## Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+If you would like to contribute to this repository, please first discuss the change you wish to make with the authors of this repository.
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+## Acknowledgments
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+A very special thanks to [**Jameson Brown**](https://github.com/Jameson13B) and [**Simon Davis**](https://github.com/Skidragon) for their guidance and mentorship. 
