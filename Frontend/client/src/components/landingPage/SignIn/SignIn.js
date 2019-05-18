@@ -101,7 +101,7 @@ class SignIn extends Component {
       if (!this.props.err) {
         this.props.history.push('/')
       }
-    }, 150)
+    }, 190)
 
     // need to implement nested routes so it can push to /dashboard, /profile, or something of that matter
   }
