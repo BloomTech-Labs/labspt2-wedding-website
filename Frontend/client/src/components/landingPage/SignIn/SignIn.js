@@ -68,6 +68,10 @@ const P = styled.p`
   font-size: 1.5rem;
 `
 
+const Err = styled.div`
+  color: red;
+`
+
 class SignIn extends Component {
   constructor(props) {
     super(props)
@@ -94,8 +98,10 @@ class SignIn extends Component {
       password: '',
     })
     setTimeout(() => {
-      this.props.history.push('/')
-    }, 500)
+      if (!this.props.err) {
+        this.props.history.push('/')
+      }
+    }, 190)
 
     // need to implement nested routes so it can push to /dashboard, /profile, or something of that matter
   }
@@ -131,6 +137,7 @@ class SignIn extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
+            {this.props.err ? <Err>Wrong username/password</Err> : null}
           </FormField>
 
           <FormField>
@@ -146,7 +153,9 @@ class SignIn extends Component {
     )
   }
 }
-const mapStateToProps = state => {}
+const mapStateToProps = state => ({
+  err: state.err,
+})
 
 export default connect(
   mapStateToProps,
