@@ -10,7 +10,6 @@ import styled from 'styled-components'
 import Login from './login'
 import DemoCarousel from './Carousel'
 
-
 const LPStyle = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,16 +19,15 @@ const LPStyle = styled.div`
   margin-right: auto;
   background: white;
   background-image: url('https://images.pexels.com/photos/1820567/pexels-photo-1820567.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
-  background-size:50% 100%;
+  background-size: 50% 100%;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  .divider{
-    height:8px;
-    width:80%;
-    border-top: 1px solid #52C4B9;
-    border-bottom: 3px solid #52C4B9;
+  .divider {
+    height: 8px;
+    width: 80%;
+    border-top: 1px solid #52c4b9;
+    border-bottom: 3px solid #52c4b9;
     margin: 10px auto;
-
   }
   @media screen and (max-width: 1024) {
     width: 1000px;
@@ -43,7 +41,7 @@ const CaroDiv = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  img{
+  img {
     height: 65vh;
   }
 `
@@ -53,27 +51,26 @@ const ButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
   height: 60px;
-  margin-top:125px;
+  margin-top: 125px;
   margin-bottom: 200px;
   width: 200px;
-  background-color:#52C4B9;
+  background-color: #52c4b9;
   border-radius: 30px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-  :hover{
+  :hover {
     transform: scale(1.1);
-    width:250px;
-    background-color:#2D4058;
-    box-shadow: 18px -3px 79px -10px rgba(96,219,217,0.63);
+    width: 250px;
+    background-color: #2d4058;
+    box-shadow: 18px -3px 79px -10px rgba(96, 219, 217, 0.63);
   }
-  p{
+  p {
     color: #ffff;
-    text-decoration:none;
+    text-decoration: none;
     align-content: center;
     margin: 0 auto;
     font-size: 20px;
   }
-  
 `
 
 const InfoLeft = styled.div`
@@ -221,42 +218,62 @@ function LandingPage({ match }) {
           <H1>Join</H1> <H2>Our</H2>
         </JOW>
         <BDW>
-           <H3>Big</H3> <H4>Day</H4>
-        </BDW>   
+          <H3>Big</H3> <H4>Day</H4>
+        </BDW>
       </TitleWrapper>
       <CaroDiv>
         <DemoCarousel />
-      <ButtonDiv>
-        <Link to='/login' component={Login} style={{ textDecoration: 'none' }}>
-          <p>Get Started</p>
-        </Link>
-      </ButtonDiv>
-     </CaroDiv>
-     <div className="divider"></div>
-     <InfoLeft className='topleft'>
-        <div><img src={planning} alt='image'/></div>
-        <div><p>We know wedding planning is stressful. At JoinOurBigDay our aim is to remove some of that stress.
-          Create a personal page for your wedding where you can send friends and family to RSVP as well as provide date and time information.</p></div>
-     </InfoLeft>
-     <div className="divider"></div>
-     <InfoRight>
+        <ButtonDiv>
+          <Link
+            to='/login'
+            component={Login}
+            style={{ textDecoration: 'none' }}>
+            <p>Get Started</p>
+          </Link>
+        </ButtonDiv>
+      </CaroDiv>
+      <div className='divider' />
+      <InfoLeft className='topleft'>
         <div>
-          <p>there is text in thqrvjoefniu ;or f;quhrfpiuqh rfpqw pfu9h qpwuh vu9qh pcoquv rl hq blciausdjgkf kjalgc ivapiyvwvhk;ajsdg;ufgdkh >.;TA UT;EFUG ;wg97 g;uewg;iugfg is tag</p>
+          <img src={planning} alt='image' />
         </div>
-        <div><img src={rings} alt='image'/></div>
-     </InfoRight>
-     <div className="divider"></div>
-     <InfoLeft>
-        <div><img src={photo} alt='image'/></div>
-        <div><p>We offer many other services with our Premium upgrade. Get more pages for a more personalized feel and your very own 
-                photo upload for your guests to post to one location. so you don't have to scour social media with hashtags to tread through 
-                the clutter.
-               </p></div>
-     </InfoLeft>
-
-
-
-
+        <div>
+          <p>
+            We know wedding planning is stressful. At JoinOurBigDay our aim is
+            to remove some of that stress. Create a personal page for your
+            wedding where you can send friends and family to RSVP as well as
+            provide date and time information.
+          </p>
+        </div>
+      </InfoLeft>
+      <div className='divider' />
+      <InfoRight>
+        <div>
+          <p>
+            We are here to solve the problems of managing wedding guests by
+            allowing users to interactively manage and view their guests lists,
+            RSVPs, and use google maps for effortless navigation to get your
+            family and friends where you need them when you need them.
+          </p>
+        </div>
+        <div>
+          <img src={rings} alt='image' />
+        </div>
+      </InfoRight>
+      <div className='divider' />
+      <InfoLeft>
+        <div>
+          <img src={photo} alt='image' />
+        </div>
+        <div>
+          <p>
+            We offer many other services with our Premium upgrade. Get more
+            pages for a more personalized feel and your very own photo upload
+            for your guests to post to one location. so you don't have to scour
+            social media with hashtags to tread through the clutter.
+          </p>
+        </div>
+      </InfoLeft>
     </LPStyle>
   )
 }
