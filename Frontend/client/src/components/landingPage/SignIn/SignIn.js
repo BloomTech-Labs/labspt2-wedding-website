@@ -97,11 +97,11 @@ class SignIn extends Component {
       username: '',
       password: '',
     })
-    if (!this.props.err) {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (!this.props.err) {
         this.props.history.push('/')
-      }, 300)
-    }
+      }
+    }, 300)
 
     // need to implement nested routes so it can push to /dashboard, /profile, or something of that matter
   }
