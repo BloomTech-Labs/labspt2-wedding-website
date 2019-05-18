@@ -109,7 +109,6 @@ class SignIn extends Component {
       <FormCenter>
         <form onSubmit={this.handleSubmit}>
           <FormField>
-            {this.props.err ? <div>Wrong username/password</div> : null}
             <FormLabel>
               <P>Username</P>
             </FormLabel>
@@ -136,6 +135,7 @@ class SignIn extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
+            {this.props.err ? <Err>Wrong username/password</Err> : null}
           </FormField>
 
           <FormField>
