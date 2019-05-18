@@ -105,6 +105,7 @@ class SignIn extends Component {
       <FormCenter>
         <form onSubmit={this.handleSubmit}>
           <FormField>
+            {this.props.err ? <div>Wrong username/password</div> : null}
             <FormLabel>
               <P>Username</P>
             </FormLabel>
@@ -146,7 +147,9 @@ class SignIn extends Component {
     )
   }
 }
-const mapStateToProps = state => {}
+const mapStateToProps = state => ({
+  err: state.err,
+})
 
 export default connect(
   mapStateToProps,
