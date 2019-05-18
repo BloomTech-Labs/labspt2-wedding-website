@@ -137,6 +137,9 @@ const Label = styled.label`
   margin-right: 3%;
 `
 
+let date = new Date();
+date.setDate(date.getDate() + 1);  // tomorrow
+const minDateValue = date.toISOString();  // convert to ISO string
 
 class Settings extends Component {
   constructor(props) {
@@ -274,6 +277,7 @@ class Settings extends Component {
               <DatePicker style={{ borderRadius: '8px' }}
                 selected={this.state.userInfo.weddingDate}
                 onChange={this.handleChangeDate} //only when value has changed
+                minDate={minDateValue}
               />
             </DateBox>
             <Box>
