@@ -69,6 +69,10 @@ const LeftInput = styled.input`
   margin: 10px 0;
 `
 
+let date = new Date();
+date.setDate(date.getDate() + 1);  // tomorrow
+const minDateValue = date.toISOString();  // convert to ISO string
+
 export default class Settings extends Component {
   constructor(props) {
     super(props)
@@ -150,6 +154,7 @@ export default class Settings extends Component {
                   selected={this.state.date}
                   onSelect={this.handleSelect} //when day is clicked
                   onChange={this.handleChange} //only when value has changed
+                  minDate={minDateValue} 
                 />
               </SpecialBox>
               <div className='rightBox'>

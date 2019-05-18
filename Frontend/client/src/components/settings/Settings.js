@@ -3,6 +3,7 @@ import { withRouter } from 'react-router'
 import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import DatePicker from 'react-datepicker'
+
 import GoogleSuggest from '../googleSuggest'
 import { Link } from 'react-router-dom'
 
@@ -148,6 +149,10 @@ const ButtonLink = styled(Link)`
   text-decoration: none;
 `
 
+let date = new Date();
+  date.setDate(date.getDate() + 1);  // tomorrow
+  const minDateValue = date.toISOString();  // convert to ISO string
+
 class Settings extends Component {
   constructor(props) {
     super(props)
@@ -284,6 +289,7 @@ class Settings extends Component {
               <DatePicker style={{ borderRadius: '8px' }}
                 selected={this.state.userInfo.weddingDate}
                 onChange={this.handleChangeDate} //only when value has changed
+                minDate={minDateValue}
               />
             </DateBox>
             <Box>

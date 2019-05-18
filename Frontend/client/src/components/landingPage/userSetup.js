@@ -88,6 +88,10 @@ const Button = styled.button`
   margin: 5%;
 `
 
+let date = new Date();
+date.setDate(date.getDate() + 1);  // tomorrow
+const minDateValue = date.toISOString();  // convert to ISO string
+
 class UserSetup extends Component {
   constructor(props) {
     super(props)
@@ -244,6 +248,7 @@ class UserSetup extends Component {
             <DatePicker
               selected={this.state.userInfo.weddingDate}
               onChange={this.handleChangeDate} //only when value has changed
+              minDate={minDateValue}
             />
             <Label htmlFor=''>Wedding Party</Label>
             <Input
