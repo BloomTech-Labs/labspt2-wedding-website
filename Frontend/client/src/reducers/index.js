@@ -43,7 +43,12 @@ export default (state = initialState, action) => {
     case L_R:
       return { ...state, authProcess: true }
     case L_R_SUCCESS:
-      return { ...state, authProcess: false, userInfo: action.payload }
+      return {
+        ...state,
+        authProcess: false,
+        userInfo: action.payload,
+        err: null,
+      }
     case L_R_ERROR:
       return { ...state, authProcess: false, err: action.payload }
     case SOCIAL_USER:

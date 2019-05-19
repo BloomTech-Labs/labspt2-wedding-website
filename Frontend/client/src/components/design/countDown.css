@@ -8,16 +8,18 @@
 
 .Countdown-col {
     font-size: 2.5rem;
-    margin: 1%;
+    margin: 2%;
 }
 
 .bold {
   margin: 1%;
+  color: blue;
 }
 
-@media only screen and (max-width: 700px) and (min-width: 300px) {
+@media only screen and (max-width: 900px) and (min-width: 300px) {
   .Countdown-col {
     font-size: 1.5rem;
-    margin: 1%;
+    margin: 2%;
   }
 }
+

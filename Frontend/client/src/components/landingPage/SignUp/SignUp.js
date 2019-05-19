@@ -137,7 +137,7 @@ class SignUp extends Component {
               type='password'
               id='password'
               className='FormField__Input'
-              placeholder='Enter your password'
+              placeholder='Min 6 characters + min 1 number'
               name='password'
               value={this.state.password}
               onChange={this.handleChange}
@@ -152,9 +152,9 @@ class SignUp extends Component {
                 value={this.state.hasAgreed}
                 onChange={this.handleChange}
               />{' '}
-              I agree all statments in{' '}
-              <a href='http://' className='FormField__TermsLink'>
-                terms of service
+               {' '}
+              <a href="https://en.wikipedia.org/wiki/Terms_of_service" target="_blank" style={{color: 'white', fontSize: '1rem'}}>
+                I Agree To The Terms Of Service
               </a>
             </FormCBLabel>
           </FormField>

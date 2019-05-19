@@ -89,6 +89,11 @@ const Header = styled.div`
     }
   }
 `
+
+const CardsCont = styled.div`
+  overflow: hidden;
+`
+
 const Footer = styled.div`
   position: fixed;
   bottom: 0;
@@ -232,7 +237,7 @@ class WeddingPhotos extends Component {
             </Modal.Footer>
           </Modal>
         </div>
-        <div className='photos'>
+        <CardsCont>
           {this.state.photoCards.length ? (
             this.state.photoCards.map(img => (
               <PhotoCard key={img.imgUrl} info={img} />
@@ -242,7 +247,7 @@ class WeddingPhotos extends Component {
               No Photos yet... <br /> Be the First to upload!
             </h1>
           )}
-        </div>
+        </CardsCont>
         <Footer>
           <Link to={`/${this.props.info.userUrl}`}>
             <p> Back </p>

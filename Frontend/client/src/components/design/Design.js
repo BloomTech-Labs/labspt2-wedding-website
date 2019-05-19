@@ -253,6 +253,7 @@ class Design extends Component {
 
   render() {
     console.log('props', this.props)
+    console.log('custom site null')
     if (!this.props.customSite) {
       return (
         <DesignBody>
@@ -344,13 +345,11 @@ class Design extends Component {
               </H2>
             </form>
             <Button onClick={this.handleSubmit}>Apply</Button>
-            <Link to={`/${this.props.customSite.userUrl}`}>
-              <Button>Preview</Button>
-            </Link>
           </InputWrapper>
         </DesignBody>
       )
     } else {
+      console.log('custom site not null')
       return (
         // need to show site info here and give otions to update/ delete and preview
         <DesignBody>
@@ -372,6 +371,9 @@ class Design extends Component {
               <H3>{this.props.customSite.siteDesign}</H3>
               <ButtonWrapper>
                 <Button onClick={this.handleEdit}>Edit Page</Button>
+                <Link to={`/${this.props.customSite.userUrl}`}>
+                  <Button>Preview</Button>
+                </Link>
                 <Button onClick={this.handleDelete}>Delete</Button>
               </ButtonWrapper>
             </StoryWrapper>
