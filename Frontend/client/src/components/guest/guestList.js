@@ -236,9 +236,9 @@ class GuestList extends Component {
     const columns = [
       {
         Header: 'Name',
-        width: 300,
-        maxWidth: 300,
-        minWidth: 100,
+        // width: 100,
+        // maxWidth: 300,
+        // minWidth: 100,
         sortable: false,
         filterable: false,
         resizable: false,
@@ -259,9 +259,9 @@ class GuestList extends Component {
       {
         Header: 'Email',
         accessor: 'email',
-        width: 300,
-        maxWidth: 300,
-        minWidth: 100,
+        // width: 150,
+        // maxWidth: 300,
+        // minWidth: 100,
         sortable: false,
         filterable: false,
         resizable: false,
@@ -274,7 +274,7 @@ class GuestList extends Component {
       },
       {
         Header: 'RSVP',
-        width: 300,
+        width: 100,
         maxWidth: 300,
         minWidth: 100,
         sortable: false,
@@ -303,9 +303,9 @@ class GuestList extends Component {
       },
       {
         Header: 'Actions',
-        width: 300,
-        maxWidth: 300,
-        minWidth: 100,
+        // width: 300,
+        // maxWidth: 300,
+        // minWidth: 100,
         sortable: false,
         filterable: false,
         resizable: false,
@@ -339,7 +339,6 @@ class GuestList extends Component {
           </H1Wrap>
           <FormButWrap>
             <Form>
-              {/* inputs not updating state need help */}
               <Input
                 type='text'
                 placeholder='First Name'

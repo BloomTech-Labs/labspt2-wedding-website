@@ -261,7 +261,7 @@ class UserSetup extends Component {
               value={this.state.userInfo.venueLocation}
             /> */}
             <VenueSearch />
-            <InputWrap>
+            {/* <InputWrap>
               <Script
                 url='https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfBhKctGiH0CzM2oygDTaRcqpkHxqzpw&libraries=places'
                 onLoad={this.handleScriptLoad}
@@ -276,7 +276,7 @@ class UserSetup extends Component {
                   maxWidth: 800,
                 }}
               />
-            </InputWrap>
+            </InputWrap> */}
             <Button onClick={this.handleSubmit}> Done </Button>
           </Form>
         </FormWrapper>
