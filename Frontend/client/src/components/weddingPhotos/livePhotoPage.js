@@ -91,7 +91,7 @@ const Header = styled.div`
 `
 
 const CardsCont = styled.div`
-  overflow: hidden;
+  overflow-y: scroll;
 `
 
 const Footer = styled.div`
