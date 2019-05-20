@@ -1,6 +1,6 @@
 // importing dependencies
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import planning from '../../Images/beautiful-beverage-black-coffee-1410226.jpg'
 import rings from '../../Images/band-blur-close-up-265730.jpg'
 import photo from '../../Images/camera-contemporary-flash-134469.jpg'
@@ -74,105 +74,103 @@ const ButtonDiv = styled.div`
 `
 
 const InfoLeft = styled.div`
-display:flex;
-justify-content: space-around;
-width 90%;
-margin: 85px auto;
-background-color: white;
-border-radius:20%;
-border: 3px solid #52C4B9;
-div{
-  width: 50%;
-  justify-self: center;
-  align-self: center;
-  p{
-    @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    width: 80%;
-    margin-left: -60px;
-    margin-right: 40px
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  margin: 85px auto;
+  background-color: white;
+  border-radius: 20%;
+  border: 3px solid #52c4b9;
+  div {
+    width: 50%;
+    justify-self: center;
+    align-self: center;
+    p {
+      @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      width: 80%;
+      margin-left: -60px;
+      margin-right: 40px;
+    }
   }
-}
-img{
-  width: 55%;
-  border-radius:40%;
-  padding: 6px;
-  margin-left: 15%;
-}
+  img {
+    width: 55%;
+    border-radius: 40%;
+    padding: 6px;
+    margin-left: 15%;
+  }
 `
 const InfoRight = styled.div`
-display:flex;
-justify-content: space-around;
-width 90%;
-margin: 85px auto;
-background-color: white;
-border-radius:20%;
-border: 3px solid #52C4B9;
-div{
-  width: 50%;
-  justify-self: center;
-  align-self: center;
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  margin: 85px auto;
+  background-color: white;
+  border-radius: 20%;
+  border: 3px solid #52c4b9;
+  div {
+    width: 50%;
+    justify-self: center;
+    align-self: center;
 
-  p{
-    @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
-    font-family: 'Playfair Display', serif;
-    width: 80%;
-    margin-left:32%;
-    text-align: right;
-
+    p {
+      @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+      font-family: 'Playfair Display', serif;
+      width: 80%;
+      margin-left: 32%;
+      text-align: right;
+    }
   }
-}
-img{
-  width: 50%;
-  border-radius:40%;
-  margin-left: 28%;
-  padding: 6px;
-
-}
+  img {
+    width: 50%;
+    border-radius: 40%;
+    margin-left: 28%;
+    padding: 6px;
+  }
 `
 
 const H1 = styled.h1`
   @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
   font-family: 'Aguafina Script', cursive;
-  color:#52C4B9;
+  color: #52c4b9;
   margin: 10% 3% 3% 0%;
-  font-size: 80px
-  text-shadow: 4px 4px 4px #2D4058;
+  font-size: 80px;
+  text-shadow: 4px 4px 4px #2d4058;
 `
 const H2 = styled.h1`
   @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
   font-family: 'Aguafina Script', cursive;
-  color:#52C4B9;
+  color: #52c4b9;
   margin: 10% 3% 3% 0%;
-  font-size: 80px
-  text-shadow: 4px 4px 4px #2D4058;
+  font-size: 80px;
+  text-shadow: 4px 4px 4px #2d4058;
   @media only screen and (max-width: 750px) and (min-width: 300px) {
-    text-shadow: 4px 4px 4px #52C4B9;
-    color:#2D4058;
+    text-shadow: 4px 4px 4px #52c4b9;
+    color: #2d4058;
   }
 `
 
 const H3 = styled.h1`
   @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
   font-family: 'Aguafina Script', cursive;
-  color:#2D4058;
+  color: #2d4058;
   margin: 10% 3% 3% 0%;
-  font-size: 80px
-  text-shadow: 4px 4px 4px #52C4B9;
+  font-size: 80px;
+  text-shadow: 4px 4px 4px #52c4b9;
   @media only screen and (max-width: 750px) and (min-width: 300px) {
-    text-shadow: 4px 4px 4px #2D4058;
-    color:#52C4B9;
+    text-shadow: 4px 4px 4px #2d4058;
+    color: #52c4b9;
   }
 `
 
 const H4 = styled.h1`
   @import url('https://fonts.googleapis.com/css?family=Aguafina+Script');
   font-family: 'Aguafina Script', cursive;
-  color:#2D4058;
+  color: #2d4058;
   margin: 10% 3% 3% 0%;
-  font-size: 80px
-  text-shadow: 4px 4px 4px #52C4B9;
+  font-size: 80px;
+  text-shadow: 4px 4px 4px #52c4b9;
 `
 
 const JOW = styled.div`
@@ -235,7 +233,7 @@ function LandingPage({ match }) {
       <div className='divider' />
       <InfoLeft className='topleft'>
         <div>
-          <img src={planning} alt='image' />
+          <img src={planning} alt='' />
         </div>
         <div>
           <p>
@@ -252,18 +250,18 @@ function LandingPage({ match }) {
           <p>
             We are here to solve the problems of managing wedding guests by
             allowing users to interactively manage and view their guests lists,
-            RSVPs, and use google maps for effortless navigation to get your
-            family and friends where you need them when you need them.
+            RSVPs to get your family and friends where you need them when you
+            need them.
           </p>
         </div>
         <div>
-          <img src={rings} alt='image' />
+          <img src={rings} alt='' />
         </div>
       </InfoRight>
       <div className='divider' />
       <InfoLeft>
         <div>
-          <img src={photo} alt='image' />
+          <img src={photo} alt='' />
         </div>
         <div>
           <p>
