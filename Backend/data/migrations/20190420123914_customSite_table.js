@@ -1,7 +1,10 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('customSite', tbl => {
     tbl.increments()
-    tbl.string('userUrl').notNullable()
+    tbl
+      .string('userUrl')
+      .notNullable()
+      .unique()
     tbl.string('story')
     tbl.integer('siteDesign')
     tbl.string('proposalStory')

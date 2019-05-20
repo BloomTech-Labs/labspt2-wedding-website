@@ -3,10 +3,7 @@ exports.up = function(knex, Promise) {
     tbl.increments()
     tbl.string('firstName').notNullable()
     tbl.string('lastName').notNullable()
-    tbl
-      .string('email')
-      .notNullable()
-      .unique()
+    tbl.string('email').notNullable()
     tbl.integer('userId').unsigned()
     tbl.foreign('userId').references('users.id')
     //set on RSVP form + other table
