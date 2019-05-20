@@ -130,6 +130,7 @@ class Rsvp extends Component {
 
   handleRsvp = e => {
     e.preventDefault()
+    console.log(this.rsvpQ)
     this.rsvpQ.current.submitAnswer()
     const rsvp = {
       rsvp: null,
