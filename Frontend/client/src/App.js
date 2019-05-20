@@ -44,6 +44,14 @@ const Container = styled.div`
   }
 `
 
+const DynamicBackground = styled.div`
+  body {
+    background-image: url('https://source.unsplash.com/1600x900/?weddings');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+`
+
 // components from front end merge
 
 // import Settings from "./components/settings/Settings";
@@ -103,27 +111,29 @@ class App extends Component {
         return (
           <Router className='App'>
             <Container>
-              <Navigation />
+              <DynamicBackground>
+                <Navigation />
 
-              <Switch>
-                <Route exact path='/' component={DashBoard} />
-                <Route path='/settings' component={Settings} />
-                <Route path='/pricing' component={Pricing} />
-                <Route path='/billing' component={StripeBtn} />
-                <Route path='/guests' component={GuestList} />
-                <Route path='/rsvp' component={QuestionList} />
-                <Route
-                  path='/design'
-                  render={props => (
-                    <Design {...props} user={this.props.userInfo} />
-                  )}
-                />
-                <Route path='/design1' component={WeddingPage1} />
-                <Route path='/design2' component={WeddingPage2} />
-                <Route path='/design3' component={WeddingPage3} />
-                <Route path='/weddingPhotos' component={WeddingPhotos} />
-                <Route path='/:customSite' component={CustomSite} />
-              </Switch>
+                <Switch>
+                  <Route exact path='/' component={DashBoard} />
+                  <Route path='/settings' component={Settings} />
+                  <Route path='/pricing' component={Pricing} />
+                  <Route path='/billing' component={StripeBtn} />
+                  <Route path='/guests' component={GuestList} />
+                  <Route path='/rsvp' component={QuestionList} />
+                  <Route
+                    path='/design'
+                    render={props => (
+                      <Design {...props} user={this.props.userInfo} />
+                    )}
+                  />
+                  <Route path='/design1' component={WeddingPage1} />
+                  <Route path='/design2' component={WeddingPage2} />
+                  <Route path='/design3' component={WeddingPage3} />
+                  <Route path='/weddingPhotos' component={WeddingPhotos} />
+                  <Route path='/:customSite' component={CustomSite} />
+                </Switch>
+              </DynamicBackground>
             </Container>
           </Router>
         )
