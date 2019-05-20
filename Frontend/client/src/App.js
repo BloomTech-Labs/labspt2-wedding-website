@@ -45,11 +45,9 @@ const Container = styled.div`
 `
 
 const DynamicBac = styled.div`
-  body {
-    background-image: url('https://source.unsplash.com/1600x900/?weddings');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  background-image: url('https://source.unsplash.com/1600x900/?weddings');
+  background-repeat: no-repeat;
+  background-size: cover;
 `
 
 // components from front end merge
