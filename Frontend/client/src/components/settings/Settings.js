@@ -258,6 +258,9 @@ class Settings extends Component {
               <FaTrash />
               </IconBox>
             </Box>
+              <IconBox>
+              <FaEdit />
+              </IconBox>
             <Box>
               <InputBox
                 type='text'
@@ -267,10 +270,6 @@ class Settings extends Component {
                 onChange={this.inputHandler}
                 style={{ borderBottom: '1px solid black', width: '90%' }}
               />{' '}
-              <IconBox>
-              <FaEdit />
-              <FaTrash />
-              </IconBox>
             </Box>
             <DateBox>
               <Label for='calander'>Wedding Date</Label>
@@ -281,16 +280,15 @@ class Settings extends Component {
               />
             </DateBox>
             <Box>
+              <IconBox>
+              <FaEdit />
+              </IconBox>
               <GoogleSuggest
                 onChange={this.handleLocationChange.bind(this)}
                 suggest={this.handleSelectSuggest.bind(this)}
                 search={this.state.search}
                 value={this.state.userInfo.venueLocation}
               />
-              <IconBox>
-              <FaEdit />
-              <FaTrash />
-              </IconBox>
             </Box>
           </SettingsBox>
           <RightBox>
