@@ -127,11 +127,12 @@ googleCB = (req, res) => {
     weddingParty: user.weddingParty,
     venueLocation: user.venueLocation,
     isPremium: user.isPremium,
+    addressUrl: user.addressUrl,
   }
   const token = jwtHelper.generateToken(tokenUser)
   // redirects to account set up
   console.log('token :', token)
-  res.redirect('https://joinourbigday.herokuapp.com/?token=' + token)
+  res.redirect('https://joinourbigday.netlify.com/?token=' + token)
 }
 
 //------------------->Facebook Routes<--------------------------

@@ -26,7 +26,9 @@ auth(passport)
 server.use(
   express.json(),
   logger('dev'),
-  cors(),
+  cors({
+    allowedHeaders: 'Content-Type',
+  }),
   helmet(),
   passport.initialize()
 )

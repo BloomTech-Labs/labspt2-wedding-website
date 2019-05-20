@@ -10,8 +10,8 @@ module.exports = server => {
 
 addImage = (req, res) => {
   const userId = req.params.id
+  console.log('userid', userId)
   singleUpload(req, res, err => {
-    console.log(req.file.fieldname)
     const { name, caption } = req.body
     if (err) {
       res.status(422).send({
@@ -24,7 +24,6 @@ addImage = (req, res) => {
       })
     }
     const img = req.file.location
-    console.log(img)
     const newImage = {
       user_id: userId,
       imgUrl: img,
@@ -47,7 +46,6 @@ addImage = (req, res) => {
 
 GetLivePhotos = (req, res) => {
   const { id } = req.params
-  console.log(id)
   db('livePhotos')
     .where('user_id', id)
     .then(tbl => res.json(tbl))
@@ -72,7 +70,6 @@ addUserImage = (req, res) => {
       })
     }
     const image = req.file.location
-    console.log(image)
     const newImage = {
       imgUrl: image,
       photoName,
