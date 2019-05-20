@@ -1,0 +1,55 @@
+{
+  "name": "JoinOurBigDay-Backend",
+  "version": "1.0.0",
+  "engines": {
+    "node": "^10.15.3",
+    "yarn": "^1.13.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "test": "cross-env TESTING_DB=testing jest --watch --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://joinourbigday.herokuapp.com/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "aws": "^0.0.3-2",
+    "aws-sdk": "^2.412.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "helmet": "^3.15.1",
+    "heroku": "^7.22.4",
+    "jest": "^24.1.0",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.0",
+    "knex": "^0.16.5",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "multer-s3": "^2.9.0",
+    "node": "^11.14.0",
+    "objection": "^1.6.3",
+    "objection-password": "^2.0.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-json": "^1.2.0",
+    "passport-jwt": "^4.0.0",
+    "passport-twitter-token": "^1.3.0",
+    "pg": "^7.8.2",
+    "request": "^2.88.0",
+    "sendgrid": "^5.2.3",
+    "sqlite3": "^4.0.6",
+    "stripe": "^6.28.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "supertest": "^3.4.2"
+  }
+}
