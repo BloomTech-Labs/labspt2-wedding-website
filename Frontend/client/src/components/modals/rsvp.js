@@ -130,8 +130,11 @@ class Rsvp extends Component {
 
   handleRsvp = e => {
     e.preventDefault()
-    if (this.rsvpQ) {
+    if (!this.rsvpQ) {
+      console.log('no qs')
       this.rsvpQ.current.submitAnswer()
+    } else {
+      console.log('yes qs')
     }
     const rsvp = {
       rsvp: null,
