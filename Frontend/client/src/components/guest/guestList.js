@@ -124,6 +124,8 @@ const TableWrapper = styled.div`
 
 const ButtonTable = styled.div`
   width: 100%;
+  display:fle
+  flex-direction: row;
 `
 
 const P = styled.p``
@@ -302,7 +304,7 @@ class GuestList extends Component {
         },
       },
       {
-        Header: 'Actions',
+        Header: '',
         // width: 300,
         // maxWidth: 300,
         // minWidth: 100,
@@ -319,7 +321,6 @@ class GuestList extends Component {
           console.log('props', props)
           return (
             <ButtonTable>
-              <Button2>Edit</Button2>
               <Button2
                 onClick={e => {
                   this.deleteHandler(e, props.original.id)
