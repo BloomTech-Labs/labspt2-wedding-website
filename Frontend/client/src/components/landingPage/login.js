@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Link, NavLink } from 'react-router-dom'
 import SignUp from './SignUp/SignUp'
 import SignIn from './SignIn/SignIn'
-import logo from "../../Images/jobdLogo.png"
+import logo from '../../Images/jobdLogo.png'
 
 // import './login.css'
 import styled from 'styled-components'
@@ -24,12 +24,12 @@ const Aside = styled.div`
   display: flex;
   width: 50%;
   background-color: white;
-  img{
-    width:90%;
+  img {
+    width: 90%;
     height: 90%;
-    margin:auto;
-    @media(max-width: 800px){
-      display:none
+    margin: auto;
+    @media (max-width: 800px) {
+      display: none;
     }
   }
   @media only screen and (max-width: 700px) and (min-width: 300px) {
@@ -40,6 +40,7 @@ const Aside = styled.div`
 const LoginForm = styled.div`
   width: 50%;
   background-color: #2e4158;
+  height: 100vh;
   padding: 25px 40px;
   overflow: auto;
   @media screen and (max-width: 1024px) {
@@ -69,8 +70,9 @@ function Login({ match }) {
   console.log('url', match.url)
   return (
     <LoginPage>
-      <Aside > <img src={logo} alt=""/>
-     
+      <Aside>
+        {' '}
+        <img src={logo} alt='' />
       </Aside>
       <LoginForm>
         {/* <PageSwitch>
@@ -85,8 +87,20 @@ function Login({ match }) {
         </PageSwitch> */}
 
         <FormTitle>
-          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} exact path to={`${match.url}`}><P>Sign In</P></NavLink>{' '}
-          <NavLink style={{ color: 'white'}} activeStyle={{ textDecoration: 'underline' }} to={`${match.url}/signup`}><P>Sign Up</P></NavLink>
+          <NavLink
+            style={{ color: 'white' }}
+            activeStyle={{ textDecoration: 'underline' }}
+            exact
+            path
+            to={`${match.url}`}>
+            <P>Sign In</P>
+          </NavLink>{' '}
+          <NavLink
+            style={{ color: 'white' }}
+            activeStyle={{ textDecoration: 'underline' }}
+            to={`${match.url}/signup`}>
+            <P>Sign Up</P>
+          </NavLink>
         </FormTitle>
 
         <Route path={`${match.path}/signup`} component={SignUp} />
