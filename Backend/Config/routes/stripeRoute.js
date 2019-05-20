@@ -31,6 +31,7 @@ stripeHome = (req, res) => {
   console.log('STRIPE userId :', userId)
   stripe.charges.create(body, stripeChargeCallback(res)).catch(err => {
     console.log('stripe err', stripe)
+    console.log('catch fired')
     res.status(500).send(err)
   })
   //userdata boolean true when charge hits
