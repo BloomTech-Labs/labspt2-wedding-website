@@ -30,7 +30,7 @@ stripeHome = (req, res) => {
   console.log('STRIPE endpoint body :', body)
   console.log('STRIPE userId :', userId)
   stripe.charges.create(body, stripeChargeCallback(res)).catch(err => {
-    console.log('stripe err', stripe)
+    console.log('stripe err', err)
     res.status(500).send(err)
   })
   //userdata boolean true when charge hits
