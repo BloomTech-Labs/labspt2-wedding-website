@@ -16,11 +16,12 @@ background-image: linear-gradient(to right top, #4ccdc1, #40c6ca, #3fbecf, #49b6
   height: 100vh;
   .photos{
     padding-top:60px;
+    overflow: hidden;
     overflow-y: scroll;
   }
   .error{
     color:white;
-    margin: 60px 4%;
+    margin: 80px 7%;
   }
 `
 
@@ -39,7 +40,7 @@ const Header = styled.div`
   justify-content: space-around;
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 100%;
-    height: 50px;
+    height: 60px;
    h1{
      font-size:1.5rem;
      margin: 10% auto;
