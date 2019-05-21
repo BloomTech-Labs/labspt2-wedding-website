@@ -245,6 +245,7 @@ class Settings extends Component {
           </SettingsBox>
           <SettingsBox>
             <Box>
+              <label htmlFor="partnerName1">Your Name:</label>
               <InputBox
                 type='text'
                 name='partnerName1'
@@ -253,15 +254,9 @@ class Settings extends Component {
                 onChange={this.inputHandler}
                 style={{ borderBottom: '1px solid black', width: '90%' }}
               />{' '}
-              <IconBox>
-              <FaEdit />
-              <FaTrash />
-              </IconBox>
             </Box>
-              <IconBox>
-              <FaEdit />
-              </IconBox>
             <Box>
+              <label htmlFor="partnerName2">Your Partners Name:</label>
               <InputBox
                 type='text'
                 name='partnerName2'
@@ -280,9 +275,6 @@ class Settings extends Component {
               />
             </DateBox>
             <Box>
-              <IconBox>
-              <FaEdit />
-              </IconBox>
               <GoogleSuggest
                 onChange={this.handleLocationChange.bind(this)}
                 suggest={this.handleSelectSuggest.bind(this)}
