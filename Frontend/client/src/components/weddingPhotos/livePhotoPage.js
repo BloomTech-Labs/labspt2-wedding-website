@@ -16,6 +16,7 @@ background-image: linear-gradient(to right top, #4ccdc1, #40c6ca, #3fbecf, #49b6
   height: 100vh;
   width: 100vw;
   position:fixed;
+  overflow: scroll;
   .photos{
     padding-top:60px;
     overflow: hidden;
