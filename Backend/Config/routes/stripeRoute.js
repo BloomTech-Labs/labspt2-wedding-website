@@ -10,6 +10,7 @@ let userId = null
 
 const stripeChargeCallback = res => (stripeErr, stripeRes) => {
   if (stripeErr) {
+    console.log(stripeErr)
     res.status(500).send({ error: stripeErr })
   } else {
     console.log('STRIPE cb userId :', userId)
