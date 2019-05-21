@@ -345,32 +345,40 @@ class Dashboard extends Component {
             </NavLink>
           </RSVP>
           <Registry>
-            <H3>Registry</H3>
-            {/* Amazon registry goes here. Need to figure out how */}
-            <RegistryContainer>
-              {this.props.registry ? (
-                this.props.registry.length > 0 ? (
-                  this.props.registry.map(rItem => {
-                    registry.push(rItem)
-                    return (
-                      <div style={{width: '40%', margin: '0 auto'}}>
-                        <RegistryItem
-                          onClick={e => this.handleRegModal(e, rItem.id)}>
-                          {rItem.registryName}
-                        </RegistryItem>
-                      </div>
+            {this.props.userInfo ? (
+              <div>
+                <H3>Registry</H3>
+                {/* Amazon registry goes here. Need to figure out how */}
+                <RegistryContainer>
+                  {this.props.registry ? (
+                    this.props.registry.length > 0 ? (
+                      this.props.registry.map(rItem => {
+                        registry.push(rItem)
+                        return (
+                          <div style={{ width: '40%', margin: '0 auto' }}>
+                            <RegistryItem
+                              onClick={e => this.handleRegModal(e, rItem.id)}>
+                              {rItem.registryName}
+                            </RegistryItem>
+                          </div>
+                        )
+                      })
+                    ) : (
+                      <RegistryItem>No Registry Added yet</RegistryItem>
                     )
-                  })
-                ) : (
-                  <RegistryItem>No Registry Added yet</RegistryItem>
-                )
-              ) : (
-                <RegistryItem>No Registry Added Yet</RegistryItem>
-              )}
-              <Button onClick={this.handleModal}>
-                <P>Add Registry</P>
-              </Button>
-            </RegistryContainer>
+                  ) : (
+                    <RegistryItem>No Registry Added Yet</RegistryItem>
+                  )}
+                  <Button onClick={this.handleModal}>
+                    <P>Add Registry</P>
+                  </Button>
+                </RegistryContainer>
+              </div>
+            ) : (
+              <WompWomp>
+                <H3>Premium Feature</H3>
+              </WompWomp>
+            )}
           </Registry>
           <Modal isOpen={this.state.modal} style={modalStyle}>
             <RegistryAddModal
