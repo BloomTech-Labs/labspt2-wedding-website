@@ -26,6 +26,8 @@ const WPWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-height: 100vh;
+  min-height: 100vh;
 `
 
 const WhoWrapper = styled.div`

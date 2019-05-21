@@ -20,6 +20,8 @@ const WP1Body = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  max-height: 100vh;
+  min-height: 100vh;
 `
 
 const WPWrapper = styled.div`
