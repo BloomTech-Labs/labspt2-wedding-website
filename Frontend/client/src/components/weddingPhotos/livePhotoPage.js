@@ -17,7 +17,7 @@ background-image: linear-gradient(to right top, #4ccdc1, #40c6ca, #3fbecf, #49b6
   height: 100vh;
   .photos{
     padding-top:60px;
-    overflow: scroll
+    overflow: y-scroll;
   }
   .error{
     color:white;
