@@ -14,7 +14,6 @@ background-image: linear-gradient(to right top, #4ccdc1, #40c6ca, #3fbecf, #49b6
   background-attachment: fixed;
   font-family: 'Source Sans Pro', sans-serif;
   height: 100vh;
-  position:fixed;
   .photos{
     padding-top:60px;
     overflow: scroll
