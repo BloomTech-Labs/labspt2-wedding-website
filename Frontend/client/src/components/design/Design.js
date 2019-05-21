@@ -11,6 +11,12 @@ import Background1 from '../design/media/background1.jpg'
 import Background2 from '../design/media/background2.jpg'
 import Background3 from '../design/media/background3.jpg'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye  } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faEye)
+
 const DesignBody = styled.div`
   background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
@@ -372,7 +378,7 @@ class Design extends Component {
               <ButtonWrapper>
                 <Button onClick={this.handleEdit}>Edit Page</Button>
                 <Link to={`/${this.props.customSite.userUrl}`}>
-                  <Button>Preview</Button>
+                  <Button><FontAwesomeIcon icon={(faEye)}/></Button>
                 </Link>
                 <Button onClick={this.handleDelete}>Delete</Button>
               </ButtonWrapper>
