@@ -81,7 +81,7 @@ class RsvpQuestion extends Component {
     return (
       <Wrapper>
         <Sub>
-          <h2>Question: {this.props.question.Question_body}</h2>
+          <h2>{this.props.question.Question_body}</h2>
           <form>
             <input
               type='text'
