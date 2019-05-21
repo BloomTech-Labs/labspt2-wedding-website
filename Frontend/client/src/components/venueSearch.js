@@ -61,6 +61,7 @@ class Search extends Component {
       //   query: addressObject.name,
       //   url: linkFunction(lat, lng, place_id),
       // })
+      console.log('address exists')
       this.props.handlePlaceSelect(
         addressObject.name,
         formattedAddress,

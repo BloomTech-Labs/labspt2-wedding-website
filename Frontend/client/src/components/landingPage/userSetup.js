@@ -162,15 +162,17 @@ class UserSetup extends Component {
   }
 
   handlePlaceSelect = (query, formattedAddress, url) => {
+    console.log('handle place select fired')
     this.setState({
       // search: e.target.value, value: e.target.value
-      query: addressObject.name,
+      query: query,
       userInfo: {
         ...this.state.userInfo,
         venueLocation: formattedAddress,
-        addressUrl: linkFunction(lat, lng, place_id),
+        addressUrl: url,
       },
     })
+    console.log('current state', this.state)
   }
 
   handleSelectSuggest(suggest) {
