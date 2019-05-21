@@ -151,14 +151,6 @@ class UserSetup extends Component {
     }
   }
 
-  handleLocationChange(fieldValue) {
-    this.setState({
-      // search: e.target.value, value: e.target.value
-      search: fieldValue,
-      userInfo: { ...this.state.userInfo, venueLocation: fieldValue },
-    })
-  }
-
   handleScriptLoad = () => {
     // Initialize Google Autocomplete
     /*global google*/ this.autocomplete = new google.maps.places.Autocomplete(
@@ -169,34 +161,16 @@ class UserSetup extends Component {
     this.autocomplete.addListener('place_changed', this.handlePlaceSelect)
   }
 
-  handlePlaceSelect = e => {
-    console.log(e)
-    // Extract City From Address Object
-    let addressObject = this.autocomplete.getPlace()
-    console.log('addres', addressObject)
-    let address = addressObject.address_components
-    const formattedAddress = addressObject.formatted_address
-    const lat = addressObject.geometry.location.lat()
-    const lng = addressObject.geometry.location.lng()
-    const place_id = addressObject.place_id
-
-    // Check if address is valid
-    if (address) {
-      // Set State
-      this.setState({
-        query: addressObject.name,
-        url: linkFunction(lat, lng, place_id),
-      })
-      this.setState({
-        // search: e.target.value, value: e.target.value
-        query: addressObject.name,
-        userInfo: {
-          ...this.state.userInfo,
-          venueLocation: formattedAddress,
-          addressUrl: linkFunction(lat, lng, place_id),
-        },
-      })
-    }
+  handlePlaceSelect = (query, formattedAddress, url) => {
+    this.setState({
+      // search: e.target.value, value: e.target.value
+      query: addressObject.name,
+      userInfo: {
+        ...this.state.userInfo,
+        venueLocation: formattedAddress,
+        addressUrl: linkFunction(lat, lng, place_id),
+      },
+    })
   }
 
   handleSelectSuggest(suggest) {
@@ -264,7 +238,10 @@ class UserSetup extends Component {
               search={this.state.search}
               value={this.state.userInfo.venueLocation}
             /> */}
-            <VenueSearch onChange={this.inputHandler.bind(this)} />
+            <VenueSearch
+              onChange={this.handlePlaceSelect.bind(this)}
+              state={this.state}
+            />
             {/* <InputWrap>
               <Script
                 url='https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfBhKctGiH0CzM2oygDTaRcqpkHxqzpw&libraries=places'

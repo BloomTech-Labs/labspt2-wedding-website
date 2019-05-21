@@ -49,6 +49,7 @@ class Search extends Component {
     let addressObject = this.autocomplete.getPlace()
     console.log('addres', addressObject)
     let address = addressObject.address_components
+    const formattedAddress = addressObject.formatted_address
     const lat = addressObject.geometry.location.lat()
     const lng = addressObject.geometry.location.lng()
     const place_id = addressObject.place_id
