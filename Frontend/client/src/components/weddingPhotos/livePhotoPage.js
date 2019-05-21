@@ -7,45 +7,32 @@ import PhotoCard from '../weddingPhotos/photoCard'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const Wrapper = styled.div`
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-  background-image: linear-gradient(
-    to right top,
-    #4ccdc1,
-    #40c6ca,
-    #3fbecf,
-    #49b6d2,
-    #57add1,
-    #599cbf,
-    #5a8bad,
-    #587b9a,
-    #496077,
-    #394656,
-    #282e37,
-    #17181a
-  );
+const Wrapper = styled.div `
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+background-image: linear-gradient(to right top, #4ccdc1, #40c6ca, #3fbecf, #49b6d2, #57add1, #599cbf, #5a8bad, #587b9a, #496077, #394656, #282e37, #17181a);
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: 'Source Sans Pro', sans-serif;
   height: 100vh;
-  .photos {
-    padding-top: 60px;
-    overflow: y-scroll;
+  position:fixed;
+  .photos{
+    padding-top:60px;
+    overflow: scroll
   }
-  .error {
-    color: white;
+  .error{
+    color:white;
     margin: 60px 4%;
   }
 `
 
-const Image = styled.img`
-  width: 100%;
+const Image = styled.img `
+  width: 100%
 `
 
 const Header = styled.div`
   position: fixed;
   z-index: 1;
-  width: 100%;
+  width:100%;
   background-color: rgb(255, 255, 255, 0.7);
   top: 0;
   display: flex;
@@ -54,13 +41,13 @@ const Header = styled.div`
   @media only screen and (max-width: 500px) and (min-width: 300px) {
     width: 100%;
     height: 50px;
-    h1 {
-      font-size: 1.5rem;
-      margin: 10% auto;
-    }
+   h1{
+     font-size:1.5rem;
+     margin: 10% auto;
+   }
   }
-  button {
-    margin-top: 7px;
+  button{
+    margin-top: 7px
     border-radius: 8px;
     color: white;
     border: none;
@@ -71,10 +58,11 @@ const Header = styled.div`
     display: flex;
     justify-content: space-evenly;
     transition: 0.5s ease;
-    &:hover {
-      color: #52c4b9;
+    &:hover{
+      color:#52c4b9;
       background: white;
       border: 1px solid #52c4b9;
+      
     }
     @media only screen and (max-width: 500px) and (min-width: 300px) {
       width: 100%;
