@@ -64,6 +64,7 @@ class Search extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <InputWrap>
         <Script

@@ -130,9 +130,7 @@ class Rsvp extends Component {
 
   handleRsvp = e => {
     e.preventDefault()
-    if (this.rsvpQ.current) {
-      this.rsvpQ.current.submitAnswer()
-    }
+
     const rsvp = {
       rsvp: null,
       rsvpMaybe: false,
@@ -156,6 +154,10 @@ class Rsvp extends Component {
       .catch(err => {
         console.log('handle rsvp err', err)
       })
+    if (this.rsvpQ.current) {
+      console.log('there are qs')
+      this.rsvpQ.current.submitAnswer()
+    }
     this.props.handleClose()
   }
 

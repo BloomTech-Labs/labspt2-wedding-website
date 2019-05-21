@@ -87,9 +87,9 @@ const Button = styled.button`
   background: #52c4b9;
   margin: 5%;
 `
-let date = new Date();
-date.setDate(date.getDate() + 1);  // tomorrow
-const minDateValue = date.toISOString();  // convert to ISO string
+let date = new Date()
+date.setDate(date.getDate() + 1) // tomorrow
+const minDateValue = date.toISOString() // convert to ISO string
 
 class UserSetup extends Component {
   constructor(props) {
@@ -264,7 +264,7 @@ class UserSetup extends Component {
               search={this.state.search}
               value={this.state.userInfo.venueLocation}
             /> */}
-            <VenueSearch />
+            <VenueSearch onChange={this.inputHandler.bind(this)} />
             {/* <InputWrap>
               <Script
                 url='https://maps.googleapis.com/maps/api/js?key=AIzaSyAJfBhKctGiH0CzM2oygDTaRcqpkHxqzpw&libraries=places'
