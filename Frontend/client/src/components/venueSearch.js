@@ -57,15 +57,20 @@ class Search extends Component {
     // Check if address is valid
     if (address) {
       // Set State
-      this.setState({
-        query: addressObject.name,
-        url: linkFunction(lat, lng, place_id),
-      })
+      // this.setState({
+      //   query: addressObject.name,
+      //   url: linkFunction(lat, lng, place_id),
+      // })
+      this.props.handlePlaceSelect(
+        addressObject.name,
+        formattedAddress,
+        linkFunction(lat, lng, place_id)
+      )
     }
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.props.state)
     return (
       <InputWrap>
         <Script
@@ -75,7 +80,8 @@ class Search extends Component {
         <Input
           id='autocomplete'
           placeholder='Enter Your Venue Address Here...'
-          value={this.state.query}
+          // value={this.state.query}
+          value={this.props.state.query}
           onChange={this.handleInputChange}
           style={{
             margin: '0 auto',
