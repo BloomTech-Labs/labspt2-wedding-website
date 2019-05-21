@@ -96,8 +96,6 @@ class Question extends React.Component {
 
   deleteHandler = e => {
     e.preventDefault()
-    console.log('delete question :', this.props.userInfo.id)
-    console.log('delete question :', this.props.questionInfo.id)
     this.props.deleteQuestion(
       this.props.userInfo.id,
       this.props.questionInfo.id
@@ -120,7 +118,6 @@ class Question extends React.Component {
         this.setState({
           answers: answers,
         })
-        console.log(this.state)
       })
       .catch(err => {
         console.log(err)
@@ -142,7 +139,7 @@ class Question extends React.Component {
   render() {
     return (
       <AnswerWrapper>
-        <h3>Question: {this.props.questionInfo.Question_body}</h3>
+        <h2>Question: {this.props.questionInfo.Question_body}</h2>
         <ButtonWrapper>
           <Button onClick={this.answersHandler}>See Answers</Button>
           <Button onClick={this.updateHandler}>Update</Button>

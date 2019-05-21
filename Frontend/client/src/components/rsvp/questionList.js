@@ -111,7 +111,6 @@ class QuestionList extends Component {
   }
 
   render() {
-    console.log('questions :', this.props.questions)
     return (
       <RSVPWrapper>
         <Head>

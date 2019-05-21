@@ -19,6 +19,7 @@ const Sub = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding: 10px;
 `
 
 const Button = styled.button`
