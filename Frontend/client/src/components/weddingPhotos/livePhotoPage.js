@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   height: 100vh;
   .photos {
     padding-top: 60px;
-    overflow: scroll;
+    overflow: y-scroll;
   }
   .error {
     color: white;
