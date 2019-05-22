@@ -83,7 +83,7 @@ class Search extends Component {
           placeholder='Enter Your Venue Address Here...'
           // value={this.state.query}
           value={this.props.state.query}
-          onChange={this.handleInputChange}
+          onChange={this.props.onChange}
           style={{
             margin: '0 auto',
             maxWidth: 800,
